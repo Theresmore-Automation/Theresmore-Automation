@@ -2,6 +2,14 @@
 
 Automation for the [Theresmore](https://www.theresmoregame.com/play/) game.
 
+## Installation
+
+Install an extension that supports Userscripts, like [Violentmonkey](https://violentmonkey.github.io/) or [Tampermonkey](https://www.tampermonkey.net/).
+
+Then simply open
+[https://github.com/Theresmore-Automation/Theresmore-Automation/raw/main/dist/bundle.user.js](https://github.com/Theresmore-Automation/Theresmore-Automation/raw/main/dist/bundle.user.js)
+to have the script installed.
+
 ## Development
 
 Start by installing dependencies with `npm install`.

@@ -1,4 +1,5 @@
 {
+    "name": "Theresmore Automation",
     "namespace": "github.com/Theresmore-Automation/Theresmore-Automation",
     "match": [
         "https://www.theresmoregame.com/play/"
