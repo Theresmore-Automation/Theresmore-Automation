@@ -1,0 +1,347 @@
+[
+  {
+    "id": "unemployed"
+  },
+  {
+    "id": "farmer",
+    "req": [
+      {
+        "type": "building",
+        "id": "farm",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1.6
+      }
+    ]
+  },
+  {
+    "id": "lumberjack",
+    "req": [
+      {
+        "type": "building",
+        "id": "lumberjack_camp",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 0.7
+      }
+    ]
+  },
+  {
+    "id": "quarryman",
+    "req": [
+      {
+        "type": "building",
+        "id": "quarry",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "id": "miner",
+    "req": [
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "artisan",
+    "req": [
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "merchant",
+    "req": [
+      {
+        "type": "building",
+        "id": "marketplace",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "trader",
+    "req": [
+      {
+        "type": "building",
+        "id": "credit_union",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "breeder",
+    "req": [
+      {
+        "type": "building",
+        "id": "stable",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 0.2
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "carpenter",
+    "req": [
+      {
+        "type": "building",
+        "id": "carpenter_workshop",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": -3
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": -1.5
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": -0.5
+      }
+    ]
+  },
+  {
+    "id": "steelworker",
+    "req": [
+      {
+        "type": "building",
+        "id": "steelworks",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 0.4
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": -1
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": -0.5
+      }
+    ]
+  },
+  {
+    "id": "professor",
+    "req": [
+      {
+        "type": "building",
+        "id": "university",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.06
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "researcher",
+    "req": [
+      {
+        "type": "building",
+        "id": "research_plant",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "supplier",
+    "req": [
+      {
+        "type": "building",
+        "id": "grocery",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.4
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -2
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": -0.2
+      }
+    ]
+  },
+  {
+    "id": "skymancer",
+    "req": [
+      {
+        "type": "building",
+        "id": "observatory",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "alchemist",
+    "req": [
+      {
+        "type": "building",
+        "id": "alchemic_laboratory",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 0.7
+      }
+    ]
+  },
+  {
+    "id": "natro_refiner",
+    "req": [
+      {
+        "type": "building",
+        "id": "natronite_refinery",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": -0.5
+      }
+    ]
+  }
+]

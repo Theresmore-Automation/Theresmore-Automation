@@ -1,0 +1,3668 @@
+[
+  {
+    "id": "housing"
+  },
+  {
+    "id": "monument_past",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5
+      },
+      {
+        "type": "tech",
+        "id": "housing",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "monument_1",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_housing",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "building",
+        "id": "monument",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "farmer",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_horseshoes_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "building",
+        "id": "monument",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_horseshoes",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "artisan",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "breeder",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_momento_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "building",
+        "id": "monument",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_momento",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "population",
+        "id": "miner",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_contract_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "building",
+        "id": "monument",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_contract",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      },
+      {
+        "type": "population",
+        "id": "merchant",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "agricolture",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "tech",
+        "id": "housing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "stone_masonry",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 20
+      },
+      {
+        "type": "tech",
+        "id": "housing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "wood_cutting",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 20
+      },
+      {
+        "type": "tech",
+        "id": "housing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "crop_rotation",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 100
+      },
+      {
+        "type": "building",
+        "id": "farm",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 5,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "farmer",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "grain_surplus",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 150
+      },
+      {
+        "type": "tech",
+        "id": "crop_rotation",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "grain_storage",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "pottery",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 150
+      },
+      {
+        "type": "tech",
+        "id": "stone_masonry",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "woodcarvers",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 150
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 20
+      },
+      {
+        "type": "building",
+        "id": "lumberjack_camp",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 10,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "wood_saw",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 170
+      },
+      {
+        "type": "tech",
+        "id": "woodcarvers",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "woodworking",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "stone_extraction_tools",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 175
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 25
+      },
+      {
+        "type": "building",
+        "id": "quarry",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 10,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "archery",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 200
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 150
+      },
+      {
+        "type": "tech",
+        "id": "wood_cutting",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "mining",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250
+      },
+      {
+        "type": "building",
+        "id": "quarry",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "mining_efficency",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 50
+      },
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 15,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "storage",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 300
+      },
+      {
+        "type": "tech",
+        "id": "agricolture",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "local_products",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 350
+      },
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 20,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "artisan",
+        "type_gen": "resource",
+        "gen": "tools",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "writing",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 500
+      },
+      {
+        "type": "tech",
+        "id": "pottery",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "bronze_working",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 600
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 300
+      },
+      {
+        "type": "tech",
+        "id": "mining",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "training_militia",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 700
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 400
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 250
+      },
+      {
+        "type": "tech",
+        "id": "bronze_working",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "militia_recruitment",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "magic",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 750
+      },
+      {
+        "type": "tech",
+        "id": "religion",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mythology",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 750
+      },
+      {
+        "type": "tech",
+        "id": "writing",
+        "value": 1
+      },
+      {
+        "type": "building",
+        "id": "common_house",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": "breeding",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 800
+      },
+      {
+        "type": "building",
+        "id": "farm",
+        "value": 5
+      },
+      {
+        "type": "tech",
+        "id": "storage",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "ancient_stockpile",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "remember_the_ancients",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "ancient_vault",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "reset",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "fortification",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1e3
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "bronze_working",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "remember_the_ancients",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "mythology",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "library_theresmore",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "reset",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "servitude",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1250
+      },
+      {
+        "type": "tech",
+        "id": "bronze_working",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "mathematic",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "writing",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "municipal_administration",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2500
+      },
+      {
+        "type": "building",
+        "id": "common_house",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "warfare",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "iron_working",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 25,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "canava_mercenary",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 4e3
+      },
+      {
+        "type": "tech",
+        "id": "warfare",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "coin_mercenary",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "currency",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1500
+      },
+      {
+        "type": "tech",
+        "id": "mathematic",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "tamed_barbarian",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e3
+      },
+      {
+        "type": "enemy",
+        "id": "barbarian_camp",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "religion",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3500
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1500
+      },
+      {
+        "type": "tech",
+        "id": "writing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "forging_equipments",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3500
+      },
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 7
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 500
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "spearman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "cloistered_life",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3500
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 800
+      },
+      {
+        "type": "tech",
+        "id": "magic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "monastic_orders",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "regional_markets",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 4e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "currency",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "regional_market",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "fortune_sanctuary",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 4500
+      },
+      {
+        "type": "prayer",
+        "id": "prayer_goddess_luck",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "enclosures",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "building",
+        "id": "farm",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 25,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "farmer",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "fine_marbles",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1e3
+      },
+      {
+        "type": "building",
+        "id": "quarry",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 25,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "fine_woods",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1e3
+      },
+      {
+        "type": "building",
+        "id": "lumberjack_camp",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 25,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "iron_working",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 600
+      },
+      {
+        "type": "tech",
+        "id": "bronze_working",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "holy_fury",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "tech",
+        "id": "iron_working",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "angel",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mercenary_bands",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      },
+      {
+        "type": "tech",
+        "id": "feudalism",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "white_t_company",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 7e3
+      },
+      {
+        "type": "tech",
+        "id": "mercenary_bands",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "white_m_company",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "end_ancient_era",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5500
+      },
+      {
+        "type": "building",
+        "id": "common_house",
+        "value": 15
+      },
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 5
+      },
+      {
+        "type": "tech",
+        "id": "iron_working",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "religion",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "plenty_valley",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6e3
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 5e3
+      }
+    ]
+  },
+  {
+    "id": "barbarian_tribes",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e3
+      },
+      {
+        "type": "enemy",
+        "id": "barbarian_village",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "bandit_chief",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6e3
+      },
+      {
+        "type": "enemy",
+        "id": "bandit_camp",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "deserter_origin",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 7e3
+      },
+      {
+        "type": "enemy",
+        "id": "deserters_den",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "feudalism",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 7500
+      },
+      {
+        "type": "building",
+        "id": "city_center",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "espionage",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 7500
+      },
+      {
+        "type": "tech",
+        "id": "mercenary_bands",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "forging_equipments_II",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 7500
+      },
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 13
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1e3
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "knight",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "architecture",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8e3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1500
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "feudalism",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "crossbow",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "feudalism",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "siege_techniques",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "crossbow",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "education",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "feudalism",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "liturgical_rites",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "education",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "necromancy",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8e3
+      },
+      {
+        "type": "enemy",
+        "id": "necromancer_crypt",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "food_conservation",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "education",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "plate_armor",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 4e3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 500
+      },
+      {
+        "type": "tech",
+        "id": "steeling",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "siege_defense_weapons",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "building",
+        "id": "wall",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "architecture",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "metal_casting",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 11500
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "feudalism",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "establish_boundaries",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 12e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "architecture",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "herald_canava",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6e3
+      },
+      {
+        "type": "tech",
+        "id": "establish_boundaries",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "moonlight_night",
+    "confirm": true,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 12e3
+      },
+      {
+        "type": "building",
+        "id": "watchman_outpost",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "daylong_celebration",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "moonlight_night",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "banking",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 12e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8e3
+      },
+      {
+        "type": "tech",
+        "id": "education",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "steeling",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 12e3
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 1500
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "metal_casting",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "guild",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15e3
+      },
+      {
+        "type": "tech",
+        "id": "education",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "artisan",
+        "type_gen": "resource",
+        "gen": "tools",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "merchant",
+        "type_gen": "resource",
+        "gen": "gold",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "craftsmen_guild",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 17500
+      },
+      {
+        "type": "tech",
+        "id": "guild",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "guild_craftsmen",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "religious_orders",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 17500
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "guild",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana_conveyors",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1e3
+      },
+      {
+        "type": "tech",
+        "id": "religious_orders",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "master_craftsmen",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 12e3
+      },
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 15
+      },
+      {
+        "type": "building",
+        "id": "grocery",
+        "value": 3
+      },
+      {
+        "type": "building",
+        "id": "carpenter_workshop",
+        "value": 3
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "artisan",
+        "type_gen": "resource",
+        "gen": "tools",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "supplier",
+        "type_gen": "resource",
+        "gen": "supplies",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "carpenter",
+        "type_gen": "resource",
+        "gen": "building_material",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "drilling_operation",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 11500
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1500
+      },
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "professional_soldier",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 13e3
+      },
+      {
+        "type": "tech",
+        "id": "plate_armor",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "knighthood",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 13e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 600
+      },
+      {
+        "type": "tech",
+        "id": "steeling",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "fairs_and_markets",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      },
+      {
+        "type": "tech",
+        "id": "guild",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "banking",
+        "value": 1
+      },
+      {
+        "type": "building",
+        "id": "marketplace",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "network_of_watchmen",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15e3
+      },
+      {
+        "type": "building",
+        "id": "wall",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "large_storage_space",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15e3
+      },
+      {
+        "type": "tech",
+        "id": "food_conservation",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "glorious_retirement",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e4
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 100
+      },
+      {
+        "type": "tech",
+        "id": "banking",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "knighthood",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "moonlight_night",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "library_of_souls",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 18e3
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "enemy",
+        "id": "worn_down_crypt",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "end_feudal_era",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 17e3
+      },
+      {
+        "type": "building",
+        "id": "mansion",
+        "value": 3
+      },
+      {
+        "type": "building",
+        "id": "carpenter_workshop",
+        "value": 3
+      },
+      {
+        "type": "building",
+        "id": "steelworks",
+        "value": 3
+      },
+      {
+        "type": "building",
+        "id": "university",
+        "value": 3
+      },
+      {
+        "type": "building",
+        "id": "grocery",
+        "value": 3
+      },
+      {
+        "type": "tech",
+        "id": "fairs_and_markets",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "knighthood",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "moonlight_night",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "astronomy",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 27e3
+      },
+      {
+        "type": "building",
+        "id": "academy_of_freethinkers",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "scientific_theory",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 28e3
+      },
+      {
+        "type": "building",
+        "id": "academy_of_freethinkers",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "chemistry",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 28e3
+      },
+      {
+        "type": "tech",
+        "id": "scientific_theory",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "manufactures",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 29e3
+      },
+      {
+        "type": "tech",
+        "id": "chemistry",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "printing_press",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e4
+      },
+      {
+        "type": "tech",
+        "id": "scientific_theory",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "monster_hunting",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e4
+      },
+      {
+        "type": "tech",
+        "id": "printing_press",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "monster_epuration",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e4
+      },
+      {
+        "type": "enemy",
+        "id": "hydra_pit",
+        "value": 1
+      },
+      {
+        "type": "enemy",
+        "id": "gorgon_cave",
+        "value": 1
+      },
+      {
+        "type": "enemy",
+        "id": "gloomy_werewolf_forest",
+        "value": 1
+      },
+      {
+        "type": "enemy",
+        "id": "minotaur_maze",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "fertilizer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e4
+      },
+      {
+        "type": "tech",
+        "id": "chemistry",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "farmer",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "alchemical_reactions",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 31e3
+      },
+      {
+        "type": "tech",
+        "id": "fertilizer",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "gunpowder",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 32e3
+      },
+      {
+        "type": "tech",
+        "id": "chemistry",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "the_scourge",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3e4
+      },
+      {
+        "type": "tech",
+        "id": "gunpowder",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "storing_valuable_materials",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 32e3
+      },
+      {
+        "type": "tech",
+        "id": "fertilizer",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "large_storage_space",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "military_science",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 33e3
+      },
+      {
+        "type": "tech",
+        "id": "gunpowder",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "dragon_assault",
+    "confirm": true,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 34e3
+      },
+      {
+        "type": "prayer",
+        "id": "dragon_skull",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "glorious_parade",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 4e3
+      },
+      {
+        "type": "tech",
+        "id": "dragon_assault",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 200,
+        "fix": true
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "the_vault",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 33e3
+      },
+      {
+        "type": "building",
+        "id": "bank",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": "cuirassiers",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 35e3
+      },
+      {
+        "type": "tech",
+        "id": "military_science",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "northern_star",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 35e3
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "nightdale_protectorate",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "flame_atamar",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 35e3
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "zultan_emirate",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "trail_power",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 45e3
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "western_kingdom",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "exhibit_flame",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 45e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 7e3
+      },
+      {
+        "type": "tech",
+        "id": "flame_atamar",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 5
+      },
+      {
+        "type": "tech",
+        "id": "infuse_flame",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "infuse_flame",
+    "req": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 15e3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 15e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 7e3
+      },
+      {
+        "type": "tech",
+        "id": "flame_atamar",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "strategist",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "strategist",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      },
+      {
+        "type": "tech",
+        "id": "exhibit_flame",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "persuade_nobility",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15e4
+      },
+      {
+        "type": "tech",
+        "id": "trail_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "tech",
+        "id": "persuade_people",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "persuade_people",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e4
+      },
+      {
+        "type": "tech",
+        "id": "trail_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "tech",
+        "id": "persuade_nobility",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "loved_people",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e4
+      },
+      {
+        "type": "enemy",
+        "id": "eternal_halls",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 12
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 6
+      }
+    ]
+  },
+  {
+    "id": "economics",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 35e3
+      },
+      {
+        "type": "tech",
+        "id": "printing_press",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "order_of_clerics",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 37e3
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "printing_press",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "magic_arts_teaching",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 39e3
+      },
+      {
+        "type": "tech",
+        "id": "order_of_clerics",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana_utilization",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e4
+      },
+      {
+        "type": "tech",
+        "id": "magic_arts_teaching",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "dragon_assault",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "large_defensive_project",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 35e3
+      },
+      {
+        "type": "building",
+        "id": "military_academy",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "commercial_monopolies",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 7e4
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 7e4
+      }
+    ]
+  },
+  {
+    "id": "gold_domination_project",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e5
+      },
+      {
+        "type": "building",
+        "id": "stock_exchange",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "exterminate_competition",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15e4
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 15e4
+      },
+      {
+        "type": "prayer",
+        "id": "gold_consecration",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "theresmore_richest_nation",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e5
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 2e5
+      },
+      {
+        "type": "tech",
+        "id": "exterminate_competition",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "coin",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "poisoned_arrows",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1e3
+      },
+      {
+        "type": "enemy",
+        "id": "goblin_lair",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "archer",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "crossbowman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "construction_of_automata",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8e3
+      },
+      {
+        "type": "prayer",
+        "id": "study_undead_creatures",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "safe_roads",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 9e3
+      },
+      {
+        "type": "enemy",
+        "id": "bandit_camp",
+        "value": 1
+      },
+      {
+        "type": "enemy",
+        "id": "deserters_den",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "agreement_passage_wanders",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15e3
+      },
+      {
+        "type": "diplomacy_alliance",
+        "id": "theresmore_wanders",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "scout_mission_east",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15e3
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "theresmore_wanders",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "large_pastures",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 9e3
+      },
+      {
+        "type": "tech",
+        "id": "agreement_passage_wanders",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "breeder",
+        "type_gen": "resource",
+        "gen": "horse",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "great_pastures",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 9e3
+      },
+      {
+        "type": "tech",
+        "id": "scout_mission_east",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "breeder",
+        "type_gen": "resource",
+        "gen": "horse",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "pentagram_tome",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e3
+      },
+      {
+        "type": "enemy",
+        "id": "strange_village",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "underground_kobold_mission",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 7e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e4
+      },
+      {
+        "type": "enemy",
+        "id": "kobold_underground_tunnels",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "kobold_nation",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15e3
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15e3
+      },
+      {
+        "type": "enemy",
+        "id": "kobold_city",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "portal_of_the_dead",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 4e4
+      },
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 15
+      },
+      {
+        "type": "building",
+        "id": "pillars_of_mana",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "trail_blood",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5e4
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1e4
+      },
+      {
+        "type": "enemy",
+        "id": "vampire_crypt",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana_engine",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 56e3
+      },
+      {
+        "type": "building",
+        "id": "mana_pit",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "long_expedition",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 56e3
+      },
+      {
+        "type": "tech",
+        "id": "mana_engine",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "shores_theresmore",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 57e3
+      },
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mechanization",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 57e3
+      },
+      {
+        "type": "tech",
+        "id": "mana_engine",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "storage_district",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 57e3
+      },
+      {
+        "type": "tech",
+        "id": "mechanization",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "natronite_storage",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 59e3
+      },
+      {
+        "type": "tech",
+        "id": "mechanization",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "research_district",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 59e3
+      },
+      {
+        "type": "tech",
+        "id": "mechanization",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "harbor_project",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6e4
+      },
+      {
+        "type": "tech",
+        "id": "shores_theresmore",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "financial_markets",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 62e3
+      },
+      {
+        "type": "tech",
+        "id": "research_district",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "natrocity",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 66e3
+      },
+      {
+        "type": "tech",
+        "id": "financial_markets",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "biology",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 69e3
+      },
+      {
+        "type": "tech",
+        "id": "research_district",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 4
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "id": "ecology",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 73e3
+      },
+      {
+        "type": "tech",
+        "id": "research_district",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "flight",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 76e3
+      },
+      {
+        "type": "tech",
+        "id": "natrocity",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "flintlock_musket",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 79e3
+      },
+      {
+        "type": "tech",
+        "id": "mechanization",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "military_tactics",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 82e3
+      },
+      {
+        "type": "tech",
+        "id": "flintlock_musket",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "land_mine",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 85e3
+      },
+      {
+        "type": "tech",
+        "id": "military_tactics",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "field_artillery",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 85e3
+      },
+      {
+        "type": "tech",
+        "id": "military_tactics",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "communion_nature",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 9e4
+      },
+      {
+        "type": "tech",
+        "id": "ecology",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "lonely_druid",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 13e3
+      },
+      {
+        "type": "tech",
+        "id": "communion_nature",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "rage_druid",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 95e3
+      },
+      {
+        "type": "prayer",
+        "id": "banish_druid",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "miracle_city",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 98e3
+      },
+      {
+        "type": "prayer",
+        "id": "prayer_lonely_druid",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "preparation_war",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 98e3
+      },
+      {
+        "type": "prayer",
+        "id": "city_blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mysterious_robbery",
+    "confirm": true,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 108e3
+      },
+      {
+        "type": "tech",
+        "id": "miracle_city",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "fallen_angel",
+    "confirm": true,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 108e3
+      },
+      {
+        "type": "tech",
+        "id": "preparation_war",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "joyful_nation_1",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8e3
+      },
+      {
+        "type": "tech",
+        "id": "mysterious_robbery",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 300,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "joyful_nation_2",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8e3
+      },
+      {
+        "type": "tech",
+        "id": "fallen_angel",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 300,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1
+      }
+    ]
+  }
+]

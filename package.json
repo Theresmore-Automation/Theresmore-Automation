@@ -1,56 +1,61 @@
 {
-    "name": "theresmore-automation",
-    "version": "1.0.0",
-    "description": "Automation suite for Theresmore game",
-    "keywords": [
-        "userscript",
-        "theresmore",
-        "theresmoregame"
-    ],
-    "homepage": "https://github.com/Theresmore-Automation/Theresmore-Automation",
-    "repository": {
-        "type": "git",
-        "url": "github:Theresmore-Automation/Theresmore-Automation"
-    },
-    "bugs": {
-        "url": "https://github.com/Theresmore-Automation/Theresmore-Automation/issues"
-    },
-    "author": "Theresmore Automation team",
-    "license": "MIT",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npx rollup --config rollup.config.mjs",
-        "watch": "npx rollup --config rollup.config.mjs --watch",
-        "serve": "node server.js",
-        "start": "node server.js",
-        "testserve": "node server.js --test",
-        "build:release": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist/release-$npm_package_version.user.js",
-        "build:release:win32": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist\\release-%npm_package_version%.user.js",
-        "version": "npm run build:release && git add dist/release-$npm_package_version.user.js",
-        "prepublishOnly": "npm run build:release && git add dist/release-$npm_package_version.user.js"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.20.7",
-        "@babel/core": "^7.20.12",
-        "@babel/plugin-proposal-class-properties": "^7.18.6",
-        "@babel/preset-react": "^7.18.6",
-        "@rollup/plugin-babel": "^6.0.3",
-        "@rollup/plugin-commonjs": "^24.0.0",
-        "@rollup/plugin-node-resolve": "^15.0.1",
-        "@rollup/plugin-replace": "^5.0.2",
-        "@rollup/plugin-typescript": "^11.0.0",
-        "@types/react": "^18.0.26",
-        "colorette": "^2.0.19",
-        "esm": "^3.2.25",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "rollup": "^3.11.0",
-        "rollup-plugin-userscript-metablock": "^0.3.1",
-        "serve": "^14.2.0",
-        "tslib": "^2.4.1",
-        "typescript": "^4.9.4"
-    },
-    "config": {
-        "port": "8124"
-    }
+  "name": "theresmore-automation",
+  "version": "1.1.0",
+  "description": "Automation suite for Theresmore game",
+  "keywords": [
+    "userscript",
+    "theresmore",
+    "theresmoregame"
+  ],
+  "homepage": "https://github.com/Theresmore-Automation/Theresmore-Automation",
+  "repository": {
+    "type": "git",
+    "url": "github:Theresmore-Automation/Theresmore-Automation"
+  },
+  "bugs": {
+    "url": "https://github.com/Theresmore-Automation/Theresmore-Automation/issues"
+  },
+  "author": "Theresmore Automation team",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx rollup --config rollup.config.mjs",
+    "watch": "npx rollup --config rollup.config.mjs --watch",
+    "serve": "node server.js",
+    "start": "node server.js",
+    "testserve": "node server.js --test",
+    "build:release": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist/release-$npm_package_version.user.js",
+    "build:release:win32": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist\\release-%npm_package_version%.user.js",
+    "version": "npm run build:release && git add dist/release-$npm_package_version.user.js",
+    "prepublishOnly": "npm run build:release && git add dist/release-$npm_package_version.user.js",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/react": "^18.0.26",
+    "colorette": "^2.0.19",
+    "esm": "^3.2.25",
+    "husky": "^8.0.0",
+    "prettier": "2.8.3",
+    "pretty-quick": "^3.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.11.0",
+    "rollup-plugin-userscript-metablock": "^0.3.1",
+    "serve": "^14.2.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  },
+  "config": {
+    "port": "8124"
+  }
 }

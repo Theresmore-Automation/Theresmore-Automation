@@ -1,0 +1,2327 @@
+[
+  {
+    "id": "praise_gods",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 250
+      },
+      {
+        "type": "building",
+        "id": "temple",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "blessing",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 500
+      },
+      {
+        "type": "prayer",
+        "id": "praise_gods",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "sacrifices_gods",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 600
+      },
+      {
+        "type": "prayer",
+        "id": "praise_gods",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "acolyte_circle",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 800
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_great_seeker",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 800
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      },
+      {
+        "type": "army",
+        "id": "archer",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_mother_earth",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 800
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_wild_man",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 800
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      },
+      {
+        "type": "building",
+        "id": "stable",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "mana_defense",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "wall",
+        "value": 1
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_old_small_one",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_ancient_monk",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_old_small_one",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_great_warrior",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_great_seeker",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_goddess_luck",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "sacred_equipments",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "tech",
+        "id": "warfare",
+        "value": 1
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "spear_wild_man",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      },
+      {
+        "type": "army",
+        "id": "light_cavarly",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "strange_lamp",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "enemy",
+        "id": "naga_nest",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "study_undead_creatures",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "enemy",
+        "id": "ancient_burial_place",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "unveil_theresmore",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1200
+      },
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "sacred_place",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1600
+      },
+      {
+        "type": "prayer",
+        "id": "unveil_theresmore",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "growth_nature",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "liturgical_rites",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "lighten_rocks",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "liturgical_rites",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "magical_tools",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "liturgical_rites",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "magical_lights",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "tech",
+        "id": "liturgical_rites",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "desire_abundance",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "enemy",
+        "id": "djinn_palace",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.3
+      },
+      {
+        "type": "prayer",
+        "id": "desire_magic",
+        "value": -1
+      },
+      {
+        "type": "prayer",
+        "id": "desire_war",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "desire_magic",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "enemy",
+        "id": "djinn_palace",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.3
+      },
+      {
+        "type": "prayer",
+        "id": "desire_abundance",
+        "value": -1
+      },
+      {
+        "type": "prayer",
+        "id": "desire_war",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "desire_war",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2e3
+      },
+      {
+        "type": "enemy",
+        "id": "djinn_palace",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "desire_magic",
+        "value": -1
+      },
+      {
+        "type": "prayer",
+        "id": "desire_abundance",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "demonology",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "enemy",
+        "id": "demonic_portal",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "demoniac_tome",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "pentagram_tome",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "temple_mirune",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 3500
+      },
+      {
+        "type": "enemy",
+        "id": "temple_gargoyle",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "create_sacred_golem",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "construction_of_automata",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana_defense_II",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 200
+      },
+      {
+        "type": "prayer",
+        "id": "mana_defense",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_great_builder",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "magic_arts_teaching",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "prayer_for_the_mysterious_arcane",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "magic_arts_teaching",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "sacred_equipments_II",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 200
+      },
+      {
+        "type": "prayer",
+        "id": "sacred_equipments",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "the_aid",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 4e3
+      },
+      {
+        "type": "tech",
+        "id": "the_scourge",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "zenix_aid",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 4e3
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 400
+      },
+      {
+        "type": "building",
+        "id": "university",
+        "value": 7
+      }
+    ]
+  },
+  {
+    "id": "dragon_skull",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "building",
+        "id": "refugee_district",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "holy_light",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "building",
+        "id": "temple",
+        "value": 7
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior_monk",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 3,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "power_spell_east",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 800
+      },
+      {
+        "type": "enemy",
+        "id": "east_sacred_place",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "power_spell_west",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3e3
+      },
+      {
+        "type": "enemy",
+        "id": "west_sacred_place",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "power_spell_north",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 8e3
+      },
+      {
+        "type": "enemy",
+        "id": "north_sacred_place",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "power_spell_south",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e4
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5e3
+      },
+      {
+        "type": "enemy",
+        "id": "south_sacred_place",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "gold_consecration",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "tech",
+        "id": "gold_domination_project",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 2e4
+      }
+    ]
+  },
+  {
+    "id": "mother_earth_2",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "building",
+        "id": "conclave",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "great_seeker_2",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "building",
+        "id": "conclave",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "great_warrior_2",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "building",
+        "id": "conclave",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "old_small_one_2",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "building",
+        "id": "conclave",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "wild_man_2",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6e3
+      },
+      {
+        "type": "building",
+        "id": "conclave",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "northern_star_power",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 7e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5e3
+      },
+      {
+        "type": "tech",
+        "id": "northern_star",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "army_faith",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1e4
+      },
+      {
+        "type": "building",
+        "id": "temple",
+        "value": 13
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior_monk",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "accept_druid",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 13e3
+      },
+      {
+        "type": "tech",
+        "id": "lonely_druid",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "banish_druid",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "banish_druid",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 13e3
+      },
+      {
+        "type": "tech",
+        "id": "lonely_druid",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "accept_druid",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "prayer_lonely_druid",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 13500
+      },
+      {
+        "type": "prayer",
+        "id": "accept_druid",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "city_blessing",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 13500
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1e4
+      },
+      {
+        "type": "tech",
+        "id": "rage_druid",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "protection_power",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 22e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5500
+      },
+      {
+        "type": "prayer",
+        "id": "northern_star_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "incremental_power",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "incremental_power",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 6e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5500
+      },
+      {
+        "type": "prayer",
+        "id": "northern_star_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "protection_power",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "temple_ritual",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "praise_gods",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -2
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "minor_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "blessing",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -2
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "acolyte_hymn",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "acolyte_circle",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "great_seeker_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_great_seeker",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "archer",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "crossbowman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "great_warrior_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_great_warrior",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "spearman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "goddess_luck_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_goddess_luck",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "mana_energy_shield",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "mana_defense",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 80,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "mother_earth_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_mother_earth",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "old_small_one_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_old_small_one",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "sacred_armor",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "sacred_equipments",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 20,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "theresmore_revealed",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "unveil_theresmore",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "wild_man_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_wild_man",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "wild_man_spear",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "spear_wild_man",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "growth_of_nature",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "growth_nature",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -7
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 3.5
+      }
+    ]
+  },
+  {
+    "id": "lighten_of_rocks",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "lighten_rocks",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -7
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 3.5
+      }
+    ]
+  },
+  {
+    "id": "magic_tools",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "magical_tools",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -7
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "magic_lights",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "magical_lights",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -7
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1.5
+      }
+    ]
+  },
+  {
+    "id": "mirune_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "temple_mirune",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 2.5
+      }
+    ]
+  },
+  {
+    "id": "dark_ritual",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "demonology",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior_monk",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "sacred_golem",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "great_builder_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_great_builder",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "mana_dome",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "mana_defense_II",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 200,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "mysterious_arcane_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_for_the_mysterious_arcane",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.6
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "sacred_weapon",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "sacred_equipments_II",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -10
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "great_seeker_eyesight",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "great_seeker_2",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "arquebusier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "arquebusier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "great_warrior_fury",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "great_warrior_2",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "mother_earth_grace",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "mother_earth_2",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 12,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "old_small_one_grace",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "old_small_one_2",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 12,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "wild_man_dexterity",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "wild_man_2",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "knight",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "knight",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "northern_star_protection",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "protection_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 500,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "northern_star_incremental",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "incremental_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "dragon_armor",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "dragon_skull",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "shieldbearer",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior_monk",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "dragon_weapon",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "dragon_skull",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "druid_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "prayer_lonely_druid",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -40
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "blessing_city",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "city_blessing",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -40
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 10,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 50,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 50,
+        "perc": false
+      }
+    ]
+  }
+]

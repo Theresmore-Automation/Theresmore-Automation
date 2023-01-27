@@ -1,0 +1,919 @@
+[
+  {
+    "id": "nightdale_protectorate",
+    "found": [1, 2, 3, 4, 5],
+    "relationship": 30,
+    "esp": 30,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 4
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 4
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "archer",
+        "value": 80
+      },
+      {
+        "id": "warrior",
+        "value": 120
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "theresmore_wanders",
+    "found": [6, 7, 8, 9, 10],
+    "relationship": 30,
+    "esp": 20,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2e3
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "archer",
+        "value": 60
+      },
+      {
+        "id": "spearman",
+        "value": 40
+      },
+      {
+        "id": "light_cavarly",
+        "value": 80
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "western_kingdom",
+    "found": [11, 12, 13, 14, 15],
+    "relationship": 50,
+    "esp": 50,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 2
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "crossbowman",
+        "value": 60
+      },
+      {
+        "id": "man_at_arms",
+        "value": 50
+      },
+      {
+        "id": "knight",
+        "value": 50
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 8,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "zultan_emirate",
+    "found": [16, 17, 18, 19, 20],
+    "relationship": 50,
+    "esp": 40,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2e3
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "archer",
+        "value": 120
+      },
+      {
+        "id": "spearman",
+        "value": 40
+      },
+      {
+        "id": "heavy_warrior",
+        "value": 30
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "sssarkat_empire",
+    "found": [1, 2, 3, 4, 5],
+    "relationship": 30,
+    "esp": 40,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5e3
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 2500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25e3
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 1e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -30
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 3
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "lizard_warrior",
+        "value": 200
+      },
+      {
+        "id": "lizard_archer",
+        "value": 120
+      },
+      {
+        "id": "lizard_shaman",
+        "value": 20
+      },
+      {
+        "id": "lizard_commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "scalerock_tribes",
+    "found": [6, 7, 8, 9, 10],
+    "relationship": 40,
+    "esp": 50,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3e3
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25e3
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -30
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 1
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "draconic_warrior",
+        "value": 200
+      },
+      {
+        "id": "draconic_diver",
+        "value": 120
+      },
+      {
+        "id": "draconic_mage",
+        "value": 20
+      },
+      {
+        "id": "draconic_leader",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 200,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "enso_multitude",
+    "found": [11, 12, 13, 14, 15],
+    "relationship": 50,
+    "esp": 60,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8e3
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8e3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8e3
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 1.5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "musket_ashigaru",
+        "value": 250
+      },
+      {
+        "id": "katana_samurai",
+        "value": 150
+      },
+      {
+        "id": "cavarly_archer",
+        "value": 60
+      },
+      {
+        "id": "daimyo",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 250,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 20,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 20,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "king_kobold_nation",
+    "found": [21, 22, 23, 24, 25],
+    "esp": 40,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "kobold_nation",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "kobold_king",
+        "value": 1
+      },
+      {
+        "id": "kobold_champion",
+        "value": 50
+      },
+      {
+        "id": "kobold",
+        "value": 180
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "barbarian_horde",
+    "found": [26, 27, 28, 29, 30],
+    "esp": 40,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "barbarian_tribes",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "barbarian_king",
+        "value": 1
+      },
+      {
+        "id": "barbarian_chosen",
+        "value": 20
+      },
+      {
+        "id": "barbarian_drummer",
+        "value": 5
+      },
+      {
+        "id": "barbarian_warrior",
+        "value": 120
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 2
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "army_of_the_dead",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "skeleton",
+        "value": 1500
+      },
+      {
+        "id": "zombie",
+        "value": 700
+      }
+    ]
+  },
+  {
+    "id": "army_of_goblin",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "goblin_overlord",
+        "value": 1
+      },
+      {
+        "id": "goblin_wolfrider",
+        "value": 30
+      },
+      {
+        "id": "goblin_warrior",
+        "value": 70
+      }
+    ]
+  },
+  {
+    "id": "army_of_dragon",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "red_dragon",
+        "value": 1
+      },
+      {
+        "id": "draconic_warrior",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "fallen_angel_army_1",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "fallen_angel",
+        "value": 1
+      },
+      {
+        "id": "demonic_musketeer",
+        "value": 120
+      }
+    ]
+  },
+  {
+    "id": "fallen_angel_army_2",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "fallen_angel",
+        "value": 1
+      },
+      {
+        "id": "lesser_demon",
+        "value": 150
+      },
+      {
+        "id": "greater_demon",
+        "value": 100
+      }
+    ]
+  }
+]
