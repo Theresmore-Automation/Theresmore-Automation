@@ -1,0 +1,203 @@
+[
+  {
+    "id": "research",
+    "cap": 500
+  },
+  {
+    "id": "gold",
+    "cap": 600,
+    "req": [
+      {
+        "type": "building",
+        "id": "common_house",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "food",
+    "manual": true,
+    "cap": 300
+  },
+  {
+    "id": "wood",
+    "manual": true,
+    "cap": 300
+  },
+  {
+    "id": "stone",
+    "manual": true,
+    "cap": 300
+  },
+  {
+    "id": "copper",
+    "cap": 200,
+    "req": [
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "iron",
+    "cap": 200,
+    "req": [
+      {
+        "type": "building",
+        "id": "mine",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "tools",
+    "cap": 250,
+    "req": [
+      {
+        "type": "building",
+        "id": "artisan_workshop",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "cow",
+    "cap": 50,
+    "req": [
+      {
+        "type": "building",
+        "id": "stable",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "horse",
+    "cap": 20,
+    "req": [
+      {
+        "type": "building",
+        "id": "stable",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "faith",
+    "cap": 500,
+    "req": [
+      {
+        "type": "building",
+        "id": "temple",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana",
+    "cap": 500,
+    "req": [
+      {
+        "type": "building",
+        "id": "temple",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "fame",
+    "hidden": true
+  },
+  {
+    "id": "luck",
+    "hidden": true
+  },
+  {
+    "id": "building_material",
+    "cap": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "carpenter_workshop",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "steel",
+    "cap": 250,
+    "req": [
+      {
+        "type": "building",
+        "id": "steelworks",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "crystal",
+    "cap": 50,
+    "req": [
+      {
+        "type": "building",
+        "id": "university",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "supplies",
+    "cap": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "grocery",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "saltpetre",
+    "cap": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "alchemic_laboratory",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "natronite",
+    "cap": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "natronite_refinery",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "legacy",
+    "hidden": true
+  },
+  {
+    "id": "relic",
+    "hidden": true
+  },
+  {
+    "id": "tome_wisdom",
+    "hidden": true
+  },
+  {
+    "id": "coin",
+    "hidden": true
+  },
+  {
+    "id": "gem",
+    "hidden": true
+  }
+]

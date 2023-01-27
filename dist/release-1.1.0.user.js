@@ -78,7 +78,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
       return (string = string.replace(this._group, '').replace(this._decimal, '.').replace(this._numeral, this._index)) ? +string * multiplier : NaN;
     }
   }
-  const numberParser = new NumberParser();
+  const numberParser$1 = new NumberParser();
 
   const sleep = miliseconds => new Promise(resolve => setTimeout(resolve, miliseconds));
 
@@ -2941,10 +2941,10 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     resources.map(resource => {
       if (resource.textContent.includes(resourceName)) {
         resourceFound = true;
-        const values = resource.parentNode.parentNode.childNodes[1].textContent.split('/').map(x => numberParser.parse(x.replace(/[^0-9KM\-,\.]/g, '').trim()));
+        const values = resource.parentNode.parentNode.childNodes[1].textContent.split('/').map(x => numberParser$1.parse(x.replace(/[^0-9KM\-,\.]/g, '').trim()));
         resourceToFind.current = values[0];
         resourceToFind.max = values[1];
-        resourceToFind.speed = numberParser.parse(resource.parentNode.parentNode.childNodes[2].textContent.replace(/[^0-9KM\-,\.]/g, '').trim()) || 0;
+        resourceToFind.speed = numberParser$1.parse(resource.parentNode.parentNode.childNodes[2].textContent.replace(/[^0-9KM\-,\.]/g, '').trim()) || 0;
         resourceToFind.ttf = resourceToFind.speed > 0 && resourceToFind.max !== resourceToFind.current ? formatTime(Math.ceil((resourceToFind.max - resourceToFind.current) / resourceToFind.speed)) : null;
         resourceToFind.ttz = resourceToFind.speed < 0 && resourceToFind.current ? formatTime(Math.ceil(resourceToFind.current / (resourceToFind.speed * -1))) : null;
       }
@@ -3414,7 +3414,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
             if (!requiredResource) {
               shouldBuild = false;
             } else {
-              if (button.id === 'Common House' && (!button.element.querySelector('span') || numberParser.parse(button.element.querySelector('span').innerText) < 2)) {
+              if (button.id === 'Common House' && (!button.element.querySelector('span') || numberParser$1.parse(button.element.querySelector('span').innerText) < 2)) {
                 shouldBuild = true;
               } else {
                 shouldBuild = shouldBuild && requiredResource[button.building.requires.parameter] > button.building.requires.minValue;
@@ -3576,7 +3576,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
       await navigation.switchPage(CONSTANTS.PAGES.POPULATION);
       let canAssignJobs = true;
       const container = selectors.getActivePageContent();
-      let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim()));
+      let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser$1.parse(pop.trim()));
       const availableJobs = [...container.querySelectorAll('h5')].map(job => {
         const jobTitle = job.textContent.trim();
         return {
@@ -3605,7 +3605,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
                 await sleep(1000);
               }
             } else {
-              let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
+              let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser$1.parse(pop.trim())).shift();
               if (unassigned > 0) {
                 const resourcesToProduce = ['Natronite', 'Saltpetre', 'Tools', 'Wood', 'Stone', 'Iron',
                 // 'Copper', // Same as Iron
@@ -3656,7 +3656,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
               }
             }
           }
-          const unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
+          const unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser$1.parse(pop.trim())).shift();
           if (unassigned === 0) {
             canAssignJobs = false;
           }
@@ -3698,91 +3698,14 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     research
   };
 
-  const calculateTippyTTF = () => {
-    let potentialResourcesToFillTable = document.querySelectorAll('div.tippy-box > div.tippy-content > div > div > table');
-    if (potentialResourcesToFillTable.length) {
-      potentialResourcesToFillTable = potentialResourcesToFillTable[0];
-      const rows = potentialResourcesToFillTable.querySelectorAll('tr');
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        const resourceName = cells[0].textContent.trim();
-        const resource = resources.get(resourceName);
-        if (resource) {
-          let ttf = '✅';
-          const target = numberParser.parse(cells[1].textContent.split(' ').shift().replace(/[^0-9KM\-,\.]/g, '').trim());
-          if (target > resource.max || resource.speed <= 0) {
-            ttf = 'never';
-          } else if (target > resource.current) {
-            ttf = formatTime(Math.ceil((target - resource.current) / resource.speed)).timeShort;
-          }
-          if (!cells[2]) {
-            const ttfElement = document.createElement('td');
-            ttfElement.className = 'px-4 3xl:py-1 text-right';
-            ttfElement.textContent = ttf;
-            row.appendChild(ttfElement);
-          } else {
-            cells[2].textContent = ttf;
-          }
-        }
-      });
-    }
-  };
-
-  const calculateTTF = () => {
-    const resourceTrNodes = document.querySelectorAll('#root > div > div:not(#maintabs-container) > div > div > div > table:not(.hidden) > tbody > tr');
-    resourceTrNodes.forEach(row => {
-      const cells = row.querySelectorAll('td');
-      const resourceName = cells[0].textContent.trim();
-      const resource = resources.get(resourceName);
-      let ttf = '';
-      if (resource && resource.current < resource.max && resource.speed) {
-        ttf = resource.ttf ? resource.ttf.timeShort : resource.ttz ? resource.ttz.timeShort : '';
-      }
-      if (!cells[3]) {
-        const ttfElement = document.createElement('td');
-        ttfElement.className = 'px-3 3xl:px-5 py-3 lg:py-2 3xl:py-3 whitespace-nowrap w-1/3 text-right';
-        ttfElement.textContent = ttf;
-        row.appendChild(ttfElement);
-      } else {
-        cells[3].textContent = ttf;
-      }
-    });
-  };
-
   let haveManualResourceButtons = true;
-  const autoClicker = async () => {
-    if (!haveManualResourceButtons) return;
-    if (state.scriptPaused) return;
-    const manualResources = ['Food', 'Wood', 'Stone'];
-    while (!state.scriptPaused && haveManualResourceButtons) {
-      const buttons = [...document.querySelectorAll('#root > div.flex.flex-wrap.w-full.mx-auto.p-2 > div.w-full.lg\\:pl-2 > div > div.order-2.flex.flex-wrap.gap-3 > button')];
-      if (!buttons.length) {
-        haveManualResourceButtons = false;
-        return;
-      }
-      const buttonsToClick = buttons.filter(button => manualResources.includes(button.innerText.trim()));
-      while (buttonsToClick.length) {
-        const buttonToClick = buttonsToClick.shift();
-        buttonToClick.click();
-        await sleep(100);
-      }
-    }
-  };
-
-  var tasks = {
-    calculateTippyTTF,
-    calculateTTF,
-    autoClicker
-  };
-
+  let isClicking = false;
   let mainLoopRunning = false;
-  let routineTasksInterval;
-  let fastTasksInterval;
   const switchScriptState = () => {
     state.scriptPaused = !state.scriptPaused;
     localStorage.set('scriptPaused', state.scriptPaused);
     if (!state.scriptPaused) {
-      start();
+      mainLoop();
     }
   };
   const mainLoop = async () => {
@@ -3813,12 +3736,11 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     mainLoopRunning = false;
   };
   const managePanel = () => {
-    const id = 'theresmore-automation';
-    const controlPanel = document.querySelector(`div#${id}`);
+    const controlPanel = document.querySelector('div#theresMoreHelpControlPanel');
     let scriptState = state.scriptPaused ? `▶️` : `⏸️`;
     if (!controlPanel) {
       const controlPanelElement = document.createElement('div');
-      controlPanelElement.id = id;
+      controlPanelElement.id = 'theresMoreHelpControlPanel';
       controlPanelElement.classList.add('dark');
       controlPanelElement.classList.add('dark:bg-mydark-300');
       controlPanelElement.style.position = 'fixed';
@@ -3844,32 +3766,95 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
       }
     }
   };
+  const calculateTTF = () => {
+    const resourceTrNodes = document.querySelectorAll('#root > div > div:not(#maintabs-container) > div > div > div > table:not(.hidden) > tbody > tr');
+    resourceTrNodes.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      const resourceName = cells[0].textContent.trim();
+      const resource = resources.get(resourceName);
+      let ttf = '';
+      if (resource && resource.current < resource.max && resource.speed) {
+        ttf = resource.ttf ? resource.ttf.timeShort : resource.ttz ? resource.ttz.timeShort : '';
+      }
+      if (!cells[3]) {
+        const ttfElement = document.createElement('td');
+        ttfElement.className = 'px-3 3xl:px-5 py-3 lg:py-2 3xl:py-3 whitespace-nowrap w-1/3 text-right';
+        ttfElement.textContent = ttf;
+        row.appendChild(ttfElement);
+      } else {
+        cells[3].textContent = ttf;
+      }
+    });
+  };
+  const calculateTippyTTF = () => {
+    let potentialResourcesToFillTable = document.querySelectorAll('div.tippy-box > div.tippy-content > div > div > table');
+    if (potentialResourcesToFillTable.length) {
+      potentialResourcesToFillTable = potentialResourcesToFillTable[0];
+      const rows = potentialResourcesToFillTable.querySelectorAll('tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const resourceName = cells[0].textContent.trim();
+        const resource = resources.get(resourceName);
+        if (resource) {
+          let ttf = '✅';
+          const target = numberParser$1.parse(cells[1].textContent.split(' ').shift().replace(/[^0-9KM\-,\.]/g, '').trim());
+          if (target > resource.max || resource.speed <= 0) {
+            ttf = 'never';
+          } else if (target > resource.current) {
+            ttf = formatTime(Math.ceil((target - resource.current) / resource.speed)).timeShort;
+          }
+          if (!cells[2]) {
+            const ttfElement = document.createElement('td');
+            ttfElement.className = 'px-4 3xl:py-1 text-right';
+            ttfElement.textContent = ttf;
+            row.appendChild(ttfElement);
+          } else {
+            cells[2].textContent = ttf;
+          }
+        }
+      });
+    }
+  };
+  const tossACoinToYourClicker = async () => {
+    if (!haveManualResourceButtons) return;
+    if (state.scriptPaused) return;
+    if (isClicking) return;
+    isClicking = true;
+    const manualResources = ['Food', 'Wood', 'Stone'].filter(resourceName => {
+      const resource = resources.get(resourceName);
+      if (resource && resource.current < Math.min(200, resource.max) && (!resource.speed || resource.speed <= 0)) {
+        return true;
+      }
+    });
+    const buttons = [...document.querySelectorAll('#root > div.flex.flex-wrap.w-full.mx-auto.p-2 > div.w-full.lg\\:pl-2 > div > div.order-2.flex.flex-wrap.gap-3 > button')];
+    if (!buttons.length) {
+      haveManualResourceButtons = false;
+      return;
+    }
+    const buttonsToClick = buttons.filter(button => manualResources.includes(button.innerText.trim()));
+    while (!state.scriptPaused && buttonsToClick.length) {
+      const buttonToClick = buttonsToClick.shift();
+      buttonToClick.click();
+      await sleep(250);
+    }
+    isClicking = false;
+  };
   const performRoutineTasks = async () => {
-    tasks.calculateTTF();
+    calculateTTF();
     managePanel();
+    if (haveManualResourceButtons) tossACoinToYourClicker();
   };
   const performFastTasks = async () => {
-    tasks.calculateTippyTTF();
+    calculateTippyTTF();
   };
   const start = async () => {
-    managePanel();
+    window.setInterval(performRoutineTasks, 1000);
+    window.setInterval(performFastTasks, 100);
+    await sleep(5000);
     if (!state.scriptPaused) {
-      if (!routineTasksInterval) {
-        routineTasksInterval = window.setInterval(performRoutineTasks, 1000);
-      }
-      if (!fastTasksInterval) {
-        fastTasksInterval = window.setInterval(performFastTasks, 100);
-      }
-      await sleep(5000);
-      tasks.autoClicker();
       mainLoop();
-    } else {
-      window.clearInterval(routineTasksInterval);
-      window.clearInterval(fastTasksInterval);
-      routineTasksInterval = fastTasksInterval = null;
     }
   };
   start();
 
 })();
-//# sourceMappingURL=bundle.user.js.map
