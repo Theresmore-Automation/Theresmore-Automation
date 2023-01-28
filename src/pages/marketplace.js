@@ -1,20 +1,41 @@
-import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser } from '../utils'
+import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage } from '../utils'
 
 const resourcesToTrade = ['Cow', 'Horse', 'Food', 'Copper', 'Wood', 'Stone', 'Iron', 'Tools']
+const timeToFillResource = 90
 const timeToWaitUntilFullGold = 60
 const secondsBetweenSells = 90
 
-const lastSell = {}
+const getTimeToFillResource = () => {
+  return state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource || timeToFillResource
+}
+
+const getTimeToWaitUntilFullGold = () => {
+  return state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold || timeToWaitUntilFullGold
+}
+
+const getSecondsBetweenSells = () => {
+  return state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells || secondsBetweenSells
+}
+
+const getResourcesToTrade = () => {
+  const userResourcesToTrade = Object.keys(state.options[CONSTANTS.PAGES.MARKETPLACE])
+    .filter((key) => key.includes('resource_') && state.options[CONSTANTS.PAGES.MARKETPLACE][key])
+    .map((key) => translate(key.replace('resource_', '')))
+  return userResourcesToTrade.length ? userResourcesToTrade : resourcesToTrade
+}
+
+const lastSell = localStorage.get('lastSell') || {}
 
 const shouldSell = () => {
-  return !!resourcesToTrade.find((resName) => {
+  return !!getResourcesToTrade().find((resName) => {
     if (!lastSell[resName]) lastSell[resName] = 0
 
     const res = resources.get(resName)
+
     if (
       res &&
-      (res.current === res.max || res.current + res.speed * timeToWaitUntilFullGold >= res.max) &&
-      lastSell[resName] + secondsBetweenSells * 1000 < new Date().getTime()
+      (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max) &&
+      lastSell[resName] + getSecondsBetweenSells() * 1000 < new Date().getTime()
     )
       return true
   })
@@ -23,12 +44,16 @@ const shouldSell = () => {
 const hasNotEnoughGold = () => {
   const gold = resources.get('Gold')
 
-  return gold.current + gold.speed * timeToWaitUntilFullGold < gold.max
+  return gold.current + gold.speed * getTimeToWaitUntilFullGold() < gold.max
+}
+
+const userEnabled = () => {
+  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE] || false
 }
 
 export default {
   id: CONSTANTS.PAGES.MARKETPLACE,
-  enabled: () => navigation.hasPage(CONSTANTS.PAGES.MARKETPLACE) && hasNotEnoughGold() && shouldSell(),
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MARKETPLACE) && hasNotEnoughGold() && shouldSell(),
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE)
 
@@ -43,7 +68,7 @@ export default {
           const resName = resNameElem.innerText
           const res = resources.get(resName)
 
-          if (resourcesToTrade.includes(resName) && res && (res.current === res.max || res.current + res.speed * timeToWaitUntilFullGold >= res.max)) {
+          if (getResourcesToTrade().includes(resName) && res && (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max)) {
             resourceHolders.push(resourceHolder)
           }
         }
@@ -67,7 +92,7 @@ export default {
           sellButtons &&
           sellButtons.length &&
           gold.current < gold.max &&
-          res.current + res.speed * timeToWaitUntilFullGold * 2 >= res.max
+          res.current + res.speed * getTimeToFillResource() * 2 >= res.max
         ) {
           let maxSellButton = 2
           const missingResToSell = Math.ceil((gold.max - gold.current) / price)
@@ -109,6 +134,7 @@ export default {
           )
 
         logger({ msgLevel: 'log', msg: `Earned ${new Intl.NumberFormat().format(goldEarned)} gold on Marketplace [${totals.join(', ')}]` })
+        localStorage.set('lastSell', lastSell)
       }
     }
 

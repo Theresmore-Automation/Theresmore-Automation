@@ -1,17 +1,19 @@
-import { sleep, logger, localStorage, state, resources } from './utils'
+import { sleep, logger, localStorage, state } from './utils'
 import pages from './pages'
 import tasks from './tasks'
 
 let mainLoopRunning = false
-let routineTasksInterval
-let fastTasksInterval
+let hideFullPageOverlayInterval
 
 const switchScriptState = () => {
   state.scriptPaused = !state.scriptPaused
   localStorage.set('scriptPaused', state.scriptPaused)
+  tasks.managePanel.updatePanel()
 
   if (!state.scriptPaused) {
     start()
+  } else {
+    logger({ msgLevel: 'log', msg: 'Pausing automation' })
   }
 }
 
@@ -24,7 +26,13 @@ const mainLoop = async () => {
   mainLoopRunning = true
 
   while (!state.scriptPaused) {
+    await tasks.autoPrestige()
+    await tasks.autoAncestor()
+
     const pagesToCheck = Object.keys(pages)
+    pagesToCheck.sort((a, b) => {
+      return state.lastVisited[pages[a].id] - state.lastVisited[pages[b].id]
+    })
 
     while (!state.scriptPaused && pagesToCheck.length) {
       const pageToCheck = pagesToCheck.shift()
@@ -35,6 +43,7 @@ const mainLoop = async () => {
         if (page) {
           logger({ msgLevel: 'debug', msg: `Executing ${page.id} action` })
           state.lastVisited[page.id] = new Date().getTime()
+          localStorage.set('lastVisited', state.lastVisited)
           await page.action()
           await sleep(1000)
         }
@@ -47,74 +56,36 @@ const mainLoop = async () => {
   mainLoopRunning = false
 }
 
-const managePanel = () => {
-  const id = 'theresmore-automation'
-  const controlPanel = document.querySelector(`div#${id}`)
+const init = async () => {
+  tasks.managePanel.createPanel(switchScriptState)
+  tasks.manageOptions.createPanel(start)
+  tasks.managePanel.updatePanel()
 
-  let scriptState = state.scriptPaused ? `▶️` : `⏸️`
+  setInterval(tasks.calculateTTF, 100)
+  setInterval(tasks.calculateTippyTTF, 100)
 
-  if (!controlPanel) {
-    const controlPanelElement = document.createElement('div')
-    controlPanelElement.id = id
-    controlPanelElement.classList.add('dark')
-    controlPanelElement.classList.add('dark:bg-mydark-300')
-    controlPanelElement.style.position = 'fixed'
-    controlPanelElement.style.bottom = '10px'
-    controlPanelElement.style.left = '10px'
-    controlPanelElement.style.zIndex = '99999999'
-    controlPanelElement.style.border = '1px black solid'
-    controlPanelElement.style.padding = '10px'
-
-    controlPanelElement.innerHTML = `
-    <p class="mb-2">Theresmore Automation:
-      <button title="Start/stop script" class="taScriptState">${scriptState}</button>
-    </p>
-  `
-    document.querySelector('div#root').insertAdjacentElement('afterend', controlPanelElement)
-    document.querySelector('button.taScriptState').addEventListener('click', switchScriptState)
-  } else {
-    controlPanel.querySelector('.taScriptState').textContent = scriptState
-  }
-
-  if (!state.scriptPaused) {
-    const fullPageOverlay = document.querySelector('div > div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
-    if (fullPageOverlay) {
-      fullPageOverlay.click()
-    }
-  }
-}
-
-const performRoutineTasks = async () => {
-  tasks.calculateTTF()
-
-  managePanel()
-}
-
-const performFastTasks = async () => {
-  tasks.calculateTippyTTF()
+  start()
 }
 
 const start = async () => {
-  managePanel()
+  tasks.managePanel.updatePanel()
 
   if (!state.scriptPaused) {
-    if (!routineTasksInterval) {
-      routineTasksInterval = window.setInterval(performRoutineTasks, 1000)
-    }
-    if (!fastTasksInterval) {
-      fastTasksInterval = window.setInterval(performFastTasks, 100)
+    logger({ msgLevel: 'log', msg: 'Starting automation' })
+
+    if (!hideFullPageOverlayInterval) {
+      hideFullPageOverlayInterval = setInterval(tasks.hideFullPageOverlay, 100)
     }
 
-    await sleep(5000)
+    await sleep(2000)
 
     tasks.autoClicker()
     mainLoop()
   } else {
-    window.clearInterval(routineTasksInterval)
-    window.clearInterval(fastTasksInterval)
+    clearInterval(hideFullPageOverlayInterval)
 
-    routineTasksInterval = fastTasksInterval = null
+    hideFullPageOverlayInterval = null
   }
 }
 
-start()
+init()
