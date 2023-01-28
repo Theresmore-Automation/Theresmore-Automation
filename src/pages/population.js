@@ -55,18 +55,45 @@ const getAllJobs = () => {
     let allowedJobs = Object.keys(state.options[CONSTANTS.PAGES.POPULATION])
       .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][key])
       .map((key) => {
+        const jobData = jobs.find((job) => job.id === key) || {}
+
         const job = {
+          ...jobData,
           key: key,
           id: translate(key, 'pop_'),
           max: state.options[CONSTANTS.PAGES.POPULATION][key] === -1 ? 99999 : state.options[CONSTANTS.PAGES.POPULATION][key],
         }
 
-        const jobData = jobs.find((job) => job.id === key)
-        if (jobData) {
-          job.data = jobData
-        }
-
         return job
+      })
+      .map((job) => {
+        return {
+          ...job,
+          gen: job.gen
+            .filter((gen) => gen.type === 'resource')
+            .map((gen) => {
+              return {
+                id: translate(gen.id, 'res_'),
+                value: gen.value,
+              }
+            }),
+        }
+      })
+      .map((job) => {
+        return {
+          ...job,
+          isSafe: !job.gen.find((gen) => gen.value < 0),
+          resourcesGenerated: job.gen
+            .filter((gen) => gen.value > 0)
+            .map((gen) => {
+              return { id: gen.id, value: gen.value }
+            }),
+          resourcesUsed: job.gen
+            .filter((gen) => gen.value < 0)
+            .map((gen) => {
+              return { id: gen.id, value: gen.value }
+            }),
+        }
       })
 
     return allowedJobs
@@ -81,7 +108,7 @@ export default {
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
 
-    console.log(getAllJobs())
+    const allowedJobs = getAllJobs()
 
     let canAssignJobs = true
     const container = selectors.getActivePageContent()
@@ -90,7 +117,7 @@ export default {
       .textContent.split('/')
       .map((pop) => numberParser.parse(pop.trim()))
 
-    const availableJobs = [...container.querySelectorAll('h5')]
+    let availableJobs = [...container.querySelectorAll('h5')]
       .map((job) => {
         const jobTitle = job.textContent.trim()
         return {
@@ -100,7 +127,7 @@ export default {
           maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
         }
       })
-      .filter((job) => job.id && !!job.container.querySelector('button.btn-green'))
+      .filter((job) => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable)
 
     if (availablePop[0] > 0 && availableJobs.length) {
       const minimumFood = state.options.automation.minimumFood || 0
@@ -112,13 +139,14 @@ export default {
         if (jobsWithSpace.length) {
           const foodJob = jobsWithSpace.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
 
-          if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max)) {
+          if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max) && foodJob.current < foodJob.maxAvailable) {
             const addJobButton = foodJob.container.querySelector('button.btn-green')
             if (addJobButton) {
               logger({ msgLevel: 'log', msg: `Assigning worker as ${foodJob.id}` })
 
               addJobButton.click()
               canAssignJobs = true
+              foodJob.current++
               await sleep(1000)
             }
           } else {
@@ -205,6 +233,18 @@ export default {
               }
             }
           }
+
+          availableJobs = [...container.querySelectorAll('h5')]
+            .map((job) => {
+              const jobTitle = job.textContent.trim()
+              return {
+                ...allowedJobs.find((allowedJob) => allowedJob.id === jobTitle),
+                container: job.parentElement.parentElement,
+                current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
+                maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
+              }
+            })
+            .filter((job) => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable)
         }
 
         const unassigned = container
