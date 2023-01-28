@@ -42,9 +42,14 @@ const shouldBuyBA = () => {
   return false
 }
 
+const userEnabled = () => {
+  return state.options.pages[CONSTANTS.PAGES.ARMY] || false
+}
+
 export default {
   id: CONSTANTS.PAGES.ARMY,
   enabled: () =>
+    userEnabled() &&
     navigation.hasPage(CONSTANTS.PAGES.ARMY) &&
     hasBA() &&
     canAffordBA() &&

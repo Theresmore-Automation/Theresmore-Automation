@@ -46,11 +46,42 @@ const allJobs = jobs
     }
   })
 
+const userEnabled = () => {
+  return state.options.pages[CONSTANTS.PAGES.POPULATION] || false
+}
+
+const getAllJobs = () => {
+  if (Object.keys(state.options[CONSTANTS.PAGES.POPULATION]).length) {
+    let allowedJobs = Object.keys(state.options[CONSTANTS.PAGES.POPULATION])
+      .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][key])
+      .map((key) => {
+        const job = {
+          key: key,
+          id: translate(key, 'pop_'),
+          max: state.options[CONSTANTS.PAGES.POPULATION][key] === -1 ? 99999 : state.options[CONSTANTS.PAGES.POPULATION][key],
+        }
+
+        const jobData = jobs.find((job) => job.id === key)
+        if (jobData) {
+          job.data = jobData
+        }
+
+        return job
+      })
+
+    return allowedJobs
+  }
+
+  return []
+}
+
 export default {
   id: CONSTANTS.PAGES.POPULATION,
-  enabled: () => navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation(),
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
+
+    console.log(getAllJobs())
 
     let canAssignJobs = true
     const container = selectors.getActivePageContent()
@@ -59,31 +90,29 @@ export default {
       .textContent.split('/')
       .map((pop) => numberParser.parse(pop.trim()))
 
-    const availableJobs = [...container.querySelectorAll('h5')].map((job) => {
-      const jobTitle = job.textContent.trim()
-      return {
-        ...allJobs.find((allJob) => allJob.id === jobTitle),
-        container: job.parentElement.parentElement,
-        current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
-        max: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
-      }
-    })
+    const availableJobs = [...container.querySelectorAll('h5')]
+      .map((job) => {
+        const jobTitle = job.textContent.trim()
+        return {
+          ...allowedJobs.find((allowedJob) => allowedJob.id === jobTitle),
+          container: job.parentElement.parentElement,
+          current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
+          maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
+        }
+      })
+      .filter((job) => job.id && !!job.container.querySelector('button.btn-green'))
 
-    if (availablePop[0] > 0) {
+    if (availablePop[0] > 0 && availableJobs.length) {
+      const minimumFood = state.options.automation.minimumFood || 0
+
       while (!state.scriptPaused && canAssignJobs) {
         const jobsWithSpace = availableJobs.filter((job) => !!job.container.querySelector('button.btn-green'))
         canAssignJobs = false
 
         if (jobsWithSpace.length) {
           const foodJob = jobsWithSpace.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
-          const supplierJob = jobsWithSpace.find((job) => job.resourcesGenerated.find((res) => res.id === 'Supplies'))
 
-          if (
-            foodJob &&
-            (resources.get('Food').speed <= 1 ||
-              (availablePop[0] >= 5 && resources.get('Food').speed <= 5) ||
-              (supplierJob && resources.get('Food').speed <= 5))
-          ) {
+          if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max)) {
             const addJobButton = foodJob.container.querySelector('button.btn-green')
             if (addJobButton) {
               logger({ msgLevel: 'log', msg: `Assigning worker as ${foodJob.id}` })
@@ -135,7 +164,7 @@ export default {
                   const resourceName = resourcesSorted[i]
 
                   const jobsForResource = jobsWithSpace
-                    .filter((job) => job.resourcesGenerated.find((resGen) => resGen.id === resourceName))
+                    .filter((job) => job.current < job.max && job.resourcesGenerated.find((resGen) => resGen.id === resourceName))
                     .sort(
                       (a, b) =>
                         b.resourcesGenerated.find((resGen) => resGen.id === resourceName).value -

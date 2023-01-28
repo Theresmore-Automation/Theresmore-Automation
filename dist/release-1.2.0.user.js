@@ -5,7 +5,7 @@
 // @match       https://www.theresmoregame.com/play/
 // @license     MIT
 // @run-at      document-idle
-// @version     1.1.0
+// @version     1.2.0
 // @homepage    https://github.com/Theresmore-Automation/Theresmore-Automation
 // @author      Theresmore Automation team
 // @grant       none
@@ -13359,4 +13359,3 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   init();
 
 })();
-//# sourceMappingURL=bundle.user.js.map

@@ -5,17 +5,19 @@ const logger = ({ msgLevel, msg }) => {
   if (levelsToLog.includes(msgLevel)) {
     const logHolder = document.querySelector('#root > div > div > div > div.w-full.order-2.flex-grow.overflow-x-hidden.overflow-y-auto.pr-4')
 
-    const taLogs = [...logHolder.querySelectorAll('.ta-log')]
-    if (taLogs.length > 10) {
-      for (let i = 10; i < taLogs.length; i++) {
-        taLogs[i].remove()
+    if (logHolder) {
+      const taLogs = [...logHolder.querySelectorAll('.ta-log')]
+      if (taLogs.length > 10) {
+        for (let i = 10; i < taLogs.length; i++) {
+          taLogs[i].remove()
+        }
       }
-    }
 
-    const p = document.createElement('p')
-    p.classList.add('text-xs', 'mb-2', 'text-green-600', 'ta-log')
-    p.innerText = logText
-    logHolder.insertAdjacentElement('afterbegin', p)
+      const p = document.createElement('p')
+      p.classList.add('text-xs', 'mb-2', 'text-green-600', 'ta-log')
+      p.innerText = logText
+      logHolder.insertAdjacentElement('afterbegin', p)
+    }
   }
 
   console[msgLevel](logText)
