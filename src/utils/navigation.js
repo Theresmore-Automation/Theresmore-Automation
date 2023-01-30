@@ -6,6 +6,10 @@ const getPagesSelector = () => {
   return [...document.querySelectorAll('#main-tabs > div > button')]
 }
 
+const getCurrentPagesSelector = () => {
+  return [...document.querySelectorAll('#main-tabs > div > button:not(.text-gray-500)')]
+}
+
 const getSubPagesSelector = () => {
   const tabLists = [...document.querySelectorAll('div[role="tablist"]')]
 
@@ -20,6 +24,14 @@ const hasPage = (page) => {
   const navButtons = getPagesSelector()
 
   return !!navButtons.find((button) => button.innerText.includes(page))
+}
+
+let scriptCurrentPage = null
+
+const checkPage = () => {
+  const navButtons = getCurrentPagesSelector()
+
+  return !!navButtons.find((button) => button.innerText.includes(scriptCurrentPage))
 }
 
 const hasSubPage = (subPage) => {
@@ -43,6 +55,7 @@ const switchPage = async (page) => {
   if (pageButton) {
     pageButton.click()
     switchedPage = true
+    scriptCurrentPage = page
   }
 
   await sleep(2000)
@@ -77,4 +90,4 @@ const switchSubPage = async (subPage, page) => {
   }
 }
 
-export default { getPagesSelector, hasPage, switchPage, switchSubPage }
+export default { getPagesSelector, hasPage, switchPage, checkPage, switchSubPage }

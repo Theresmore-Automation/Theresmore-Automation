@@ -62,69 +62,74 @@ const sortBuildings = (a, b) => {
   return a.count - b.count
 }
 
+const doBuildWork = async () => {
+  let buildingsList = getBuildingsList()
+
+  let buttons = selectors
+    .getAllButtons(true)
+    .map((button) => {
+      const id = button.innerText.split('\n').shift()
+      const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
+      return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
+    })
+    .filter((button) => button.building && button.count < button.building.max)
+    .sort(sortBuildings)
+
+  if (buttons.length) {
+    while (!state.scriptPaused && buttons.length) {
+      let shouldBuild = true
+      const button = buttons.shift()
+
+      if (!button.building.isSafe && button.building.requires.length) {
+        shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
+      }
+
+      if (shouldBuild) {
+        button.element.click()
+        logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
+        await sleep(6000)
+        if (!navigation.checkPage()) return
+
+        buttons = selectors
+          .getAllButtons(true)
+          .map((button) => {
+            const id = button.innerText.split('\n').shift()
+            const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
+            return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
+          })
+          .filter((button) => button.building)
+          .sort(sortBuildings)
+      }
+    }
+  }
+
+  state.buildings = selectors
+    .getAllButtons(false)
+    .map((button) => {
+      const id = button.innerText.split('\n').shift()
+      let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
+      const building = buildingsList.find((building) => building.id === id)
+
+      if (!building) {
+        return {}
+      }
+
+      if (button.className.includes('btn-cap') && building.cap) {
+        count = building.cap
+      }
+
+      return { id: id, count: count, canBuild: !button.className.includes('btn-off'), ...building }
+    })
+    .filter((building) => building.id)
+}
+
 export default {
   id: CONSTANTS.PAGES.BUILD,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.BUILD) && getBuildingsList().length,
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.BUILD)
 
-    let buildingsList = getBuildingsList()
-
-    let buttons = selectors
-      .getAllButtons(true)
-      .map((button) => {
-        const id = button.innerText.split('\n').shift()
-        const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-        return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
-      })
-      .filter((button) => button.building && button.count < button.building.max)
-      .sort(sortBuildings)
-
-    if (buttons.length) {
-      while (!state.scriptPaused && buttons.length) {
-        let shouldBuild = true
-        const button = buttons.shift()
-
-        if (!button.building.isSafe && button.building.requires.length) {
-          shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
-        }
-
-        if (shouldBuild) {
-          button.element.click()
-          logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
-          await sleep(6000)
-
-          buttons = selectors
-            .getAllButtons(true)
-            .map((button) => {
-              const id = button.innerText.split('\n').shift()
-              const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-              return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
-            })
-            .filter((button) => button.building)
-            .sort(sortBuildings)
-        }
-      }
-    }
-
-    state.buildings = selectors
-      .getAllButtons(false)
-      .map((button) => {
-        const id = button.innerText.split('\n').shift()
-        let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-        const building = buildingsList.find((building) => building.id === id)
-
-        if (!building) {
-          return {}
-        }
-
-        if (button.className.includes('btn-cap') && building.cap) {
-          count = building.cap
-        }
-
-        return { id: id, count: count, canBuild: !button.className.includes('btn-off'), ...building }
-      })
-      .filter((building) => building.id)
+    if (navigation.checkPage()) await doBuildWork()
 
     await sleep(5000)
   },

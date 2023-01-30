@@ -30,42 +30,45 @@ const getAllowedResearch = () => {
   return []
 }
 
+const doResearchWork = async () => {
+  const allowedResearch = getAllowedResearch()
+
+  let buttonsList = selectors.getAllButtons(true).filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+
+  if (buttonsList.length) {
+    while (!state.scriptPaused && buttonsList.length) {
+      const button = buttonsList.shift()
+
+      button.click()
+      logger({ msgLevel: 'log', msg: `Researching ${button.innerText.split('\n').shift()}` })
+
+      if (allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
+        await sleep(1000)
+        if (!navigation.checkPage()) return
+        const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+
+        if (redConfirmButton) {
+          redConfirmButton.click()
+          await sleep(2000)
+          if (!navigation.checkPage()) return
+        }
+      }
+
+      await sleep(6000)
+      if (!navigation.checkPage()) return
+
+      buttonsList = selectors.getAllButtons(true).filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+    }
+  }
+}
+
 export default {
   id: CONSTANTS.PAGES.RESEARCH,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH)
 
-    const allowedResearch = getAllowedResearch()
-
-    let buttonsList = selectors
-      .getAllButtons(true)
-      .filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
-
-    if (buttonsList.length) {
-      while (!state.scriptPaused && buttonsList.length) {
-        const button = buttonsList.shift()
-
-        button.click()
-        logger({ msgLevel: 'log', msg: `Researching ${button.innerText.split('\n').shift()}` })
-
-        if (allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
-          await sleep(1000)
-          const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
-
-          if (redConfirmButton) {
-            redConfirmButton.click()
-            await sleep(2000)
-          }
-        }
-
-        await sleep(6000)
-
-        buttonsList = selectors
-          .getAllButtons(true)
-          .filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
-      }
-    }
+    if (navigation.checkPage()) await doResearchWork()
 
     await sleep(5000)
   },

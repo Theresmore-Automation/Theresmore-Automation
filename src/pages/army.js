@@ -46,6 +46,20 @@ const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.ARMY] || false
 }
 
+const doArmyWork = async () => {
+  if (hasBA() && canAffordBA() && shouldBuyBA()) {
+    const allButtons = [...document.querySelectorAll('div > div > div > div > div > span > button:not(.btn-off)')]
+    const buyBAButton = allButtons.find((button) => button.innerText.includes('Battle Angel'))
+
+    if (buyBAButton) {
+      buyBAButton.click()
+      logger({ msgLevel: 'log', msg: `Buying Battle Angel(s)` })
+      await sleep(5000)
+      if (!navigation.checkPage()) return
+    }
+  }
+}
+
 export default {
   id: CONSTANTS.PAGES.ARMY,
   enabled: () =>
@@ -58,16 +72,7 @@ export default {
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY)
 
-    if (hasBA() && canAffordBA() && shouldBuyBA()) {
-      const allButtons = [...document.querySelectorAll('div > div > div > div > div > span > button:not(.btn-off)')]
-      const buyBAButton = allButtons.find((button) => button.innerText.includes('Battle Angel'))
-
-      if (buyBAButton) {
-        buyBAButton.click()
-        logger({ msgLevel: 'log', msg: `Buying Battle Angel(s)` })
-        await sleep(5000)
-      }
-    }
+    if (navigation.checkPage()) await doArmyWork()
 
     await sleep(5000)
   },
