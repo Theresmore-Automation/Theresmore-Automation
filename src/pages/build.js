@@ -101,7 +101,7 @@ export default {
               const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
               return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
             })
-            .filter((button) => button.building)
+            .filter((button) => button.building && button.count < button.building.max)
             .sort(sortBuildings)
         }
       }
