@@ -1,6 +1,7 @@
 import { buildings, tech, jobs } from '../data'
 import { state, localStorage, translate, CONSTANTS } from '../utils'
 
+// https://github.com/pieroxy/lz-string
 var LZString = (function () {
   function o(o, r) {
     if (!t[o]) {

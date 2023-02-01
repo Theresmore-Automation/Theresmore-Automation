@@ -42,3 +42,4 @@ or on Windows
 ## Other
 
 - Template based on [rollup-userscript-template](https://github.com/cvzi/rollup-userscript-template)
+- Options are imported/exported using [LZString](https://github.com/pieroxy/lz-string)
