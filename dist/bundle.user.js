@@ -12317,14 +12317,24 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return [];
   };
+  const getCurrentSubPageSelector = () => {
+    let currentSubPage;
+    const subPages = getSubPagesSelector();
+    if (subPages.length) {
+      currentSubPage = subPages.find(subPage => subPage.getAttribute('aria-selected') === 'true');
+    }
+    return currentSubPage;
+  };
   const hasPage = page => {
     const navButtons = getPagesSelector();
     return !!navButtons.find(button => button.innerText.includes(page));
   };
-  let scriptCurrentPage = null;
-  const checkPage = () => {
-    const navButton = getCurrentPageSelector();
-    return navButton && navButton.innerText.includes(scriptCurrentPage);
+  const checkPage = (page, subPage) => {
+    const currentPage = getCurrentPageSelector();
+    const currentSubPage = getCurrentSubPageSelector();
+    const isCorrectPage = !page || page && currentPage && currentPage.innerText.includes(page);
+    const isCorrectSubPage = !subPage || subPage && currentSubPage && currentSubPage.innerText.includes(subPage);
+    return isCorrectPage && isCorrectSubPage;
   };
   const hasSubPage = subPage => {
     const subTabs = getSubPagesSelector();
@@ -12342,7 +12352,6 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     if (pageButton) {
       pageButton.click();
       switchedPage = true;
-      scriptCurrentPage = page;
     }
     await sleep(2000);
     if (switchedPage) {
@@ -12506,7 +12515,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
           msg: `Buying Battle Angel(s)`
         });
         await sleep(5000);
-        if (!navigation.checkPage()) return;
+        if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return;
       }
     }
   };
@@ -12515,7 +12524,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     enabled: () => userEnabled$4() && navigation.hasPage(CONSTANTS.PAGES.ARMY) && hasBA() && canAffordBA() && shouldBuyBA() && state.lastVisited[CONSTANTS.PAGES.ARMY] + 2 * 60 * 1000 < new Date().getTime(),
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY);
-      if (navigation.checkPage()) await doArmyWork();
+      if (navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) await doArmyWork();
       await sleep(5000);
     }
   };
@@ -12601,11 +12610,12 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
             msg: `Building ${button.building.id}`
           });
           await sleep(6000);
-          if (!navigation.checkPage()) return;
+          if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return;
           buttons = getAllButtons$1();
         }
       }
     }
+    const buildingsList = getBuildingsList();
     state.buildings = selectors.getAllButtons(false).map(button => {
       const id = button.innerText.split('\n').shift();
       let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
@@ -12629,7 +12639,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     enabled: () => userEnabled$3() && navigation.hasPage(CONSTANTS.PAGES.BUILD) && getBuildingsList().length,
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.BUILD);
-      if (navigation.checkPage()) await doBuildWork();
+      if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await doBuildWork();
       await sleep(5000);
     }
   };
@@ -12713,7 +12723,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
           });
           goldEarned += numberParser.parse(sellButtons[maxSellButton].innerText) * price;
           await sleep(10);
-          if (!navigation.checkPage()) return;
+          if (!navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) return;
           sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)');
           gold = resources.get('Gold');
           res = resources.get(resName);
@@ -12739,7 +12749,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     enabled: () => userEnabled$2() && navigation.hasPage(CONSTANTS.PAGES.MARKETPLACE) && hasNotEnoughGold() && shouldSell(),
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE);
-      if (navigation.checkPage()) await doMarketWork();
+      if (navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) await doMarketWork();
       await sleep(5000);
     }
   };
@@ -12865,7 +12875,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
               canAssignJobs = true;
               foodJob.current++;
               await sleep(1000);
-              if (!navigation.checkPage()) return;
+              if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
             }
           } else {
             let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
@@ -12910,7 +12920,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
                           unassigned -= 1;
                           canAssignJobs = !!unassigned;
                           await sleep(1000);
-                          if (!navigation.checkPage()) return;
+                          if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
                         }
                       }
                     }
@@ -12926,7 +12936,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
           canAssignJobs = false;
         }
         await sleep(10);
-        if (!navigation.checkPage()) return;
+        if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
       }
     }
   };
@@ -12935,7 +12945,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     enabled: () => userEnabled$1() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.POPULATION);
-      if (navigation.checkPage()) await doPopulationWork();
+      if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await doPopulationWork();
       await sleep(5000);
     }
   };
@@ -12979,16 +12989,16 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
         });
         if (allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
           await sleep(1000);
-          if (!navigation.checkPage()) return;
+          if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
           const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
           if (redConfirmButton) {
             redConfirmButton.click();
             await sleep(2000);
-            if (!navigation.checkPage()) return;
+            if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
           }
         }
         await sleep(6000);
-        if (!navigation.checkPage()) return;
+        if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
         buttonsList = getAllButtons();
       }
     }
@@ -12998,7 +13008,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length,
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH);
-      if (navigation.checkPage()) await doResearchWork();
+      if (navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) await doResearchWork();
       await sleep(5000);
     }
   };

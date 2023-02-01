@@ -54,18 +54,18 @@ const doResearchWork = async () => {
 
       if (allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
         await sleep(1000)
-        if (!navigation.checkPage()) return
+        if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
         const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
 
         if (redConfirmButton) {
           redConfirmButton.click()
           await sleep(2000)
-          if (!navigation.checkPage()) return
+          if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
         }
       }
 
       await sleep(6000)
-      if (!navigation.checkPage()) return
+      if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
 
       buttonsList = getAllButtons()
     }
@@ -78,7 +78,7 @@ export default {
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH)
 
-    if (navigation.checkPage()) await doResearchWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) await doResearchWork()
 
     await sleep(5000)
   },
