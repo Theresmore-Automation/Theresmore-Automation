@@ -12615,6 +12615,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
         }
       }
     }
+    const buildingsList = getBuildingsList();
     state.buildings = selectors.getAllButtons(false).map(button => {
       const id = button.innerText.split('\n').shift();
       let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
