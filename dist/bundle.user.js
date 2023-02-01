@@ -12385,13 +12385,13 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const getActivePageContent = () => {
     return document.querySelector('#maintabs-container > div > div[role=tabpanel]');
   };
-  const getAllButtons = (activeOnly = true) => {
+  const getAllButtons$2 = (activeOnly = true) => {
     const activeOnlySelector = activeOnly ? ':not(.btn-off)' : '';
     return [...getActivePageContent().querySelectorAll(`button.btn${activeOnlySelector}`)];
   };
   var selectors = {
     getActivePageContent,
-    getAllButtons
+    getAllButtons: getAllButtons$2
   };
 
   const get = (resourceName = 'Gold') => {
@@ -12571,9 +12571,9 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return a.count - b.count;
   };
-  const doBuildWork = async () => {
-    let buildingsList = getBuildingsList();
-    let buttons = selectors.getAllButtons(true).map(button => {
+  const getAllButtons$1 = () => {
+    const buildingsList = getBuildingsList();
+    const buttons = selectors.getAllButtons(true).map(button => {
       const id = button.innerText.split('\n').shift();
       const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
       return {
@@ -12583,6 +12583,10 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
         building: buildingsList.find(building => building.id === id)
       };
     }).filter(button => button.building && button.count < button.building.max).sort(sortBuildings);
+    return buttons;
+  };
+  const doBuildWork = async () => {
+    let buttons = getAllButtons$1();
     if (buttons.length) {
       while (!state.scriptPaused && buttons.length) {
         let shouldBuild = true;
@@ -12598,16 +12602,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
           });
           await sleep(6000);
           if (!navigation.checkPage()) return;
-          buttons = selectors.getAllButtons(true).map(button => {
-            const id = button.innerText.split('\n').shift();
-            const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
-            return {
-              id: id,
-              element: button,
-              count: count,
-              building: buildingsList.find(building => building.id === id)
-            };
-          }).filter(button => button.building).sort(sortBuildings);
+          buttons = getAllButtons$1();
         }
       }
     }
@@ -12833,12 +12828,10 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return [];
   };
-  const doPopulationWork = async () => {
+  const getAllAvailableJobs = () => {
     const allowedJobs = getAllJobs();
-    let canAssignJobs = true;
     const container = selectors.getActivePageContent();
-    let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim()));
-    let availableJobs = [...container.querySelectorAll('h5')].map(job => {
+    const availableJobs = [...container.querySelectorAll('h5')].map(job => {
       const jobTitle = job.textContent.trim();
       return {
         ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
@@ -12847,6 +12840,13 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
         maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
       };
     }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
+    return availableJobs;
+  };
+  const doPopulationWork = async () => {
+    let canAssignJobs = true;
+    const container = selectors.getActivePageContent();
+    let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim()));
+    let availableJobs = getAllAvailableJobs();
     if (availablePop[0] > 0 && availableJobs.length) {
       const minimumFood = state.options.automation.minimumFood || 0;
       while (!state.scriptPaused && canAssignJobs) {
@@ -12919,15 +12919,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
               }
             }
           }
-          availableJobs = [...container.querySelectorAll('h5')].map(job => {
-            const jobTitle = job.textContent.trim();
-            return {
-              ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
-              container: job.parentElement.parentElement,
-              current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
-              maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
-            };
-          }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
+          availableJobs = getAllAvailableJobs();
         }
         const unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
         if (unassigned === 0) {
@@ -12969,9 +12961,14 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return [];
   };
+  const getAllButtons = () => {
+    const allowedResearch = getAllowedResearch();
+    const buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
+    return buttonsList;
+  };
   const doResearchWork = async () => {
     const allowedResearch = getAllowedResearch();
-    let buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
+    let buttonsList = getAllButtons();
     if (buttonsList.length) {
       while (!state.scriptPaused && buttonsList.length) {
         const button = buttonsList.shift();
@@ -12992,7 +12989,7 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
         }
         await sleep(6000);
         if (!navigation.checkPage()) return;
-        buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
+        buttonsList = getAllButtons();
       }
     }
   };

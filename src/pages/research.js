@@ -30,10 +30,20 @@ const getAllowedResearch = () => {
   return []
 }
 
+const getAllButtons = () => {
+  const allowedResearch = getAllowedResearch()
+
+  const buttonsList = selectors
+    .getAllButtons(true)
+    .filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+
+  return buttonsList
+}
+
 const doResearchWork = async () => {
   const allowedResearch = getAllowedResearch()
 
-  let buttonsList = selectors.getAllButtons(true).filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+  let buttonsList = getAllButtons()
 
   if (buttonsList.length) {
     while (!state.scriptPaused && buttonsList.length) {
@@ -57,7 +67,7 @@ const doResearchWork = async () => {
       await sleep(6000)
       if (!navigation.checkPage()) return
 
-      buttonsList = selectors.getAllButtons(true).filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+      buttonsList = getAllButtons()
     }
   }
 }

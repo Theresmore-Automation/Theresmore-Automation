@@ -102,18 +102,11 @@ const getAllJobs = () => {
   return []
 }
 
-const doPopulationWork = async () => {
+const getAllAvailableJobs = () => {
   const allowedJobs = getAllJobs()
-
-  let canAssignJobs = true
   const container = selectors.getActivePageContent()
 
-  let availablePop = container
-    .querySelector('div > span.ml-2')
-    .textContent.split('/')
-    .map((pop) => numberParser.parse(pop.trim()))
-
-  let availableJobs = [...container.querySelectorAll('h5')]
+  const availableJobs = [...container.querySelectorAll('h5')]
     .map((job) => {
       const jobTitle = job.textContent.trim()
       return {
@@ -124,6 +117,20 @@ const doPopulationWork = async () => {
       }
     })
     .filter((job) => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable)
+
+  return availableJobs
+}
+
+const doPopulationWork = async () => {
+  let canAssignJobs = true
+  const container = selectors.getActivePageContent()
+
+  let availablePop = container
+    .querySelector('div > span.ml-2')
+    .textContent.split('/')
+    .map((pop) => numberParser.parse(pop.trim()))
+
+  let availableJobs = getAllAvailableJobs()
 
   if (availablePop[0] > 0 && availableJobs.length) {
     const minimumFood = state.options.automation.minimumFood || 0
@@ -232,17 +239,7 @@ const doPopulationWork = async () => {
           }
         }
 
-        availableJobs = [...container.querySelectorAll('h5')]
-          .map((job) => {
-            const jobTitle = job.textContent.trim()
-            return {
-              ...allowedJobs.find((allowedJob) => allowedJob.id === jobTitle),
-              container: job.parentElement.parentElement,
-              current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
-              maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
-            }
-          })
-          .filter((job) => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable)
+        availableJobs = getAllAvailableJobs()
       }
 
       const unassigned = container
