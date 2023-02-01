@@ -12307,9 +12307,6 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const getPagesSelector = () => {
     return [...document.querySelectorAll('#main-tabs > div > button')];
   };
-  const getCurrentPageSelector = () => {
-    return document.querySelector('#main-tabs > div > button[aria-selected="true"]');
-  };
   const getSubPagesSelector = () => {
     const tabLists = [...document.querySelectorAll('div[role="tablist"]')];
     if (tabLists && tabLists.length >= 2) {
@@ -12320,11 +12317,6 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const hasPage = page => {
     const navButtons = getPagesSelector();
     return !!navButtons.find(button => button.innerText.includes(page));
-  };
-  let scriptCurrentPage = null;
-  const checkPage = () => {
-    const navButton = getCurrentPageSelector();
-    return navButton && navButton.innerText.includes(scriptCurrentPage);
   };
   const hasSubPage = subPage => {
     const subTabs = getSubPagesSelector();
@@ -12342,7 +12334,6 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     if (pageButton) {
       pageButton.click();
       switchedPage = true;
-      scriptCurrentPage = page;
     }
     await sleep(2000);
     if (switchedPage) {
@@ -12378,7 +12369,6 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     getPagesSelector,
     hasPage,
     switchPage,
-    checkPage,
     switchSubPage
   };
 
@@ -12495,27 +12485,23 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const userEnabled$4 = () => {
     return state.options.pages[CONSTANTS.PAGES.ARMY] || false;
   };
-  const doArmyWork = async () => {
-    if (hasBA() && canAffordBA() && shouldBuyBA()) {
-      const allButtons = [...document.querySelectorAll('div > div > div > div > div > span > button:not(.btn-off)')];
-      const buyBAButton = allButtons.find(button => button.innerText.includes('Battle Angel'));
-      if (buyBAButton) {
-        buyBAButton.click();
-        logger({
-          msgLevel: 'log',
-          msg: `Buying Battle Angel(s)`
-        });
-        await sleep(5000);
-        if (!navigation.checkPage()) return;
-      }
-    }
-  };
   var army = {
     id: CONSTANTS.PAGES.ARMY,
     enabled: () => userEnabled$4() && navigation.hasPage(CONSTANTS.PAGES.ARMY) && hasBA() && canAffordBA() && shouldBuyBA() && state.lastVisited[CONSTANTS.PAGES.ARMY] + 2 * 60 * 1000 < new Date().getTime(),
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY);
-      if (navigation.checkPage()) await doArmyWork();
+      if (hasBA() && canAffordBA() && shouldBuyBA()) {
+        const allButtons = [...document.querySelectorAll('div > div > div > div > div > span > button:not(.btn-off)')];
+        const buyBAButton = allButtons.find(button => button.innerText.includes('Battle Angel'));
+        if (buyBAButton) {
+          buyBAButton.click();
+          logger({
+            msgLevel: 'log',
+            msg: `Buying Battle Angel(s)`
+          });
+          await sleep(5000);
+        }
+      }
       await sleep(5000);
     }
   };
@@ -12571,70 +12557,66 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return a.count - b.count;
   };
-  const doBuildWork = async () => {
-    let buildingsList = getBuildingsList();
-    let buttons = selectors.getAllButtons(true).map(button => {
-      const id = button.innerText.split('\n').shift();
-      const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
-      return {
-        id: id,
-        element: button,
-        count: count,
-        building: buildingsList.find(building => building.id === id)
-      };
-    }).filter(button => button.building && button.count < button.building.max).sort(sortBuildings);
-    if (buttons.length) {
-      while (!state.scriptPaused && buttons.length) {
-        let shouldBuild = true;
-        const button = buttons.shift();
-        if (!button.building.isSafe && button.building.requires.length) {
-          shouldBuild = !button.building.requires.find(req => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue);
-        }
-        if (shouldBuild) {
-          button.element.click();
-          logger({
-            msgLevel: 'log',
-            msg: `Building ${button.building.id}`
-          });
-          await sleep(6000);
-          if (!navigation.checkPage()) return;
-          buttons = selectors.getAllButtons(true).map(button => {
-            const id = button.innerText.split('\n').shift();
-            const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
-            return {
-              id: id,
-              element: button,
-              count: count,
-              building: buildingsList.find(building => building.id === id)
-            };
-          }).filter(button => button.building).sort(sortBuildings);
-        }
-      }
-    }
-    state.buildings = selectors.getAllButtons(false).map(button => {
-      const id = button.innerText.split('\n').shift();
-      let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
-      const building = buildingsList.find(building => building.id === id);
-      if (!building) {
-        return {};
-      }
-      if (button.className.includes('btn-cap') && building.cap) {
-        count = building.cap;
-      }
-      return {
-        id: id,
-        count: count,
-        canBuild: !button.className.includes('btn-off'),
-        ...building
-      };
-    }).filter(building => building.id);
-  };
   var build = {
     id: CONSTANTS.PAGES.BUILD,
     enabled: () => userEnabled$3() && navigation.hasPage(CONSTANTS.PAGES.BUILD) && getBuildingsList().length,
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.BUILD);
-      if (navigation.checkPage()) await doBuildWork();
+      let buildingsList = getBuildingsList();
+      let buttons = selectors.getAllButtons(true).map(button => {
+        const id = button.innerText.split('\n').shift();
+        const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
+        return {
+          id: id,
+          element: button,
+          count: count,
+          building: buildingsList.find(building => building.id === id)
+        };
+      }).filter(button => button.building && button.count < button.building.max).sort(sortBuildings);
+      if (buttons.length) {
+        while (!state.scriptPaused && buttons.length) {
+          let shouldBuild = true;
+          const button = buttons.shift();
+          if (!button.building.isSafe && button.building.requires.length) {
+            shouldBuild = !button.building.requires.find(req => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue);
+          }
+          if (shouldBuild) {
+            button.element.click();
+            logger({
+              msgLevel: 'log',
+              msg: `Building ${button.building.id}`
+            });
+            await sleep(6000);
+            buttons = selectors.getAllButtons(true).map(button => {
+              const id = button.innerText.split('\n').shift();
+              const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
+              return {
+                id: id,
+                element: button,
+                count: count,
+                building: buildingsList.find(building => building.id === id)
+              };
+            }).filter(button => button.building && button.count < button.building.max).sort(sortBuildings);
+          }
+        }
+      }
+      state.buildings = selectors.getAllButtons(false).map(button => {
+        const id = button.innerText.split('\n').shift();
+        let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
+        const building = buildingsList.find(building => building.id === id);
+        if (!building) {
+          return {};
+        }
+        if (button.className.includes('btn-cap') && building.cap) {
+          count = building.cap;
+        }
+        return {
+          id: id,
+          count: count,
+          canBuild: !button.className.includes('btn-off'),
+          ...building
+        };
+      }).filter(building => building.id);
       await sleep(5000);
     }
   };
@@ -12671,80 +12653,76 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const userEnabled$2 = () => {
     return state.options.pages[CONSTANTS.PAGES.MARKETPLACE] || false;
   };
-  const doMarketWork = async () => {
-    let gold = resources.get('Gold');
-    if (gold && gold.current < gold.max && shouldSell()) {
-      const resourceHolders = [];
-      [...document.querySelectorAll('div > div.tab-container > div > div > div')].forEach(resourceHolder => {
-        const resNameElem = resourceHolder.querySelector('h5');
-        if (resNameElem) {
-          const resName = resNameElem.innerText;
-          const res = resources.get(resName);
-          if (getResourcesToTrade().includes(resName) && res && (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max)) {
-            resourceHolders.push(resourceHolder);
-          }
-        }
-      });
-      let goldEarned = 0;
-      let soldTotals = {};
-      for (let i = 0; i < resourceHolders.length && !state.scriptPaused; i++) {
-        gold = resources.get('Gold');
-        const resourceHolder = resourceHolders[i];
-        const resName = resourceHolder.querySelector('h5').innerText;
-        let res = resources.get(resName);
-        const initialPrice = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
-        let price = initialPrice;
-        let sellButtons = resourceHolder.querySelectorAll('div > div.grid.gap-3 button.btn-red:not(.btn-dark)');
-        while (!state.scriptPaused && sellButtons && sellButtons.length && gold.current < gold.max && res.current + res.speed * getTimeToFillResource() * 2 >= res.max) {
-          let maxSellButton = 2;
-          const missingResToSell = Math.ceil((gold.max - gold.current) / price);
-          if (missingResToSell < 80) {
-            maxSellButton = 0;
-          } else if (missingResToSell < 800) {
-            maxSellButton = 1;
-          }
-          maxSellButton = Math.min(maxSellButton, sellButtons.length - 1);
-          sellButtons[maxSellButton].click();
-          lastSell[resName] = new Date().getTime();
-          soldTotals[resName] = soldTotals[resName] ? soldTotals[resName] : {
-            amount: 0,
-            gold: 0
-          };
-          soldTotals[resName].amount += +sellButtons[maxSellButton].innerText;
-          soldTotals[resName].gold += +sellButtons[maxSellButton].innerText * price;
-          logger({
-            msgLevel: 'debug',
-            msg: `Selling ${sellButtons[maxSellButton].innerText} of ${res.name} for ${price}`
-          });
-          goldEarned += numberParser.parse(sellButtons[maxSellButton].innerText) * price;
-          await sleep(10);
-          if (!navigation.checkPage()) return;
-          sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)');
-          gold = resources.get('Gold');
-          res = resources.get(resName);
-          price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
-          await sleep(1);
-          if (price / initialPrice < 0.1) {
-            break;
-          }
-        }
-      }
-      if (goldEarned) {
-        const totals = Object.keys(soldTotals).filter(resName => soldTotals[resName] && soldTotals[resName].gold && soldTotals[resName].amount).map(resName => `${resName}: ${new Intl.NumberFormat().format(soldTotals[resName].amount)} units for ${new Intl.NumberFormat().format(Math.round(soldTotals[resName].gold))} gold (avg price: ${(soldTotals[resName].gold / soldTotals[resName].amount).toFixed(2)})`);
-        logger({
-          msgLevel: 'log',
-          msg: `Earned ${new Intl.NumberFormat().format(goldEarned)} gold on Marketplace [${totals.join(', ')}]`
-        });
-        localStorage.set('lastSell', lastSell);
-      }
-    }
-  };
   var marketplace = {
     id: CONSTANTS.PAGES.MARKETPLACE,
     enabled: () => userEnabled$2() && navigation.hasPage(CONSTANTS.PAGES.MARKETPLACE) && hasNotEnoughGold() && shouldSell(),
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE);
-      if (navigation.checkPage()) await doMarketWork();
+      let gold = resources.get('Gold');
+      if (gold && gold.current < gold.max && shouldSell()) {
+        const resourceHolders = [];
+        [...document.querySelectorAll('div > div.tab-container > div > div > div')].forEach(resourceHolder => {
+          const resNameElem = resourceHolder.querySelector('h5');
+          if (resNameElem) {
+            const resName = resNameElem.innerText;
+            const res = resources.get(resName);
+            if (getResourcesToTrade().includes(resName) && res && (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max)) {
+              resourceHolders.push(resourceHolder);
+            }
+          }
+        });
+        let goldEarned = 0;
+        let soldTotals = {};
+        for (let i = 0; i < resourceHolders.length && !state.scriptPaused; i++) {
+          gold = resources.get('Gold');
+          const resourceHolder = resourceHolders[i];
+          const resName = resourceHolder.querySelector('h5').innerText;
+          let res = resources.get(resName);
+          const initialPrice = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
+          let price = initialPrice;
+          let sellButtons = resourceHolder.querySelectorAll('div > div.grid.gap-3 button.btn-red:not(.btn-dark)');
+          while (!state.scriptPaused && sellButtons && sellButtons.length && gold.current < gold.max && res.current + res.speed * getTimeToFillResource() * 2 >= res.max) {
+            let maxSellButton = 2;
+            const missingResToSell = Math.ceil((gold.max - gold.current) / price);
+            if (missingResToSell < 80) {
+              maxSellButton = 0;
+            } else if (missingResToSell < 800) {
+              maxSellButton = 1;
+            }
+            maxSellButton = Math.min(maxSellButton, sellButtons.length - 1);
+            sellButtons[maxSellButton].click();
+            lastSell[resName] = new Date().getTime();
+            soldTotals[resName] = soldTotals[resName] ? soldTotals[resName] : {
+              amount: 0,
+              gold: 0
+            };
+            soldTotals[resName].amount += +sellButtons[maxSellButton].innerText;
+            soldTotals[resName].gold += +sellButtons[maxSellButton].innerText * price;
+            logger({
+              msgLevel: 'debug',
+              msg: `Selling ${sellButtons[maxSellButton].innerText} of ${res.name} for ${price}`
+            });
+            goldEarned += numberParser.parse(sellButtons[maxSellButton].innerText) * price;
+            await sleep(10);
+            sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)');
+            gold = resources.get('Gold');
+            res = resources.get(resName);
+            price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
+            await sleep(1);
+            if (price / initialPrice < 0.1) {
+              break;
+            }
+          }
+        }
+        if (goldEarned) {
+          const totals = Object.keys(soldTotals).filter(resName => soldTotals[resName] && soldTotals[resName].gold && soldTotals[resName].amount).map(resName => `${resName}: ${new Intl.NumberFormat().format(soldTotals[resName].amount)} units for ${new Intl.NumberFormat().format(Math.round(soldTotals[resName].gold))} gold (avg price: ${(soldTotals[resName].gold / soldTotals[resName].amount).toFixed(2)})`);
+          logger({
+            msgLevel: 'log',
+            msg: `Earned ${new Intl.NumberFormat().format(goldEarned)} gold on Marketplace [${totals.join(', ')}]`
+          });
+          localStorage.set('lastSell', lastSell);
+        }
+      }
       await sleep(5000);
     }
   };
@@ -12833,84 +12811,87 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return [];
   };
-  const doPopulationWork = async () => {
-    const allowedJobs = getAllJobs();
-    let canAssignJobs = true;
-    const container = selectors.getActivePageContent();
-    let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim()));
-    let availableJobs = [...container.querySelectorAll('h5')].map(job => {
-      const jobTitle = job.textContent.trim();
-      return {
-        ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
-        container: job.parentElement.parentElement,
-        current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
-        maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
-      };
-    }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
-    if (availablePop[0] > 0 && availableJobs.length) {
-      const minimumFood = state.options.automation.minimumFood || 0;
-      while (!state.scriptPaused && canAssignJobs) {
-        const jobsWithSpace = availableJobs.filter(job => !!job.container.querySelector('button.btn-green'));
-        canAssignJobs = false;
-        if (jobsWithSpace.length) {
-          const foodJob = jobsWithSpace.find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
-          if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max) && foodJob.current < foodJob.maxAvailable) {
-            const addJobButton = foodJob.container.querySelector('button.btn-green');
-            if (addJobButton) {
-              logger({
-                msgLevel: 'log',
-                msg: `Assigning worker as ${foodJob.id}`
-              });
-              addJobButton.click();
-              canAssignJobs = true;
-              foodJob.current++;
-              await sleep(1000);
-              if (!navigation.checkPage()) return;
-            }
-          } else {
-            let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
-            if (unassigned > 0) {
-              const resourcesToProduce = ['Natronite', 'Saltpetre', 'Tools', 'Wood', 'Stone', 'Iron',
-              // 'Copper', // Same as Iron
-              'Mana',
-              // 'Faith', // Same as Mana
-              'Research', 'Materials', 'Steel', 'Supplies', 'Gold', 'Crystal', 'Horse'
-              // 'Cow', // Same as Horse
-              ].filter(res => resources.get(res)).filter(res => jobsWithSpace.find(job => job.resourcesGenerated.find(resGen => resGen.id === res)));
-              const resourcesWithNegativeGen = resourcesToProduce.filter(res => resources.get(res) && res.speed < 0);
-              const resourcesWithNoGen = resourcesToProduce.filter(res => !resourcesWithNegativeGen.includes(res) && resources.get(res) && !res.speed);
-              const resourcesLeft = resourcesToProduce.filter(res => !resourcesWithNegativeGen.includes(res) && !resourcesWithNoGen.includes(res));
-              const resourcesSorted = resourcesWithNegativeGen.concat(resourcesWithNoGen).concat(resourcesLeft);
-              if (resourcesSorted.length) {
-                for (let i = 0; i < resourcesSorted.length && !state.scriptPaused; i++) {
-                  if (unassigned === 0) break;
-                  const resourceName = resourcesSorted[i];
-                  const jobsForResource = jobsWithSpace.filter(job => job.current < job.max && job.resourcesGenerated.find(resGen => resGen.id === resourceName)).sort((a, b) => b.resourcesGenerated.find(resGen => resGen.id === resourceName).value - a.resourcesGenerated.find(resGen => resGen.id === resourceName).value);
-                  if (jobsForResource.length) {
-                    for (let i = 0; i < jobsForResource.length && !state.scriptPaused; i++) {
-                      if (unassigned === 0) break;
-                      const job = jobsForResource[i];
-                      let isSafeToAdd = true;
-                      if (!job.isSafe) {
-                        job.resourcesUsed.forEach(resUsed => {
-                          const res = resources.get(resUsed.id);
-                          if (!res || res.speed < Math.abs(resUsed.value * 2)) {
-                            isSafeToAdd = false;
-                          }
-                        });
-                      }
-                      if (isSafeToAdd) {
-                        const addJobButton = job.container.querySelector('button.btn-green');
-                        if (addJobButton) {
-                          logger({
-                            msgLevel: 'log',
-                            msg: `Assigning worker as ${job.id}`
+  var population = {
+    id: CONSTANTS.PAGES.POPULATION,
+    enabled: () => userEnabled$1() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
+    action: async () => {
+      await navigation.switchPage(CONSTANTS.PAGES.POPULATION);
+      const allowedJobs = getAllJobs();
+      let canAssignJobs = true;
+      const container = selectors.getActivePageContent();
+      let availablePop = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim()));
+      let availableJobs = [...container.querySelectorAll('h5')].map(job => {
+        const jobTitle = job.textContent.trim();
+        return {
+          ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
+          container: job.parentElement.parentElement,
+          current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
+          maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
+        };
+      }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
+      if (availablePop[0] > 0 && availableJobs.length) {
+        const minimumFood = state.options.automation.minimumFood || 0;
+        while (!state.scriptPaused && canAssignJobs) {
+          const jobsWithSpace = availableJobs.filter(job => !!job.container.querySelector('button.btn-green'));
+          canAssignJobs = false;
+          if (jobsWithSpace.length) {
+            const foodJob = jobsWithSpace.find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
+            if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max) && foodJob.current < foodJob.maxAvailable) {
+              const addJobButton = foodJob.container.querySelector('button.btn-green');
+              if (addJobButton) {
+                logger({
+                  msgLevel: 'log',
+                  msg: `Assigning worker as ${foodJob.id}`
+                });
+                addJobButton.click();
+                canAssignJobs = true;
+                foodJob.current++;
+                await sleep(1000);
+              }
+            } else {
+              let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
+              if (unassigned > 0) {
+                const resourcesToProduce = ['Natronite', 'Saltpetre', 'Tools', 'Wood', 'Stone', 'Iron',
+                // 'Copper', // Same as Iron
+                'Mana',
+                // 'Faith', // Same as Mana
+                'Research', 'Materials', 'Steel', 'Supplies', 'Gold', 'Crystal', 'Horse'
+                // 'Cow', // Same as Horse
+                ].filter(res => resources.get(res)).filter(res => jobsWithSpace.find(job => job.resourcesGenerated.find(resGen => resGen.id === res)));
+                const resourcesWithNegativeGen = resourcesToProduce.filter(res => resources.get(res) && res.speed < 0);
+                const resourcesWithNoGen = resourcesToProduce.filter(res => !resourcesWithNegativeGen.includes(res) && resources.get(res) && !res.speed);
+                const resourcesLeft = resourcesToProduce.filter(res => !resourcesWithNegativeGen.includes(res) && !resourcesWithNoGen.includes(res));
+                const resourcesSorted = resourcesWithNegativeGen.concat(resourcesWithNoGen).concat(resourcesLeft);
+                if (resourcesSorted.length) {
+                  for (let i = 0; i < resourcesSorted.length && !state.scriptPaused; i++) {
+                    if (unassigned === 0) break;
+                    const resourceName = resourcesSorted[i];
+                    const jobsForResource = jobsWithSpace.filter(job => job.current < job.max && job.resourcesGenerated.find(resGen => resGen.id === resourceName)).sort((a, b) => b.resourcesGenerated.find(resGen => resGen.id === resourceName).value - a.resourcesGenerated.find(resGen => resGen.id === resourceName).value);
+                    if (jobsForResource.length) {
+                      for (let i = 0; i < jobsForResource.length && !state.scriptPaused; i++) {
+                        if (unassigned === 0) break;
+                        const job = jobsForResource[i];
+                        let isSafeToAdd = true;
+                        if (!job.isSafe) {
+                          job.resourcesUsed.forEach(resUsed => {
+                            const res = resources.get(resUsed.id);
+                            if (!res || res.speed < Math.abs(resUsed.value * 2)) {
+                              isSafeToAdd = false;
+                            }
                           });
-                          addJobButton.click();
-                          unassigned -= 1;
-                          canAssignJobs = !!unassigned;
-                          await sleep(1000);
-                          if (!navigation.checkPage()) return;
+                        }
+                        if (isSafeToAdd) {
+                          const addJobButton = job.container.querySelector('button.btn-green');
+                          if (addJobButton) {
+                            logger({
+                              msgLevel: 'log',
+                              msg: `Assigning worker as ${job.id}`
+                            });
+                            addJobButton.click();
+                            unassigned -= 1;
+                            canAssignJobs = !!unassigned;
+                            await sleep(1000);
+                          }
                         }
                       }
                     }
@@ -12918,32 +12899,23 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
                 }
               }
             }
+            availableJobs = [...container.querySelectorAll('h5')].map(job => {
+              const jobTitle = job.textContent.trim();
+              return {
+                ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
+                container: job.parentElement.parentElement,
+                current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
+                maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
+              };
+            }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
           }
-          availableJobs = [...container.querySelectorAll('h5')].map(job => {
-            const jobTitle = job.textContent.trim();
-            return {
-              ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
-              container: job.parentElement.parentElement,
-              current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
-              maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
-            };
-          }).filter(job => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable);
+          const unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
+          if (unassigned === 0) {
+            canAssignJobs = false;
+          }
+          await sleep(10);
         }
-        const unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
-        if (unassigned === 0) {
-          canAssignJobs = false;
-        }
-        await sleep(10);
-        if (!navigation.checkPage()) return;
       }
-    }
-  };
-  var population = {
-    id: CONSTANTS.PAGES.POPULATION,
-    enabled: () => userEnabled$1() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
-    action: async () => {
-      await navigation.switchPage(CONSTANTS.PAGES.POPULATION);
-      if (navigation.checkPage()) await doPopulationWork();
       await sleep(5000);
     }
   };
@@ -12969,39 +12941,33 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
     }
     return [];
   };
-  const doResearchWork = async () => {
-    const allowedResearch = getAllowedResearch();
-    let buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
-    if (buttonsList.length) {
-      while (!state.scriptPaused && buttonsList.length) {
-        const button = buttonsList.shift();
-        button.click();
-        logger({
-          msgLevel: 'log',
-          msg: `Researching ${button.innerText.split('\n').shift()}`
-        });
-        if (allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
-          await sleep(1000);
-          if (!navigation.checkPage()) return;
-          const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
-          if (redConfirmButton) {
-            redConfirmButton.click();
-            await sleep(2000);
-            if (!navigation.checkPage()) return;
-          }
-        }
-        await sleep(6000);
-        if (!navigation.checkPage()) return;
-        buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
-      }
-    }
-  };
   var research = {
     id: CONSTANTS.PAGES.RESEARCH,
     enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length,
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH);
-      if (navigation.checkPage()) await doResearchWork();
+      const allowedResearch = getAllowedResearch();
+      let buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
+      if (buttonsList.length) {
+        while (!state.scriptPaused && buttonsList.length) {
+          const button = buttonsList.shift();
+          button.click();
+          logger({
+            msgLevel: 'log',
+            msg: `Researching ${button.innerText.split('\n').shift()}`
+          });
+          if (allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
+            await sleep(1000);
+            const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
+            if (redConfirmButton) {
+              redConfirmButton.click();
+              await sleep(2000);
+            }
+          }
+          await sleep(6000);
+          buttonsList = selectors.getAllButtons(true).filter(button => !!allowedResearch.find(tech => tech.id === button.innerText.split('\n').shift().trim()));
+        }
+      }
       await sleep(5000);
     }
   };
@@ -13428,4 +13394,3 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   init();
 
 })();
-//# sourceMappingURL=bundle.user.js.map

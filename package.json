@@ -1,6 +1,6 @@
 {
   "name": "theresmore-automation",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Automation suite for Theresmore game",
   "keywords": [
     "userscript",
@@ -49,10 +49,10 @@
     "pretty-quick": "^3.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.11.0",
+    "rollup": "^3.12.0",
     "rollup-plugin-userscript-metablock": "^0.3.1",
     "serve": "^14.2.0",
-    "tslib": "^2.4.1",
+    "tslib": "^2.5.0",
     "typescript": "^4.9.4"
   },
   "config": {
