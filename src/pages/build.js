@@ -62,10 +62,10 @@ const sortBuildings = (a, b) => {
   return a.count - b.count
 }
 
-const doBuildWork = async () => {
-  let buildingsList = getBuildingsList()
+const getAllButtons = () => {
+  const buildingsList = getBuildingsList()
 
-  let buttons = selectors
+  const buttons = selectors
     .getAllButtons(true)
     .map((button) => {
       const id = button.innerText.split('\n').shift()
@@ -74,6 +74,12 @@ const doBuildWork = async () => {
     })
     .filter((button) => button.building && button.count < button.building.max)
     .sort(sortBuildings)
+
+  return buttons
+}
+
+const doBuildWork = async () => {
+  let buttons = getAllButtons()
 
   if (buttons.length) {
     while (!state.scriptPaused && buttons.length) {
@@ -90,15 +96,7 @@ const doBuildWork = async () => {
         await sleep(6000)
         if (!navigation.checkPage()) return
 
-        buttons = selectors
-          .getAllButtons(true)
-          .map((button) => {
-            const id = button.innerText.split('\n').shift()
-            const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-            return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
-          })
-          .filter((button) => button.building && button.count < button.building.max)
-          .sort(sortBuildings)
+        buttons = getAllButtons()
       }
     }
   }
