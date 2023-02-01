@@ -12307,8 +12307,8 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   const getPagesSelector = () => {
     return [...document.querySelectorAll('#main-tabs > div > button')];
   };
-  const getCurrentPagesSelector = () => {
-    return [...document.querySelectorAll('#main-tabs > div > button:not(.text-gray-500)')];
+  const getCurrentPageSelector = () => {
+    return document.querySelector('#main-tabs > div > button[aria-selected="true"]');
   };
   const getSubPagesSelector = () => {
     const tabLists = [...document.querySelectorAll('div[role="tablist"]')];
@@ -12323,8 +12323,8 @@ ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WIT
   };
   let scriptCurrentPage = null;
   const checkPage = () => {
-    const navButtons = getCurrentPagesSelector();
-    return !!navButtons.find(button => button.innerText.includes(scriptCurrentPage));
+    const navButton = getCurrentPageSelector();
+    return navButton && navButton.innerText.includes(scriptCurrentPage);
   };
   const hasSubPage = subPage => {
     const subTabs = getSubPagesSelector();

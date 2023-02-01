@@ -6,8 +6,8 @@ const getPagesSelector = () => {
   return [...document.querySelectorAll('#main-tabs > div > button')]
 }
 
-const getCurrentPagesSelector = () => {
-  return [...document.querySelectorAll('#main-tabs > div > button:not(.text-gray-500)')]
+const getCurrentPageSelector = () => {
+  return document.querySelector('#main-tabs > div > button[aria-selected="true"]')
 }
 
 const getSubPagesSelector = () => {
@@ -29,9 +29,9 @@ const hasPage = (page) => {
 let scriptCurrentPage = null
 
 const checkPage = () => {
-  const navButtons = getCurrentPagesSelector()
+  const navButton = getCurrentPageSelector()
 
-  return !!navButtons.find((button) => button.innerText.includes(scriptCurrentPage))
+  return navButton && navButton.innerText.includes(scriptCurrentPage)
 }
 
 const hasSubPage = (subPage) => {
