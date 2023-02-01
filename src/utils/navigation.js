@@ -20,18 +20,31 @@ const getSubPagesSelector = () => {
   return []
 }
 
+const getCurrentSubPageSelector = () => {
+  let currentSubPage
+
+  const subPages = getSubPagesSelector()
+  if (subPages.length) {
+    currentSubPage = subPages.find((subPage) => subPage.getAttribute('aria-selected') === 'true')
+  }
+
+  return currentSubPage
+}
+
 const hasPage = (page) => {
   const navButtons = getPagesSelector()
 
   return !!navButtons.find((button) => button.innerText.includes(page))
 }
 
-let scriptCurrentPage = null
+const checkPage = (page, subPage) => {
+  const currentPage = getCurrentPageSelector()
+  const currentSubPage = getCurrentSubPageSelector()
 
-const checkPage = () => {
-  const navButton = getCurrentPageSelector()
+  const isCorrectPage = !page || (page && currentPage && currentPage.innerText.includes(page))
+  const isCorrectSubPage = !subPage || (subPage && currentSubPage && currentSubPage.innerText.includes(subPage))
 
-  return navButton && navButton.innerText.includes(scriptCurrentPage)
+  return isCorrectPage && isCorrectSubPage
 }
 
 const hasSubPage = (subPage) => {
@@ -55,7 +68,6 @@ const switchPage = async (page) => {
   if (pageButton) {
     pageButton.click()
     switchedPage = true
-    scriptCurrentPage = page
   }
 
   await sleep(2000)

@@ -55,7 +55,7 @@ const doArmyWork = async () => {
       buyBAButton.click()
       logger({ msgLevel: 'log', msg: `Buying Battle Angel(s)` })
       await sleep(5000)
-      if (!navigation.checkPage()) return
+      if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return
     }
   }
 }
@@ -72,7 +72,7 @@ export default {
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY)
 
-    if (navigation.checkPage()) await doArmyWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) await doArmyWork()
 
     await sleep(5000)
   },

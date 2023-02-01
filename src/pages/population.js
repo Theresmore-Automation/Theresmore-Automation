@@ -151,7 +151,7 @@ const doPopulationWork = async () => {
             canAssignJobs = true
             foodJob.current++
             await sleep(1000)
-            if (!navigation.checkPage()) return
+            if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
           }
         } else {
           let unassigned = container
@@ -229,7 +229,7 @@ const doPopulationWork = async () => {
                         unassigned -= 1
                         canAssignJobs = !!unassigned
                         await sleep(1000)
-                        if (!navigation.checkPage()) return
+                        if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
                       }
                     }
                   }
@@ -252,7 +252,7 @@ const doPopulationWork = async () => {
       }
 
       await sleep(10)
-      if (!navigation.checkPage()) return
+      if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
     }
   }
 }
@@ -263,7 +263,7 @@ export default {
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
 
-    if (navigation.checkPage()) await doPopulationWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await doPopulationWork()
 
     await sleep(5000)
   },

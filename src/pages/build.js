@@ -94,7 +94,7 @@ const doBuildWork = async () => {
         button.element.click()
         logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
         await sleep(6000)
-        if (!navigation.checkPage()) return
+        if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return
 
         buttons = getAllButtons()
       }
@@ -127,7 +127,7 @@ export default {
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.BUILD)
 
-    if (navigation.checkPage()) await doBuildWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await doBuildWork()
 
     await sleep(5000)
   },

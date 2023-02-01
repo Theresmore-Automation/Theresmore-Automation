@@ -106,7 +106,7 @@ const doMarketWork = async () => {
         logger({ msgLevel: 'debug', msg: `Selling ${sellButtons[maxSellButton].innerText} of ${res.name} for ${price}` })
         goldEarned += numberParser.parse(sellButtons[maxSellButton].innerText) * price
         await sleep(10)
-        if (!navigation.checkPage()) return
+        if (!navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) return
         sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)')
         gold = resources.get('Gold')
         res = resources.get(resName)
@@ -141,7 +141,7 @@ export default {
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE)
 
-    if (navigation.checkPage()) await doMarketWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) await doMarketWork()
 
     await sleep(5000)
   },
