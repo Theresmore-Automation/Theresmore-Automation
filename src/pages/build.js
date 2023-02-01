@@ -101,6 +101,7 @@ const doBuildWork = async () => {
     }
   }
 
+  const buildingsList = getBuildingsList()
   state.buildings = selectors
     .getAllButtons(false)
     .map((button) => {
