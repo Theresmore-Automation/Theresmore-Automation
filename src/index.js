@@ -1,4 +1,4 @@
-import { sleep, logger, localStorage, state, CONSTANTS } from './utils'
+import { sleep, logger, localStorage, state, runMigrations, CONSTANTS } from './utils'
 import pages from './pages'
 import tasks from './tasks'
 
@@ -77,6 +77,7 @@ const init = async () => {
 }
 
 const start = async () => {
+  runMigrations()
   document.querySelector('html').classList.add('dark')
   tasks.managePanel.updatePanel()
 

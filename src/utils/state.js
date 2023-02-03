@@ -19,6 +19,9 @@ const state = {
       [CONSTANTS.PAGES.ARMY]: false,
       [CONSTANTS.PAGES.MARKETPLACE]: true,
     },
+    subpages: {
+      [CONSTANTS.SUBPAGES.PRAYERS]: false,
+    },
     [CONSTANTS.PAGES.BUILD]: {},
     [CONSTANTS.PAGES.RESEARCH]: {},
     [CONSTANTS.PAGES.POPULATION]: {},

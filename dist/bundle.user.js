@@ -17638,6 +17638,9 @@ const taVersion = "2.2.6";
         [CONSTANTS.PAGES.ARMY]: false,
         [CONSTANTS.PAGES.MARKETPLACE]: true
       },
+      subpages: {
+        [CONSTANTS.SUBPAGES.PRAYERS]: false
+      },
       [CONSTANTS.PAGES.BUILD]: {},
       [CONSTANTS.PAGES.RESEARCH]: {},
       [CONSTANTS.PAGES.POPULATION]: {},
@@ -17662,6 +17665,41 @@ const taVersion = "2.2.6";
       ...localStorage.get('lastVisited')
     };
   }
+
+  const lastMigration = localStorage.get('lastMigration') || 0;
+  const migrations = [() => {
+    if (!Array.isArray(state.options.pages)) {
+      const newPages = [];
+      Object.keys(state.options.pages).forEach(key => {
+        newPages.push({
+          enabled: state.options.pages[key],
+          page: key,
+          subpages: [],
+          options: {
+            ...state.options[key]
+          }
+        });
+      });
+      state.options.pages = newPages;
+      localStorage.set('options', state.options);
+    }
+  }, () => {
+    const research = state.options.pages.find(page => page.page === CONSTANTS.PAGES.RESEARCH);
+    if (research && research.options) {
+      Object.keys(research.options).forEach(key => {
+        if (key.includes('tech_')) {
+          delete research.options[key];
+        }
+      });
+      localStorage.set('options', state.options);
+    }
+  }];
+  const runMigrations = () => {
+    for (let i = lastMigration; i < migrations.length; i++) {
+      migrations[i]();
+    }
+    localStorage.set('lastMigration', migrations.length);
+  };
 
   const timeToWaitUntilFullResource = 60;
   const hasBA = () => {
@@ -18839,6 +18877,32 @@ const taVersion = "2.2.6";
         <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.ARMY}" class="option" ${state.options.pages[CONSTANTS.PAGES.ARMY] ? 'checked="checked"' : ''} /></label></div>
       </div>
 
+
+      <div class="mb-6">
+        <h3 class="text-lg">Research:</h3>
+        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="subpages-${CONSTANTS.SUBPAGES.PRAYERS}" class="option" ${state.options.pages[CONSTANTS.PAGES.RESEARCH] ? 'checked="checked"' : ''} /></label></div>
+
+        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+          <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+            ${tech.filter(technology => !technology.confirm).map(technology => {
+    return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`;
+  }).join('')}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+          <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+            ${tech.filter(technology => technology.confirm).map(technology => {
+    return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`;
+  }).join('')}
+          </div>
+        </div>
+      </div>
+
       <div class="mb-6">
         <h3 class="text-lg">Auto-ancestor:</h3>
         <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="automation-ancestor" class="option" ${state.options.automation.ancestor ? 'checked="checked"' : ''} /></label></div>
@@ -19054,6 +19118,7 @@ const taVersion = "2.2.6";
     start();
   };
   const start = async () => {
+    runMigrations();
     document.querySelector('html').classList.add('dark');
     tasks.managePanel.updatePanel();
     if (!state.scriptPaused) {

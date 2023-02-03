@@ -450,6 +450,40 @@ const createPanel = (startFunction) => {
   } /></label></div>
       </div>
 
+
+      <div class="mb-6">
+        <h3 class="text-lg">Research:</h3>
+        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="subpages-${CONSTANTS.SUBPAGES.PRAYERS}" class="option" ${
+    state.options.pages[CONSTANTS.PAGES.RESEARCH] ? 'checked="checked"' : ''
+  } /></label></div>
+
+        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+          <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+            ${tech
+              .filter((technology) => !technology.confirm)
+              .map((technology) => {
+                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
+              })
+              .join('')}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+          <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+            ${tech
+              .filter((technology) => technology.confirm)
+              .map((technology) => {
+                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
+              })
+              .join('')}
+          </div>
+        </div>
+      </div>
+
       <div class="mb-6">
         <h3 class="text-lg">Auto-ancestor:</h3>
         <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="automation-ancestor" class="option" ${
