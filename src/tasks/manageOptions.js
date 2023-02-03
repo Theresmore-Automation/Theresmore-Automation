@@ -247,6 +247,28 @@ let start
 
 const building_cats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
 
+const generatePrioritySelect = (key, id) => {
+  const defaultOptions = [
+    { key: 'Disabled', value: 0 },
+    { key: 'Lowest', value: 1 },
+    { key: 'Low', value: 2 },
+    { key: 'Medium Low', value: 3 },
+    { key: 'Medium', value: 4 },
+    { key: 'Medium High', value: 5 },
+    { key: 'High', value: 6 },
+    { key: 'Highest', value: 7 },
+  ]
+
+  const options = []
+  const selectedOption = state.options[key][id] && parseInt(state.options[key][id], 10) === state.options[key][id] ? state.options[key][id] : 0
+
+  defaultOptions.forEach((option) => {
+    options.push(`<option value="${option.value}" ${option.value === selectedOption ? 'selected="selected"' : ''}>${option.key}</option>`)
+  })
+
+  return `<select class="option dark:bg-mydark-200" data-id="${key}-${id}">${options.join('')}</select>`
+}
+
 const createPanel = (startFunction) => {
   start = startFunction
 
@@ -298,15 +320,17 @@ const createPanel = (startFunction) => {
       (cat) => `
     <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
       <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
-      <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+      <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
         ${buildings
           .filter((building) => building.cat === cat)
           .map((building) => {
-            return `<div class="flex flex-col"><label>${translate(building.id)} max:<br /><input type="number" data-id="${CONSTANTS.PAGES.BUILD}-${
+            return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
+            Max: <input type="number" data-id="${CONSTANTS.PAGES.BUILD}-${
               building.id
-            }" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" value="${
+            }" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="${
               state.options[CONSTANTS.PAGES.BUILD][building.id] ? state.options[CONSTANTS.PAGES.BUILD][building.id] : '0'
-            }" min="-1" max="${building.cap ? building.cap : 99999}" step="1" /></label></div>`
+            }" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
+            Prio: ${generatePrioritySelect(CONSTANTS.PAGES.BUILD, `prio_${building.id}`)}</label></div>`
           })
           .join('')}
       </div>
@@ -328,13 +352,12 @@ const createPanel = (startFunction) => {
 
         <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
           <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
-          <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
             ${tech
               .filter((technology) => !technology.confirm)
               .map((technology) => {
-                return `<div class="flex flex-col"><label><input type="checkbox" data-id="${CONSTANTS.PAGES.RESEARCH}-${technology.id}" class="option" ${
-                  state.options[CONSTANTS.PAGES.RESEARCH][technology.id] ? 'checked="checked"' : ''
-                } /> ${translate(technology.id, 'tec_')}</label></div>`
+                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
               })
               .join('')}
           </div>
@@ -342,13 +365,12 @@ const createPanel = (startFunction) => {
 
         <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
           <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
-          <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
             ${tech
               .filter((technology) => technology.confirm)
               .map((technology) => {
-                return `<div class="flex flex-col"><label><input type="checkbox" data-id="${CONSTANTS.PAGES.RESEARCH}-${technology.id}" class="option" ${
-                  state.options[CONSTANTS.PAGES.RESEARCH][technology.id] ? 'checked="checked"' : ''
-                } /> ${translate(technology.id, 'tec_')}</label></div>`
+                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
               })
               .join('')}
           </div>
@@ -360,26 +382,26 @@ const createPanel = (startFunction) => {
         <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.MARKETPLACE}" class="option" ${
     state.options.pages[CONSTANTS.PAGES.MARKETPLACE] ? 'checked="checked"' : ''
   } /></label></div>
-        <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+        <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
           ${['cow', 'horse', 'food', 'copper', 'wood', 'stone', 'iron', 'tools']
             .map((res) => {
-              return `<div class="flex flex-col"><label><input type="checkbox" data-id="${CONSTANTS.PAGES.MARKETPLACE}-resource_${res}" class="option" ${
+              return `<div class="flex flex-col mb-2"><label><input type="checkbox" data-id="${CONSTANTS.PAGES.MARKETPLACE}-resource_${res}" class="option" ${
                 state.options[CONSTANTS.PAGES.MARKETPLACE][`resource_${res}`] ? 'checked="checked"' : ''
               } /> Sell ${translate(res, 'res_')}</label></div>`
             })
             .join('')}
         </div>
-        <div>Don't sell if max gold can be reached in <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" data-id="${
+        <div>Don't sell if max gold can be reached in <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
           CONSTANTS.PAGES.MARKETPLACE
         }-timeToWaitUntilFullGold" value="${
     state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold ? state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold : '60'
   }" /> seconds</div>
-  <div>Sell the same resource at most every <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" data-id="${
+  <div>Sell the same resource at most every <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
     CONSTANTS.PAGES.MARKETPLACE
   }-secondsBetweenSells" value="${
     state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells ? state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells : '90'
   }" /> seconds</div>
-  <div>Sell the resource if it can be refilled in at most <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" data-id="${
+  <div>Sell the resource if it can be refilled in at most <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
     CONSTANTS.PAGES.MARKETPLACE
   }-timeToFillResource" value="${
     state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource ? state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource : '90'
@@ -395,24 +417,23 @@ const createPanel = (startFunction) => {
 
         <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 mb-2">
           <div class="w-full pb-3 font-bold text-center xl:text-left">Hire:</div>
-          <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
             ${jobs
               .filter((job) => job.gen)
               .map((job) => {
-                return `<div class="flex flex-col"><label>${translate(
-                  job.id,
-                  'pop_'
-                )}:<br /><input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" data-id="${
+                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(job.id, 'pop_')}</span><br />
+                Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
                   CONSTANTS.PAGES.POPULATION
                 }-${job.id}" value="${
                   state.options[CONSTANTS.PAGES.POPULATION][job.id] ? state.options[CONSTANTS.PAGES.POPULATION][job.id] : '0'
-                }" min="-1" max="999999" step="1" /></label></div>`
+                }" min="-1" max="999" step="1" /><br />
+                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.POPULATION, `prio_${job.id}`)}</label></div>`
               })
               .join('')}
           </div>
         </div>
 
-        <div class="mb-2"><label>Minimum Food production to aim for: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-400 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
+        <div class="mb-2"><label>Minimum Food production to aim for: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
           state.options.automation.minimumFood ? state.options.automation.minimumFood : '1'
         }" min="0" max="999999" step="1" /></label></div>
       </div>
@@ -433,7 +454,7 @@ const createPanel = (startFunction) => {
         <div class="mb-2">
           Ancestor to pick:
         </div>
-        <div class="grid gap-3 grid-cols-fill-180 min-w-full px-12 xl:px-0 mb-2">
+        <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
           ${[
             'ancestor_farmer',
             'ancestor_believer',
@@ -446,7 +467,7 @@ const createPanel = (startFunction) => {
             'ancestor_warrior',
           ]
             .map((ancestor) => {
-              return `<div class="flex flex-col"><label><input type="radio" name="automation-selected_ancestor" data-id="automation-selected_${ancestor}" class="option" ${
+              return `<div class="flex flex-col mb-2"><label><input type="radio" name="automation-selected_ancestor" data-id="automation-selected_${ancestor}" class="option" ${
                 state.options.automation[`selected_${ancestor}`] ? 'checked="checked"' : ''
               } /> ${translate(ancestor)}</label></div>`
             })
@@ -508,6 +529,9 @@ const saveOptions = () => {
     } else if (option.type === 'number') {
       const ids = option.dataset.id.split('-')
       state.options[ids[0]][ids[1]] = Math.round(Number(option.value))
+    } else if (option.type === 'select-one') {
+      const ids = option.dataset.id.split('-')
+      state.options[ids[0]][ids[1]] = parseInt(option.value, 10)
     } else {
       console.log('Unhandled', option)
       console.log(option.dataset.id.split('-'))

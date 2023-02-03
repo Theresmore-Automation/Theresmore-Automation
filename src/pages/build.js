@@ -4,21 +4,20 @@ import { CONSTANTS, navigation, selectors, logger, resources, sleep, state, numb
 const getBuildingsList = () => {
   if (Object.keys(state.options[CONSTANTS.PAGES.BUILD]).length) {
     let buildingsList = Object.keys(state.options[CONSTANTS.PAGES.BUILD])
+      .filter((key) => !key.includes('prio_'))
       .filter((key) => !!state.options[CONSTANTS.PAGES.BUILD][key])
+      .filter((key) => !!state.options[CONSTANTS.PAGES.BUILD][`prio_${key}`])
       .map((key) => {
         const building = {
           key: key,
           id: translate(key, 'bui_'),
-          max: state.options[CONSTANTS.PAGES.BUILD][key] === -1 ? 99999 : state.options[CONSTANTS.PAGES.BUILD][key],
+          max: state.options[CONSTANTS.PAGES.BUILD][key] === -1 ? 999 : state.options[CONSTANTS.PAGES.BUILD][key],
+          prio: state.options[CONSTANTS.PAGES.BUILD][`prio_${key}`],
           isSafe: true,
         }
 
         const buildingData = buildings.find((building) => building.id === key)
         if (buildingData) {
-          if (buildingData.cap) {
-            building.cap = buildingData.cap
-          }
-
           if (buildingData.gen) {
             const negativeGen = buildingData.gen.filter((gen) => gen.value < 0 && gen.type === 'resource')
             building.isSafe = !negativeGen.length
@@ -33,7 +32,10 @@ const getBuildingsList = () => {
           }
         }
 
-        return building
+        return { ...buildingData, ...building }
+      })
+      .sort((a, b) => {
+        return b.prio - a.prio
       })
 
     return buildingsList
@@ -44,22 +46,6 @@ const getBuildingsList = () => {
 
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.BUILD] || false
-}
-
-const sortBuildings = (a, b) => {
-  if (state.options.automation.prioWonders) {
-    if (a.cat !== b.cat) {
-      if (a.cat === 'wonders') {
-        return -1
-      }
-
-      if (b.cat === 'wonders') {
-        return 1
-      }
-    }
-  }
-
-  return a.count - b.count
 }
 
 const getAllButtons = () => {
@@ -73,7 +59,25 @@ const getAllButtons = () => {
       return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
     })
     .filter((button) => button.building && button.count < button.building.max)
-    .sort(sortBuildings)
+    .sort((a, b) => {
+      if (state.options.automation.prioWonders) {
+        if (a.building.cat !== b.building.cat) {
+          if (a.building.cat === 'wonders') {
+            return -1
+          }
+
+          if (b.building.cat === 'wonders') {
+            return 1
+          }
+        }
+      }
+
+      if (a.building.prio !== b.building.prio) {
+        return b.building.prio - a.building.prio
+      }
+
+      return a.count - b.count
+    })
 
   return buttons
 }
@@ -93,7 +97,7 @@ const doBuildWork = async () => {
       if (shouldBuild) {
         button.element.click()
         logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
-        await sleep(6000)
+        await sleep(4000)
         if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return
 
         buttons = getAllButtons()
@@ -129,7 +133,5 @@ export default {
     await navigation.switchPage(CONSTANTS.PAGES.BUILD)
 
     if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await doBuildWork()
-
-    await sleep(5000)
   },
 }

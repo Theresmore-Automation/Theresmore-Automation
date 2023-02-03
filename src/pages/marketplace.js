@@ -142,7 +142,5 @@ export default {
     await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE)
 
     if (navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) await doMarketWork()
-
-    await sleep(5000)
   },
 }

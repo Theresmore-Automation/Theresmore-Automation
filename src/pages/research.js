@@ -13,15 +13,12 @@ const getAllowedResearch = () => {
         const research = {
           key: key,
           id: translate(key, 'tec_'),
-          confirm: false,
+          prio: state.options[CONSTANTS.PAGES.RESEARCH][key],
         }
 
         const researchData = tech.find((technology) => technology.id === key)
-        if (researchData) {
-          research.confirm = researchData.confirm
-        }
 
-        return research
+        return { ...researchData, ...research }
       })
 
     return allowedResearch
@@ -36,6 +33,12 @@ const getAllButtons = () => {
   const buttonsList = selectors
     .getAllButtons(true)
     .filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
+    .sort((a, b) => {
+      return (
+        allowedResearch.find((tech) => tech.id === b.innerText.split('\n').shift().trim()).prio -
+        allowedResearch.find((tech) => tech.id === a.innerText.split('\n').shift().trim()).prio
+      )
+    })
 
   return buttonsList
 }
@@ -59,12 +62,12 @@ const doResearchWork = async () => {
 
         if (redConfirmButton) {
           redConfirmButton.click()
-          await sleep(2000)
+          await sleep(4000)
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
         }
       }
 
-      await sleep(6000)
+      await sleep(4000)
       if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
 
       buttonsList = getAllButtons()
@@ -79,7 +82,5 @@ export default {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH)
 
     if (navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) await doResearchWork()
-
-    await sleep(5000)
   },
 }

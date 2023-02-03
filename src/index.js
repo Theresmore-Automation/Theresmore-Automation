@@ -68,6 +68,7 @@ const init = async () => {
 }
 
 const start = async () => {
+  document.querySelector('html').classList.add('dark')
   tasks.managePanel.updatePanel()
 
   if (!state.scriptPaused) {
