@@ -275,7 +275,6 @@ const doPopulationWork = async () => {
                     const foodJob = getAllAvailableJobs().find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
 
                     if (foodJob) {
-                      availableJobs.unshift(job)
                       job = foodJob
                       isSafeToAdd = true
                       return false
