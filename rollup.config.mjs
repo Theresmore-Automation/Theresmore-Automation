@@ -16,7 +16,7 @@ export default {
     file: 'dist/bundle.user.js',
     format: 'iife',
     name: 'rollupUserScript',
-    banner: () => '\n/*\n' + fs.readFileSync('./LICENSE', 'utf8') + '*/',
+    banner: () => '\n/*\n' + fs.readFileSync('./LICENSE', 'utf8') + '*/\n\nconst taVersion = "' + pkg.version + '";\n\n',
     sourcemap: true,
   },
   plugins: [

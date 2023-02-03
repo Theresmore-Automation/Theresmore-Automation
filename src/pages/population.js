@@ -18,7 +18,9 @@ const allJobs = jobs
   .filter((job) => job.gen && job.gen.length)
   .map((job) => {
     return {
+      ...job,
       id: translate(job.id, 'pop_'),
+      key: job.id,
       gen: job.gen
         .filter((gen) => gen.type === 'resource')
         .map((gen) => {
@@ -31,7 +33,7 @@ const allJobs = jobs
   })
   .map((job) => {
     return {
-      id: job.id,
+      ...job,
       isSafe: !job.gen.find((gen) => gen.value < 0),
       resourcesGenerated: job.gen
         .filter((gen) => gen.value > 0)
@@ -53,47 +55,19 @@ const userEnabled = () => {
 const getAllJobs = () => {
   if (Object.keys(state.options[CONSTANTS.PAGES.POPULATION]).length) {
     let allowedJobs = Object.keys(state.options[CONSTANTS.PAGES.POPULATION])
+      .filter((key) => !key.includes('prio_'))
       .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][key])
+      .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][`prio_${key}`])
       .map((key) => {
-        const jobData = jobs.find((job) => job.id === key) || {}
+        const jobData = allJobs.find((job) => job.key === key) || {}
 
         const job = {
           ...jobData,
-          key: key,
-          id: translate(key, 'pop_'),
-          max: state.options[CONSTANTS.PAGES.POPULATION][key] === -1 ? 99999 : state.options[CONSTANTS.PAGES.POPULATION][key],
+          max: state.options[CONSTANTS.PAGES.POPULATION][key] === -1 ? 999 : state.options[CONSTANTS.PAGES.POPULATION][key],
+          prio: state.options[CONSTANTS.PAGES.POPULATION][`prio_${key}`],
         }
 
         return job
-      })
-      .map((job) => {
-        return {
-          ...job,
-          gen: job.gen
-            .filter((gen) => gen.type === 'resource')
-            .map((gen) => {
-              return {
-                id: translate(gen.id, 'res_'),
-                value: gen.value,
-              }
-            }),
-        }
-      })
-      .map((job) => {
-        return {
-          ...job,
-          isSafe: !job.gen.find((gen) => gen.value < 0),
-          resourcesGenerated: job.gen
-            .filter((gen) => gen.value > 0)
-            .map((gen) => {
-              return { id: gen.id, value: gen.value }
-            }),
-          resourcesUsed: job.gen
-            .filter((gen) => gen.value < 0)
-            .map((gen) => {
-              return { id: gen.id, value: gen.value }
-            }),
-        }
       })
 
     return allowedJobs
@@ -117,6 +91,9 @@ const getAllAvailableJobs = () => {
       }
     })
     .filter((job) => job.id && !!job.container.querySelector('button.btn-green') && job.current < job.maxAvailable)
+    .sort((a, b) => {
+      return b.prio - a.prio
+    })
 
   return availableJobs
 }
@@ -142,14 +119,14 @@ const doPopulationWork = async () => {
       if (jobsWithSpace.length) {
         const foodJob = jobsWithSpace.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
 
-        if (foodJob && (resources.get('Food').speed <= minimumFood || foodJob.current < foodJob.max) && foodJob.current < foodJob.maxAvailable) {
+        if (foodJob && resources.get('Food').speed <= minimumFood && foodJob.current < Math.min(foodJob.max, foodJob.maxAvailable)) {
           const addJobButton = foodJob.container.querySelector('button.btn-green')
           if (addJobButton) {
             logger({ msgLevel: 'log', msg: `Assigning worker as ${foodJob.id}` })
 
             addJobButton.click()
             canAssignJobs = true
-            foodJob.current++
+            foodJob.current += 1
             await sleep(1000)
             if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
           }
@@ -168,9 +145,9 @@ const doPopulationWork = async () => {
               'Wood',
               'Stone',
               'Iron',
-              // 'Copper', // Same as Iron
+              'Copper',
               'Mana',
-              // 'Faith', // Same as Mana
+              'Faith',
               'Research',
               'Materials',
               'Steel',
@@ -178,16 +155,16 @@ const doPopulationWork = async () => {
               'Gold',
               'Crystal',
               'Horse',
-              // 'Cow', // Same as Horse
+              'Cow',
+              'Food',
             ]
               .filter((res) => resources.get(res))
               .filter((res) => jobsWithSpace.find((job) => job.resourcesGenerated.find((resGen) => resGen.id === res)))
 
             const resourcesWithNegativeGen = resourcesToProduce.filter((res) => resources.get(res) && res.speed < 0)
             const resourcesWithNoGen = resourcesToProduce.filter((res) => !resourcesWithNegativeGen.includes(res) && resources.get(res) && !res.speed)
-            const resourcesLeft = resourcesToProduce.filter((res) => !resourcesWithNegativeGen.includes(res) && !resourcesWithNoGen.includes(res))
 
-            const resourcesSorted = resourcesWithNegativeGen.concat(resourcesWithNoGen).concat(resourcesLeft)
+            const resourcesSorted = resourcesWithNegativeGen.concat(resourcesWithNoGen)
 
             if (resourcesSorted.length) {
               for (let i = 0; i < resourcesSorted.length && !state.scriptPaused; i++) {
@@ -208,7 +185,7 @@ const doPopulationWork = async () => {
                     if (unassigned === 0) break
                     const job = jobsForResource[i]
 
-                    let isSafeToAdd = true
+                    let isSafeToAdd = job.current < job.max
 
                     if (!job.isSafe) {
                       job.resourcesUsed.forEach((resUsed) => {
@@ -226,6 +203,7 @@ const doPopulationWork = async () => {
                         logger({ msgLevel: 'log', msg: `Assigning worker as ${job.id}` })
 
                         addJobButton.click()
+                        job.current += 1
                         unassigned -= 1
                         canAssignJobs = !!unassigned
                         await sleep(1000)
@@ -233,6 +211,48 @@ const doPopulationWork = async () => {
                       }
                     }
                   }
+                }
+              }
+            } else {
+              for (let i = 0; i < jobsWithSpace.length && !state.scriptPaused; i++) {
+                if (unassigned === 0) break
+
+                const job = jobsWithSpace[i]
+
+                let isSafeToAdd = job.current < job.max
+
+                while (isSafeToAdd && !state.scriptPaused) {
+                  if (unassigned === 0) break
+
+                  if (!job.isSafe) {
+                    job.resourcesUsed.forEach((resUsed) => {
+                      const res = resources.get(resUsed.id)
+
+                      if (!res || res.speed < Math.abs(resUsed.value * 2)) {
+                        isSafeToAdd = false
+                      }
+                    })
+                  }
+
+                  if (isSafeToAdd) {
+                    const addJobButton = job.container.querySelector('button.btn-green')
+                    if (addJobButton) {
+                      logger({ msgLevel: 'log', msg: `Assigning worker as ${job.id}` })
+
+                      addJobButton.click()
+                      job.current += 1
+                      unassigned -= 1
+                      canAssignJobs = !!unassigned
+                      await sleep(1000)
+                      if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
+                    } else {
+                      job.current = Number.MAX_SAFE_INTEGER
+                    }
+                  } else {
+                    job.current = Number.MAX_SAFE_INTEGER
+                  }
+
+                  isSafeToAdd = job.current < job.max
                 }
               }
             }

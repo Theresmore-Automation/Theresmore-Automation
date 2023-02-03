@@ -19,7 +19,7 @@ const createPanel = (switchScriptState) => {
   controlPanelElement.style.padding = '10px'
 
   controlPanelElement.innerHTML = `
-    <p class="mb-2">Theresmore Automation</p>
+    <p class="mb-2">Theresmore Automation ${taVersion ? `v${taVersion}` : ''}</p>
     <div>
       <button type="button" class="btn btn-blue mb-2 taScriptState">${scriptState}</button>
       <button type="button" class="btn btn-blue mb-2 taManageOptions">Manage Options</button>
