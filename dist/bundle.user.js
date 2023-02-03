@@ -12861,7 +12861,7 @@ const taVersion = "2.0.1";
         canAssignJobs = false;
         if (availableJobs.length) {
           const foodJob = availableJobs.find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
-          if (foodJob && resources.get('Food').speed <= minimumFood && foodJob.current < Math.min(foodJob.max, foodJob.maxAvailable)) {
+          if (foodJob && resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable) {
             const addJobButton = foodJob.container.querySelector('button.btn-green');
             if (addJobButton) {
               logger({
@@ -12891,12 +12891,28 @@ const taVersion = "2.0.1";
                       if (unassigned === 0) break;
                       const job = jobsForResource[i];
                       let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable);
+                      const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'Food');
+                      if (isFoodJob) {
+                        isSafeToAdd = isSafeToAdd || resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
+                      }
                       if (!job.isSafe) {
-                        job.resourcesUsed.forEach(resUsed => {
+                        job.resourcesUsed.every(resUsed => {
                           const res = resources.get(resUsed.id);
                           if (!res || res.speed < Math.abs(resUsed.value * 2)) {
                             isSafeToAdd = false;
                           }
+                          if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
+                            const foodJob = getAllAvailableJobs().find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
+                            if (foodJob) {
+                              i -= 1;
+                              job = foodJob;
+                              isSafeToAdd = true;
+                              return false;
+                            } else {
+                              isSafeToAdd = false;
+                            }
+                          }
+                          return isSafeToAdd;
                         });
                       }
                       if (isSafeToAdd) {
@@ -12920,12 +12936,28 @@ const taVersion = "2.0.1";
               } else {
                 const job = availableJobs.shift();
                 let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable);
+                const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'Food');
+                if (isFoodJob) {
+                  isSafeToAdd = isSafeToAdd || resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
+                }
                 if (!job.isSafe) {
-                  job.resourcesUsed.forEach(resUsed => {
+                  job.resourcesUsed.every(resUsed => {
                     const res = resources.get(resUsed.id);
                     if (!res || res.speed < Math.abs(resUsed.value * 2)) {
                       isSafeToAdd = false;
                     }
+                    if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
+                      const foodJob = getAllAvailableJobs().find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
+                      if (foodJob) {
+                        availableJobs.unshift(job);
+                        job = foodJob;
+                        isSafeToAdd = true;
+                        return false;
+                      } else {
+                        isSafeToAdd = false;
+                      }
+                    }
+                    return isSafeToAdd;
                   });
                 }
                 if (isSafeToAdd && !state.scriptPaused) {
