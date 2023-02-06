@@ -6,20 +6,20 @@ const timeToWaitUntilFullGold = 60
 const secondsBetweenSells = 90
 
 const getTimeToFillResource = () => {
-  return state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource || timeToFillResource
+  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options.timeToFillResource || timeToFillResource
 }
 
 const getTimeToWaitUntilFullGold = () => {
-  return state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold || timeToWaitUntilFullGold
+  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options.timeToWaitUntilFullGold || timeToWaitUntilFullGold
 }
 
 const getSecondsBetweenSells = () => {
-  return state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells || secondsBetweenSells
+  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options.secondsBetweenSells || secondsBetweenSells
 }
 
 const getResourcesToTrade = () => {
-  const userResourcesToTrade = Object.keys(state.options[CONSTANTS.PAGES.MARKETPLACE])
-    .filter((key) => key.includes('resource_') && state.options[CONSTANTS.PAGES.MARKETPLACE][key])
+  const userResourcesToTrade = Object.keys(state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options)
+    .filter((key) => key.includes('resource_') && state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options[key])
     .map((key) => translate(key.replace('resource_', '')))
   return userResourcesToTrade.length ? userResourcesToTrade : resourcesToTrade
 }
@@ -48,10 +48,10 @@ const hasNotEnoughGold = () => {
 }
 
 const userEnabled = () => {
-  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE] || false
+  return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].enabled || false
 }
 
-const doMarketWork = async () => {
+const executeAction = async () => {
   let gold = resources.get('Gold')
 
   if (gold && gold.current < gold.max && shouldSell()) {
@@ -136,11 +136,11 @@ const doMarketWork = async () => {
 }
 
 export default {
-  id: CONSTANTS.PAGES.MARKETPLACE,
+  page: CONSTANTS.PAGES.MARKETPLACE,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MARKETPLACE) && hasNotEnoughGold() && shouldSell(),
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.MARKETPLACE)
 
-    if (navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) await doMarketWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) await executeAction()
   },
 }

@@ -1,5 +1,5 @@
 import { buildings, tech, jobs } from '../data'
-import { state, localStorage, translate, CONSTANTS } from '../utils'
+import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
 
 // https://github.com/pieroxy/lz-string
 var LZString = (function () {
@@ -242,13 +242,16 @@ var LZString = (function () {
     })
   : 'undefined' != typeof module && null != module && (module.exports = LZString)
 
+// https://stackoverflow.com/a/1421988
+const isNumber = (n) => /^-?[\d.]+(?:e-?\d+)?$/.test(n)
+
 const id = 'theresmore-automation-options-panel'
 let start
 
 const building_cats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
 const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
 
-const generatePrioritySelect = (key, id) => {
+const generatePrioritySelect = (data) => {
   const defaultOptions = [
     { key: 'Disabled', value: 0 },
     { key: 'Lowest', value: 1 },
@@ -261,13 +264,17 @@ const generatePrioritySelect = (key, id) => {
   ]
 
   const options = []
-  const selectedOption = state.options[key][id] && parseInt(state.options[key][id], 10) === state.options[key][id] ? state.options[key][id] : 0
 
   defaultOptions.forEach((option) => {
-    options.push(`<option value="${option.value}" ${option.value === selectedOption ? 'selected="selected"' : ''}>${option.key}</option>`)
+    options.push(`<option value="${option.value}">${option.key}</option>`)
   })
 
-  return `<select class="option dark:bg-mydark-200" data-id="${key}-${id}">${options.join('')}</select>`
+  return `<select class="option dark:bg-mydark-200"
+  ${data.page ? `data-page="${data.page}"` : ''}
+  ${data.subpage ? `data-subpage="${data.subpage}"` : ''}
+  ${data.key ? `data-key="${data.key}"` : ''}
+  ${data.subkey ? `data-subkey="${data.subkey}"` : ''}
+  >${options.join('')}</select>`
 }
 
 const createPanel = (startFunction) => {
@@ -275,258 +282,316 @@ const createPanel = (startFunction) => {
 
   const saveTextarea = document.createElement('textarea')
   saveTextarea.id = `${id}-save`
-  saveTextarea.style.position = 'absolute'
-  saveTextarea.style.top = '-1000px'
-  saveTextarea.style.left = '-1000px'
-  saveTextarea.style.width = '1px'
-  saveTextarea.style.height = '1px'
+  saveTextarea.classList.add('taSaveArea')
   document.querySelector('div#root').insertAdjacentElement('afterend', saveTextarea)
 
   const panelElement = document.createElement('div')
   panelElement.id = id
-  panelElement.style.position = 'fixed'
-  panelElement.style.top = '0'
-  panelElement.style.left = '0'
-  panelElement.style.zIndex = '9999999999'
-  panelElement.style.padding = '20px'
-  panelElement.style.height = '100vh'
-  panelElement.style.width = '100vw'
-  panelElement.style.display = 'none'
-  panelElement.style.backdropFilter = 'blur(10px)'
+  panelElement.classList.add('taPanelElement')
 
   const innerPanelElement = document.createElement('div')
   innerPanelElement.classList.add('dark')
   innerPanelElement.classList.add('dark:bg-mydark-300')
-  innerPanelElement.style.position = 'relative'
-  innerPanelElement.style.height = '100%'
-  innerPanelElement.style.width = '100%'
-  innerPanelElement.style.padding = '10px'
-  innerPanelElement.style.border = '1px black solid'
-  innerPanelElement.style.overflowY = 'auto'
-  innerPanelElement.style.overflowX = 'none'
+  innerPanelElement.classList.add('taInnerPanelElement')
 
   innerPanelElement.innerHTML = `
-    <p class="mb-2">
-      <h2 class="text-xl">Theresmore Automation Options:</h2>
+    <h2 class="text-xl">Theresmore Automation Options:</h2>
 
-      <div class="mb-6">
-        <h3 class="text-lg">Build:</h3>
-        <p class="mb-2">Max values: -1 -> build unlimited; 0 -> do not build;</p>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.BUILD}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.BUILD] ? 'checked="checked"' : ''
-  } /></label></div>
-
-  ${building_cats
-    .map(
-      (cat) => `
-    <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-      <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
-      <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-        ${buildings
-          .filter((building) => building.cat === cat)
-          .map((building) => {
-            return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
-            Max: <input type="number" data-id="${CONSTANTS.PAGES.BUILD}-${
-              building.id
-            }" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="${
-              state.options[CONSTANTS.PAGES.BUILD][building.id] ? state.options[CONSTANTS.PAGES.BUILD][building.id] : '0'
-            }" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
-            Prio: ${generatePrioritySelect(CONSTANTS.PAGES.BUILD, `prio_${building.id}`)}</label></div>`
-          })
-          .join('')}
-      </div>
+    <div class="mb-2">
+      <button id="saveOptions" type="button" class="btn btn-green w-min px-4 mr-2">Save options</button>
+      <button id="exportOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Export options</button>
+      <button id="importOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Import options</button>
     </div>
-  `
-    )
-    .join('')}
 
-        <div class="mb-2"><label>Prioritize Wonders: <input type="checkbox" data-id="automation-prioWonders" class="option" ${
-          state.options.automation.prioWonders ? 'checked="checked"' : ''
-        } /></label></div>
+    <div class="taTabs">
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.BUILD}" checked class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.BUILD}" class="taTab-label">${CONSTANTS.PAGES.BUILD}</label>
+        <div class="taTab-content">
+          <p class="mb-2">Max values: -1 -> build unlimited; 0 -> do not build;</p>
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-key="enabled" class="option" />
+          </label></div>
+
+          <div class="taTabs">
+            <div class="taTab">
+              <input type="radio" name="buildPageOptions" id="buildPageOptions-${CONSTANTS.SUBPAGES.CITY}" checked class="taTab-switch">
+              <label for="buildPageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label">${CONSTANTS.SUBPAGES.CITY}</label>
+              <div class="taTab-content">
+                <div class="mb-2"><label>Enabled:
+                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" />
+                </label></div>
+
+                ${building_cats
+                  .map(
+                    (cat) => `
+                  <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                    <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
+                    <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                      ${buildings
+                        .filter((building) => building.cat === cat)
+                        .filter((building) => building.tab === 1)
+                        .map((building) => {
+                          return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
+                          Max:
+                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${
+                            CONSTANTS.SUBPAGES.CITY
+                          }" data-key="options" data-subkey="${building.id}"
+                            class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                            value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
+                          Prio: ${generatePrioritySelect({
+                            page: CONSTANTS.PAGES.BUILD,
+                            subpage: CONSTANTS.SUBPAGES.CITY,
+                            key: 'options',
+                            subkey: `prio_${building.id}`,
+                          })}</label></div>`
+                        })
+                        .join('')}
+                    </div>
+                  </div>
+                `
+                  )
+                  .join('')}
+
+              </div>
+            </div>
+            <div class="taTab">
+              <input type="radio" name="buildPageOptions" id="buildPageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-switch">
+              <label for="buildPageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label">${CONSTANTS.SUBPAGES.COLONY}</label>
+              <div class="taTab-content">
+                <div class="mb-2"><label>Enabled:
+                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" />
+                </label></div>
+
+                ${building_cats
+                  .map(
+                    (cat) => `
+                  <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                    <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
+                    <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                      ${buildings
+                        .filter((building) => building.cat === cat)
+                        .filter((building) => building.tab === 2)
+                        .map((building) => {
+                          return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
+                          Max:
+                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${
+                            CONSTANTS.SUBPAGES.COLONY
+                          }" data-key="options" data-subkey="${building.id}"
+                            class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                            value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
+                          Prio: ${generatePrioritySelect({
+                            page: CONSTANTS.PAGES.BUILD,
+                            subpage: CONSTANTS.SUBPAGES.COLONY,
+                            key: 'options',
+                            subkey: `prio_${building.id}`,
+                          })}</label></div>`
+                        })
+                        .join('')}
+                    </div>
+                  </div>
+                `
+                  )
+                  .join('')}
+
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="mb-6">
-        <h3 class="text-lg">Research:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.RESEARCH}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.RESEARCH] ? 'checked="checked"' : ''
-  } /></label></div>
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.RESEARCH}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.RESEARCH}" class="taTab-label">${CONSTANTS.PAGES.RESEARCH}</label>
+        <div class="taTab-content">
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}" data-key="enabled" class="option" />
+          </label></div>
 
-        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-          <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
-          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-            ${tech
-              .filter((technology) => !technology.confirm && !unsafeResearch.includes(technology.id))
-              .map((technology) => {
-                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
-                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
-              })
-              .join('')}
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${tech
+                .filter((technology) => !technology.confirm && !unsafeResearch.includes(technology.id))
+                .map((technology) => {
+                  return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                  Prio: ${generatePrioritySelect({
+                    page: CONSTANTS.PAGES.RESEARCH,
+                    subpage: CONSTANTS.SUBPAGES.RESEARCH,
+                    key: 'options',
+                    subkey: technology.id,
+                  })}</label></div>`
+                })
+                .join('')}
+            </div>
           </div>
-        </div>
 
-        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-          <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
-          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-            ${tech
-              .filter((technology) => technology.confirm || unsafeResearch.includes(technology.id))
-              .map((technology) => {
-                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
-                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
-              })
-              .join('')}
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${tech
+                .filter((technology) => technology.confirm || unsafeResearch.includes(technology.id))
+                .map((technology) => {
+                  return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
+                  Prio: ${generatePrioritySelect({
+                    page: CONSTANTS.PAGES.RESEARCH,
+                    subpage: CONSTANTS.SUBPAGES.RESEARCH,
+                    key: 'options',
+                    subkey: technology.id,
+                  })}</label></div>`
+                })
+                .join('')}
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mb-6">
-        <h3 class="text-lg">Marketplace:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.MARKETPLACE}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.MARKETPLACE] ? 'checked="checked"' : ''
-  } /></label></div>
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.MARKETPLACE}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.MARKETPLACE}" class="taTab-label">${CONSTANTS.PAGES.MARKETPLACE}</label>
+        <div class="taTab-content">
+
+        <div class="mb-2"><label>Enabled:
+        <input type="checkbox" data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="enabled" class="option" />
+        </label></div>
         <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
           ${['cow', 'horse', 'food', 'copper', 'wood', 'stone', 'iron', 'tools']
             .map((res) => {
-              return `<div class="flex flex-col mb-2"><label><input type="checkbox" data-id="${CONSTANTS.PAGES.MARKETPLACE}-resource_${res}" class="option" ${
-                state.options[CONSTANTS.PAGES.MARKETPLACE][`resource_${res}`] ? 'checked="checked"' : ''
-              } /> Sell ${translate(res, 'res_')}</label></div>`
+              return `<div class="flex flex-col mb-2"><label>
+                <input type="checkbox" data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="options" data-subkey="resource_${res}" class="option" />
+              Sell ${translate(res, 'res_')}</label></div>`
             })
             .join('')}
         </div>
-        <div>Don't sell if max gold can be reached in <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
-          CONSTANTS.PAGES.MARKETPLACE
-        }-timeToWaitUntilFullGold" value="${
-    state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold ? state.options[CONSTANTS.PAGES.MARKETPLACE].timeToWaitUntilFullGold : '60'
-  }" /> seconds</div>
-  <div>Sell the same resource at most every <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
-    CONSTANTS.PAGES.MARKETPLACE
-  }-secondsBetweenSells" value="${
-    state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells ? state.options[CONSTANTS.PAGES.MARKETPLACE].secondsBetweenSells : '90'
-  }" /> seconds</div>
-  <div>Sell the resource if it can be refilled in at most <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
-    CONSTANTS.PAGES.MARKETPLACE
-  }-timeToFillResource" value="${
-    state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource ? state.options[CONSTANTS.PAGES.MARKETPLACE].timeToFillResource : '90'
-  }" /> seconds</div>
+        <div>Don't sell if max gold can be reached in
+          <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="60"
+          data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="options" data-subkey="timeToWaitUntilFullGold" /> seconds</div>
+        <div>Sell the same resource at most every
+          <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="90"
+          data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="options" data-subkey="secondsBetweenSells" /> seconds</div>
+        <div>Sell the resource if it can be refilled in at most
+          <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="90"
+          data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="options" data-subkey="timeToFillResource" /> seconds</div>
+
+        </div>
       </div>
 
-      <div class="mb-6">
-        <h3 class="text-lg">Population:</h3>
-        <p class="mb-2">Max values: -1 -> hire unlimited; 0 -> do not hire;</p>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.POPULATION}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.POPULATION] ? 'checked="checked"' : ''
-  } /></label></div>
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.POPULATION}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.POPULATION}" class="taTab-label">${CONSTANTS.PAGES.POPULATION}</label>
+        <div class="taTab-content">
 
-        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 mb-2">
-          <div class="w-full pb-3 font-bold text-center xl:text-left">Hire:</div>
-          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-            ${jobs
-              .filter((job) => job.gen)
-              .map((job) => {
-                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(job.id, 'pop_')}</span><br />
-                Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="${
-                  CONSTANTS.PAGES.POPULATION
-                }-${job.id}" value="${
-                  state.options[CONSTANTS.PAGES.POPULATION][job.id] ? state.options[CONSTANTS.PAGES.POPULATION][job.id] : '0'
-                }" min="-1" max="999" step="1" /><br />
-                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.POPULATION, `prio_${job.id}`)}</label></div>`
-              })
-              .join('')}
+          <p class="mb-2">Max values: -1 -> hire unlimited; 0 -> do not hire;</p>
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.POPULATION}" data-key="enabled" class="option" />
+          </label></div>
+
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 mb-2">
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Hire:</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${jobs
+                .filter((job) => job.gen)
+                .map((job) => {
+                  return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(job.id, 'pop_')}</span><br />
+                  Max:
+                    <input type="number" data-page="${CONSTANTS.PAGES.POPULATION}" data-key="options" data-subkey="${job.id}"
+                    class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                    value="0" min="-1" max="999" step="1" /><br />
+                  Prio: ${generatePrioritySelect({
+                    page: CONSTANTS.PAGES.POPULATION,
+                    key: 'options',
+                    subkey: `prio_${job.id}`,
+                  })}</label></div>`
+                })
+                .join('')}
+            </div>
+          </div>
+
+          <div class="mb-2"><label>Minimum Food production to aim for:
+            <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+            data-page="${CONSTANTS.PAGES.POPULATION}" data-key="options" data-subkey="minimumFood" value="1" min="0" max="999999" step="1" /></label></div>
+
+          <div class="mb-2"><label>Rebalance population every:
+            <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.POPULATION}" data-key="options" data-subkey="populationRebalanceTime" value="0" min="0" max="999999" step="1" />
+            minutes (0 to disable)</label></div>
+
+        </div>
+      </div>
+
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-label">${CONSTANTS.PAGES.ARMY}</label>
+        <div class="taTab-content">
+
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" />
+          </div>
+
+        </div>
+      </div>
+
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-Automation" class="taTab-switch">
+        <label for="topLevelOptions-Automation" class="taTab-label">Automation</label>
+        <div class="taTab-content">
+
+          <div class="mb-6">
+            <h3 class="text-lg">Auto-ancestor:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="ancestor" data-key="enabled" class="option" />
+            </label></div>
+
+            <div class="mb-2">
+              Ancestor to pick:
+
+              <select class="option dark:bg-mydark-200"
+              data-setting="ancestor" data-key="selected"
+              >
+                ${[
+                  'ancestor_farmer',
+                  'ancestor_believer',
+                  'ancestor_forager',
+                  'ancestor_gatherer',
+                  'ancestor_miner',
+                  'ancestor_researcher',
+                  'ancestor_spellcrafter',
+                  'ancestor_trader',
+                  'ancestor_warrior',
+                ]
+                  .map((ancestor) => `<option value="${ancestor}">${translate(ancestor)}</option>`)
+                  .join('')}
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h3 class="text-lg">Auto-prestige:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="ancestor" data-key="enabled" class="option" />
+            </label></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-Cosmetics" class="taTab-switch">
+        <label for="topLevelOptions-Cosmetics" class="taTab-label">Cosmetics</label>
+        <div class="taTab-content">
+
+          <div class="mb-2"><label>Hide full-page overlays:
+          <input type="checkbox" data-setting="cosmetics" data-key="hideFullPageOverlay" data-subkey="enabled" class="option" />
+          </div>
+
+          <div class="mb-2"><label>Hide toasts:
+          <input type="checkbox" data-setting="cosmetics" data-key="toasts" data-subkey="enabled" class="option" />
           </div>
         </div>
-
-        <div class="mb-2"><label>Minimum Food production to aim for: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
-          state.options.automation.minimumFood ? state.options.automation.minimumFood : '1'
-        }" min="0" max="999999" step="1" /></label></div>
-
-        <div class="mb-2"><label>Rebalance population every: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
-          state.options.automation.populationRebalanceTime ? state.options.automation.populationRebalanceTime : '0'
-        }" min="0" max="999999" step="1" /> minutes (0 to disable)</label></div>
       </div>
+    </div>
 
-      <div class="mb-6">
-        <h3 class="text-lg">Army:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="pages-${CONSTANTS.PAGES.ARMY}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.ARMY] ? 'checked="checked"' : ''
-  } /></label></div>
-      </div>
-
-
-      <div class="mb-6">
-        <h3 class="text-lg">Research:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="subpages-${CONSTANTS.SUBPAGES.PRAYERS}" class="option" ${
-    state.options.pages[CONSTANTS.PAGES.RESEARCH] ? 'checked="checked"' : ''
-  } /></label></div>
-
-        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-          <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
-          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-            ${tech
-              .filter((technology) => !technology.confirm)
-              .map((technology) => {
-                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
-                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
-              })
-              .join('')}
-          </div>
-        </div>
-
-        <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-          <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
-          <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-            ${tech
-              .filter((technology) => technology.confirm)
-              .map((technology) => {
-                return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
-                Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
-              })
-              .join('')}
-          </div>
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <h3 class="text-lg">Auto-ancestor:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="automation-ancestor" class="option" ${
-          state.options.automation.ancestor ? 'checked="checked"' : ''
-        } /></label></div>
-
-        <div class="mb-2">
-          Ancestor to pick:
-        </div>
-        <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-          ${[
-            'ancestor_farmer',
-            'ancestor_believer',
-            'ancestor_forager',
-            'ancestor_gatherer',
-            'ancestor_miner',
-            'ancestor_researcher',
-            'ancestor_spellcrafter',
-            'ancestor_trader',
-            'ancestor_warrior',
-          ]
-            .map((ancestor) => {
-              return `<div class="flex flex-col mb-2"><label><input type="radio" name="automation-selected_ancestor" data-id="automation-selected_${ancestor}" class="option" ${
-                state.options.automation[`selected_${ancestor}`] ? 'checked="checked"' : ''
-              } /> ${translate(ancestor)}</label></div>`
-            })
-            .join('')}
-        </div>
-      </div>
-
-      <div class="mb-6">
-        <h3 class="text-lg">Auto-prestige:</h3>
-        <div class="mb-2"><label>Enabled: <input type="checkbox" data-id="automation-prestige" class="option" ${
-          state.options.automation.prestige ? 'checked="checked"' : ''
-        } /></label></div>
-      </div>
-
-      <div class="mb-2">
-        <button id="saveOptions" type="button" class="btn btn-green w-min px-4 mr-2">Save options</button>
-        <button id="exportOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Export options</button>
-        <button id="importOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Import options</button>
-      </div>
-    </p>
     <div class="absolute top-0 right-0 z-20 pt-4 pr-4">
       <a href="#" title="Close" id="closeOptions">X</a>
     </div>
@@ -539,6 +604,43 @@ const createPanel = (startFunction) => {
   document.querySelector('#saveOptions').addEventListener('click', saveOptions)
   document.querySelector('#exportOptions').addEventListener('click', exportOptions)
   document.querySelector('#importOptions').addEventListener('click', importOptions)
+
+  const options = [...document.querySelector(`div#${id}`).querySelectorAll('.option')]
+  options.forEach((option) => {
+    const setting = option.dataset.setting
+    const page = option.dataset.page
+    const subPage = option.dataset.subpage
+    const key = option.dataset.key
+    const subKey = option.dataset.subkey
+
+    let root
+
+    if (setting) {
+      root = state.options[setting]
+    } else {
+      if (subPage) {
+        root = state.options.pages[page].subpages[subPage]
+      } else {
+        root = state.options.pages[page]
+      }
+    }
+
+    if (root) {
+      const value = subKey ? root[key][subKey] : root[key]
+
+      if (typeof value !== 'undefined') {
+        if (option.type === 'checkbox') {
+          if (value) {
+            option.checked = 'checked'
+          }
+        } else if (option.type === 'number') {
+          option.value = value
+        } else if (option.type === 'select-one') {
+          option.value = value
+        }
+      }
+    }
+  })
 }
 
 const updatePanel = () => {}
@@ -547,35 +649,59 @@ let previousScriptState = state.scriptPaused
 
 const togglePanel = () => {
   const panelElement = document.querySelector(`div#${id}`)
-  if (panelElement.style.display === 'none') {
+  panelElement.classList.toggle('taPanelElementVisible')
+  if (panelElement.classList.contains('taPanelElementVisible')) {
     previousScriptState = state.scriptPaused
     state.scriptPaused = true
-    panelElement.style.display = 'block'
   } else {
     state.scriptPaused = previousScriptState
-    panelElement.style.display = 'none'
-  }
 
-  start()
+    if (!state.scriptPaused) {
+      start()
+    }
+  }
 }
 
 const saveOptions = () => {
   const options = [...document.querySelector(`div#${id}`).querySelectorAll('.option')]
   options.forEach((option) => {
-    if (option.type === 'checkbox' || option.type === 'radio') {
-      const ids = option.dataset.id.split('-')
-      state.options[ids[0]][ids[1]] = option.checked
+    const setting = option.dataset.setting
+    const page = option.dataset.page
+    const subPage = option.dataset.subpage
+    const key = option.dataset.key
+    const subKey = option.dataset.subkey
+
+    let value
+    if (option.type === 'checkbox') {
+      value = !!option.checked
     } else if (option.type === 'number') {
-      const ids = option.dataset.id.split('-')
-      state.options[ids[0]][ids[1]] = Math.round(Number(option.value))
+      value = Math.round(Number(option.value))
     } else if (option.type === 'select-one') {
-      const ids = option.dataset.id.split('-')
-      state.options[ids[0]][ids[1]] = parseInt(option.value, 10)
+      value = option.value
+    }
+
+    if (isNumber(value)) {
+      value = +value
+    }
+
+    let root
+
+    if (setting) {
+      root = state.options[setting]
     } else {
-      console.log('Unhandled', option)
-      console.log(option.dataset.id.split('-'))
-      console.log(option.type)
-      console.log(typeof option.value, option.value)
+      if (subPage) {
+        root = state.options.pages[page].subpages[subPage]
+      } else {
+        root = state.options.pages[page]
+      }
+    }
+
+    if (root) {
+      if (subKey) {
+        root[key][subKey] = value
+      } else {
+        root[key] = value
+      }
     }
   })
 
@@ -595,6 +721,8 @@ const importOptions = () => {
   if (saveString) {
     const saveData = JSON.parse(LZString.decompressFromBase64(saveString))
     localStorage.set('options', saveData)
+    state.options = saveData
+    runMigrations()
     location.reload()
   }
 }

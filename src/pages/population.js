@@ -49,23 +49,25 @@ const allJobs = jobs
   })
 
 const userEnabled = () => {
-  return state.options.pages[CONSTANTS.PAGES.POPULATION] || false
+  return state.options.pages[CONSTANTS.PAGES.POPULATION].enabled || false
 }
 
 let allowedJobs
 const getAllJobs = () => {
-  if (Object.keys(state.options[CONSTANTS.PAGES.POPULATION]).length) {
-    let allowedJobs = Object.keys(state.options[CONSTANTS.PAGES.POPULATION])
+  const jobsOptions = state.options.pages[CONSTANTS.PAGES.POPULATION].options
+
+  if (Object.keys(jobsOptions).length) {
+    let allowedJobs = Object.keys(jobsOptions)
       .filter((key) => !key.includes('prio_'))
-      .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][key])
-      .filter((key) => !!state.options[CONSTANTS.PAGES.POPULATION][`prio_${key}`])
+      .filter((key) => !!jobsOptions[key])
+      .filter((key) => !!jobsOptions[`prio_${key}`])
       .map((key) => {
         const jobData = allJobs.find((job) => job.key === key) || {}
 
         const job = {
           ...jobData,
-          max: state.options[CONSTANTS.PAGES.POPULATION][key] === -1 ? 999 : state.options[CONSTANTS.PAGES.POPULATION][key],
-          prio: state.options[CONSTANTS.PAGES.POPULATION][`prio_${key}`],
+          max: jobsOptions[key] === -1 ? 999 : jobsOptions[key],
+          prio: jobsOptions[`prio_${key}`],
         }
 
         return job
@@ -102,13 +104,14 @@ const getAllAvailableJobs = () => {
   return availableJobs
 }
 
-const doPopulationWork = async () => {
+const executeAction = async () => {
   allowedJobs = getAllJobs()
 
   const shouldRebalance =
-    state.options.automation.populationRebalanceTime > 0 ||
-    !state.lastVisited.populationRebalance ||
-    state.lastVisited.populationRebalance + state.options.automation.populationRebalanceTime * 60 * 1000 < new Date().getTime()
+    state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime > 0 &&
+    (!state.lastVisited.populationRebalance ||
+      state.lastVisited.populationRebalance + state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime * 60 * 1000 <
+        new Date().getTime())
 
   if (allowedJobs.length && shouldRebalance) {
     const unassignAllButton = document.querySelector('div.flex.justify-center.mx-auto.pt-3.font-bold.text-lg > button')
@@ -134,7 +137,7 @@ const doPopulationWork = async () => {
   let availableJobs = getAllAvailableJobs()
 
   if (availablePop[0] > 0 && availableJobs.length) {
-    const minimumFood = state.options.automation.minimumFood || 0
+    const minimumFood = state.options.pages[CONSTANTS.PAGES.POPULATION].options.minimumFood || 0
 
     while (!state.scriptPaused && canAssignJobs) {
       canAssignJobs = false
@@ -332,11 +335,11 @@ const doPopulationWork = async () => {
 }
 
 export default {
-  id: CONSTANTS.PAGES.POPULATION,
+  page: CONSTANTS.PAGES.POPULATION,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
 
-    if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await doPopulationWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await executeAction()
   },
 }

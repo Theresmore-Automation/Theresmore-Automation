@@ -3,13 +3,9 @@ import { sleep, state, translate } from '../utils'
 const defaultAncestor = translate('ancestor_gatherer')
 
 const autoAncestor = async () => {
-  if (!state.options.automation.ancestor) return
+  if (!state.options.ancestor.enabled || !state.options.ancestor.selected) return
 
-  let ancestorToSelect = Object.keys(state.options.automation)
-    .filter((key) => key.includes('selected_ancestor_') && state.options.automation[key])
-    .map((key) => translate(key.replace('selected_', '')))
-
-  ancestorToSelect = ancestorToSelect.length > 0 ? ancestorToSelect.shift() : defaultAncestor
+  const ancestorToSelect = translate(state.options.ancestor.selected)
 
   const ancestorPage = document.querySelector(
     '#root > div.mt-6.lg\\:mt-12.xl\\:mt-24.\\32 xl\\:mt-12.\\34 xl\\:mt-24 > div > div.text-center > p.mt-6.lg\\:mt-8.text-lg.lg\\:text-xl.text-gray-500.dark\\:text-gray-400'

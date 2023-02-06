@@ -1,8 +1,8 @@
-import army from './army'
-import build from './build'
-import buildColony from './build-colony'
-import marketplace from './marketplace'
-import population from './population'
-import research from './research'
+import ArmyArmy from './army-army'
+import BuildCity from './build-city'
+import BuildColony from './build-colony'
+import Marketplace from './marketplace'
+import Population from './population'
+import ResearchResearch from './research-research'
 
-export default { army, build, buildColony, marketplace, population, research }
+export default { ArmyArmy, BuildCity, BuildColony, Marketplace, Population, ResearchResearch }

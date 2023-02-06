@@ -1,12 +1,11 @@
 import { sleep, state, translate, localStorage } from '../utils'
 
 const autoPrestige = async () => {
-  if (!state.options.automation.prestige) return
+  if (!state.options.prestige.enabled) return
 
   let prestigeButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Prestige'))
   if (prestigeButton) {
-    Object.keys(state.lastVisited).forEach((key) => (state.lastVisited[key] = 0))
-    localStorage.set('lastVisited', state.lastVisited)
+    localStorage.set('lastVisited', {})
     state.haveManualResourceButtons = true
 
     prestigeButton.click()

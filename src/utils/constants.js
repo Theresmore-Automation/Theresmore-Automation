@@ -19,7 +19,20 @@ const SUBPAGES = {
   GARRISON: 'Garrison',
 }
 
+const SUBPAGE_MAPPING = {
+  CITY: 'BUILD',
+  COLONY: 'BUILD',
+  RESEARCH: 'RESEARCH',
+  SPELLS: 'MAGIC',
+  PRAYERS: 'MAGIC',
+  ARMY: 'ARMY',
+  EXPLORE: 'ARMY',
+  ATTACK: 'ARMY',
+  GARRISON: 'ARMY',
+}
+
 export default {
   PAGES,
   SUBPAGES,
+  SUBPAGE_MAPPING,
 }

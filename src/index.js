@@ -26,12 +26,30 @@ const mainLoop = async () => {
   mainLoopRunning = true
 
   while (!state.scriptPaused) {
+    tasks.cosmetics.removeToasts()
     await tasks.autoPrestige()
     await tasks.autoAncestor()
 
-    const pagesToCheck = Object.keys(pages)
+    const pagesToCheck = []
+    Object.keys(state.options.pages).forEach((page) => {
+      if (state.options.pages[page].enabled) {
+        if (pages[page]) {
+          pagesToCheck.push(page)
+        }
+
+        if (state.options.pages[page].subpages) {
+          Object.keys(state.options.pages[page].subpages).forEach((subpage) => {
+            if (state.options.pages[page].subpages[subpage].enabled) {
+              if (pages[page + subpage]) {
+                pagesToCheck.push(page + subpage)
+              }
+            }
+          })
+        }
+      }
+    })
     pagesToCheck.sort((a, b) => {
-      return state.lastVisited[pages[a].id] - state.lastVisited[pages[b].id]
+      return state.lastVisited[a] - state.lastVisited[b]
     })
 
     while (!state.scriptPaused && pagesToCheck.length) {
@@ -41,20 +59,11 @@ const mainLoop = async () => {
         const page = pages[pageToCheck]
 
         if (page) {
-          logger({ msgLevel: 'debug', msg: `Executing ${page.id} action` })
-          state.lastVisited[page.id] = new Date().getTime()
+          logger({ msgLevel: 'debug', msg: `Executing page ${page.page} ${page.subpage ? page.subpage : ''} action` })
+          state.lastVisited[pageToCheck] = new Date().getTime()
           localStorage.set('lastVisited', state.lastVisited)
           await page.action()
           await sleep(1000)
-
-          if (page === CONSTANTS.PAGES.BUILD) {
-            page = pages[CONSTANTS.SUBPAGES.COLONY]
-            logger({ msgLevel: 'debug', msg: `Executing ${page.id} action` })
-            state.lastVisited[page.id] = new Date().getTime()
-            localStorage.set('lastVisited', state.lastVisited)
-            await page.action()
-            await sleep(1000)
-          }
         }
       }
     }
@@ -66,6 +75,7 @@ const mainLoop = async () => {
 }
 
 const init = async () => {
+  tasks.manageStyles.appendStyles()
   tasks.managePanel.createPanel(switchScriptState)
   tasks.manageOptions.createPanel(start)
   tasks.managePanel.updatePanel()
@@ -85,7 +95,8 @@ const start = async () => {
     logger({ msgLevel: 'log', msg: 'Starting automation' })
 
     if (!hideFullPageOverlayInterval) {
-      hideFullPageOverlayInterval = setInterval(tasks.hideFullPageOverlay, 100)
+      clearInterval(hideFullPageOverlayInterval)
+      hideFullPageOverlayInterval = setInterval(tasks.cosmetics.hideFullPageOverlay, 1000)
     }
 
     await sleep(2000)
@@ -95,9 +106,9 @@ const start = async () => {
     await sleep(5000)
     tasks.autoClicker()
   } else {
-    clearInterval(hideFullPageOverlayInterval)
-
-    hideFullPageOverlayInterval = null
+    if (!hideFullPageOverlayInterval) {
+      clearInterval(hideFullPageOverlayInterval)
+    }
   }
 }
 
