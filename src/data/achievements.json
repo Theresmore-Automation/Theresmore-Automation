@@ -77,6 +77,44 @@
             "perc": true
           }
         ]
+      },
+      {
+        "id": "60_prestige",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "reset",
+            "value": 60
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 15,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "120_prestige",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "reset",
+            "value": 120
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 20,
+            "perc": true
+          }
+        ]
       }
     ]
   },
@@ -593,6 +631,129 @@
     ]
   },
   {
+    "id": "orc_horde_boss",
+    "ach": [
+      {
+        "id": "orc_horde_boss",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "tech",
+            "id": "orc_horde",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 5
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "orc_horde_boss_dif_1",
+    "ach": [
+      {
+        "id": "orc_horde_boss_dif_1",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "tech",
+            "id": "orc_horde",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 15
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "orc_horde_boss_dif_2",
+    "ach": [
+      {
+        "id": "orc_horde_boss_dif_2",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "tech",
+            "id": "orc_horde",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 30
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 5,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 5,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 5,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arch_triumph",
+    "ach": [
+      {
+        "id": "arch_triumph",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "building",
+            "id": "arch_triumph",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 10,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "city_center",
     "ach": [
       {
@@ -731,6 +892,48 @@
     ]
   },
   {
+    "id": "automated_complex",
+    "ach": [
+      {
+        "id": "automated_complex",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "automated_complex",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "building_material",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "supplies",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "city_lights",
     "ach": [
       {
@@ -766,6 +969,42 @@
     ]
   },
   {
+    "id": "fortified_citadel",
+    "ach": [
+      {
+        "id": "fortified_citadel",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "building",
+            "id": "fortified_citadel",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "settlement_defenses",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 50,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "settlement_defenses",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 25,
+            "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "harbor_district",
     "ach": [
       {
@@ -795,6 +1034,42 @@
             "type": "resource",
             "id": "food",
             "value": 2,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "holy_site",
+    "ach": [
+      {
+        "id": "holy_site",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "building",
+            "id": "holy_site",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "faith",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 3,
             "perc": true
           }
         ]
@@ -902,6 +1177,54 @@
             "type": "resource",
             "id": "supplies",
             "value": 2,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "statue_virtue",
+    "ach": [
+      {
+        "id": "statue_virtue",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "building",
+            "id": "statue_virtue",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "wood",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "stone",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "tools",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "copper",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "iron",
+            "value": 3,
             "perc": true
           }
         ]
@@ -1310,6 +1633,169 @@
     ]
   },
   {
+    "id": "artisans_complex",
+    "ach": [
+      {
+        "id": "5_artisans_complex",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "artisans_complex",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 1000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 1000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 1000
+          }
+        ]
+      },
+      {
+        "id": "15_artisans_complex",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "artisans_complex",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 2000
+          }
+        ]
+      },
+      {
+        "id": "25_artisans_complex",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "builders_complex",
+            "value": 25
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 4000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "builders_complex",
+    "ach": [
+      {
+        "id": "5_builders_complex",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "builders_complex",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 1250
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 1250
+          }
+        ]
+      },
+      {
+        "id": "15_builders_complex",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "builders_complex",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 2500
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 2500
+          }
+        ]
+      },
+      {
+        "id": "25_builders_complex",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "builders_complex",
+            "value": 25
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 5000
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 5000
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "city_hall",
     "ach": [
       {
@@ -1424,7 +1910,7 @@
           {
             "type": "cap",
             "id": "research",
-            "value": 1e3
+            "value": 1000
           }
         ]
       }
@@ -1567,6 +2053,201 @@
             "id": "food",
             "value": 10,
             "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "colony_hall",
+    "ach": [
+      {
+        "id": "5_colony_hall",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "colony_hall",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "food",
+            "value": 500
+          },
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 500
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 500
+          }
+        ]
+      },
+      {
+        "id": "10_colony_hall",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "colony_hall",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "food",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 1500
+          }
+        ]
+      },
+      {
+        "id": "15_colony_hall",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "colony_hall",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "food",
+            "value": 2500
+          },
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 2500
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 2500
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elf_encampment",
+    "ach": [
+      {
+        "id": "5_elf_encampment",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_encampment",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 1,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_elf_encampment",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_encampment",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elf_village",
+    "ach": [
+      {
+        "id": "5_elf_village",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_village",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "crystal",
+            "value": 500
+          },
+          {
+            "type": "cap",
+            "id": "horse",
+            "value": 250
+          }
+        ]
+      },
+      {
+        "id": "10_elf_village",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_village",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "crystal",
+            "value": 1000
+          },
+          {
+            "type": "cap",
+            "id": "horse",
+            "value": 500
           }
         ]
       }
@@ -1721,6 +2402,52 @@
             "id": "food",
             "value": 1,
             "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "siege_workshop",
+    "ach": [
+      {
+        "id": "10_siege_workshop",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "siege_workshop",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "artillery_firing",
+    "ach": [
+      {
+        "id": "10_artillery_firing",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "artillery_firing",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 5
           }
         ]
       }
@@ -2427,7 +3154,493 @@
           {
             "type": "cap",
             "id": "research",
-            "value": 1e3
+            "value": 1000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "factory",
+    "ach": [
+      {
+        "id": "5_factory",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "factory",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "building_material",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_factory",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "factory",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "building_material",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "logistic_center",
+    "ach": [
+      {
+        "id": "5_logistic_center",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "logistic_center",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 1,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_logistic_center",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "logistic_center",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mana_reactor",
+    "ach": [
+      {
+        "id": "5_mana_reactor",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_reactor",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_mana_reactor",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_reactor",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ministry_development",
+    "ach": [
+      {
+        "id": "5_ministry_development",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "ministry_development",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_ministry_development",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "ministry_development",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "railway_station",
+    "ach": [
+      {
+        "id": "5_railway_station",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "railway_station",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_railway_station",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "railway_station",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shed",
+    "ach": [
+      {
+        "id": "5_shed",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "shed",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "building_material",
+            "value": 100
+          },
+          {
+            "type": "cap",
+            "id": "steel",
+            "value": 100
+          },
+          {
+            "type": "cap",
+            "id": "supplies",
+            "value": 100
+          },
+          {
+            "type": "cap",
+            "id": "crystal",
+            "value": 100
+          }
+        ]
+      },
+      {
+        "id": "15_shed",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "shed",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "building_material",
+            "value": 150
+          },
+          {
+            "type": "cap",
+            "id": "steel",
+            "value": 150
+          },
+          {
+            "type": "cap",
+            "id": "supplies",
+            "value": 150
+          },
+          {
+            "type": "cap",
+            "id": "crystal",
+            "value": 150
+          }
+        ]
+      },
+      {
+        "id": "30_shed",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "shed",
+            "value": 30
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "building_material",
+            "value": 200
+          },
+          {
+            "type": "cap",
+            "id": "steel",
+            "value": 200
+          },
+          {
+            "type": "cap",
+            "id": "supplies",
+            "value": 200
+          },
+          {
+            "type": "cap",
+            "id": "crystal",
+            "value": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "large_shed",
+    "ach": [
+      {
+        "id": "5_large_shed",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "large_shed",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 250
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 250
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 250
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 250
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 250
+          }
+        ]
+      },
+      {
+        "id": "15_large_shed",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "large_shed",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 750
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 750
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 750
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 750
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 750
+          }
+        ]
+      },
+      {
+        "id": "25_large_shed",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "large_shed",
+            "value": 25
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 1500
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 1500
           }
         ]
       }
@@ -3667,27 +4880,27 @@
           {
             "type": "cap",
             "id": "wood",
-            "value": 1e3
+            "value": 1000
           },
           {
             "type": "cap",
             "id": "stone",
-            "value": 1e3
+            "value": 1000
           },
           {
             "type": "cap",
             "id": "copper",
-            "value": 1e3
+            "value": 1000
           },
           {
             "type": "cap",
             "id": "iron",
-            "value": 1e3
+            "value": 1000
           },
           {
             "type": "cap",
             "id": "tools",
-            "value": 1e3
+            "value": 1000
           }
         ]
       }
@@ -3890,7 +5103,7 @@
           {
             "type": "cap",
             "id": "natronite",
-            "value": 1e3
+            "value": 1000
           }
         ]
       }
@@ -4037,6 +5250,77 @@
             "type": "cap",
             "id": "army",
             "value": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trench",
+    "ach": [
+      {
+        "id": "5_trench",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "trench",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "settlement_defenses",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 15,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "15_trench",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "trench",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "settlement_defenses",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 30,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "25_trench",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "trench",
+            "value": 25
+          }
+        ],
+        "gen": [
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "settlement_defenses",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 70,
+            "perc": false
           }
         ]
       }

@@ -319,7 +319,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "tech",
@@ -335,7 +335,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "tech",
@@ -351,7 +351,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "tech",
@@ -367,7 +367,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "tech",
@@ -383,7 +383,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "enemy",
@@ -436,7 +436,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "enemy",
@@ -479,7 +479,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "enemy",
@@ -539,7 +539,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
@@ -650,7 +650,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 4e3
+        "value": 4000
       },
       {
         "type": "tech",
@@ -666,7 +666,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 4e3
+        "value": 4000
       },
       {
         "type": "resource",
@@ -687,7 +687,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "building",
@@ -703,7 +703,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "building",
@@ -739,7 +739,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
@@ -760,12 +760,12 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
         "id": "steel",
-        "value": 3e3
+        "value": 3000
       },
       {
         "type": "enemy",
@@ -781,12 +781,12 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
         "id": "iron",
-        "value": 8e3
+        "value": 8000
       },
       {
         "type": "enemy",
@@ -802,12 +802,12 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "resource",
         "id": "faith",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "enemy",
@@ -823,7 +823,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "tech",
@@ -835,7 +835,7 @@
       {
         "type": "cap",
         "id": "gold",
-        "value": 2e4
+        "value": 20000
       }
     ]
   },
@@ -846,7 +846,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "building",
@@ -862,7 +862,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "building",
@@ -878,7 +878,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "building",
@@ -894,7 +894,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "building",
@@ -910,7 +910,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "building",
@@ -926,12 +926,12 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "mana",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "tech",
@@ -947,7 +947,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "building",
@@ -983,7 +983,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 13e3
+        "value": 13000
       },
       {
         "type": "tech",
@@ -1006,7 +1006,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 13e3
+        "value": 13000
       },
       {
         "type": "tech",
@@ -1050,7 +1050,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "tech",
@@ -1066,7 +1066,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 22e3
+        "value": 22000
       },
       {
         "type": "resource",
@@ -1094,7 +1094,7 @@
       {
         "type": "resource",
         "id": "steel",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "resource",
@@ -1112,6 +1112,107 @@
         "type": "prayer",
         "id": "protection_power",
         "value": -1
+      }
+    ]
+  },
+  {
+    "id": "pilgrim_chant",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 16000
+      },
+      {
+        "type": "tech",
+        "id": "faith_world",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "warrior_gods",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 18000
+      },
+      {
+        "type": "tech",
+        "id": "new_old_gods",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "blessing_church",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "new_old_gods",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "shape_mana",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 12000
+      },
+      {
+        "type": "tech",
+        "id": "mana_investigation",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "blessing_prelate",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25000
+      },
+      {
+        "type": "tech",
+        "id": "colonial_consacration",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "hope_children",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 15000
+      },
+      {
+        "type": "enemy",
+        "id": "gulud_ugdun",
+        "value": 1
       }
     ]
   },
@@ -1840,6 +1941,47 @@
     ]
   },
   {
+    "id": "church_ritual",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "blessing_church",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 25,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 25,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "great_seeker_eyesight",
     "type": "spell",
     "req": [
@@ -1965,6 +2107,57 @@
     ]
   },
   {
+    "id": "new_world_chant",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "pilgrim_chant",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 5
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "spearman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "spearman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 3,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "old_small_one_grace",
     "type": "spell",
     "req": [
@@ -2051,87 +2244,6 @@
         "gen": "defense",
         "value": 5,
         "perc": false
-      }
-    ]
-  },
-  {
-    "id": "northern_star_protection",
-    "type": "spell",
-    "req": [
-      {
-        "type": "prayer",
-        "id": "protection_power",
-        "value": 1
-      }
-    ],
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": -50
-      },
-      {
-        "type": "modifier",
-        "type_id": "army",
-        "id": "settlement_defenses",
-        "type_gen": "stat",
-        "gen": "defense",
-        "value": 500,
-        "perc": false
-      }
-    ]
-  },
-  {
-    "id": "northern_star_incremental",
-    "type": "spell",
-    "req": [
-      {
-        "type": "prayer",
-        "id": "incremental_power",
-        "value": 1
-      }
-    ],
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": -50
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "steel",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "saltpetre",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "natronite",
-        "value": 15,
-        "perc": true
       }
     ]
   },
@@ -2244,6 +2356,60 @@
     ]
   },
   {
+    "id": "mana_armor",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "shape_mana",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -30
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "priest",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "shieldbearer",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "druid_blessing",
     "type": "spell",
     "req": [
@@ -2321,6 +2487,186 @@
         "gen": "defense",
         "value": 50,
         "perc": false
+      }
+    ]
+  },
+  {
+    "id": "northern_star_protection",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "protection_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 500,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "northern_star_incremental",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "incremental_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "army_blessing",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "blessing_prelate",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -60
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 25,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "children_hope",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "hope_children",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -200
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 25,
+        "perc": true
       }
     ]
   }

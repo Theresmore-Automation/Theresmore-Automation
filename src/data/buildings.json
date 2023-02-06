@@ -96,7 +96,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 2
       },
       {
@@ -150,7 +150,7 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -210,19 +210,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 4e3,
+        "value": 4000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -270,19 +270,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -311,6 +311,95 @@
     ]
   },
   {
+    "id": "ministry_interior",
+    "cat": "living_quarters",
+    "tab": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "ministry_interior_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "merchant",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "professor",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "supplier",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 6
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.5
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 8000
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "supplies",
+        "value": 3000
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 4
+      }
+    ]
+  },
+  {
     "id": "gan_eden",
     "cat": "living_quarters",
     "tab": 1,
@@ -319,19 +408,19 @@
       {
         "type": "resource",
         "id": "food",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.2
       },
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.2
       },
       {
         "type": "resource",
         "id": "mana",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.2
       },
       {
@@ -387,6 +476,71 @@
         "type": "population",
         "id": "unemployed",
         "value": 2
+      }
+    ]
+  },
+  {
+    "id": "ministry_development",
+    "cat": "living_quarters",
+    "tab": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "centralized_power",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -2
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 1000
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 3
       }
     ]
   },
@@ -639,6 +793,55 @@
     ]
   },
   {
+    "id": "stonemason",
+    "cat": "resource",
+    "tab": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 180,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 180,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 140,
+        "multi": 1.3
+      },
+      {
+        "type": "tech",
+        "id": "stone_processing",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 750
+      }
+    ]
+  },
+  {
     "id": "mine",
     "cat": "resource",
     "tab": 1,
@@ -701,6 +904,107 @@
         "type": "cap",
         "id": "iron",
         "value": 100
+      }
+    ]
+  },
+  {
+    "id": "titan_work_area",
+    "cat": "resource",
+    "tab": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1500,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1000,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 800,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 200,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 150,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 100,
+        "multi": 1.5
+      },
+      {
+        "type": "tech",
+        "id": "architecture_titan_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 25000
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 25000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 15000
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 15000
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 15000
       }
     ]
   },
@@ -849,7 +1153,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -947,7 +1251,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -1119,7 +1423,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -1346,7 +1650,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 8e3,
+        "value": 8000,
         "multi": 1.4
       },
       {
@@ -1358,13 +1662,13 @@
       {
         "type": "resource",
         "id": "iron",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.4
       },
       {
@@ -1487,7 +1791,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.2
       },
       {
@@ -1545,7 +1849,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.3
       },
       {
@@ -1617,6 +1921,81 @@
     ]
   },
   {
+    "id": "factory",
+    "cat": "resource",
+    "tab": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 7000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 7000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 5000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "assembly_line",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 0.1
+      }
+    ]
+  },
+  {
     "id": "school",
     "cat": "science",
     "tab": 1,
@@ -1667,7 +2046,7 @@
       {
         "type": "cap",
         "id": "research",
-        "value": 1e3
+        "value": 1000
       }
     ]
   },
@@ -1727,7 +2106,7 @@
       {
         "type": "cap",
         "id": "research",
-        "value": 2e3
+        "value": 2000
       }
     ]
   },
@@ -1827,13 +2206,13 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -2068,12 +2447,12 @@
       {
         "type": "resource",
         "id": "research",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "resource",
         "id": "faith",
-        "value": 4e3
+        "value": 4000
       },
       {
         "type": "tech",
@@ -2115,13 +2494,13 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 8e3,
+        "value": 8000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.4
       },
       {
@@ -2133,7 +2512,7 @@
       {
         "type": "resource",
         "id": "building_material",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -2169,19 +2548,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 4e3,
+        "value": 4000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "crystal",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -2205,7 +2584,57 @@
       {
         "type": "cap",
         "id": "research",
-        "value": 4e3
+        "value": 4000
+      }
+    ]
+  },
+  {
+    "id": "island_outpost",
+    "cat": "science",
+    "tab": 1,
+    "cap": 5,
+    "age": 4,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 15000,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 8000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500,
+        "multi": 1.5
+      },
+      {
+        "type": "tech",
+        "id": "outpost_tiny_island",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 6000
       }
     ]
   },
@@ -2398,12 +2827,12 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "tech",
@@ -2423,6 +2852,97 @@
     ]
   },
   {
+    "id": "titanic_walls",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "titanic_walls_part",
+        "value": 12,
+        "consume": true
+      },
+      {
+        "type": "building",
+        "id": "wall",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "wall_titan_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2000,
+        "perc": false
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "titanic_walls_part",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 12,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 12000
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 5000
+      },
+      {
+        "type": "building",
+        "id": "wall",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "wall_titan_t",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "barracks",
     "cat": "defense",
     "tab": 1,
@@ -2431,7 +2951,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -2541,7 +3061,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.4
       },
       {
@@ -2622,13 +3142,13 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -2685,7 +3205,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e4,
+        "value": 10000,
         "multi": 2
       },
       {
@@ -2737,7 +3257,7 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.5
       },
       {
@@ -2774,6 +3294,64 @@
     ]
   },
   {
+    "id": "siege_workshop",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 10,
+    "age": 2,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2500,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1500,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1500,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 600,
+        "multi": 1.4
+      },
+      {
+        "type": "tech",
+        "id": "besieging_engineers",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battering_ram",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "trebuchet",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "magical_tower",
     "cat": "defense",
     "tab": 1,
@@ -2783,7 +3361,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 8e3,
+        "value": 8000,
         "multi": 1.4
       },
       {
@@ -2834,7 +3412,7 @@
       {
         "type": "resource",
         "id": "saltpetre",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -2870,25 +3448,25 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "iron",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.5
       },
       {
@@ -2948,6 +3526,84 @@
     ]
   },
   {
+    "id": "ministry_war",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 15,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 6000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "ministry_war_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "arquebusier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 2500
+      },
+      {
+        "type": "cap",
+        "id": "supplies",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      }
+    ]
+  },
+  {
     "id": "officer_training_ground",
     "cat": "defense",
     "tab": 1,
@@ -2957,7 +3613,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 12e3,
+        "value": 12000,
         "multi": 1.4
       },
       {
@@ -2969,13 +3625,13 @@
       {
         "type": "resource",
         "id": "steel",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "supplies",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -3020,6 +3676,64 @@
     ]
   },
   {
+    "id": "artillery_firing",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 10,
+    "age": 4,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 5000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 2000,
+        "multi": 1.4
+      },
+      {
+        "type": "tech",
+        "id": "veteran_artillerymen",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "bombard",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cannon",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "natronite_shield",
     "cat": "defense",
     "tab": 1,
@@ -3029,12 +3743,12 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "resource",
         "id": "natronite",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "tech",
@@ -3234,7 +3948,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 4e3
+        "value": 4000
       },
       {
         "type": "resource",
@@ -3310,7 +4024,7 @@
       {
         "type": "cap",
         "id": "faith",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
@@ -3329,7 +4043,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 4e3
+        "value": 4000
       },
       {
         "type": "resource",
@@ -3339,7 +4053,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -3418,7 +4132,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 14e3
+        "value": 14000
       },
       {
         "type": "resource",
@@ -3428,7 +4142,7 @@
       {
         "type": "resource",
         "id": "building_material",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -3508,7 +4222,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "resource",
@@ -3595,27 +4309,27 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 12e3
+        "value": 12000
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 12e3
+        "value": 12000
       },
       {
         "type": "resource",
         "id": "copper",
-        "value": 8e3
+        "value": 8000
       },
       {
         "type": "resource",
         "id": "iron",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "prayer",
@@ -3653,7 +4367,7 @@
       {
         "type": "cap",
         "id": "gold",
-        "value": 5e4
+        "value": 50000
       },
       {
         "type": "tech",
@@ -3672,12 +4386,12 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 7e4
+        "value": 70000
       },
       {
         "type": "resource",
         "id": "steel",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "resource",
@@ -3729,17 +4443,17 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
         "id": "crystal",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "enemy",
@@ -3792,7 +4506,7 @@
       {
         "type": "cap",
         "id": "mana",
-        "value": 2e3
+        "value": 2000
       }
     ]
   },
@@ -3806,22 +4520,22 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 24e3
+        "value": 24000
       },
       {
         "type": "resource",
         "id": "steel",
-        "value": 6e3
+        "value": 6000
       },
       {
         "type": "resource",
         "id": "crystal",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
         "id": "saltpetre",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "tech",
@@ -3886,22 +4600,22 @@
       {
         "type": "resource",
         "id": "research",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 3e3
+        "value": 3000
       },
       {
         "type": "tech",
@@ -3944,27 +4658,27 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "cap",
         "id": "natronite",
-        "value": 2e3
+        "value": 2000
       }
     ]
   },
@@ -3978,32 +4692,32 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 8e4
+        "value": 80000
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 3e4
+        "value": 30000
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "steel",
-        "value": 7e3
+        "value": 7000
       },
       {
         "type": "resource",
         "id": "natronite",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "tech",
@@ -4062,31 +4776,191 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 125e3
+        "value": 125000
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 5e4
+        "value": 50000
       },
       {
         "type": "resource",
         "id": "copper",
-        "value": 3e4
+        "value": 30000
       },
       {
         "type": "resource",
         "id": "mana",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "resource",
         "id": "natronite",
-        "value": 8e3
+        "value": 8000
       },
       {
         "type": "tech",
         "id": "natrocity",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "automated_complex",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "automated_complex_part",
+        "value": 12,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 300,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 25,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "automated_complex_part",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 12,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 250000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 50000
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 35000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 35000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "replicable_parts",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "arch_triumph",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "arch_triumph_part",
+        "value": 25,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 1000,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "arch_triumph_part",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 25,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 350000
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 150000
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 150000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 60000
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 60000
+      },
+      {
+        "type": "tech",
+        "id": "the_triumph",
         "value": 1
       }
     ]
@@ -4322,7 +5196,7 @@
       {
         "type": "cap",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       }
     ]
   },
@@ -4379,19 +5253,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -4433,7 +5307,7 @@
       {
         "type": "cap",
         "id": "gold",
-        "value": 2e3
+        "value": 2000
       }
     ]
   },
@@ -4447,19 +5321,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 4e3,
+        "value": 4000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "wood",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.5
       },
       {
@@ -4492,13 +5366,13 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e4,
+        "value": 20000,
         "multi": 2.5
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 5e3,
+        "value": 5000,
         "multi": 1.5
       },
       {
@@ -4530,13 +5404,13 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 15e3,
+        "value": 15000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.3
       },
       {
@@ -4581,7 +5455,85 @@
       {
         "type": "cap",
         "id": "gold",
-        "value": 4e3
+        "value": 4000
+      }
+    ]
+  },
+  {
+    "id": "railway_station",
+    "cat": "commercial_area",
+    "tab": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 12000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 5000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "railroad",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 4000
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
       }
     ]
   },
@@ -4692,7 +5644,7 @@
       {
         "type": "resource",
         "id": "research",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -4743,13 +5695,13 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -4798,7 +5750,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -4857,13 +5809,13 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.4
       },
       {
         "type": "resource",
         "id": "copper",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.4
       },
       {
@@ -5115,6 +6067,98 @@
     ]
   },
   {
+    "id": "ministry_worship",
+    "cat": "faith",
+    "tab": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 4000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "ministry_worship_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "skymancer",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 3000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 3000
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 2000
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      }
+    ]
+  },
+  {
     "id": "conclave",
     "cat": "faith",
     "tab": 1,
@@ -5123,19 +6167,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 8e3,
+        "value": 8000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.5
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.5
       },
       {
@@ -5211,7 +6255,7 @@
       {
         "type": "resource",
         "id": "research",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "resource",
@@ -5240,12 +6284,12 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 8e3
+        "value": 8000
       },
       {
         "type": "resource",
@@ -5294,7 +6338,7 @@
       {
         "type": "resource",
         "id": "crystal",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.5
       },
       {
@@ -5342,12 +6386,12 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "resource",
         "id": "natronite",
-        "value": 8e3
+        "value": 8000
       },
       {
         "type": "tech",
@@ -5365,6 +6409,66 @@
         "type": "resource",
         "id": "food",
         "value": 4
+      }
+    ]
+  },
+  {
+    "id": "mana_reactor",
+    "cat": "faith",
+    "tab": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "mana_reactors",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 1250
       }
     ]
   },
@@ -5493,13 +6597,13 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -5563,19 +6667,19 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.3
       },
       {
         "type": "resource",
         "id": "tools",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.3
       },
       {
@@ -5633,13 +6737,13 @@
       {
         "type": "resource",
         "id": "iron",
-        "value": 3e3,
+        "value": 3000,
         "multi": 1.2
       },
       {
         "type": "resource",
         "id": "building_material",
-        "value": 1e3,
+        "value": 1000,
         "multi": 1.2
       },
       {
@@ -5696,7 +6800,7 @@
       {
         "type": "resource",
         "id": "iron",
-        "value": 4e3,
+        "value": 4000,
         "multi": 1.2
       },
       {
@@ -5708,7 +6812,7 @@
       {
         "type": "resource",
         "id": "steel",
-        "value": 2e3,
+        "value": 2000,
         "multi": 1.2
       },
       {
@@ -5721,12 +6825,12 @@
       {
         "type": "cap",
         "id": "building_material",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
@@ -5779,6 +6883,1776 @@
         "type": "cap",
         "id": "natronite",
         "value": 600
+      }
+    ]
+  },
+  {
+    "id": "logistic_center",
+    "cat": "warehouse",
+    "tab": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 20000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 8500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "mass_transit",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 0.6
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.1
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 2000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 2000
+      },
+      {
+        "type": "cap",
+        "id": "natronite",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "colony_hall",
+    "cat": "living_quarters",
+    "tab": 2,
+    "cap": 15,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 30000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 25000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 8000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "the_journey",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "farmer",
+        "value": 2
+      },
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -10
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -5
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 3000
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 3000
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 3000
+      }
+    ]
+  },
+  {
+    "id": "builders_complex",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 22000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 16000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 8000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_exploitations",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 7500
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 7500
+      }
+    ]
+  },
+  {
+    "id": "artisans_complex",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 22000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "artisan_complex",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "miner",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "artisan",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "artisan",
+        "type_gen": "resource",
+        "gen": "tools",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "elf_village",
+    "cat": "living_quarters",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 80000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "elf_last_village",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 250
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 200
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "elf_encampment",
+    "cat": "science",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 50000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 7000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "elf_survivors",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1.5
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 2000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 2000
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "dock",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 12000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 7000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1200,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "productive_hub",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_docks",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "fisher",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "fisher",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "merchant",
+        "type_gen": "resource",
+        "gen": "gold",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "refinery",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 15000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 7500,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 4500,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1400,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "productive_hub",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "overseas_refinery",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "carpenter",
+        "type_gen": "resource",
+        "gen": "building_material",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "steelworker",
+        "type_gen": "resource",
+        "gen": "steel",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "alchemist",
+        "type_gen": "resource",
+        "gen": "saltpetre",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "natro_refiner",
+        "type_gen": "resource",
+        "gen": "natronite",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "natronite",
+        "value": 250
+      }
+    ]
+  },
+  {
+    "id": "custom_house",
+    "cat": "commercial_area",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 30000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 25000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "productive_hub",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_trade",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "merchant",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "trader",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "merchant",
+        "type_gen": "resource",
+        "gen": "gold",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "trader",
+        "type_gen": "resource",
+        "gen": "gold",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "estates",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 6000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 1000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "productive_hub",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "landed_estates",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "farmer",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "breeder",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "supplier",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "farmer",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "breeder",
+        "type_gen": "resource",
+        "gen": "cow",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "breeder",
+        "type_gen": "resource",
+        "gen": "horse",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "cow",
+        "value": 400
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 200
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 10
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "trench",
+    "cat": "defense",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "trenches",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 50,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "marksman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "marksman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "shed",
+    "cat": "warehouse",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 20000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 16000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 9000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "the_journey",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "building_material",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "steel",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "supplies",
+        "value": 750
+      },
+      {
+        "type": "cap",
+        "id": "saltpetre",
+        "value": 750
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "large_shed",
+    "cat": "warehouse",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 32000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 22000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 14000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "large_shed_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 10000
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 10000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 7500
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 7500
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 7500
+      }
+    ]
+  },
+  {
+    "id": "statue_virtue",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "statue_virtue_part",
+        "value": 20,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 350,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 30
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 15
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "statue_virtue_part",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 20,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 140000
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 200000
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 50000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15000
+      },
+      {
+        "type": "tech",
+        "id": "port_statue",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "military_camp",
+    "cat": "defense",
+    "tab": 2,
+    "cap": 15,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 30000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 15000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 5000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1200,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_camp",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "quartermaster",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "stronghold",
+    "cat": "defense",
+    "tab": 2,
+    "cap": 15,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 30000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 8000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_stronghold",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 25,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 1500
+      },
+      {
+        "type": "cap",
+        "id": "supplies",
+        "value": 1500
+      },
+      {
+        "type": "cap",
+        "id": "natronite",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "colony_recruiting_camp",
+    "cat": "defense",
+    "tab": 2,
+    "cap": 15,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 35000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 18000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 5000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "colonial_recruits",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "quartermaster",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "commander",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "fortified_citadel",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "fortified_citadel_part",
+        "value": 20,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 350,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 500,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 500,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cannon",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 20,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cannon",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 40,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 50
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "fortified_citadel_part",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 20,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 200000
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 50000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15000
+      },
+      {
+        "type": "tech",
+        "id": "fortified_colony",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "pilgrim_camp",
+    "cat": "faith",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 12000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 1500,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "faith_world",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 250
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "church_old_gods",
+    "cat": "faith",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 15000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 8000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 6000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "new_old_gods",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 1500
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 1000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "sacred_golem",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "priest",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "mana_extractors",
+    "cat": "faith",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 12000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 12000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "mana_investigation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "harvester",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 2000
+      }
+    ]
+  },
+  {
+    "id": "holy_site",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "holy_site_part",
+        "value": 20,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 350,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 25,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior_monk",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "holy_site_part",
+    "cat": "wonders",
+    "tab": 2,
+    "cap": 20,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 200000
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 20000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 17500
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15000
+      },
+      {
+        "type": "tech",
+        "id": "colonial_consacration",
+        "value": 1
       }
     ]
   }

@@ -199,5 +199,9 @@
   {
     "id": "gem",
     "hidden": true
+  },
+  {
+    "id": "titan_gift",
+    "hidden": true
   }
 ]

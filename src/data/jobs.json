@@ -20,6 +20,23 @@
     ]
   },
   {
+    "id": "fisher",
+    "req": [
+      {
+        "type": "building",
+        "id": "dock",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2.8
+      }
+    ]
+  },
+  {
     "id": "lumberjack",
     "req": [
       {
@@ -301,6 +318,33 @@
     ]
   },
   {
+    "id": "harvester",
+    "req": [
+      {
+        "type": "building",
+        "id": "mana_extractors",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      }
+    ]
+  },
+  {
     "id": "alchemist",
     "req": [
       {
@@ -341,6 +385,33 @@
         "type": "resource",
         "id": "saltpetre",
         "value": -0.5
+      }
+    ]
+  },
+  {
+    "id": "quartermaster",
+    "req": [
+      {
+        "type": "building",
+        "id": "military_camp",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.2
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -3
       }
     ]
   }

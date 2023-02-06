@@ -67,7 +67,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -111,7 +111,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       }
     ],
     "reqAttack": [
@@ -194,7 +194,7 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 1e3
+        "value": 1000
       }
     ],
     "reqAttack": [
@@ -233,7 +233,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -287,7 +287,7 @@
       {
         "type": "resource",
         "id": "wood",
-        "value": 2e3
+        "value": 2000
       }
     ],
     "reqAttack": [
@@ -373,7 +373,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -459,7 +459,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
@@ -503,12 +503,12 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
         "id": "saltpetre",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -528,6 +528,204 @@
         "type": "resource",
         "id": "gold",
         "value": -15
+      }
+    ]
+  },
+  {
+    "id": "artillery",
+    "type": "army",
+    "attack": 160,
+    "defense": 15,
+    "order": 3,
+    "category": 1,
+    "req": [
+      {
+        "type": "tech",
+        "id": "metal_alloys",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15000
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 200
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -25
+      }
+    ]
+  },
+  {
+    "id": "ranger",
+    "type": "army",
+    "attack": 22,
+    "defense": 15,
+    "order": 3,
+    "cap": 50,
+    "category": 1,
+    "req": [
+      {
+        "type": "tech",
+        "id": "guerrilla_warfare",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1000
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 50
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1.2
+      }
+    ]
+  },
+  {
+    "id": "elf_warrior",
+    "type": "army",
+    "attack": 62,
+    "defense": 55,
+    "order": 3,
+    "cap": 25,
+    "category": 1,
+    "req": [
+      {
+        "type": "tech",
+        "id": "elf_warriors",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 2000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 250
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 150
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -2.5
+      }
+    ]
+  },
+  {
+    "id": "marksman",
+    "type": "army",
+    "attack": 35,
+    "defense": 15,
+    "order": 3,
+    "category": 1,
+    "req": [
+      {
+        "type": "tech",
+        "id": "trenches",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3500
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 125
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 75
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 25
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.5
       }
     ]
   },
@@ -672,7 +870,7 @@
     "id": "priest",
     "type": "army",
     "attack": 1,
-    "defense": 34,
+    "defense": 36,
     "order": 2,
     "category": 3,
     "req": [
@@ -733,12 +931,12 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
         "id": "faith",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -856,6 +1054,165 @@
         "type": "resource",
         "id": "mana",
         "value": -1
+      }
+    ]
+  },
+  {
+    "id": "paladin",
+    "type": "army",
+    "attack": 28,
+    "defense": 56,
+    "order": 1,
+    "category": 3,
+    "req": [
+      {
+        "type": "prayer",
+        "id": "warrior_gods",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 200
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 100
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.5
+      }
+    ]
+  },
+  {
+    "id": "behemoth",
+    "type": "army",
+    "attack": 24,
+    "defense": 98,
+    "order": 1,
+    "cap": 20,
+    "category": 3,
+    "req": [
+      {
+        "type": "tech",
+        "id": "steel_flesh",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3000
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 1500
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 100
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -3
+      }
+    ]
+  },
+  {
+    "id": "ancient_balor",
+    "type": "army",
+    "attack": 150,
+    "defense": 750,
+    "order": 1,
+    "cap": 1,
+    "category": 3,
+    "req": [
+      {
+        "type": "tech",
+        "id": "ancient_balor_t",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 10000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -30
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -30
       }
     ]
   },
@@ -997,7 +1354,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e3
+        "value": 2000
       }
     ],
     "reqAttack": [
@@ -1109,6 +1466,100 @@
     ]
   },
   {
+    "id": "jager",
+    "type": "army",
+    "attack": 82,
+    "defense": 18,
+    "order": 2,
+    "cap": 100,
+    "category": 2,
+    "req": [
+      {
+        "type": "tech",
+        "id": "dimensional_device",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2000
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 1000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 200
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 100
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.2
+      }
+    ]
+  },
+  {
+    "id": "colonial_militia",
+    "type": "army",
+    "attack": 3,
+    "defense": 4,
+    "order": 1,
+    "category": 2,
+    "req": [
+      {
+        "type": "tech",
+        "id": "new_world_militia",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 10
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -0.1
+      }
+    ]
+  },
+  {
     "id": "battle_angel",
     "type": "army",
     "attack": 38,
@@ -1124,7 +1575,7 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
@@ -1214,7 +1665,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": 1e3
+        "value": 1000
       }
     ],
     "reqAttack": [
@@ -1249,14 +1700,14 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 15e3
+        "value": 15000
       }
     ],
     "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "resource",
@@ -1274,6 +1725,66 @@
         "type": "resource",
         "id": "gold",
         "value": -30
+      }
+    ]
+  },
+  {
+    "id": "seraphim",
+    "type": "army",
+    "attack": 450,
+    "defense": 400,
+    "order": 2,
+    "cap": 1,
+    "category": 2,
+    "req": [
+      {
+        "type": "tech",
+        "id": "seraphim_t",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 10000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1500
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1500
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 15
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -20
       }
     ]
   },
@@ -1342,7 +1853,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 3e3
+        "value": 3000
       },
       {
         "type": "resource",
@@ -1391,7 +1902,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 2e3
+        "value": 2000
       },
       {
         "type": "resource",
@@ -1445,7 +1956,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "resource",
@@ -1484,6 +1995,51 @@
     ]
   },
   {
+    "id": "cpt_galliard",
+    "type": "army",
+    "attack": 80,
+    "defense": 65,
+    "order": 2,
+    "cap": 1,
+    "category": 4,
+    "req": [
+      {
+        "type": "tech",
+        "id": "cpt_galliard_t",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10000
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 3000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1000
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 1000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 30
+      }
+    ]
+  },
+  {
     "id": "archdemon",
     "type": "enemy",
     "attack": 90,
@@ -1501,6 +2057,22 @@
     "category": 1
   },
   {
+    "id": "aqrabuamelu",
+    "type": "enemy",
+    "attack": 46,
+    "defense": 63,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "balor",
+    "type": "enemy",
+    "attack": 195,
+    "defense": 150,
+    "order": 1,
+    "category": 2
+  },
+  {
     "id": "bugbear",
     "type": "enemy",
     "attack": 7,
@@ -1516,6 +2088,14 @@
     "order": 2,
     "cap": 1,
     "category": 2
+  },
+  {
+    "id": "bulette",
+    "type": "enemy",
+    "attack": 140,
+    "defense": 110,
+    "order": 1,
+    "category": 4
   },
   {
     "id": "basilisk",
@@ -1547,6 +2127,14 @@
     "type": "enemy",
     "attack": 4,
     "defense": 4,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "cyclop",
+    "type": "enemy",
+    "attack": 25,
+    "defense": 76,
     "order": 1,
     "category": 2
   },
@@ -1634,6 +2222,14 @@
     "category": 3
   },
   {
+    "id": "ettin",
+    "type": "enemy",
+    "attack": 39,
+    "defense": 67,
+    "order": 1,
+    "category": 3
+  },
+  {
     "id": "fallen_angel",
     "type": "enemy",
     "attack": 150,
@@ -1682,6 +2278,15 @@
     "defense": 42,
     "order": 1,
     "category": 3
+  },
+  {
+    "id": "gulud",
+    "type": "enemy",
+    "attack": 250,
+    "defense": 180,
+    "order": 3,
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "korrigan_slinger",
@@ -1759,6 +2364,14 @@
     "category": 2
   },
   {
+    "id": "lead_golem",
+    "type": "enemy",
+    "attack": 22,
+    "defense": 72,
+    "order": 1,
+    "category": 3
+  },
+  {
     "id": "bandit",
     "type": "enemy",
     "attack": 3,
@@ -1817,6 +2430,23 @@
     "category": 1
   },
   {
+    "id": "fire_salamander",
+    "type": "enemy",
+    "attack": 32,
+    "defense": 20,
+    "order": 1,
+    "category": 4
+  },
+  {
+    "id": "galliard",
+    "type": "enemy",
+    "attack": 70,
+    "defense": 120,
+    "order": 2,
+    "cap": 1,
+    "category": 2
+  },
+  {
     "id": "ghast",
     "type": "enemy",
     "attack": 6,
@@ -1831,6 +2461,14 @@
     "defense": 5,
     "order": 1,
     "category": 2
+  },
+  {
+    "id": "giant_wasp",
+    "type": "enemy",
+    "attack": 8,
+    "defense": 4,
+    "order": 1,
+    "category": 4
   },
   {
     "id": "goblin_marauder",
@@ -1873,6 +2511,14 @@
     "order": 3,
     "cap": 1,
     "category": 1
+  },
+  {
+    "id": "ball_lightning",
+    "type": "enemy",
+    "attack": 55,
+    "defense": 20,
+    "order": 1,
+    "category": 4
   },
   {
     "id": "lizard_warrior",
@@ -1950,7 +2596,7 @@
   {
     "id": "minotaur",
     "type": "enemy",
-    "attack": 1e3,
+    "attack": 1000,
     "defense": 1800,
     "order": 1,
     "cap": 1,
@@ -1969,22 +2615,6 @@
     "type": "enemy",
     "attack": 3,
     "defense": 5,
-    "order": 1,
-    "category": 2
-  },
-  {
-    "id": "troll_cave",
-    "type": "enemy",
-    "attack": 16,
-    "defense": 28,
-    "order": 1,
-    "category": 3
-  },
-  {
-    "id": "troll_battle",
-    "type": "enemy",
-    "attack": 42,
-    "defense": 56,
     "order": 1,
     "category": 2
   },
@@ -2013,10 +2643,26 @@
     "category": 4
   },
   {
+    "id": "ravenous_crab",
+    "type": "enemy",
+    "attack": 2,
+    "defense": 1,
+    "order": 1,
+    "category": 4
+  },
+  {
     "id": "spider",
     "type": "enemy",
     "attack": 3,
     "defense": 2,
+    "order": 1,
+    "category": 4
+  },
+  {
+    "id": "sluagh",
+    "type": "enemy",
+    "attack": 26,
+    "defense": 6,
     "order": 1,
     "category": 4
   },
@@ -2062,6 +2708,32 @@
     "category": 2
   },
   {
+    "id": "swamp_horror",
+    "type": "enemy",
+    "attack": 900,
+    "defense": 1400,
+    "order": 1,
+    "cap": 1,
+    "category": 3
+  },
+  {
+    "id": "succubus",
+    "type": "enemy",
+    "attack": 37,
+    "defense": 23,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "succubus_queen",
+    "type": "enemy",
+    "attack": 1500,
+    "defense": 1750,
+    "order": 2,
+    "cap": 1,
+    "category": 1
+  },
+  {
     "id": "zombie",
     "type": "enemy",
     "attack": 3,
@@ -2095,6 +2767,94 @@
     "category": 2
   },
   {
+    "id": "oni",
+    "type": "enemy",
+    "attack": 45,
+    "defense": 99,
+    "order": 1,
+    "category": 3
+  },
+  {
+    "id": "orc_champion",
+    "type": "enemy",
+    "attack": 35,
+    "defense": 130,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "orc_berserker",
+    "type": "enemy",
+    "attack": 55,
+    "defense": 11,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "orc_flame_caster",
+    "type": "enemy",
+    "attack": 45,
+    "defense": 12,
+    "order": 3,
+    "category": 1
+  },
+  {
+    "id": "orc_ironskin",
+    "type": "enemy",
+    "attack": 18,
+    "defense": 169,
+    "order": 1,
+    "category": 3
+  },
+  {
+    "id": "orc_shaman",
+    "type": "enemy",
+    "attack": 33,
+    "defense": 28,
+    "order": 3,
+    "category": 1
+  },
+  {
+    "id": "orc_stone_thrower",
+    "type": "enemy",
+    "attack": 31,
+    "defense": 10,
+    "order": 3,
+    "category": 1
+  },
+  {
+    "id": "orc_warg_rider",
+    "type": "enemy",
+    "attack": 33,
+    "defense": 70,
+    "order": 2,
+    "category": 4
+  },
+  {
+    "id": "orc_warlord",
+    "type": "enemy",
+    "attack": 70,
+    "defense": 150,
+    "order": 2,
+    "category": 2
+  },
+  {
+    "id": "orc_warrior",
+    "type": "enemy",
+    "attack": 25,
+    "defense": 63,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "orc_worker",
+    "type": "enemy",
+    "attack": 17,
+    "defense": 48,
+    "order": 1,
+    "category": 3
+  },
+  {
     "id": "necromancer",
     "type": "enemy",
     "attack": 28,
@@ -2126,6 +2886,14 @@
     "defense": 16,
     "order": 3,
     "category": 2
+  },
+  {
+    "id": "griffin",
+    "type": "enemy",
+    "attack": 42,
+    "defense": 58,
+    "order": 1,
+    "category": 4
   },
   {
     "id": "kobold",
@@ -2170,6 +2938,40 @@
     "category": 4
   },
   {
+    "id": "titan",
+    "type": "enemy",
+    "attack": 1,
+    "defense": 52000,
+    "order": 1,
+    "cap": 1,
+    "category": 2
+  },
+  {
+    "id": "troll_cave",
+    "type": "enemy",
+    "attack": 16,
+    "defense": 28,
+    "order": 1,
+    "category": 3
+  },
+  {
+    "id": "troll_battle",
+    "type": "enemy",
+    "attack": 42,
+    "defense": 56,
+    "order": 1,
+    "category": 2
+  },
+  {
+    "id": "tyrannosaurus",
+    "type": "enemy",
+    "attack": 1750,
+    "defense": 1200,
+    "order": 1,
+    "cap": 1,
+    "category": 4
+  },
+  {
     "id": "vampire",
     "type": "enemy",
     "attack": 80,
@@ -2195,6 +2997,14 @@
     "category": 3
   },
   {
+    "id": "velociraptors",
+    "type": "enemy",
+    "attack": 37,
+    "defense": 22,
+    "order": 1,
+    "category": 4
+  },
+  {
     "id": "werewolf",
     "type": "enemy",
     "attack": 1150,
@@ -2204,12 +3014,28 @@
     "category": 1
   },
   {
+    "id": "wendigo",
+    "type": "enemy",
+    "attack": 47,
+    "defense": 39,
+    "order": 1,
+    "category": 2
+  },
+  {
     "id": "wind_elemental",
     "type": "enemy",
     "attack": 22,
     "defense": 42,
     "order": 1,
     "category": 1
+  },
+  {
+    "id": "warg",
+    "type": "enemy",
+    "attack": 22,
+    "defense": 18,
+    "order": 1,
+    "category": 4
   },
   {
     "id": "wolf",

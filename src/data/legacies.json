@@ -12,12 +12,12 @@
       {
         "type": "cap",
         "id": "research",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "gold",
-        "value": 1e3
+        "value": 1000
       }
     ]
   },
@@ -106,12 +106,12 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
@@ -427,17 +427,17 @@
       {
         "type": "cap",
         "id": "copper",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "iron",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "tools",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
@@ -789,37 +789,37 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "supplies",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "saltpetre",
-        "value": 1e3
+        "value": 1000
       },
       {
         "type": "cap",
         "id": "crystal",
-        "value": 1e3
+        "value": 1000
       }
     ]
   },
@@ -1003,6 +1003,66 @@
     ]
   },
   {
+    "id": "heirloom_wisdom",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 7
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_contract",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_death",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 7
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_wisdom",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "heirloom_wealth",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 7
+      },
+      {
+        "type": "resource",
+        "id": "coin",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "heirloom_death",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "monument_1",
     "req": [
       {
@@ -1085,12 +1145,12 @@
       {
         "type": "cap",
         "id": "research",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "gold",
-        "value": 5e3
+        "value": 5000
       }
     ]
   },
@@ -1180,12 +1240,12 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
@@ -1205,12 +1265,12 @@
       {
         "type": "cap",
         "id": "building_material",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
@@ -1264,6 +1324,47 @@
         "id": "gold",
         "value": 20,
         "perc": true
+      }
+    ]
+  },
+  {
+    "id": "elysian_field",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 9
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "cow",
+        "value": 4000
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 2000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
       }
     ]
   },
@@ -1387,6 +1488,21 @@
     ]
   },
   {
+    "id": "stonemason_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 9
+      },
+      {
+        "type": "legacy",
+        "id": "renowned_stonemasons_II",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "woodworking",
     "req": [
       {
@@ -1489,52 +1605,52 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "copper",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "cap",
         "id": "iron",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "cap",
         "id": "tools",
-        "value": 15e3
+        "value": 15000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "crystal",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "supplies",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
         "id": "saltpetre",
-        "value": 5e3
+        "value": 5000
       },
       {
         "type": "cap",
@@ -1776,57 +1892,84 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "copper",
-        "value": 3e4
+        "value": 30000
       },
       {
         "type": "cap",
         "id": "iron",
-        "value": 3e4
+        "value": 30000
       },
       {
         "type": "cap",
         "id": "tools",
-        "value": 3e4
+        "value": 30000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "crystal",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "supplies",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "saltpetre",
-        "value": 1e4
+        "value": 10000
       },
       {
         "type": "cap",
         "id": "natronite",
-        "value": 5e3
+        "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "ancient_treasury_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 14
+      },
+      {
+        "type": "legacy",
+        "id": "ancient_treasury_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 10000
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 10000
       }
     ]
   },
@@ -1911,57 +2054,106 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 8e4
+        "value": 80000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 8e4
+        "value": 80000
       },
       {
         "type": "cap",
         "id": "copper",
-        "value": 6e4
+        "value": 60000
       },
       {
         "type": "cap",
         "id": "iron",
-        "value": 6e4
+        "value": 60000
       },
       {
         "type": "cap",
         "id": "tools",
-        "value": 6e4
+        "value": 60000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "crystal",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "supplies",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "saltpetre",
-        "value": 2e4
+        "value": 20000
       },
       {
         "type": "cap",
         "id": "natronite",
-        "value": 1e4
+        "value": 10000
+      }
+    ]
+  },
+  {
+    "id": "spikes_and_pits_III",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 14
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "spikes_and_pits_II",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 150,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 6,
+        "perc": false
       }
     ]
   },
@@ -1999,6 +2191,52 @@
         "type": "cap",
         "id": "army",
         "value": 50
+      }
+    ]
+  },
+  {
+    "id": "elysian_field_II",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 15
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "elysian_field",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 10000
+      },
+      {
+        "type": "cap",
+        "id": "cow",
+        "value": 8000
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 4000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
       }
     ]
   },
@@ -2220,57 +2458,57 @@
       {
         "type": "cap",
         "id": "wood",
-        "value": 16e4
+        "value": 160000
       },
       {
         "type": "cap",
         "id": "stone",
-        "value": 16e4
+        "value": 160000
       },
       {
         "type": "cap",
         "id": "copper",
-        "value": 12e4
+        "value": 120000
       },
       {
         "type": "cap",
         "id": "iron",
-        "value": 12e4
+        "value": 120000
       },
       {
         "type": "cap",
         "id": "tools",
-        "value": 12e4
+        "value": 120000
       },
       {
         "type": "cap",
         "id": "building_material",
-        "value": 8e4
+        "value": 80000
       },
       {
         "type": "cap",
         "id": "steel",
-        "value": 8e4
+        "value": 80000
       },
       {
         "type": "cap",
         "id": "crystal",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "supplies",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "saltpetre",
-        "value": 4e4
+        "value": 40000
       },
       {
         "type": "cap",
         "id": "natronite",
-        "value": 2e4
+        "value": 20000
       }
     ]
   },
@@ -2294,6 +2532,31 @@
         "id": "research",
         "value": 40,
         "perc": true
+      }
+    ]
+  },
+  {
+    "id": "cpt_galliard_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 18
+      },
+      {
+        "type": "resource",
+        "id": "coin",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "white_m_company",
+        "value": 1
       }
     ]
   },
@@ -2392,6 +2655,51 @@
         "id": "iron",
         "value": 40,
         "perc": true
+      }
+    ]
+  },
+  {
+    "id": "ministry_interior_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 20
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "ministry_war_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 20
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "ministry_worship_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 20
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
       }
     ]
   },
@@ -2495,6 +2803,648 @@
         "id": "steel",
         "value": 40,
         "perc": true
+      }
+    ]
+  },
+  {
+    "id": "army_of_men_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 25
+      },
+      {
+        "type": "legacy",
+        "id": "army_of_men_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "train_colonial",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "ministry_war_l",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "colonial_militia",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 7,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "paladin",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 7,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "jager",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 7,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "free_hands_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 28
+      },
+      {
+        "type": "legacy",
+        "id": "free_hands_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 15
+      }
+    ]
+  },
+  {
+    "id": "spikes_and_pits_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 28
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "spikes_and_pits_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 200,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 6,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 12,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "ancient_balor_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 30
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "juggernaut",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "craftmen_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 30
+      },
+      {
+        "type": "legacy",
+        "id": "craftmen_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "elysian_field_III",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 30
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "elysian_field_II",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 20000
+      },
+      {
+        "type": "cap",
+        "id": "cow",
+        "value": 16000
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 8000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "seraphim_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 30
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "angel",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "powered_weapons_VI",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 45
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "powered_weapons_V",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "shieldbearer",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "artillery",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 20,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "army_of_men_V",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 50
+      },
+      {
+        "type": "legacy",
+        "id": "army_of_men_IV",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 150
+      }
+    ]
+  },
+  {
+    "id": "craftmen_V",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 50
+      },
+      {
+        "type": "legacy",
+        "id": "craftmen_IV",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 30,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "train_colonial_II",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 50
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "train_colonial",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "colonial_militia",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 14,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "behemot",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 14,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "jager",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 14,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "spikes_and_pits_V",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 56
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "spikes_and_pits_IV",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 350,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "juggernaut",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 20,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "architecture_titan",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 60
+      },
+      {
+        "type": "resource",
+        "id": "titan_gift",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "wall_titan",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 60
+      },
+      {
+        "type": "resource",
+        "id": "titan_gift",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "weapons_titan",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 60
+      },
+      {
+        "type": "resource",
+        "id": "titan_gift",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "spearman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "man_at_arms",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "arquebusier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "powered_weapons_VII",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 80
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "powered_weapons_VI",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "artillery",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 20,
+        "perc": false
       }
     ]
   }
