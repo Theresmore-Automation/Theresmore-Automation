@@ -254,50 +254,55 @@ const doPopulationWork = async () => {
                 }
               }
             } else {
-              const job = availableJobs.shift()
+              for (let i = 0; i < availableJobs.length; i++) {
+                if (state.scriptPaused) break
 
-              let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable)
+                const job = availableJobs[i]
 
-              const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'Food')
-              if (isFoodJob) {
-                isSafeToAdd = isSafeToAdd || (resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
-              }
+                let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable)
 
-              if (!job.isSafe) {
-                job.resourcesUsed.every((resUsed) => {
-                  const res = resources.get(resUsed.id)
+                const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'Food')
+                if (isFoodJob) {
+                  isSafeToAdd = isSafeToAdd || (resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
+                }
 
-                  if (!res || res.speed < Math.abs(resUsed.value * 2)) {
-                    isSafeToAdd = false
-                  }
+                if (!job.isSafe) {
+                  job.resourcesUsed.every((resUsed) => {
+                    const res = resources.get(resUsed.id)
 
-                  if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
-                    const foodJob = getAllAvailableJobs().find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
-
-                    if (foodJob) {
-                      job = foodJob
-                      isSafeToAdd = true
-                      return false
-                    } else {
+                    if (!res || res.speed < Math.abs(resUsed.value * 2)) {
                       isSafeToAdd = false
                     }
+
+                    if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
+                      const foodJob = availableJobs.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
+
+                      if (foodJob) {
+                        job = foodJob
+                        isSafeToAdd = true
+                        return false
+                      } else {
+                        isSafeToAdd = false
+                      }
+                    }
+
+                    return isSafeToAdd
+                  })
+                }
+
+                if (isSafeToAdd && !state.scriptPaused) {
+                  const addJobButton = job.container.querySelector('button.btn-green')
+                  if (addJobButton) {
+                    logger({ msgLevel: 'log', msg: `Assigning worker as ${job.id}` })
+
+                    addJobButton.click()
+                    job.current += 1
+                    unassigned -= 1
+                    canAssignJobs = !!unassigned
+                    await sleep(20)
+                    if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
+                    break
                   }
-
-                  return isSafeToAdd
-                })
-              }
-
-              if (isSafeToAdd && !state.scriptPaused) {
-                const addJobButton = job.container.querySelector('button.btn-green')
-                if (addJobButton) {
-                  logger({ msgLevel: 'log', msg: `Assigning worker as ${job.id}` })
-
-                  addJobButton.click()
-                  job.current += 1
-                  unassigned -= 1
-                  canAssignJobs = !!unassigned
-                  await sleep(20)
-                  if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return
                 }
               }
             }
