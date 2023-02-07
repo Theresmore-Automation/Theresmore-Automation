@@ -105,7 +105,11 @@ const getAllAvailableJobs = () => {
 const doPopulationWork = async () => {
   allowedJobs = getAllJobs()
 
-  const shouldRebalance = !state.lastVisited.populationRebalance || state.lastVisited.populationRebalance + 5 * 60 * 1000 < new Date().getTime()
+  const shouldRebalance =
+    state.options.automation.populationRebalanceTime > 0 ||
+    !state.lastVisited.populationRebalance ||
+    state.lastVisited.populationRebalance + state.options.automation.populationRebalanceTime * 60 * 1000 < new Date().getTime()
+
   if (allowedJobs.length && shouldRebalance) {
     const unassignAllButton = document.querySelector('div.flex.justify-center.mx-auto.pt-3.font-bold.text-lg > button')
 

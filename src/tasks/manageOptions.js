@@ -436,6 +436,10 @@ const createPanel = (startFunction) => {
         <div class="mb-2"><label>Minimum Food production to aim for: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
           state.options.automation.minimumFood ? state.options.automation.minimumFood : '1'
         }" min="0" max="999999" step="1" /></label></div>
+
+        <div class="mb-2"><label>Rebalance population every: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" data-id="automation-minimumFood" value="${
+          state.options.automation.populationRebalanceTime ? state.options.automation.populationRebalanceTime : '0'
+        }" min="0" max="999999" step="1" /> minutes (0 to disable)</label></div>
       </div>
 
       <div class="mb-6">
