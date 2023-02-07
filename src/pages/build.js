@@ -51,15 +51,11 @@ const userEnabled = () => {
 const getAllButtons = () => {
   const buildingsList = getBuildingsList()
 
-  console.log('buildingsList', buildingsList)
-
-  console.log('selectors.getAllButtons(true)', selectors.getAllButtons(true))
-
   const buttons = selectors
     .getAllButtons(true)
     .map((button) => {
       const id = button.innerText.split('\n').shift()
-      const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
+      const count = button.querySelector('span.right-0') ? numberParser.parse(button.querySelector('span.right-0').innerText) : 0
       return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
     })
     .filter((button) => button.building && button.count < button.building.max)
@@ -82,8 +78,6 @@ const getAllButtons = () => {
 
       return a.count - b.count
     })
-
-  console.log('buttons', buttons)
 
   return buttons
 }
@@ -116,7 +110,7 @@ const doBuildWork = async () => {
     .getAllButtons(false)
     .map((button) => {
       const id = button.innerText.split('\n').shift()
-      let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
+      let count = button.querySelector('span.right-0') ? numberParser.parse(button.querySelector('span.right-0').innerText) : 0
       const building = buildingsList.find((building) => building.id === id)
 
       if (!building) {
