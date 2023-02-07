@@ -1,4 +1,4 @@
-import { sleep, logger, localStorage, state } from './utils'
+import { sleep, logger, localStorage, state, CONSTANTS } from './utils'
 import pages from './pages'
 import tasks from './tasks'
 
@@ -46,6 +46,15 @@ const mainLoop = async () => {
           localStorage.set('lastVisited', state.lastVisited)
           await page.action()
           await sleep(1000)
+
+          if (page === CONSTANTS.PAGES.BUILD) {
+            page = pages[CONSTANTS.SUBPAGES.COLONY]
+            logger({ msgLevel: 'debug', msg: `Executing ${page.id} action` })
+            state.lastVisited[page.id] = new Date().getTime()
+            localStorage.set('lastVisited', state.lastVisited)
+            await page.action()
+            await sleep(1000)
+          }
         }
       }
     }

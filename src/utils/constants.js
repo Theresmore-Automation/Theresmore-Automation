@@ -8,6 +8,8 @@ const PAGES = {
 }
 
 const SUBPAGES = {
+  CITY: 'City',
+  COLONY: 'Colony',
   RESEARCH: 'Research',
   SPELLS: 'Spells',
   PRAYERS: 'Prayers',

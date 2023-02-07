@@ -51,10 +51,6 @@ const userEnabled = () => {
 const getAllButtons = () => {
   const buildingsList = getBuildingsList()
 
-  console.log('buildingsList', buildingsList)
-
-  console.log('selectors.getAllButtons(true)', selectors.getAllButtons(true))
-
   const buttons = selectors
     .getAllButtons(true)
     .map((button) => {
@@ -82,8 +78,6 @@ const getAllButtons = () => {
 
       return a.count - b.count
     })
-
-  console.log('buttons', buttons)
 
   return buttons
 }
@@ -133,10 +127,10 @@ const doBuildWork = async () => {
 }
 
 export default {
-  id: CONSTANTS.PAGES.BUILD,
+  id: CONSTANTS.SUBPAGES.COLONY,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.BUILD) && getBuildingsList().length,
   action: async () => {
-    await navigation.switchSubPage(CONSTANTS.SUBPAGES.CITY, CONSTANTS.PAGES.BUILD)
+    await navigation.switchSubPage(CONSTANTS.SUBPAGES.COLONY, CONSTANTS.PAGES.BUILD)
 
     if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await doBuildWork()
   },
