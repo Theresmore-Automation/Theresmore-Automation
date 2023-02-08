@@ -70,10 +70,9 @@ const switchPage = async (page) => {
     switchedPage = true
   }
 
-  await sleep(2000)
-
   if (switchedPage) {
     logger({ msgLevel: 'debug', msg: `Switched page to ${page}` })
+    await sleep(1000)
   }
 }
 
@@ -94,10 +93,9 @@ const switchSubPage = async (subPage, page) => {
       switchedSubPage = true
     }
 
-    await sleep(2000)
-
     if (switchedSubPage) {
       logger({ msgLevel: 'debug', msg: `Switched subPage to ${subPage}` })
+      await sleep(500)
     }
   }
 }

@@ -67,7 +67,7 @@ const doResearchWork = async () => {
         }
       }
 
-      await sleep(4000)
+      await sleep(3100)
       if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
 
       buttonsList = getAllButtons()

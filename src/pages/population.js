@@ -338,7 +338,5 @@ export default {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
 
     if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await doPopulationWork()
-
-    await sleep(5000)
   },
 }
