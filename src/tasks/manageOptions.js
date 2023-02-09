@@ -246,6 +246,7 @@ const id = 'theresmore-automation-options-panel'
 let start
 
 const building_cats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
+const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
 
 const generatePrioritySelect = (key, id) => {
   const defaultOptions = [
@@ -354,7 +355,7 @@ const createPanel = (startFunction) => {
           <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
           <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
             ${tech
-              .filter((technology) => !technology.confirm)
+              .filter((technology) => !technology.confirm && !unsafeResearch.includes(technology.id))
               .map((technology) => {
                 return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
                 Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
@@ -367,7 +368,7 @@ const createPanel = (startFunction) => {
           <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
           <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
             ${tech
-              .filter((technology) => technology.confirm)
+              .filter((technology) => technology.confirm || unsafeResearch.includes(technology.id))
               .map((technology) => {
                 return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
                 Prio: ${generatePrioritySelect(CONSTANTS.PAGES.RESEARCH, technology.id)}</label></div>`
