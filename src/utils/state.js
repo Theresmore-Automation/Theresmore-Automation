@@ -25,6 +25,7 @@ const state = {
     [CONSTANTS.PAGES.ARMY]: {},
     [CONSTANTS.PAGES.MARKETPLACE]: {},
     automation: {},
+    haveManualResourceButtons: true,
   },
 }
 

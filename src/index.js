@@ -89,8 +89,10 @@ const start = async () => {
 
     await sleep(2000)
 
-    tasks.autoClicker()
     mainLoop()
+
+    await sleep(5000)
+    tasks.autoClicker()
   } else {
     clearInterval(hideFullPageOverlayInterval)
 
