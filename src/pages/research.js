@@ -57,10 +57,10 @@ const doResearchWork = async () => {
 
       if (allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
         if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
+        await sleep(1000)
         const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
 
         if (redConfirmButton) {
-          await sleep(1000)
           redConfirmButton.click()
           await sleep(4000)
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
