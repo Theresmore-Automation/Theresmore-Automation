@@ -25,8 +25,8 @@ const state = {
     [CONSTANTS.PAGES.ARMY]: {},
     [CONSTANTS.PAGES.MARKETPLACE]: {},
     automation: {},
-    haveManualResourceButtons: true,
   },
+  haveManualResourceButtons: true,
 }
 
 if (typeof localStorage.get('scriptPaused') !== 'undefined') {
