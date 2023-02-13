@@ -2,17 +2,19 @@ import { buildings } from '../data'
 import { CONSTANTS, navigation, selectors, logger, resources, sleep, state, numberParser, translate } from '../utils'
 
 const getBuildingsList = () => {
-  if (Object.keys(state.options[CONSTANTS.PAGES.BUILD]).length) {
-    let buildingsList = Object.keys(state.options[CONSTANTS.PAGES.BUILD])
+  const buildingsObject = state.options.pages[CONSTANTS.PAGES.BUILD].subpages[CONSTANTS.SUBPAGES.CITY].options
+
+  if (Object.keys(buildingsObject).length) {
+    let buildingsList = Object.keys(buildingsObject)
       .filter((key) => !key.includes('prio_'))
-      .filter((key) => !!state.options[CONSTANTS.PAGES.BUILD][key])
-      .filter((key) => !!state.options[CONSTANTS.PAGES.BUILD][`prio_${key}`])
+      .filter((key) => !!buildingsObject[key])
+      .filter((key) => !!buildingsObject[`prio_${key}`])
       .map((key) => {
         const building = {
           key: key,
           id: translate(key, 'bui_'),
-          max: state.options[CONSTANTS.PAGES.BUILD][key] === -1 ? 999 : state.options[CONSTANTS.PAGES.BUILD][key],
-          prio: state.options[CONSTANTS.PAGES.BUILD][`prio_${key}`],
+          max: buildingsObject[key] === -1 ? 999 : buildingsObject[key],
+          prio: buildingsObject[`prio_${key}`],
           isSafe: true,
         }
 
@@ -45,7 +47,10 @@ const getBuildingsList = () => {
 }
 
 const userEnabled = () => {
-  return state.options.pages[CONSTANTS.PAGES.BUILD] || false
+  return (
+    (state.options.pages[CONSTANTS.PAGES.BUILD].enabled || false) &&
+    (state.options.pages[CONSTANTS.PAGES.BUILD].subpages[CONSTANTS.SUBPAGES.CITY].enabled || false)
+  )
 }
 
 const getAllButtons = () => {
@@ -60,18 +65,6 @@ const getAllButtons = () => {
     })
     .filter((button) => button.building && button.count < button.building.max)
     .sort((a, b) => {
-      if (state.options.automation.prioWonders) {
-        if (a.building.cat !== b.building.cat) {
-          if (a.building.cat === 'wonders') {
-            return -1
-          }
-
-          if (b.building.cat === 'wonders') {
-            return 1
-          }
-        }
-      }
-
       if (a.building.prio !== b.building.prio) {
         return b.building.prio - a.building.prio
       }
@@ -82,7 +75,7 @@ const getAllButtons = () => {
   return buttons
 }
 
-const doBuildWork = async () => {
+const executeAction = async () => {
   let buttons = getAllButtons()
 
   if (buttons.length) {
@@ -97,7 +90,7 @@ const doBuildWork = async () => {
       if (shouldBuild) {
         button.element.click()
         logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
-        await sleep(2000)
+        await sleep(1400)
         if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return
 
         buttons = getAllButtons()
@@ -127,11 +120,12 @@ const doBuildWork = async () => {
 }
 
 export default {
-  id: CONSTANTS.PAGES.BUILD,
+  page: CONSTANTS.PAGES.BUILD,
+  subpage: CONSTANTS.SUBPAGES.CITY,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.BUILD) && getBuildingsList().length,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.CITY, CONSTANTS.PAGES.BUILD)
 
-    if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await doBuildWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.BUILD)) await executeAction()
   },
 }

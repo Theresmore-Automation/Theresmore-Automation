@@ -11,12 +11,7 @@ const createPanel = (switchScriptState) => {
   controlPanelElement.id = id
   controlPanelElement.classList.add('dark')
   controlPanelElement.classList.add('dark:bg-mydark-300')
-  controlPanelElement.style.position = 'fixed'
-  controlPanelElement.style.bottom = '10px'
-  controlPanelElement.style.left = '10px'
-  controlPanelElement.style.zIndex = '99999999'
-  controlPanelElement.style.border = '1px black solid'
-  controlPanelElement.style.padding = '10px'
+  controlPanelElement.classList.add('taControlPanelElement')
 
   controlPanelElement.innerHTML = `
     <p class="mb-2">Theresmore Automation ${taVersion ? `v${taVersion}` : ''}</p>

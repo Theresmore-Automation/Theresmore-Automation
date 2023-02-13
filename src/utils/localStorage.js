@@ -12,7 +12,12 @@ const set = (key, value) => {
   window.localStorage.setItem(`${prefix}${key}`, JSON.stringify(value))
 }
 
+const remove = (key) => {
+  window.localStorage.removeItem(`${prefix}${key}`)
+}
+
 export default {
   get,
   set,
+  remove,
 }

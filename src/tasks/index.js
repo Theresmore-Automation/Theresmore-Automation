@@ -5,6 +5,7 @@ import autoAncestor from './autoAncestor'
 import autoPrestige from './autoPrestige'
 import managePanel from './managePanel'
 import manageOptions from './manageOptions'
-import hideFullPageOverlay from './hideFullPageOverlay'
+import manageStyles from './manageStyles'
+import cosmetics from './cosmetics'
 
-export default { calculateTippyTTF, calculateTTF, autoClicker, autoAncestor, autoPrestige, managePanel, manageOptions, hideFullPageOverlay }
+export default { calculateTippyTTF, calculateTTF, autoClicker, autoAncestor, autoPrestige, managePanel, manageOptions, manageStyles, cosmetics }

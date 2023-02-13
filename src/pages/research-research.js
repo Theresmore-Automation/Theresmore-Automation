@@ -2,18 +2,20 @@ import { tech } from '../data'
 import { CONSTANTS, navigation, selectors, logger, sleep, state, translate } from '../utils'
 
 const userEnabled = () => {
-  return state.options.pages[CONSTANTS.PAGES.RESEARCH] || false
+  return state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].enabled || false
 }
 
 const getAllowedResearch = () => {
-  if (Object.keys(state.options[CONSTANTS.PAGES.RESEARCH]).length) {
-    let allowedResearch = Object.keys(state.options[CONSTANTS.PAGES.RESEARCH])
-      .filter((key) => !!state.options[CONSTANTS.PAGES.RESEARCH][key])
+  const researchOptions = state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options
+
+  if (Object.keys(researchOptions).length) {
+    let allowedResearch = Object.keys(researchOptions)
+      .filter((key) => !!researchOptions[key])
       .map((key) => {
         const research = {
           key: key,
           id: translate(key, 'tec_'),
-          prio: state.options[CONSTANTS.PAGES.RESEARCH][key],
+          prio: researchOptions[key],
         }
 
         const researchData = tech.find((technology) => technology.id === key)
@@ -43,7 +45,7 @@ const getAllButtons = () => {
   return buttonsList
 }
 
-const doResearchWork = async () => {
+const executeAction = async () => {
   const allowedResearch = getAllowedResearch()
 
   let buttonsList = getAllButtons()
@@ -76,11 +78,12 @@ const doResearchWork = async () => {
 }
 
 export default {
-  id: CONSTANTS.PAGES.RESEARCH,
+  page: CONSTANTS.PAGES.RESEARCH,
+  subpage: CONSTANTS.SUBPAGES.RESEARCH,
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH)
 
-    if (navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) await doResearchWork()
+    if (navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) await executeAction()
   },
 }

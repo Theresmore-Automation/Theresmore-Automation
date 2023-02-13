@@ -3,31 +3,52 @@ import CONSTANTS from './constants'
 
 const state = {
   scriptPaused: true,
-  lastVisited: {
-    [CONSTANTS.PAGES.BUILD]: 0,
-    [CONSTANTS.PAGES.RESEARCH]: 0,
-    [CONSTANTS.PAGES.POPULATION]: 0,
-    [CONSTANTS.PAGES.ARMY]: 0,
-    [CONSTANTS.PAGES.MARKETPLACE]: 0,
-  },
+  haveManualResourceButtons: true,
+  lastVisited: {},
   buildings: [],
   options: {
-    pages: {
-      [CONSTANTS.PAGES.BUILD]: true,
-      [CONSTANTS.PAGES.RESEARCH]: true,
-      [CONSTANTS.PAGES.POPULATION]: true,
-      [CONSTANTS.PAGES.ARMY]: false,
-      [CONSTANTS.PAGES.MARKETPLACE]: true,
+    pages: {},
+    ancestor: {
+      enabled: false,
+      selected: '',
     },
-    [CONSTANTS.PAGES.BUILD]: {},
-    [CONSTANTS.PAGES.RESEARCH]: {},
-    [CONSTANTS.PAGES.POPULATION]: {},
-    [CONSTANTS.PAGES.ARMY]: {},
-    [CONSTANTS.PAGES.MARKETPLACE]: {},
-    automation: {},
+    prestige: {
+      enabled: false,
+      selected: '',
+    },
+    cosmetics: {
+      hideFullPageOverlay: {
+        enabled: false,
+      },
+      toasts: {
+        enabled: false,
+      },
+    },
   },
-  haveManualResourceButtons: true,
 }
+
+Object.keys(CONSTANTS.PAGES).every((key) => {
+  state.options.pages[CONSTANTS.PAGES[key]] = {
+    enabled: false,
+    page: CONSTANTS.PAGES[key],
+    subpages: {},
+    options: {},
+  }
+
+  return state.options.pages[CONSTANTS.PAGES[key]]
+})
+
+Object.keys(CONSTANTS.SUBPAGES).every((key) => {
+  const parent = CONSTANTS.PAGES[CONSTANTS.SUBPAGE_MAPPING[key]]
+
+  state.options.pages[parent].subpages[CONSTANTS.SUBPAGES[key]] = {
+    enabled: false,
+    subpage: CONSTANTS.SUBPAGES[key],
+    options: {},
+  }
+
+  return state.options.pages[parent].subpages[CONSTANTS.SUBPAGES[key]]
+})
 
 if (typeof localStorage.get('scriptPaused') !== 'undefined') {
   state.scriptPaused = localStorage.get('scriptPaused')

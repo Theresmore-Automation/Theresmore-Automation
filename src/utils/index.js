@@ -9,5 +9,6 @@ import navigation from './navigation'
 import selectors from './selectors'
 import resources from './resources'
 import state from './state'
+import runMigrations from './migrations'
 
-export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state }
+export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations }
