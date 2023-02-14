@@ -617,7 +617,7 @@ const createPanel = (startFunction) => {
           <div class="mb-6">
             <h3 class="text-lg">Auto-prestige:</h3>
             <div class="mb-2"><label>Enabled:
-              <input type="checkbox" data-setting="ancestor" data-key="enabled" class="option" />
+              <input type="checkbox" data-setting="prestige" data-key="enabled" class="option" />
             </label></div>
           </div>
 
