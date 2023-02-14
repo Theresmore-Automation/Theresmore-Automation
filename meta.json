@@ -3,5 +3,7 @@
   "namespace": "github.com/Theresmore-Automation/Theresmore-Automation",
   "match": ["https://www.theresmoregame.com/play/"],
   "license": "MIT",
-  "run-at": "document-idle"
+  "run-at": "document-idle",
+  "downloadURL": "https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js",
+  "updateURL": "https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js"
 }

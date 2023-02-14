@@ -325,6 +325,11 @@ const createPanel = (startFunction) => {
                   <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" />
                 </label></div>
 
+                <div class="mb-2">
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
+                </div>
+
                 ${building_cats
                   .map(
                     (cat) => `
@@ -367,6 +372,11 @@ const createPanel = (startFunction) => {
                 <div class="mb-2"><label>Enabled:
                   <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" />
                 </label></div>
+
+                <div class="mb-2">
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
+                </div>
 
                 ${building_cats
                   .map(
@@ -414,6 +424,11 @@ const createPanel = (startFunction) => {
             <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}" data-key="enabled" class="option" />
           </label></div>
 
+          <div class="mb-2">
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all regular to Medium</button>
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all regular to Disabled</button>
+          </div>
+
           <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
             <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
             <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
@@ -432,7 +447,7 @@ const createPanel = (startFunction) => {
             </div>
           </div>
 
-          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 unsafe">
             <div class="w-full pb-3 font-bold text-center xl:text-left">Dangerous researches (requiring confirmation):</div>
             <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
               ${tech
@@ -491,6 +506,11 @@ const createPanel = (startFunction) => {
           <div class="mb-2"><label>Enabled:
             <input type="checkbox" data-page="${CONSTANTS.PAGES.POPULATION}" data-key="enabled" class="option" />
           </label></div>
+
+          <div class="mb-2">
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
+          </div>
 
           <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 mb-2">
             <div class="w-full pb-3 font-bold text-center xl:text-left">Hire:</div>
@@ -556,6 +576,11 @@ const createPanel = (startFunction) => {
                 <div class="mb-2"><label>Enabled:
                   <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.PRAYERS}" data-key="enabled" class="option" />
                 </label></div>
+
+                <div class="mb-2">
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to Medium</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to Disabled</button>
+                </div>
 
                 <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
                   <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
@@ -652,6 +677,29 @@ const createPanel = (startFunction) => {
   document.querySelector('#saveOptions').addEventListener('click', saveOptions)
   document.querySelector('#exportOptions').addEventListener('click', exportOptions)
   document.querySelector('#importOptions').addEventListener('click', importOptions)
+
+  const minus1Mediums = [...document.querySelectorAll('.minus1Medium')]
+  const zeroDisabled = [...document.querySelectorAll('.zeroDisabled')]
+
+  const setAllValues = (e, options) => {
+    const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
+    allGrids.forEach((grid) => {
+      grid.querySelectorAll('input.option[type=number]').forEach((input) => (input.value = options.number))
+      grid.querySelectorAll('select').forEach((select) => (select.value = options.select))
+    })
+  }
+
+  minus1Mediums.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      setAllValues(e, { select: 4, number: -1 })
+    })
+  })
+
+  zeroDisabled.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      setAllValues(e, { select: 0, number: 0 })
+    })
+  })
 
   const options = [...document.querySelector(`div#${id}`).querySelectorAll('.option')]
   options.forEach((option) => {
