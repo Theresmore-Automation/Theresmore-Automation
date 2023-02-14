@@ -80,19 +80,30 @@ const executeAction = async () => {
 
   if (buttons.length) {
     while (!state.scriptPaused && buttons.length) {
-      let shouldBuild = true
-      const button = buttons.shift()
+      let refreshButtons = false
+      const highestPrio = buttons[0].building.prio
+      const highestPrioBuildings = buttons.filter((button) => button.building.prio === highestPrio)
+      buttons = buttons.filter((button) => button.building.prio < highestPrio)
 
-      if (!button.building.isSafe && button.building.requires.length) {
-        shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
+      while (!state.scriptPaused && highestPrioBuildings.length) {
+        let shouldBuild = true
+        const button = highestPrioBuildings.shift()
+
+        if (!button.building.isSafe && button.building.requires.length) {
+          shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
+        }
+
+        if (shouldBuild) {
+          button.element.click()
+          logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
+          refreshButtons = true
+          await sleep(25)
+          if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return
+        }
       }
+      await sleep(1400)
 
-      if (shouldBuild) {
-        button.element.click()
-        logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
-        await sleep(1400)
-        if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return
-
+      if (refreshButtons) {
         buttons = getAllButtons()
       }
     }

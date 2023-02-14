@@ -30,48 +30,51 @@ const getAllowedResearch = () => {
 }
 
 const getAllButtons = () => {
+  const buttonsList = selectors.getAllButtons(true)
+
   const allowedResearch = getAllowedResearch()
+    .map((tech) => {
+      const button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === tech.id)
 
-  const buttonsList = selectors
-    .getAllButtons(true)
-    .filter((button) => !!allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()))
-    .sort((a, b) => {
-      return (
-        allowedResearch.find((tech) => tech.id === b.innerText.split('\n').shift().trim()).prio -
-        allowedResearch.find((tech) => tech.id === a.innerText.split('\n').shift().trim()).prio
-      )
+      return { ...tech, button }
     })
+    .filter((tech) => tech.button)
+    .sort((a, b) => b.prio - a.prio)
 
-  return buttonsList
+  return allowedResearch
 }
 
 const executeAction = async () => {
-  const allowedResearch = getAllowedResearch()
-
   let buttonsList = getAllButtons()
 
   if (buttonsList.length) {
     while (!state.scriptPaused && buttonsList.length) {
-      const button = buttonsList.shift()
+      const highestPrio = buttonsList[0].prio
+      buttonsList = buttonsList.filter((tech) => tech.prio === highestPrio)
 
-      button.click()
-      logger({ msgLevel: 'log', msg: `Researching ${button.innerText.split('\n').shift()}` })
+      for (let i = 0; i < buttonsList.length; i++) {
+        const research = buttonsList[i]
 
-      if (allowedResearch.find((tech) => tech.id === button.innerText.split('\n').shift().trim()).confirm) {
-        if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
-        await sleep(1000)
-        const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+        research.button.click()
+        logger({ msgLevel: 'log', msg: `Researching ${research.id}` })
+        await sleep(25)
 
-        if (redConfirmButton) {
-          redConfirmButton.click()
-          await sleep(4000)
+        if (research.confirm) {
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
+          await sleep(1000)
+          const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+
+          if (redConfirmButton) {
+            redConfirmButton.click()
+            await sleep(4000)
+            if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
+          }
         }
+
+        if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
       }
 
       await sleep(3100)
-      if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
-
       buttonsList = getAllButtons()
     }
   }
