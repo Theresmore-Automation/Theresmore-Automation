@@ -1,24 +1,12 @@
 import localStorage from './localStorage'
 import CONSTANTS from './constants'
-import state from './state'
+import state, { getDefaultOptions } from './state'
 import { buildings } from '../data'
-
-const lastMigration = state.options.lastMigration || 0
 
 const migrations = [
   () => {
     if (typeof state.options.pages[CONSTANTS.PAGES.BUILD] !== 'object') {
-      const newOptions = {
-        ancestor: {
-          enabled: false,
-          selected: '',
-        },
-        prestige: {
-          enabled: false,
-          selected: '',
-        },
-        pages: {},
-      }
+      const newOptions = getDefaultOptions()
 
       Object.keys(CONSTANTS.PAGES).every((key) => {
         newOptions.pages[CONSTANTS.PAGES[key]] = {
@@ -97,7 +85,9 @@ const migrations = [
 ]
 
 const runMigrations = () => {
+  const lastMigration = state.options.lastMigration || 0
   let migrationsRan = false
+
   for (let i = lastMigration; i < migrations.length; i++) {
     migrations[i]()
     migrationsRan = true

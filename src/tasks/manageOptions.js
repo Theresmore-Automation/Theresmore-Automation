@@ -1,5 +1,6 @@
-import { buildings, tech, jobs } from '../data'
+import { buildings, tech, jobs, spells } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
+import { getDefaultOptions } from '../utils/state'
 
 // https://github.com/pieroxy/lz-string
 var LZString = (function () {
@@ -315,8 +316,10 @@ const createPanel = (startFunction) => {
 
           <div class="taTabs">
             <div class="taTab">
-              <input type="radio" name="buildPageOptions" id="buildPageOptions-${CONSTANTS.SUBPAGES.CITY}" checked class="taTab-switch">
-              <label for="buildPageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label">${CONSTANTS.SUBPAGES.CITY}</label>
+              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${
+    CONSTANTS.SUBPAGES.CITY
+  }" checked class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label">${CONSTANTS.SUBPAGES.CITY}</label>
               <div class="taTab-content">
                 <div class="mb-2"><label>Enabled:
                   <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" />
@@ -356,8 +359,10 @@ const createPanel = (startFunction) => {
               </div>
             </div>
             <div class="taTab">
-              <input type="radio" name="buildPageOptions" id="buildPageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-switch">
-              <label for="buildPageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label">${CONSTANTS.SUBPAGES.COLONY}</label>
+              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${
+    CONSTANTS.SUBPAGES.COLONY
+  }" class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label">${CONSTANTS.SUBPAGES.COLONY}</label>
               <div class="taTab-content">
                 <div class="mb-2"><label>Enabled:
                   <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" />
@@ -533,6 +538,49 @@ const createPanel = (startFunction) => {
       </div>
 
       <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.MAGIC}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.MAGIC}" class="taTab-label">${CONSTANTS.PAGES.MAGIC}</label>
+        <div class="taTab-content">
+
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-key="enabled" class="option" />
+          </div>
+
+          <div class="taTabs">
+            <div class="taTab">
+              <input type="radio" name="${CONSTANTS.PAGES.MAGIC}PageOptions" id="${CONSTANTS.PAGES.MAGIC}PageOptions-${
+    CONSTANTS.SUBPAGES.PRAYERS
+  }" checked class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.PRAYERS}" class="taTab-label">${CONSTANTS.SUBPAGES.PRAYERS}</label>
+              <div class="taTab-content">
+                <div class="mb-2"><label>Enabled:
+                  <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.PRAYERS}" data-key="enabled" class="option" />
+                </label></div>
+
+                <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                  <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                    ${spells
+                      .filter((prayer) => prayer.type === 'prayer')
+                      .map((prayer) => {
+                        return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(prayer.id)}</span><br/>
+                        Prio: ${generatePrioritySelect({
+                          page: CONSTANTS.PAGES.MAGIC,
+                          subpage: CONSTANTS.SUBPAGES.PRAYERS,
+                          key: 'options',
+                          subkey: prayer.id,
+                        })}</label></div>`
+                      })
+                      .join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-Automation" class="taTab-switch">
         <label for="topLevelOptions-Automation" class="taTab-label">Automation</label>
         <div class="taTab-content">
@@ -664,6 +712,8 @@ const togglePanel = () => {
 
 const saveOptions = () => {
   const options = [...document.querySelector(`div#${id}`).querySelectorAll('.option')]
+  state.options = getDefaultOptions()
+
   options.forEach((option) => {
     const setting = option.dataset.setting
     const page = option.dataset.page

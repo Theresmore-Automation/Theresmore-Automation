@@ -32,7 +32,7 @@ const mainLoop = async () => {
 
     const pagesToCheck = []
     Object.keys(state.options.pages).forEach((page) => {
-      if (state.options.pages[page].enabled) {
+      if (state.options.pages[page].enabled || page === CONSTANTS.PAGES.RESEARCH) {
         if (pages[page]) {
           pagesToCheck.push(page)
         }
