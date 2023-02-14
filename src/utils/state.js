@@ -20,6 +20,7 @@ export const getDefaultOptions = () => {
         enabled: false,
       },
     },
+    lastMigration: 2,
   }
 
   Object.keys(CONSTANTS.PAGES).every((key) => {
