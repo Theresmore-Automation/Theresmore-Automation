@@ -3133,6 +3133,84 @@
     ]
   },
   {
+    "id": "mercenary_outpost",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 15,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 4500,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 2500,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 2500,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 2500,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1250,
+        "multi": 1.3
+      },
+      {
+        "type": "tech",
+        "id": "mercenary_outpost_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "mercenary_veteran",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "white_company",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "canava_guard",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 4
+      }
+    ]
+  },
+  {
     "id": "watchman_outpost",
     "cat": "defense",
     "tab": 1,
@@ -7383,7 +7461,7 @@
       {
         "type": "population",
         "id": "fisher",
-        "value": 1
+        "value": 2
       },
       {
         "type": "modifier",

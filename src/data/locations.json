@@ -2926,5 +2926,113 @@
         "fix": true
       }
     ]
+  },
+  {
+    "id": "old_outpost",
+    "found": [34],
+    "esp": 12,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "free_old_outpost",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "bandit",
+        "value": 120
+      },
+      {
+        "id": "mercenary_veteran",
+        "value": 90
+      },
+      {
+        "id": "deserter",
+        "value": 50
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "forgotten_shelter",
+    "found": [36],
+    "esp": 22,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "galliard_secret",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "spectra_memory",
+        "value": 250
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "ancient_giant",
+    "found": [38],
+    "esp": 31,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "wings_freedom",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "ancient_giant",
+        "value": 1
+      },
+      {
+        "id": "hill_giant",
+        "value": 140
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 1
+      }
+    ]
   }
 ]

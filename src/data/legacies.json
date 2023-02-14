@@ -1305,6 +1305,21 @@
     ]
   },
   {
+    "id": "cpt_galliard_story",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 9
+      },
+      {
+        "type": "legacy",
+        "id": "cpt_galliard_l",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "deep_pockets_II",
     "req": [
       {
@@ -3232,7 +3247,7 @@
       {
         "type": "modifier",
         "type_id": "army",
-        "id": "behemot",
+        "id": "behemoth",
         "type_gen": "stat",
         "gen": "defense",
         "value": 14,

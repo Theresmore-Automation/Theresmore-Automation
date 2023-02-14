@@ -1697,7 +1697,7 @@
         "req": [
           {
             "type": "building",
-            "id": "builders_complex",
+            "id": "artisans_complex",
             "value": 25
           }
         ],

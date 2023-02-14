@@ -1518,8 +1518,8 @@
   {
     "id": "colonial_militia",
     "type": "army",
-    "attack": 3,
-    "defense": 4,
+    "attack": 7,
+    "defense": 8,
     "order": 1,
     "category": 2,
     "req": [
@@ -2038,6 +2038,15 @@
         "value": 30
       }
     ]
+  },
+  {
+    "id": "ancient_giant",
+    "type": "enemy",
+    "attack": 250,
+    "defense": 16000,
+    "order": 3,
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "archdemon",
@@ -2714,6 +2723,14 @@
     "defense": 1400,
     "order": 1,
     "cap": 1,
+    "category": 3
+  },
+  {
+    "id": "spectra_memory",
+    "type": "enemy",
+    "attack": 5,
+    "defense": 8,
+    "order": 1,
     "category": 3
   },
   {
