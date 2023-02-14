@@ -600,6 +600,61 @@ const createPanel = (startFunction) => {
                 </div>
               </div>
             </div>
+
+            <div class="taTab">
+              <input type="radio" name="${CONSTANTS.PAGES.MAGIC}PageOptions"
+              id="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.SPELLS}"  class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.SPELLS}" class="taTab-label">${CONSTANTS.SUBPAGES.SPELLS}</label>
+              <div class="taTab-content">
+                <div class="mb-2"><label>Enabled:
+                  <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}" data-key="enabled" class="option" />
+                </label></div>
+
+                <div class="mb-2"><label>Minimum Mana production to leave:
+                <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}"
+                data-key="options" data-subkey="minimumMana" value="0" min="0" max="999999" step="1" /></label></div>
+
+                <div class="mb-2">
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 spellsResourceEnable">Enable all Resource spells</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 spellsResourceDisable">Disable all Resource spells</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 spellsArmyEnable">Enable all Army spells</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 spellsArmyDisable">Disable all Army spells</button>
+                </div>
+
+                <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 spellsResource">
+                  <div class="w-full pb-3 font-bold text-center xl:text-left">Resource spells:</div>
+                  <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                    ${spells
+                      .filter((spell) => spell.type === 'spell')
+                      .filter((spell) => spell.gen && !spell.gen.find((gen) => gen.type === 'modifier' && gen.type_id === 'army'))
+                      .map((spell) => {
+                        return `<div class="flex flex-col mb-2"><label>
+                        <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}"
+                          data-key="options" data-subkey="${spell.id}" class="option" />
+                        <span class="font-bold">${translate(spell.id)}</span></label></div>`
+                      })
+                      .join('')}
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 spellsArmy">
+                  <div class="w-full pb-3 font-bold text-center xl:text-left">Army spells:</div>
+                  <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                    ${spells
+                      .filter((spell) => spell.type === 'spell')
+                      .filter((spell) => spell.gen && spell.gen.find((gen) => gen.type === 'modifier' && gen.type_id === 'army'))
+                      .map((spell) => {
+                        return `<div class="flex flex-col mb-2"><label>
+                        <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}"
+                          data-key="options" data-subkey="${spell.id}" class="option" />
+                        <span class="font-bold">${translate(spell.id)}</span></label></div>`
+                      })
+                      .join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -678,26 +733,59 @@ const createPanel = (startFunction) => {
   document.querySelector('#exportOptions').addEventListener('click', exportOptions)
   document.querySelector('#importOptions').addEventListener('click', importOptions)
 
-  const minus1Mediums = [...document.querySelectorAll('.minus1Medium')]
-  const zeroDisabled = [...document.querySelectorAll('.zeroDisabled')]
-
-  const setAllValues = (e, options) => {
-    const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
-    allGrids.forEach((grid) => {
-      grid.querySelectorAll('input.option[type=number]').forEach((input) => (input.value = options.number))
-      grid.querySelectorAll('select').forEach((select) => (select.value = options.select))
+  const setAllValues = (allContainers, options) => {
+    allContainers.forEach((container) => {
+      container.querySelectorAll('input.option[type=number]').forEach((input) => (input.value = options.number))
+      container.querySelectorAll('input.option[type=checkbox]').forEach((input) => (input.checked = options.checked ? 'checked' : ''))
+      container.querySelectorAll('select').forEach((select) => (select.value = options.select))
     })
   }
 
+  const minus1Mediums = [...document.querySelectorAll('.minus1Medium')]
   minus1Mediums.forEach((button) => {
     button.addEventListener('click', function (e) {
-      setAllValues(e, { select: 4, number: -1 })
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
+      setAllValues(allGrids, { select: 4, number: -1 })
     })
   })
 
+  const zeroDisabled = [...document.querySelectorAll('.zeroDisabled')]
   zeroDisabled.forEach((button) => {
     button.addEventListener('click', function (e) {
-      setAllValues(e, { select: 0, number: 0 })
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
+      setAllValues(allGrids, { select: 0, number: 0 })
+    })
+  })
+
+  const spellsResourceEnable = [...document.querySelectorAll('.spellsResourceEnable')]
+  spellsResourceEnable.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap.spellsResource')]
+      setAllValues(allGrids, { checked: true })
+    })
+  })
+
+  const spellsResourceDisable = [...document.querySelectorAll('.spellsResourceDisable')]
+  spellsResourceDisable.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap.spellsResource')]
+      setAllValues(allGrids, { checked: false })
+    })
+  })
+
+  const spellsArmyEnable = [...document.querySelectorAll('.spellsArmyEnable')]
+  spellsArmyEnable.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap.spellsArmy')]
+      setAllValues(allGrids, { checked: true })
+    })
+  })
+
+  const spellsArmyDisable = [...document.querySelectorAll('.spellsArmyDisable')]
+  spellsArmyDisable.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap.spellsArmy')]
+      setAllValues(allGrids, { checked: false })
     })
   })
 

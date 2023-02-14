@@ -5,5 +5,6 @@ import Marketplace from './marketplace'
 import Population from './population'
 import ResearchResearch from './research-research'
 import MagicPrayers from './magic-prayers'
+import MagicSpells from './magic-spells'
 
-export default { ArmyArmy, BuildCity, BuildColony, Marketplace, Population, ResearchResearch, MagicPrayers }
+export default { ArmyArmy, BuildCity, BuildColony, Marketplace, Population, ResearchResearch, MagicPrayers, MagicSpells }
