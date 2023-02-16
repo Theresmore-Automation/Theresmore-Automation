@@ -88,7 +88,7 @@ const executeAction = async () => {
 export default {
   page: CONSTANTS.PAGES.MAGIC,
   subpage: CONSTANTS.SUBPAGES.SPELLS,
-  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('Mana').max,
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('Mana') && resources.get('Mana').max,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.SPELLS, CONSTANTS.PAGES.MAGIC)
 

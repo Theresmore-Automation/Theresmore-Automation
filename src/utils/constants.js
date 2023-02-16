@@ -5,6 +5,7 @@ const PAGES = {
   ARMY: 'Army',
   MARKETPLACE: 'Marketplace',
   MAGIC: 'Magic',
+  DIPLOMACY: 'Diplomacy',
 }
 
 const SUBPAGES = {
@@ -31,8 +32,17 @@ const SUBPAGE_MAPPING = {
   GARRISON: 'ARMY',
 }
 
+const DIPLOMACY = {
+  DISABLED: 0,
+  GO_TO_WAR: 1,
+  JUST_TRADE: 2,
+  TRADE_AND_ALLY: 3,
+  ONLY_ALLY: 4,
+}
+
 export default {
   PAGES,
   SUBPAGES,
   SUBPAGE_MAPPING,
+  DIPLOMACY,
 }

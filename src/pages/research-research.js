@@ -34,7 +34,11 @@ const getAllButtons = () => {
 
   const allowedResearch = getAllowedResearch()
     .map((tech) => {
-      const button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === tech.id)
+      let button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === tech.id)
+
+      if (!button && tech.id === 'A moonlit night') {
+        button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === 'A moonlight night')
+      }
 
       return { ...tech, button }
     })
@@ -80,10 +84,23 @@ const executeAction = async () => {
   }
 }
 
+const hasResearches = () => {
+  const resNavButton = navigation.getPagesSelector().find((page) => page.innerText.includes(CONSTANTS.PAGES.RESEARCH))
+
+  if (resNavButton) {
+    const researchesAvailable = resNavButton.querySelector('span.inline-block')
+    if (researchesAvailable) {
+      return true
+    }
+  }
+
+  return false
+}
+
 export default {
   page: CONSTANTS.PAGES.RESEARCH,
   subpage: CONSTANTS.SUBPAGES.RESEARCH,
-  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length,
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.RESEARCH) && getAllowedResearch().length && hasResearches(),
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.RESEARCH, CONSTANTS.PAGES.RESEARCH)
 

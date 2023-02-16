@@ -1,4 +1,4 @@
-import { buildings, tech, jobs, spells } from '../data'
+import { buildings, tech, jobs, spells, factions } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 
@@ -252,8 +252,8 @@ let start
 const building_cats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
 const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
 
-const generatePrioritySelect = (data) => {
-  const defaultOptions = [
+const generatePrioritySelect = (data, defaultOptions) => {
+  defaultOptions = defaultOptions || [
     { key: 'Disabled', value: 0 },
     { key: 'Lowest', value: 1 },
     { key: 'Low', value: 2 },
@@ -550,6 +550,10 @@ const createPanel = (startFunction) => {
         <label for="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-label">${CONSTANTS.PAGES.ARMY}</label>
         <div class="taTab-content">
 
+          <div class="mb-2">
+            Not working at the moment!
+          </div>
+
           <div class="mb-2"><label>Enabled:
             <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" />
           </div>
@@ -654,6 +658,51 @@ const createPanel = (startFunction) => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-switch">
+        <label for="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-label">${CONSTANTS.PAGES.DIPLOMACY}</label>
+        <div class="taTab-content">
+
+          <div class="mb-2">
+            Not supported yet!
+          </div>
+
+          <div class="mb-2"><label>Enabled:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.DIPLOMACY}" data-key="enabled" class="option" />
+          </div>
+
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 spellsArmy">
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${factions
+                .filter((faction) => faction.gen)
+                .filter((faction) => faction.relationship)
+                .map((faction) => {
+                  const options = [
+                    { key: 'Disabled', value: CONSTANTS.DIPLOMACY.DISABLED },
+                    { key: 'Go to war', value: CONSTANTS.DIPLOMACY.GO_TO_WAR },
+                    { key: 'Just trade', value: CONSTANTS.DIPLOMACY.JUST_TRADE },
+                    { key: 'Trade, then ally', value: CONSTANTS.DIPLOMACY.TRADE_AND_ALLY },
+                    { key: 'Ally without trading', value: CONSTANTS.DIPLOMACY.ONLY_ALLY },
+                  ]
+
+                  return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(faction.id)}</span><br />
+                  ${generatePrioritySelect(
+                    {
+                      page: CONSTANTS.PAGES.DIPLOMACY,
+                      key: 'options',
+                      subkey: `${faction.id}`,
+                    },
+                    options
+                  )}
+                  </label></div>`
+                })
+                .join('')}
             </div>
           </div>
 
@@ -906,10 +955,12 @@ const importOptions = () => {
 
   if (saveString) {
     const saveData = JSON.parse(LZString.decompressFromBase64(saveString))
-    localStorage.set('options', saveData)
-    state.options = saveData
-    runMigrations()
-    location.reload()
+    if (!Array.isArray(saveData)) {
+      localStorage.set('options', saveData)
+      state.options = saveData
+      runMigrations()
+      location.reload()
+    }
   }
 }
 

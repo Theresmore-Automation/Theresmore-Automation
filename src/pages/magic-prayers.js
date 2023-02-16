@@ -1,5 +1,5 @@
 import { spells } from '../data'
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources } from '../utils'
 
 const userEnabled = () => {
   return (
@@ -74,7 +74,8 @@ const executeAction = async () => {
 export default {
   page: CONSTANTS.PAGES.MAGIC,
   subpage: CONSTANTS.SUBPAGES.PRAYERS,
-  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length,
+  enabled: () =>
+    userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length && resources.get('Faith') && resources.get('Faith').max,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.PRAYERS, CONSTANTS.PAGES.MAGIC)
 
