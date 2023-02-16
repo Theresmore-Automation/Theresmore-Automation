@@ -110,6 +110,10 @@ const appendStyles = () => {
     opacity: 1;
     transition: all 0.35s;
   }
+
+  .right-14 {
+    right: 3.5rem;
+  }
   `
 
   document.querySelector('head').insertAdjacentElement('beforeend', styleContainer)
