@@ -668,11 +668,6 @@ const createPanel = (startFunction) => {
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-switch">
         <label for="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-label">${CONSTANTS.PAGES.DIPLOMACY}</label>
         <div class="taTab-content">
-
-          <div class="mb-2">
-            Not supported yet!
-          </div>
-
           <div class="mb-2"><label>Enabled:
             <input type="checkbox" data-page="${CONSTANTS.PAGES.DIPLOMACY}" data-key="enabled" class="option" />
           </div>

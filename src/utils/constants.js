@@ -40,9 +40,20 @@ const DIPLOMACY = {
   ONLY_ALLY: 4,
 }
 
+const DIPLOMACY_BUTTONS = {
+  DELEGATION: 'Send a delegation',
+  CANCEL_TRADE: 'Cancel trade agreement',
+  ACCEPT_TRADE: 'Accept trade agreement',
+  INSULT: 'Insult',
+  WAR: 'War',
+  IMPROVE_RELATIONSHIPS: 'Improve relationships',
+  ALLY: 'Alliance',
+}
+
 export default {
   PAGES,
   SUBPAGES,
   SUBPAGE_MAPPING,
   DIPLOMACY,
+  DIPLOMACY_BUTTONS,
 }
