@@ -47,7 +47,7 @@ const getArmyNumbers = () => {
 
 const getControls = () => {
   const armyNumbers = getArmyNumbers()
-  const allButtons = selectors.getAllButtons(false)
+  const allButtons = selectors.getAllButtons(true)
   const unitsOptionsList = getUnitsList()
   const controls = {
     units: [],
@@ -148,9 +148,9 @@ const executeAction = async () => {
             const resId = usedResources[i]
             const resource = resources.get(translate(resId, 'res_'))
             if (resource && totalCost[resId] < 0) {
-              if (10 * totalCost[resId] >= resource.speed) {
+              if (resource.speed + 10 * totalCost[resId] < 0) {
                 maxBulkHire = Math.min(1, maxBulkHire)
-              } else if (50 * totalCost[resId] >= resource.speed) {
+              } else if (resource.speed + 50 * totalCost[resId] < 0) {
                 maxBulkHire = Math.min(10, maxBulkHire)
               }
             }
@@ -165,7 +165,7 @@ const executeAction = async () => {
 
         shouldHire = !unit.gen
           .filter((gen) => gen.type === 'resource')
-          .find((gen) => !resources.get(translate(gen.id, 'res_')) || resources.get(translate(gen.id, 'res_')).speed <= 0)
+          .find((gen) => !resources.get(translate(gen.id, 'res_')) || resources.get(translate(gen.id, 'res_')).speed + maxBulkHire * gen.value <= 0)
 
         if (shouldHire) {
           unit.button.click()
