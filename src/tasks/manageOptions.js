@@ -601,6 +601,34 @@ const createPanel = (startFunction) => {
                 .join('')}
             </div>
           </div>
+
+          <div class="taTab">
+            <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
+              id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.EXPLORE}"
+              class="taTab-switch">
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.EXPLORE}" class="taTab-label">${CONSTANTS.SUBPAGES.EXPLORE}</label>
+            <div class="taTab-content">
+              <div class="mb-2"><label>Enabled:
+                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}" data-key="enabled" class="option" />
+              </label></div>
+
+              <div class="mb-2"><label>Scouts to send:<br />
+              Min: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="scoutsMin" value="0" min="0" max="999999" step="1" /><br />
+              Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="scoutsMax" value="0" min="0" max="999999" step="1" /></label></div>
+
+              <div class="mb-2"><label>Explorers to send:<br />
+              Min: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="explorersMin" value="0" min="0" max="999999" step="1" /><br />
+              Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="explorersMax" value="0" min="0" max="999999" step="1" /></label></div>
+            </div>
+          </div>
         </div>
 
         </div>
