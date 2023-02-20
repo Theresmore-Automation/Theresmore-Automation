@@ -84,7 +84,7 @@ const getControls = () => {
             unitToAdd.max = Math.min(unitToAdd.cap, unitToAdd.max)
           }
 
-          unitToAdd.max = Math.min(armyNumbers[1] - armyNumbers[0], unitToAdd.max)
+          unitToAdd.max = Math.min(armyNumbers[1] - armyNumbers[0] + unitToAdd.count, unitToAdd.max)
 
           if (unitToAdd.max > unitToAdd.count) {
             controls.units.push(unitToAdd)
