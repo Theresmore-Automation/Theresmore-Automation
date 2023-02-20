@@ -1,4 +1,4 @@
-import { buildings, tech, jobs, spells, factions } from '../data'
+import { buildings, tech, jobs, spells, factions, units } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 
@@ -249,8 +249,11 @@ const isNumber = (n) => /^-?[\d.]+(?:e-?\d+)?$/.test(n)
 const id = 'theresmore-automation-options-panel'
 let start
 
-const building_cats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
+const buildingCats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
 const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
+
+const userUnits = units.filter((unit) => unit.type !== 'enemy' && unit.type !== 'settlement' && unit.type !== 'spy')
+const userUnitsCategory = ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
 
 const generatePrioritySelect = (data, defaultOptions) => {
   defaultOptions = defaultOptions || [
@@ -330,7 +333,7 @@ const createPanel = (startFunction) => {
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
                 </div>
 
-                ${building_cats
+                ${buildingCats
                   .map(
                     (cat) => `
                   <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
@@ -378,7 +381,7 @@ const createPanel = (startFunction) => {
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
                 </div>
 
-                ${building_cats
+                ${buildingCats
                   .map(
                     (cat) => `
                   <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
@@ -550,13 +553,55 @@ const createPanel = (startFunction) => {
         <label for="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-label">${CONSTANTS.PAGES.ARMY}</label>
         <div class="taTab-content">
 
-          <div class="mb-2">
-            Not working at the moment!
-          </div>
+        <div class="mb-2"><label>Enabled:
+        <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" />
+        </div>
 
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" />
+        <div class="taTabs">
+          <div class="taTab">
+            <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
+              id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ARMY}"
+              checked class="taTab-switch">
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ARMY}" class="taTab-label">${CONSTANTS.SUBPAGES.ARMY}</label>
+            <div class="taTab-content">
+              <p class="mb-2">Max values: -1 -> hire unlimited; 0 -> do not hire;</p>
+
+              <div class="mb-2"><label>Enabled:
+                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ARMY}" data-key="enabled" class="option" />
+              </label></div>
+
+              ${userUnitsCategory
+                .map(
+                  (cat, index) => `
+                <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                  <div class="w-full pb-3 font-bold text-center xl:text-left">${cat}</div>
+                  <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                    ${userUnits
+                      .filter((unit) => unit.category === index)
+                      .map((unit) => {
+                        return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(unit.id, 'uni_')}</span><br/>
+                        Max:
+                          <input type="number" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ARMY}" data-key="options" data-subkey="${
+                          unit.id
+                        }"
+                          class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                          value="0" min="-1" max="${unit.cap ? unit.cap : 999}" step="1" /><br />
+                        Prio: ${generatePrioritySelect({
+                          page: CONSTANTS.PAGES.ARMY,
+                          subpage: CONSTANTS.SUBPAGES.ARMY,
+                          key: 'options',
+                          subkey: `prio_${unit.id}`,
+                        })}</label></div>`
+                      })
+                      .join('')}
+                  </div>
+                </div>
+              `
+                )
+                .join('')}
+            </div>
           </div>
+        </div>
 
         </div>
       </div>

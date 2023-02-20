@@ -1,45 +1,32 @@
-import { CONSTANTS, navigation, logger, sleep, state, resources } from '../utils'
+import { units } from '../data'
+import { CONSTANTS, navigation, logger, sleep, state, resources, selectors, translate } from '../utils'
 
-const timeToWaitUntilFullResource = 60
+const getUnitsList = () => {
+  const unitsObject = state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ARMY].options
 
-const hasBA = () => {
-  const leg = window.localStorage.getItem('leg')
+  if (Object.keys(unitsObject).length) {
+    let unitsList = Object.keys(unitsObject)
+      .filter((key) => !key.includes('prio_'))
+      .filter((key) => !!unitsObject[key])
+      .filter((key) => !!unitsObject[`prio_${key}`])
+      .map((key) => {
+        const unit = {
+          key: key,
+          id: translate(key, 'uni_'),
+          max: unitsObject[key] === -1 ? 99999 : unitsObject[key],
+          prio: unitsObject[`prio_${key}`],
+        }
 
-  if (leg) {
-    return !!JSON.parse(leg).find((legacy) => legacy.id === 'angel')
+        return unit
+      })
+      .sort((a, b) => {
+        return b.prio - a.prio
+      })
+
+    return unitsList
   }
 
-  return false
-}
-
-const canAffordBA = () => {
-  const faith = resources.get('Faith')
-  const mana = resources.get('Mana')
-
-  if (faith && mana) {
-    if (faith.current >= 2000 && mana.current >= 600) {
-      return true
-    }
-  }
-
-  return false
-}
-
-const shouldBuyBA = () => {
-  const faith = resources.get('Faith')
-  const mana = resources.get('Mana')
-
-  if (faith && mana) {
-    if (
-      faith.current + faith.speed * timeToWaitUntilFullResource >= faith.max &&
-      mana.current + mana.speed * timeToWaitUntilFullResource >= mana.max &&
-      mana.speed > 20
-    ) {
-      return true
-    }
-  }
-
-  return false
+  return []
 }
 
 const userEnabled = () => {
@@ -49,16 +36,150 @@ const userEnabled = () => {
   )
 }
 
-const executeAction = async () => {
-  if (hasBA() && canAffordBA() && shouldBuyBA()) {
-    const allButtons = [...document.querySelectorAll('div > div > div > div > div > span > button:not(.btn-off)')]
-    const buyBAButton = allButtons.find((button) => button.innerText.includes('Battle Angel'))
+const getArmyNumbers = () => {
+  return document
+    .querySelectorAll('div[role="tablist"]')[1]
+    .querySelector('[aria-selected="true"]')
+    .innerText.replace('Army', '')
+    .split('/')
+    .map((text) => +text.trim())
+}
 
-    if (buyBAButton) {
-      buyBAButton.click()
-      logger({ msgLevel: 'log', msg: `Buying Battle Angel(s)` })
-      await sleep(4000)
-      if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return
+const getControls = () => {
+  const armyNumbers = getArmyNumbers()
+  const allButtons = selectors.getAllButtons(false)
+  const unitsOptionsList = getUnitsList()
+  const controls = {
+    units: [],
+    counts: {},
+  }
+
+  allButtons.forEach((button) => {
+    const buttonText = button.innerText.trim()
+
+    if (buttonText === '+1') {
+      controls.counts['1'] = button
+    } else if (buttonText === '+10') {
+      controls.counts['10'] = button
+    } else if (buttonText === '+50') {
+      controls.counts['50'] = button
+    } else if (buttonText) {
+      const unitDetails = buttonText.split('\n')
+      const unit = units.find((unit) => translate(unit.id, 'uni_') === unitDetails[0].trim())
+
+      if (unit) {
+        if (unitDetails[1]) {
+          unit.count = +unitDetails[1]
+        }
+
+        unit.button = button
+        unit.key = unit.id
+
+        const unitOptions = unitsOptionsList.find((unitOption) => unitOption.key === unit.key)
+
+        if (unitOptions) {
+          const unitToAdd = { ...unit, ...unitOptions }
+
+          if (unitToAdd.cap) {
+            unitToAdd.max = Math.min(unitToAdd.cap, unitToAdd.max)
+          }
+
+          unitToAdd.max = Math.min(armyNumbers[1] - armyNumbers[0], unitToAdd.max)
+
+          if (unitToAdd.max > unitToAdd.count) {
+            controls.units.push(unitToAdd)
+          }
+        }
+      }
+    }
+  })
+
+  controls.units.sort((a, b) => b.prio - a.prio)
+
+  return controls
+}
+
+const isFull = () => {
+  const armyNumbers = getArmyNumbers()
+  return armyNumbers[0] >= armyNumbers[1]
+}
+
+const executeAction = async () => {
+  if (isFull()) return
+  if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return
+  if (state.scriptPaused) return
+
+  let controls = getControls()
+
+  if (controls.units.length) {
+    while (!state.scriptPaused && controls.units.length) {
+      let refreshUnits = false
+      const highestPrio = controls.units[0].prio
+      const highestPrioUnits = controls.units.filter((unit) => unit.prio === highestPrio)
+      controls.units = controls.units.filter((unit) => unit.prio < highestPrio)
+
+      const totalCost = {}
+      let maxBulkHire = 50
+
+      while (!state.scriptPaused && highestPrioUnits.length && !isFull()) {
+        for (let i = 0; i < highestPrioUnits.length && !state.scriptPaused && !isFull(); i++) {
+          const unit = highestPrioUnits[i]
+
+          if (unit.gen) {
+            for (let i = 0; i < unit.gen.length; i++) {
+              const gen = unit.gen[i]
+              if (gen.type === 'resource') {
+                totalCost[gen.id] = totalCost[gen.id] ? totalCost[gen.id] : 0
+                totalCost[gen.id] += gen.value
+              }
+            }
+          }
+
+          if (unit.max - unit.count < 10) {
+            maxBulkHire = 1
+          } else if (unit.max - unit.count < 50) {
+            maxBulkHire = Math.min(maxBulkHire, 10)
+          }
+        }
+
+        if (maxBulkHire > 1) {
+          const usedResources = Object.keys(totalCost)
+          for (let i = 0; i < usedResources.length && maxBulkHire > 1; i++) {
+            const resId = usedResources[i]
+            const resource = resources.get(translate(resId, 'res_'))
+            if (resource && totalCost[resId] < 0) {
+              if (10 * totalCost[resId] >= resource.speed) {
+                maxBulkHire = Math.min(1, maxBulkHire)
+              } else if (50 * totalCost[resId] >= resource.speed) {
+                maxBulkHire = Math.min(10, maxBulkHire)
+              }
+            }
+          }
+        }
+
+        controls.counts[maxBulkHire].click()
+        await sleep(25)
+
+        let shouldHire = true
+        const unit = highestPrioUnits.shift()
+
+        shouldHire = !unit.gen
+          .filter((gen) => gen.type === 'resource')
+          .find((gen) => !resources.get(translate(gen.id, 'res_')) || resources.get(translate(gen.id, 'res_')).speed <= 0)
+
+        if (shouldHire) {
+          unit.button.click()
+          logger({ msgLevel: 'log', msg: `Hiring ${maxBulkHire} ${unit.id}(s) (current: ${unit.count}, target: ${unit.max})` })
+          refreshUnits = true
+          await sleep(25)
+          if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return
+        }
+      }
+      await sleep(1400)
+
+      if (refreshUnits) {
+        controls = getControls()
+      }
     }
   }
 }
@@ -66,15 +187,11 @@ const executeAction = async () => {
 export default {
   page: CONSTANTS.PAGES.ARMY,
   subpage: CONSTANTS.SUBPAGES.ARMY,
-  enabled: () =>
-    userEnabled() &&
-    navigation.hasPage(CONSTANTS.PAGES.ARMY) &&
-    hasBA() &&
-    canAffordBA() &&
-    shouldBuyBA() &&
-    state.lastVisited[CONSTANTS.PAGES.ARMY] + 2 * 60 * 1000 < new Date().getTime(),
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.ARMY),
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY)
+
+    if (isFull()) return
 
     if (navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) await executeAction()
   },
