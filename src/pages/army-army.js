@@ -70,6 +70,8 @@ const getControls = () => {
       if (unit) {
         if (unitDetails[1]) {
           unit.count = +unitDetails[1]
+        } else {
+          unit.count = 0
         }
 
         unit.button = button
