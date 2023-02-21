@@ -1,4 +1,4 @@
-import { buildings, tech, jobs, spells, factions, units } from '../data'
+import { buildings, tech, jobs, spells, factions, units, locations } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 
@@ -255,6 +255,27 @@ const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
 const userUnits = units.filter((unit) => unit.type !== 'enemy' && unit.type !== 'settlement' && unit.type !== 'spy')
 const userUnitsCategory = ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
 
+const fights = factions
+  .concat(locations)
+  .filter((fight) => !fight.id.includes('orc_war_party_'))
+  .map((fight) => {
+    return {
+      key: fight.id,
+      id: translate(fight.id),
+      army: fight.army,
+      level: fight.level,
+    }
+  })
+  .filter((fight) => typeof fight.level !== 'undefined')
+
+let fightLevels = []
+for (let i = 0; i < 15; i++) {
+  const hasFight = !!fights.find((fight) => fight.level === i)
+  if (hasFight) {
+    fightLevels.push(i)
+  }
+}
+
 const generatePrioritySelect = (data, defaultOptions) => {
   defaultOptions = defaultOptions || [
     { key: 'Disabled', value: 0 },
@@ -301,7 +322,7 @@ const createPanel = (startFunction) => {
   innerPanelElement.innerHTML = `
     <h2 class="text-xl">Theresmore Automation Options:</h2>
 
-    <div class="mb-2">
+    <div class="mb-2 taOptionsBar">
       <button id="saveOptions" type="button" class="btn btn-green w-min px-4 mr-2">Save options</button>
       <button id="exportOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Export options</button>
       <button id="importOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Import options</button>
@@ -629,6 +650,52 @@ const createPanel = (startFunction) => {
               data-key="options" data-subkey="explorersMax" value="0" min="0" max="999999" step="1" /></label></div>
             </div>
           </div>
+
+          <div class="taTab">
+            <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
+              id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ATTACK}"
+              class="taTab-switch">
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ATTACK}" class="taTab-label">${CONSTANTS.SUBPAGES.ATTACK}</label>
+            <div class="taTab-content">
+              <div class="mb-2"><label>Enabled:
+                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ATTACK}" data-key="enabled" class="option" />
+              </label></div>
+
+              <p class="mb-2">Check all fights to take</p>
+
+              <div class="mb-2">
+                ${fightLevels
+                  .map(
+                    (level) => `
+                <button type="button" class="btn btn-blue w-min px-4 mr-2 toggleLevelFights" data-checked="1" data-level="${level}">Toggle all Level ${level}</button>
+                `
+                  )
+                  .join('')}
+              </div>
+
+              ${fightLevels
+                .map(
+                  (level) => `
+                <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 taFights level${level}">
+                  <div class="w-full pb-3 font-bold text-center xl:text-left">Level ${level}</div>
+                  <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                    ${fights
+                      .filter((fight) => fight.level === level)
+                      .map((fight) => {
+                        return `<div class="flex flex-col mb-2"><label>
+                        <input type="checkbox"  data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ATTACK}"
+                          data-key="options" data-subkey="${fight.key}" class="option" />
+                        <span class="font-bold">${fight.id}</span></label></div>`
+                      })
+                      .join('')}
+                  </div>
+                </div>
+              `
+                )
+                .join('')}
+
+            </div>
+          </div>
         </div>
 
         </div>
@@ -903,6 +970,16 @@ const createPanel = (startFunction) => {
     button.addEventListener('click', function (e) {
       const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap.spellsArmy')]
       setAllValues(allGrids, { checked: false })
+    })
+  })
+
+  const toggleLevelFights = [...document.querySelectorAll('.toggleLevelFights')]
+  toggleLevelFights.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const toggleState = e.currentTarget.dataset.checked === '1'
+      const allGrids = [...document.querySelectorAll(`div.taFights.level${e.currentTarget.dataset.level}`)]
+      setAllValues(allGrids, { checked: toggleState })
+      e.currentTarget.dataset.checked = toggleState ? '0' : '1'
     })
   })
 

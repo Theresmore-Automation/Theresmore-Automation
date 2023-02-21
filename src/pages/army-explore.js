@@ -50,7 +50,7 @@ const executeAction = async () => {
 
       for (let i = 0; i < count[0] - limitMax && removeUnitButton; i++) {
         removeUnitButton.click()
-        await sleep(1)
+        await sleep(25)
       }
 
       count = box
@@ -60,7 +60,7 @@ const executeAction = async () => {
 
       for (let i = 0; i < limitMax - count[0] && addUnitButton; i++) {
         addUnitButton.click()
-        await sleep(1)
+        await sleep(25)
       }
 
       count = box
@@ -78,13 +78,13 @@ const executeAction = async () => {
       } else {
         while (removeUnitButton) {
           removeUnitButton.click()
-          await sleep(1)
+          await sleep(25)
         }
       }
     }
 
     const sendToExplore = container.querySelector('button.btn-blue:not(.btn-off)')
-    if (sendToExplore && canExplore) {
+    if (!state.scriptPaused && sendToExplore && canExplore) {
       logger({ msgLevel: 'log', msg: `Starting exploration: ${unitsSent.join(', ')}` })
       sendToExplore.click()
       await sleep(25)

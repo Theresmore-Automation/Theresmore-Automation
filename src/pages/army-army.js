@@ -107,9 +107,9 @@ const isFull = () => {
 }
 
 const executeAction = async () => {
-  if (isFull()) return
   if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return
   if (state.scriptPaused) return
+  if (isFull()) return
 
   let controls = getControls()
 
@@ -192,8 +192,6 @@ export default {
   enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.ARMY),
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.ARMY, CONSTANTS.PAGES.ARMY)
-
-    if (isFull()) return
 
     if (navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) await executeAction()
   },

@@ -111,6 +111,11 @@ const appendStyles = () => {
     transition: all 0.35s;
   }
 
+  .taOptionsBar {
+    position: fixed;
+    z-index: 100;
+  }
+
   .right-14 {
     right: 3.5rem;
   }

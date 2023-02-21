@@ -111,7 +111,7 @@ const executeAction = async () => {
         gold = resources.get('Gold')
         res = resources.get(resName)
         price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText)
-        await sleep(1)
+        await sleep(25)
 
         if (price / initialPrice < 0.1) {
           break

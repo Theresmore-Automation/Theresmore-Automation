@@ -6,7 +6,7 @@ const removeAllUnits = async (button) => {
     removeButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Control', code: 'ControlLeft' }))
     removeButton.click()
     removeButton.dispatchEvent(new KeyboardEvent('keyup', { key: 'Control', code: 'ControlLeft' }))
-    await sleep(1)
+    await sleep(10)
     removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red')
   }
 }
@@ -17,7 +17,7 @@ const addAllUnits = async (button) => {
     addButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Control', code: 'ControlLeft' }))
     addButton.click()
     addButton.dispatchEvent(new KeyboardEvent('keyup', { key: 'Control', code: 'ControlLeft' }))
-    await sleep(1)
+    await sleep(10)
     addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green')
   }
 }
