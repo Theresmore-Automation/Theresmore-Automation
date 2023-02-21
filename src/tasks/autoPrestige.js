@@ -6,6 +6,7 @@ const autoPrestige = async () => {
   let prestigeButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Prestige'))
   if (prestigeButton) {
     localStorage.set('lastVisited', {})
+    state.stopAttacks = false
     state.haveManualResourceButtons = true
 
     prestigeButton.click()

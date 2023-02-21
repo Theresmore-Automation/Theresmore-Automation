@@ -448,6 +448,11 @@ const createPanel = (startFunction) => {
             <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}" data-key="enabled" class="option" />
           </label></div>
 
+          <div class="mb-2"><label>Dangerous fights should require enough army to win before researching:
+            <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}"
+              data-key="options" data-subkey="dangerousFights" class="option" />
+          </label></div>
+
           <div class="mb-2">
             <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all regular to Medium</button>
             <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all regular to Disabled</button>

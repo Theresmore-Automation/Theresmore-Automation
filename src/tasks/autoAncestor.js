@@ -20,6 +20,7 @@ const autoAncestor = async () => {
 
     if (ancestor) {
       ancestor.click()
+      state.stopAttacks = false
       state.haveManualResourceButtons = true
       await sleep(5000)
     }

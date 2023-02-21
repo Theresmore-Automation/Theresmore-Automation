@@ -10,5 +10,6 @@ import selectors from './selectors'
 import resources from './resources'
 import state from './state'
 import runMigrations from './migrations'
+import armyCalculator from './armyCalculator'
 
-export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations }
+export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations, armyCalculator }

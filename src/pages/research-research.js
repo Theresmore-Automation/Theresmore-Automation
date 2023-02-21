@@ -1,5 +1,16 @@
 import { tech } from '../data'
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator } from '../utils'
+
+const dangerousFightsMapping = {
+  'A moonlight night': 'army_of_goblin',
+  'A moonlit night': 'army_of_goblin',
+  'Dragon assault': 'army_of_dragon',
+  'Mysterious robbery': 'fallen_angel_army_1',
+  'The Fallen Angel reveal': 'fallen_angel_army_2',
+  'The Orc Horde': 'orc_horde_boss',
+  'Kobold nation': 'king_kobold_nation',
+  'Barbarian tribes': 'barbarian_horde',
+}
 
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].enabled || false
@@ -58,6 +69,41 @@ const executeAction = async () => {
 
       for (let i = 0; i < buttonsList.length; i++) {
         const research = buttonsList[i]
+
+        if (
+          state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options.dangerousFights &&
+          dangerousFightsMapping[research.id]
+        ) {
+          let gotAtt = false
+          let gotDef = false
+
+          const army = armyCalculator.getEnemyArmy(dangerousFightsMapping[research.id])
+
+          const enemyStats = armyCalculator.calculateEnemyStats(army)
+
+          const userStats = {
+            attack: [0, 0, 0, 0, 0],
+            defense: [0, 0, 0, 0, 0],
+          }
+          const garrison = armyCalculator.getGarrison()
+
+          for (let i = 0; i < garrison.length; i++) {
+            const unit = garrison[i]
+            userStats.attack[unit.category] += unit.attack * unit.value
+            userStats.defense[unit.category] += unit.defense * unit.value
+          }
+
+          const damages = armyCalculator.calculateDamages(enemyStats, userStats)
+          if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
+          if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+
+          if (gotAtt && gotDef) {
+            state.stopAttacks = false
+          } else {
+            state.stopAttacks = true
+            continue
+          }
+        }
 
         research.button.click()
         logger({ msgLevel: 'log', msg: `Researching ${research.id}` })
