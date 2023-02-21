@@ -33,7 +33,7 @@ const getAllowedPrayers = () => {
 }
 
 const getAllButtons = () => {
-  const buttonsList = selectors.getAllButtons(true)
+  const buttonsList = selectors.getAllButtons(true, ':not(.btn-progress)')
 
   const allowedPrayers = getAllowedPrayers()
     .map((prayer) => {
