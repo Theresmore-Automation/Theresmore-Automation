@@ -59,15 +59,18 @@ const executeAction = async () => {
           .filter((fight) => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key])
 
         enemyList.sort((a, b) => {
+          let aLevel = a.level || 0
+          let bLevel = b.level || 0
+
           if (factionFights.includes(a.key)) {
-            a.level -= 100
+            aLevel -= 100
           }
 
           if (factionFights.includes(b.key)) {
-            b.level -= 100
+            bLevel -= 100
           }
 
-          return a.level - b.level
+          return aLevel - bLevel
         })
 
         if (enemyList.length) {
@@ -86,10 +89,6 @@ const executeAction = async () => {
       }
     }
 
-    if (targetSelected) {
-      army = armyCalculator.getEnemyArmy(target.id)
-    }
-
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i]
       const name = box.querySelector('h5.font-bold').innerText.trim()
@@ -102,7 +101,7 @@ const executeAction = async () => {
         removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
       }
 
-      if (state.stopAttacks || !targetSelected) {
+      if (state.stopAttacks || !targetSelected || !target) {
         continue
       }
 
@@ -118,86 +117,56 @@ const executeAction = async () => {
       })
     }
 
-    if (targetSelected && army.length && userUnits.length && sendToAttackButton) {
-      const enemyStats = armyCalculator.calculateEnemyStats(army)
+    if (targetSelected && target && !state.stopAttacks) {
+      army = armyCalculator.getEnemyArmy(target.key)
 
-      const userStats = {
-        attack: [0, 0, 0, 0, 0],
-        defense: [0, 0, 0, 0, 0],
-      }
+      if (army.length && userUnits.length && sendToAttackButton) {
+        const enemyStats = armyCalculator.calculateEnemyStats(army)
 
-      const sortMethod = (type = 'defense') => {
-        return (a, b) => {
-          const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
-          const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
+        const userStats = {
+          attack: [0, 0, 0, 0, 0],
+          defense: [0, 0, 0, 0, 0],
+        }
 
-          const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
-          const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
+        const sortMethod = (type = 'defense') => {
+          return (a, b) => {
+            const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
+            const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
 
-          if (aGivesAdvantage === bGivesAdvantage) {
-            if (aHasAdvantage === bHasAdvantage) {
-              if (type === 'defense') {
-                return b.defense - a.defense
+            const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
+            const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
+
+            if (aGivesAdvantage === bGivesAdvantage) {
+              if (aHasAdvantage === bHasAdvantage) {
+                if (type === 'defense') {
+                  return b.defense - a.defense
+                } else {
+                  return b.attack - a.attack
+                }
               } else {
-                return b.attack - a.attack
+                return bHasAdvantage - aHasAdvantage
               }
             } else {
-              return bHasAdvantage - aHasAdvantage
+              return aGivesAdvantage - bGivesAdvantage
             }
-          } else {
-            return aGivesAdvantage - bGivesAdvantage
           }
         }
-      }
 
-      const defUnits = [...userUnits].sort(sortMethod('defense'))
-      const attUnits = [...userUnits].sort(sortMethod('attack'))
+        const defUnits = [...userUnits].sort(sortMethod('defense'))
+        const attUnits = [...userUnits].sort(sortMethod('attack'))
 
-      let gotDef = false
-      let gotAtt = false
-      for (let i = 0; i < defUnits.length; i++) {
-        if (gotDef) break
-
-        const unit = defUnits[i]
-
-        while (!gotDef) {
-          const damages = armyCalculator.calculateDamages(enemyStats, userStats)
-          if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
-          if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+        let gotDef = false
+        let gotAtt = false
+        for (let i = 0; i < defUnits.length; i++) {
           if (gotDef) break
 
-          unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
-          unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+          const unit = defUnits[i]
 
-          if (unit.addUnitButton) {
-            unit.addUnitButton.click()
-            await sleep(50)
-
-            if (sendToAttackButton.classList.toString().includes('btn-off')) {
-              unit.removeUnitButton.click()
-              await sleep(50)
-              break
-            }
-
-            userStats.attack[unit.category] += unit.attack
-            userStats.defense[unit.category] += unit.defense
-          } else {
-            break
-          }
-        }
-      }
-
-      if (!gotAtt) {
-        for (let i = 0; i < attUnits.length; i++) {
-          if (gotAtt) break
-
-          const unit = attUnits[i]
-
-          while (!gotAtt) {
+          while (!gotDef) {
             const damages = armyCalculator.calculateDamages(enemyStats, userStats)
             if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
             if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
-            if (gotAtt) break
+            if (gotDef) break
 
             unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
             unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
@@ -219,21 +188,55 @@ const executeAction = async () => {
             }
           }
         }
-      }
 
-      if (state.scriptPaused) return
+        if (!gotAtt) {
+          for (let i = 0; i < attUnits.length; i++) {
+            if (gotAtt) break
 
-      if (gotAtt && gotDef && targetSelected) {
-        logger({ msgLevel: 'log', msg: `Launching attack against ${target.id}` })
-        sendToAttackButton.click()
-        await sleep(100)
-      } else {
-        for (let i = 0; i < userUnits.length; i++) {
-          let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
-          while (removeUnitButton) {
-            removeUnitButton.click()
-            await sleep(25)
-            removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
+            const unit = attUnits[i]
+
+            while (!gotAtt) {
+              const damages = armyCalculator.calculateDamages(enemyStats, userStats)
+              if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
+              if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+              if (gotAtt) break
+
+              unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
+              unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+
+              if (unit.addUnitButton) {
+                unit.addUnitButton.click()
+                await sleep(50)
+
+                if (sendToAttackButton.classList.toString().includes('btn-off')) {
+                  unit.removeUnitButton.click()
+                  await sleep(50)
+                  break
+                }
+
+                userStats.attack[unit.category] += unit.attack
+                userStats.defense[unit.category] += unit.defense
+              } else {
+                break
+              }
+            }
+          }
+        }
+
+        if (state.scriptPaused) return
+
+        if (gotAtt && gotDef && targetSelected) {
+          logger({ msgLevel: 'log', msg: `Launching attack against ${target.id}` })
+          sendToAttackButton.click()
+          await sleep(50)
+        } else {
+          for (let i = 0; i < userUnits.length; i++) {
+            let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
+            while (removeUnitButton) {
+              removeUnitButton.click()
+              await sleep(25)
+              removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
+            }
           }
         }
       }

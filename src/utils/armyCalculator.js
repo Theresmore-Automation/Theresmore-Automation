@@ -10,16 +10,17 @@ const fights = factions.concat(locations).map((fight) => {
 })
 
 const applyUnitMods = (unit) => {
+  const unitCopy = { ...unit }
   let run = window.localStorage.getItem('run')
   if (run) {
     run = JSON.parse(run)
   }
 
-  if (unit && run && run.modifiers) {
+  if (unitCopy && run && run.modifiers) {
     let bonusAttack = 0
     let bonusDefense = 0
 
-    const unitMods = run.modifiers.find((mod) => mod.id === unit.id)
+    const unitMods = run.modifiers.find((mod) => mod.id === unitCopy.id)
 
     if (unitMods && unitMods.mods) {
       for (let i = 0; i < unitMods.mods.length; i++) {
@@ -39,11 +40,11 @@ const applyUnitMods = (unit) => {
       }
     }
 
-    unit.attack += bonusAttack
-    unit.defense += bonusDefense
+    unitCopy.attack += bonusAttack
+    unitCopy.defense += bonusDefense
   }
 
-  return unit
+  return unitCopy
 }
 
 const getEnemyArmy = (enemyId) => {
