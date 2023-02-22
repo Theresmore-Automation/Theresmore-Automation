@@ -60,6 +60,7 @@ const getAllButtons = () => {
 }
 
 const executeAction = async () => {
+  let ignoredTech = []
   let buttonsList = getAllButtons()
 
   if (buttonsList.length) {
@@ -74,33 +75,23 @@ const executeAction = async () => {
           state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options.dangerousFights &&
           dangerousFightsMapping[research.id]
         ) {
-          let gotAtt = false
-          let gotDef = false
-
           const army = armyCalculator.getEnemyArmy(dangerousFightsMapping[research.id])
 
           const enemyStats = armyCalculator.calculateEnemyStats(army)
-
-          const userStats = {
-            attack: [0, 0, 0, 0, 0],
-            defense: [0, 0, 0, 0, 0],
-          }
           const garrison = armyCalculator.getGarrison()
 
-          for (let i = 0; i < garrison.length; i++) {
-            const unit = garrison[i]
-            userStats.attack[unit.category] += unit.attack * unit.value
-            userStats.defense[unit.category] += unit.defense * unit.value
-          }
+          const canWinNow = armyCalculator.canWinBattle(enemyStats, garrison, true, true)
+          const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
 
-          const damages = armyCalculator.calculateDamages(enemyStats, userStats)
-          if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
-          if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
-
-          if (gotAtt && gotDef) {
+          if (canWinNow) {
             state.stopAttacks = false
-          } else {
+          } else if (canWinEmpty) {
+            ignoredTech.push(research.id)
             state.stopAttacks = true
+            continue
+          } else {
+            ignoredTech.push(research.id)
+            state.stopAttacks = false
             continue
           }
         }
@@ -125,7 +116,7 @@ const executeAction = async () => {
       }
 
       await sleep(3100)
-      buttonsList = getAllButtons()
+      buttonsList = getAllButtons().filter((tech) => !ignoredTech.includes(tech.id))
     }
   }
 }

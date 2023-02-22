@@ -1,5 +1,5 @@
 import { factions } from '../data'
-import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage, selectors } from '../utils'
+import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage, selectors, armyCalculator } from '../utils'
 
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.DIPLOMACY].enabled || false
@@ -127,16 +127,24 @@ const executeAction = async () => {
           }
 
           if (faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR]) {
-            logger({ msgLevel: 'log', msg: `Going to war with ${faction.id}` })
-            longAction = true
-            tookAction = true
-            faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click()
-            await sleep(200)
+            const army = armyCalculator.getEnemyArmy(faction.key)
+            const enemyStats = armyCalculator.calculateEnemyStats(army)
+            const garrison = armyCalculator.getGarrison().filter((unit) => unit.category !== 0)
 
-            const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
-            if (redConfirmButton) {
-              redConfirmButton.click()
+            const canWinBattle = armyCalculator.canWinBattle(enemyStats, garrison, true)
+
+            if (canWinBattle) {
+              logger({ msgLevel: 'log', msg: `Going to war with ${faction.id}` })
+              longAction = true
+              tookAction = true
+              faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click()
               await sleep(200)
+
+              const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+              if (redConfirmButton) {
+                redConfirmButton.click()
+                await sleep(200)
+              }
             }
           }
         } else if (faction.option === CONSTANTS.DIPLOMACY.TRADE_AND_ALLY || faction.option === CONSTANTS.DIPLOMACY.ONLY_ALLY) {

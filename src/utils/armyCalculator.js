@@ -82,13 +82,81 @@ const getGarrison = () => {
         const unitDetails = units.find((unitDetails) => unitDetails.id === unit.id)
 
         if (unitDetails) {
-          garrison.push({ ...applyUnitMods(unitDetails), value: unit.value - unit.away })
+          garrison.push({ ...applyUnitMods(unitDetails), key: unitDetails.id, value: unit.value - unit.away })
         }
       }
     }
   }
 
   return garrison
+}
+
+const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll = false) => {
+  let canWin = false
+  let run = window.localStorage.getItem('run')
+  if (run) {
+    run = JSON.parse(run)
+  }
+
+  if (run && run.army) {
+    const sortMethod = (type = 'defense') => {
+      return (a, b) => {
+        const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
+        const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
+
+        const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
+        const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
+
+        if (aGivesAdvantage === bGivesAdvantage) {
+          if (aHasAdvantage === bHasAdvantage) {
+            if (type === 'defense') {
+              return b.defense - a.defense
+            } else {
+              return b.attack - a.attack
+            }
+          } else {
+            return bHasAdvantage - aHasAdvantage
+          }
+        } else {
+          return aGivesAdvantage - bGivesAdvantage
+        }
+      }
+    }
+
+    const userStats = {
+      attack: [0, 0, 0, 0, 0],
+      defense: [0, 0, 0, 0, 0],
+    }
+
+    const defUnits = [...userArmy].sort(sortMethod('defense'))
+
+    let gotDef = false
+    let gotAtt = false
+    for (let i = 0; i < defUnits.length && (!canWin || calculateAll); i++) {
+      if (gotDef && !calculateAll) break
+
+      const unit = defUnits[i]
+
+      if (!gotDef || calculateAll) {
+        const runUnit = run.army.find((runUnit) => runUnit.id === unit.key)
+
+        if (runUnit && runUnit.value > 0) {
+          const unitCount = onlyAvailable ? runUnit.value - runUnit.away : runUnit.value
+
+          userStats.attack[unit.category] += unitCount * unit.attack
+          userStats.defense[unit.category] += unitCount * unit.defense
+
+          const damages = calculateDamages(enemyStats, userStats)
+          if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
+          if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+        }
+      }
+
+      canWin = gotAtt && gotDef
+    }
+  }
+
+  return canWin
 }
 
 const calculateEnemyStats = (army) => {
@@ -134,4 +202,4 @@ const calculateDamages = (enemyStats, userStats) => {
   }
 }
 
-export default { applyUnitMods, getGarrison, getEnemyArmy, calculateEnemyStats, calculateDamages }
+export default { applyUnitMods, getGarrison, getEnemyArmy, calculateEnemyStats, calculateDamages, canWinBattle }

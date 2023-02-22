@@ -16,6 +16,21 @@ const fights = factions
 
 const factionFights = factions.map((faction) => faction.id)
 
+const unassignAll = (controlBox) => {
+  const allButtons = [...controlBox.querySelectorAll('button')]
+
+  for (let i = 0; i < allButtons.length; i++) {
+    const button = allButtons[i]
+    const parentClasses = button.parentElement.classList.toString()
+    const classesToFind = ['absolute', 'top-0', 'right-7']
+
+    if (classesToFind.every((className) => parentClasses.includes(className))) {
+      button.click()
+      break
+    }
+  }
+}
+
 const userEnabled = () => {
   return (
     (state.options.pages[CONSTANTS.PAGES.ARMY].enabled || false) &&
@@ -40,8 +55,9 @@ const executeAction = async () => {
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
     const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => button.innerText.includes('Send to attack'))
+    unassignAll(controlBox)
 
-    if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks) {
+    if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
       enemySelectorButton.click()
       await sleep(25)
       const modal = [...document.querySelectorAll('h3.modal-title')].find((h3) => h3.innerText.includes('enemies'))
@@ -73,7 +89,7 @@ const executeAction = async () => {
           return aLevel - bLevel
         })
 
-        if (enemyList.length) {
+        if (enemyList.length && !state.scriptPaused) {
           target = enemyList.shift()
           targetSelected = true
           target.button.click()
@@ -83,7 +99,7 @@ const executeAction = async () => {
           const closeButton = modal.parentElement.parentElement.parentElement.querySelector('div.absolute > button')
           if (closeButton) {
             closeButton.click()
-            await sleep(25)
+            await sleep(20)
           }
         }
       }
@@ -97,7 +113,7 @@ const executeAction = async () => {
 
       while (removeUnitButton) {
         removeUnitButton.click()
-        await sleep(25)
+        await sleep(20)
         removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
       }
 
@@ -123,94 +139,64 @@ const executeAction = async () => {
       if (army.length && userUnits.length && sendToAttackButton) {
         const enemyStats = armyCalculator.calculateEnemyStats(army)
 
-        const userStats = {
-          attack: [0, 0, 0, 0, 0],
-          defense: [0, 0, 0, 0, 0],
-        }
+        const canWin = armyCalculator.canWinBattle(enemyStats, userUnits, false)
 
-        const sortMethod = (type = 'defense') => {
-          return (a, b) => {
-            const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
-            const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
+        if (canWin) {
+          const userStats = {
+            attack: [0, 0, 0, 0, 0],
+            defense: [0, 0, 0, 0, 0],
+          }
 
-            const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
-            const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
+          const sortMethod = (type = 'defense') => {
+            return (a, b) => {
+              const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
+              const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
 
-            if (aGivesAdvantage === bGivesAdvantage) {
-              if (aHasAdvantage === bHasAdvantage) {
-                if (type === 'defense') {
-                  return b.defense - a.defense
+              const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
+              const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
+
+              if (aGivesAdvantage === bGivesAdvantage) {
+                if (aHasAdvantage === bHasAdvantage) {
+                  if (type === 'defense') {
+                    return b.defense - a.defense
+                  } else {
+                    return b.attack - a.attack
+                  }
                 } else {
-                  return b.attack - a.attack
+                  return bHasAdvantage - aHasAdvantage
                 }
               } else {
-                return bHasAdvantage - aHasAdvantage
+                return aGivesAdvantage - bGivesAdvantage
               }
-            } else {
-              return aGivesAdvantage - bGivesAdvantage
             }
           }
-        }
 
-        const defUnits = [...userUnits].sort(sortMethod('defense'))
-        const attUnits = [...userUnits].sort(sortMethod('attack'))
+          const defUnits = [...userUnits].sort(sortMethod('defense'))
+          const attUnits = [...userUnits].sort(sortMethod('attack'))
 
-        let gotDef = false
-        let gotAtt = false
-        for (let i = 0; i < defUnits.length; i++) {
-          if (gotDef) break
-
-          const unit = defUnits[i]
-
-          while (!gotDef) {
-            const damages = armyCalculator.calculateDamages(enemyStats, userStats)
-            if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
-            if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+          let gotDef = false
+          let gotAtt = false
+          for (let i = 0; i < defUnits.length && !state.scriptPaused; i++) {
             if (gotDef) break
 
-            unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
-            unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+            const unit = defUnits[i]
 
-            if (unit.addUnitButton) {
-              unit.addUnitButton.click()
-              await sleep(50)
-
-              if (sendToAttackButton.classList.toString().includes('btn-off')) {
-                unit.removeUnitButton.click()
-                await sleep(50)
-                break
-              }
-
-              userStats.attack[unit.category] += unit.attack
-              userStats.defense[unit.category] += unit.defense
-            } else {
-              break
-            }
-          }
-        }
-
-        if (!gotAtt) {
-          for (let i = 0; i < attUnits.length; i++) {
-            if (gotAtt) break
-
-            const unit = attUnits[i]
-
-            while (!gotAtt) {
+            while (!gotDef && !state.scriptPaused) {
               const damages = armyCalculator.calculateDamages(enemyStats, userStats)
               if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
               if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
-              if (gotAtt) break
+              if (gotDef) break
 
-              unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
               unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
 
               if (unit.addUnitButton) {
                 unit.addUnitButton.click()
-                await sleep(50)
+                await sleep(20)
 
                 if (sendToAttackButton.classList.toString().includes('btn-off')) {
+                  unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
                   unit.removeUnitButton.click()
-                  await sleep(50)
+                  await sleep(20)
                   break
                 }
 
@@ -221,20 +207,67 @@ const executeAction = async () => {
               }
             }
           }
-        }
 
-        if (state.scriptPaused) return
+          if (!gotAtt) {
+            for (let i = 0; i < attUnits.length && !state.scriptPaused; i++) {
+              if (gotAtt) break
 
-        if (gotAtt && gotDef && targetSelected) {
-          logger({ msgLevel: 'log', msg: `Launching attack against ${target.id}` })
-          sendToAttackButton.click()
-          await sleep(50)
+              const unit = attUnits[i]
+
+              while (!gotAtt && !state.scriptPaused) {
+                const damages = armyCalculator.calculateDamages(enemyStats, userStats)
+                if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
+                if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+                if (gotAtt) break
+
+                unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+
+                if (unit.addUnitButton) {
+                  unit.addUnitButton.click()
+                  await sleep(20)
+
+                  if (sendToAttackButton.classList.toString().includes('btn-off')) {
+                    unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
+                    unit.removeUnitButton.click()
+                    await sleep(20)
+                    break
+                  }
+
+                  userStats.attack[unit.category] += unit.attack
+                  userStats.defense[unit.category] += unit.defense
+                } else {
+                  break
+                }
+              }
+            }
+          }
+
+          if (gotAtt && gotDef && targetSelected && !state.scriptPaused) {
+            logger({ msgLevel: 'log', msg: `Launching attack against ${target.id}` })
+            sendToAttackButton.click()
+            await sleep(20)
+          } else {
+            unassignAll(controlBox)
+            await sleep(20)
+
+            for (let i = 0; i < userUnits.length; i++) {
+              let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
+              while (removeUnitButton) {
+                removeUnitButton.click()
+                await sleep(1)
+                removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
+              }
+            }
+          }
         } else {
+          unassignAll(controlBox)
+          await sleep(20)
+
           for (let i = 0; i < userUnits.length; i++) {
             let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
             while (removeUnitButton) {
               removeUnitButton.click()
-              await sleep(25)
+              await sleep(1)
               removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
             }
           }
