@@ -57,6 +57,30 @@ const executeAction = async () => {
     const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => button.innerText.includes('Send to attack'))
     unassignAll(controlBox)
 
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i]
+      const name = box.querySelector('h5.font-bold').innerText.trim()
+      let removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
+      const addUnitButton = box.querySelector('div.inline-flex button.btn-green')
+
+      while (removeUnitButton) {
+        removeUnitButton.click()
+        await sleep(20)
+        removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
+      }
+
+      const unitDetails = armyCalculator.applyUnitMods(units.find((unit) => translate(unit.id, 'uni_') === name))
+
+      userUnits.push({
+        ...unitDetails,
+        key: unitDetails.id,
+        id: name,
+        box,
+        removeUnitButton,
+        addUnitButton,
+      })
+    }
+
     if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
       enemySelectorButton.click()
       await sleep(25)
@@ -73,6 +97,13 @@ const executeAction = async () => {
             }
           })
           .filter((fight) => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key])
+          .filter((fight) => {
+            const army = armyCalculator.getEnemyArmy(fight.key)
+            const enemyStats = armyCalculator.calculateEnemyStats(army)
+            const canWin = armyCalculator.canWinBattle(enemyStats, userUnits, false)
+
+            return canWin
+          })
 
         enemyList.sort((a, b) => {
           let aLevel = a.level || 0
@@ -103,34 +134,6 @@ const executeAction = async () => {
           }
         }
       }
-    }
-
-    for (let i = 0; i < boxes.length; i++) {
-      const box = boxes[i]
-      const name = box.querySelector('h5.font-bold').innerText.trim()
-      let removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
-      const addUnitButton = box.querySelector('div.inline-flex button.btn-green')
-
-      while (removeUnitButton) {
-        removeUnitButton.click()
-        await sleep(20)
-        removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
-      }
-
-      if (state.stopAttacks || !targetSelected || !target) {
-        continue
-      }
-
-      const unitDetails = armyCalculator.applyUnitMods(units.find((unit) => translate(unit.id, 'uni_') === name))
-
-      userUnits.push({
-        ...unitDetails,
-        key: unitDetails.id,
-        id: name,
-        box,
-        removeUnitButton,
-        addUnitButton,
-      })
     }
 
     if (targetSelected && target && !state.stopAttacks) {

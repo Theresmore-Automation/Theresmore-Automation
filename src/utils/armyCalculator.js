@@ -129,6 +129,9 @@ const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll =
     }
 
     const defUnits = [...userArmy].sort(sortMethod('defense'))
+    const attUnits = [...userArmy].sort(sortMethod('attack'))
+
+    const usedUnits = []
 
     let gotDef = false
     let gotAtt = false
@@ -136,6 +139,9 @@ const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll =
       if (gotDef && !calculateAll) break
 
       const unit = defUnits[i]
+      if (usedUnits.includes(unit.id)) {
+        continue
+      }
 
       if (!gotDef || calculateAll) {
         const runUnit = run.army.find((runUnit) => runUnit.id === unit.key)
@@ -147,13 +153,47 @@ const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll =
           userStats.defense[unit.category] += unitCount * unit.defense
 
           const damages = calculateDamages(enemyStats, userStats)
+
           if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
           if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+
+          usedUnits.push(unit.id)
+          canWin = gotAtt && gotDef
         }
       }
-
-      canWin = gotAtt && gotDef
     }
+
+    if (!gotDef || !gotAtt || calculateAll) {
+      for (let i = 0; i < attUnits.length && (!canWin || calculateAll); i++) {
+        if (gotAtt && !calculateAll) break
+
+        const unit = attUnits[i]
+        if (usedUnits.includes(unit.id)) {
+          continue
+        }
+
+        if (!gotAtt || calculateAll) {
+          const runUnit = run.army.find((runUnit) => runUnit.id === unit.key)
+
+          if (runUnit && runUnit.value > 0) {
+            const unitCount = onlyAvailable ? runUnit.value - runUnit.away : runUnit.value
+
+            userStats.attack[unit.category] += unitCount * unit.attack
+            userStats.defense[unit.category] += unitCount * unit.defense
+
+            const damages = calculateDamages(enemyStats, userStats)
+
+            if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
+            if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
+
+            usedUnits.push(unit.id)
+            canWin = gotAtt && gotDef
+          }
+        }
+      }
+    }
+
+    canWin = gotAtt && gotDef
   }
 
   return canWin
