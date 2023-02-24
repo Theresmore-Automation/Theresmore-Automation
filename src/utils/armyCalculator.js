@@ -220,16 +220,18 @@ const calculateDamages = (enemyStats, userStats) => {
   let userAttack = 0
   let userDefense = 0
   // ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
-  for (let i = 1; i < enemyStats.attack.length; i++) {
+  for (let i = 0; i < enemyStats.attack.length; i++) {
     let j = i + 1
+    if (i === 0) j = -1
     if (i === 4) j = 1
 
     enemyAttack += userStats.attack[j] ? 2 * enemyStats.attack[i] : enemyStats.attack[i]
     enemyDefense += enemyStats.defense[i]
   }
 
-  for (let i = 1; i < userStats.attack.length; i++) {
+  for (let i = 0; i < userStats.attack.length; i++) {
     let j = i + 1
+    if (i === 0) j = -1
     if (i === 4) j = 1
 
     userAttack += enemyStats.attack[j] ? 2 * userStats.attack[i] : userStats.attack[i]

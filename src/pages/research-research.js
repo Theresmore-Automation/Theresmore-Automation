@@ -81,17 +81,18 @@ const executeAction = async () => {
           const garrison = armyCalculator.getGarrison()
 
           const canWinNow = armyCalculator.canWinBattle(enemyStats, garrison, true, true)
-          const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
 
           if (canWinNow) {
             state.stopAttacks = false
-          } else if (canWinEmpty) {
-            ignoredTech.push(research.id)
-            state.stopAttacks = true
-            continue
           } else {
             ignoredTech.push(research.id)
-            state.stopAttacks = false
+
+            const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
+            if (canWinEmpty) {
+              state.stopAttacks = true
+            } else {
+              state.stopAttacks = false
+            }
             continue
           }
         }
