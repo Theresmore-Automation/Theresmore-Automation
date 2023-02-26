@@ -52,6 +52,7 @@ const executeAction = async () => {
     let army = []
     let userUnits = []
     let target
+    let attackLog = { attackUnits: [] }
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
     const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => button.innerText.includes('Send to attack'))
@@ -124,6 +125,7 @@ const executeAction = async () => {
           target = enemyList.shift()
           targetSelected = true
           target.button.click()
+          attackLog.target = target
           await sleep(1000)
         } else {
           targetSelected = false
@@ -140,6 +142,9 @@ const executeAction = async () => {
       army = armyCalculator.getEnemyArmy(target.key)
 
       if (army.length && userUnits.length && sendToAttackButton) {
+        attackLog.army = army
+        attackLog.userUnits = userUnits
+
         const enemyStats = armyCalculator.calculateEnemyStats(army)
 
         const canWin = armyCalculator.canWinBattle(enemyStats, userUnits, false)
@@ -186,6 +191,7 @@ const executeAction = async () => {
 
             while (!gotDef && !state.scriptPaused) {
               const damages = armyCalculator.calculateDamages(enemyStats, userStats)
+              attackLog.damages = damages
               if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
               if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
               if (gotDef) break
@@ -193,18 +199,20 @@ const executeAction = async () => {
               unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
 
               if (unit.addUnitButton) {
+                attackLog.attackUnits.push(unit)
                 unit.addUnitButton.click()
                 await sleep(20)
 
                 if (sendToAttackButton.classList.toString().includes('btn-off')) {
+                  attackLog.attackUnits.pop()
                   unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
                   unit.removeUnitButton.click()
                   await sleep(20)
                   break
+                } else {
+                  userStats.attack[unit.category] += unit.attack
+                  userStats.defense[unit.category] += unit.defense
                 }
-
-                userStats.attack[unit.category] += unit.attack
-                userStats.defense[unit.category] += unit.defense
               } else {
                 break
               }
@@ -219,6 +227,7 @@ const executeAction = async () => {
 
               while (!gotAtt && !state.scriptPaused) {
                 const damages = armyCalculator.calculateDamages(enemyStats, userStats)
+                attackLog.damages = damages
                 if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
                 if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
                 if (gotAtt) break
@@ -226,10 +235,12 @@ const executeAction = async () => {
                 unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
 
                 if (unit.addUnitButton) {
+                  attackLog.attackUnits.push(unit)
                   unit.addUnitButton.click()
                   await sleep(20)
 
                   if (sendToAttackButton.classList.toString().includes('btn-off')) {
+                    attackLog.attackUnits.pop()
                     unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
                     unit.removeUnitButton.click()
                     await sleep(20)
@@ -245,8 +256,32 @@ const executeAction = async () => {
             }
           }
 
+          attackLog.gotAtt = gotAtt
+          attackLog.gotDef = gotDef
+
+          console.log(attackLog)
+
           if (gotAtt && gotDef && targetSelected && !state.scriptPaused) {
-            logger({ msgLevel: 'log', msg: `Launching attack against ${target.id}` })
+            const attackLogUnits = {}
+            for (let i = 0; i < attackLog.attackUnits.length; i++) {
+              const unit = attackLog.attackUnits[i]
+              if (!attackLogUnits[unit.id]) {
+                attackLogUnits[unit.id] = { id: unit.id, count: 1, attack: unit.attack, defense: unit.defense }
+              } else {
+                attackLogUnits[unit.id].count += 1
+              }
+            }
+
+            logger({
+              msgLevel: 'log',
+              msg: `Launching attack against ${target.id}.
+Using army: ${Object.keys(attackLogUnits)
+                .map((key) => `${key} (${attackLogUnits[key].attack}/${attackLogUnits[key].defense}): ${attackLogUnits[key].count}`)
+                .join(', ')}.
+Estimated damage:
+  enemy: attack: ${attackLog.damages.enemy.enemyAttack}, defense: ${attackLog.damages.enemy.enemyDefense}
+  user:  attack: ${attackLog.damages.user.userAttack}, defense: ${attackLog.damages.user.userDefense}`,
+            })
             sendToAttackButton.click()
             await sleep(20)
           } else {

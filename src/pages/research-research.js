@@ -84,11 +84,23 @@ const executeAction = async () => {
 
           if (canWinNow) {
             state.stopAttacks = false
+            console.log('Will try starting a dangerous research (canWinNow). Values:')
+            console.log('research', research.id)
+            console.log('fight', dangerousFightsMapping[research.id])
+            console.log('army', army)
+            console.log('enemyStats', enemyStats)
+            console.log('garrison', garrison)
           } else {
             ignoredTech.push(research.id)
 
             const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
             if (canWinEmpty) {
+              console.log('Will try starting a dangerous research later (canWinEmpty). Values:')
+              console.log('research', research.id)
+              console.log('fight', dangerousFightsMapping[research.id])
+              console.log('army', army)
+              console.log('enemyStats', enemyStats)
+              console.log('garrison', garrison)
               state.stopAttacks = true
             } else {
               state.stopAttacks = false
