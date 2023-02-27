@@ -118,7 +118,10 @@ const executeAction = async () => {
           longAction = true
           tookAction = true
           faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.DELEGATION].click()
-        } else if (faction.option === CONSTANTS.DIPLOMACY.GO_TO_WAR) {
+        } else if (
+          faction.option === CONSTANTS.DIPLOMACY.GO_TO_WAR &&
+          state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[faction.key]
+        ) {
           if (faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.INSULT]) {
             logger({ msgLevel: 'log', msg: `Insulting ${faction.id}` })
             longAction = true
