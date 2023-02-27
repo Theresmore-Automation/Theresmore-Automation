@@ -1,24 +1,20 @@
 import { CONSTANTS, navigation, sleep } from '../utils'
 
 const removeAllUnits = async (button) => {
-  let removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red')
+  let removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden')
   while (removeButton) {
-    removeButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Control', code: 'ControlLeft' }))
     removeButton.click()
-    removeButton.dispatchEvent(new KeyboardEvent('keyup', { key: 'Control', code: 'ControlLeft' }))
     await sleep(10)
-    removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red')
+    removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden')
   }
 }
 
 const addAllUnits = async (button) => {
-  let addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green')
+  let addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden')
   while (addButton) {
-    addButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'Control', code: 'ControlLeft' }))
     addButton.click()
-    addButton.dispatchEvent(new KeyboardEvent('keyup', { key: 'Control', code: 'ControlLeft' }))
     await sleep(10)
-    addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green')
+    addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden')
   }
 }
 

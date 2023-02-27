@@ -61,14 +61,8 @@ const executeAction = async () => {
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i]
       const name = box.querySelector('h5.font-bold').innerText.trim()
-      let removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
-      const addUnitButton = box.querySelector('div.inline-flex button.btn-green')
-
-      while (removeUnitButton) {
-        removeUnitButton.click()
-        await sleep(20)
-        removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
-      }
+      const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
+      const addUnitButton = box.querySelector('div.inline-flex button.btn-green.rounded-none')
 
       const unitDetails = armyCalculator.applyUnitMods(units.find((unit) => translate(unit.id, 'uni_') === name))
 
@@ -84,7 +78,7 @@ const executeAction = async () => {
 
     if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
       enemySelectorButton.click()
-      await sleep(25)
+      await sleep(250)
       const modal = [...document.querySelectorAll('h3.modal-title')].find((h3) => h3.innerText.includes('enemies'))
 
       if (modal) {
@@ -196,7 +190,7 @@ const executeAction = async () => {
               if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
               if (gotDef) break
 
-              unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+              unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green.rounded-none')
 
               if (unit.addUnitButton) {
                 attackLog.attackUnits.push(unit)
@@ -205,14 +199,14 @@ const executeAction = async () => {
 
                 if (sendToAttackButton.classList.toString().includes('btn-off')) {
                   attackLog.attackUnits.pop()
-                  unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
+                  unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red.rounded-none')
                   unit.removeUnitButton.click()
                   await sleep(20)
                   break
-                } else {
-                  userStats.attack[unit.category] += unit.attack
-                  userStats.defense[unit.category] += unit.defense
                 }
+
+                userStats.attack[unit.category] += unit.attack
+                userStats.defense[unit.category] += unit.defense
               } else {
                 break
               }
@@ -232,7 +226,7 @@ const executeAction = async () => {
                 if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
                 if (gotAtt) break
 
-                unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green')
+                unit.addUnitButton = unit.box.querySelector('div.inline-flex button.btn-green.rounded-none')
 
                 if (unit.addUnitButton) {
                   attackLog.attackUnits.push(unit)
@@ -241,7 +235,7 @@ const executeAction = async () => {
 
                   if (sendToAttackButton.classList.toString().includes('btn-off')) {
                     attackLog.attackUnits.pop()
-                    unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red')
+                    unit.removeUnitButton = unit.box.querySelector('div.inline-flex button.btn-red.rounded-none')
                     unit.removeUnitButton.click()
                     await sleep(20)
                     break
@@ -287,28 +281,10 @@ Estimated damage:
           } else {
             unassignAll(controlBox)
             await sleep(20)
-
-            for (let i = 0; i < userUnits.length; i++) {
-              let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
-              while (removeUnitButton) {
-                removeUnitButton.click()
-                await sleep(1)
-                removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
-              }
-            }
           }
         } else {
           unassignAll(controlBox)
           await sleep(20)
-
-          for (let i = 0; i < userUnits.length; i++) {
-            let removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
-            while (removeUnitButton) {
-              removeUnitButton.click()
-              await sleep(1)
-              removeUnitButton = userUnits[i].box.querySelector('div.inline-flex button.btn-red')
-            }
-          }
         }
       }
     }
