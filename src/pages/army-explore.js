@@ -69,8 +69,11 @@ const executeAction = async () => {
 
       if (!getSendToExplore(container)) {
         const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
-        removeUnitButton.click()
-        await sleep(25)
+
+        if (removeUnitButton && !removeUnitButton.disabled) {
+          removeUnitButton.click()
+          await sleep(25)
+        }
       }
 
       count = box
