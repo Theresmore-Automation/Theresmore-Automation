@@ -1,6 +1,10 @@
 import { factions } from '../data'
 import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage, selectors, armyCalculator } from '../utils'
 
+const isAtWar = () => {
+  return !![...document.querySelectorAll('p.text-red-700')].find((p) => p.innerText.includes('You are now at war with this faction'))
+}
+
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.DIPLOMACY].enabled || false
 }
@@ -120,7 +124,8 @@ const executeAction = async () => {
           faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.DELEGATION].click()
         } else if (
           faction.option === CONSTANTS.DIPLOMACY.GO_TO_WAR &&
-          state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[faction.key]
+          state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[faction.key] &&
+          !isAtWar()
         ) {
           if (faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.INSULT]) {
             logger({ msgLevel: 'log', msg: `Insulting ${faction.id}` })
@@ -138,7 +143,6 @@ const executeAction = async () => {
 
             if (canWinBattle) {
               logger({ msgLevel: 'log', msg: `Going to war with ${faction.id}` })
-              longAction = true
               tookAction = true
               faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click()
               await sleep(200)
@@ -148,6 +152,10 @@ const executeAction = async () => {
                 redConfirmButton.click()
                 await sleep(200)
               }
+
+              await sleep(3100)
+            } else {
+              logger({ msgLevel: 'debug', msg: `Can't win the fight against ${faction.id}, so no war is being started` })
             }
           }
         } else if (faction.option === CONSTANTS.DIPLOMACY.TRADE_AND_ALLY || faction.option === CONSTANTS.DIPLOMACY.ONLY_ALLY) {

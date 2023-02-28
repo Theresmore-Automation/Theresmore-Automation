@@ -253,7 +253,7 @@ const executeAction = async () => {
           attackLog.gotAtt = gotAtt
           attackLog.gotDef = gotDef
 
-          console.log(attackLog)
+          logger({ msgLevel: 'debug', msg: attackLog })
 
           if (gotAtt && gotDef && targetSelected && !state.scriptPaused) {
             const attackLogUnits = {}

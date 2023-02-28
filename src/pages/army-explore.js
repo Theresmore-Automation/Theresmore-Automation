@@ -14,6 +14,10 @@ const userSelectedUnits = () => {
   )
 }
 
+const getSendToExplore = (container) => {
+  return container.querySelector('button.btn-blue:not(.btn-off)')
+}
+
 const executeAction = async () => {
   if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.EXPLORE)) return
   if (state.scriptPaused) return
@@ -34,8 +38,8 @@ const executeAction = async () => {
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i]
       const name = box.querySelector('h5.font-bold').innerText.trim()
-      const removeUnitButton = box.querySelector('div.inline-flex button.btn-red')
-      const addUnitButton = box.querySelector('div.inline-flex button.btn-green')
+      const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
+      const addUnitButton = box.querySelector('div.inline-flex button.btn-green.rounded-none')
       let count = box
         .querySelector('input[type="text"]')
         .value.split(' / ')
@@ -48,7 +52,7 @@ const executeAction = async () => {
         break
       }
 
-      for (let i = 0; i < count[0] - limitMax && removeUnitButton; i++) {
+      for (let i = 0; i < count[0] - limitMax && removeUnitButton && !removeUnitButton.disabled; i++) {
         removeUnitButton.click()
         await sleep(25)
       }
@@ -58,8 +62,14 @@ const executeAction = async () => {
         .value.split(' / ')
         .map((x) => +x)
 
-      for (let i = 0; i < limitMax - count[0] && addUnitButton; i++) {
+      for (let i = 0; i < limitMax - count[0] && addUnitButton && !addUnitButton.disabled && !!getSendToExplore(container); i++) {
         addUnitButton.click()
+        await sleep(25)
+      }
+
+      if (!getSendToExplore(container)) {
+        const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
+        removeUnitButton.click()
         await sleep(25)
       }
 
@@ -76,14 +86,15 @@ const executeAction = async () => {
           unitsSent.push(`${count[0]} Explorer(s)`)
         }
       } else {
-        while (removeUnitButton) {
+        const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
+        while (removeUnitButton && !removeUnitButton.disabled) {
           removeUnitButton.click()
           await sleep(25)
         }
       }
     }
 
-    const sendToExplore = container.querySelector('button.btn-blue:not(.btn-off)')
+    const sendToExplore = getSendToExplore(container)
     if (!state.scriptPaused && sendToExplore && canExplore) {
       logger({ msgLevel: 'log', msg: `Starting exploration: ${unitsSent.join(', ')}` })
       sendToExplore.click()

@@ -2,14 +2,13 @@ import { tech } from '../data'
 import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator } from '../utils'
 
 const dangerousFightsMapping = {
-  'A moonlight night': 'army_of_goblin',
-  'A moonlit night': 'army_of_goblin',
-  'Dragon assault': 'army_of_dragon',
-  'Mysterious robbery': 'fallen_angel_army_1',
-  'The Fallen Angel reveal': 'fallen_angel_army_2',
-  'The Orc Horde': 'orc_horde_boss',
-  'Kobold nation': 'king_kobold_nation',
-  'Barbarian tribes': 'barbarian_horde',
+  moonlight_night: 'army_of_goblin',
+  dragon_assault: 'army_of_dragon',
+  mysterious_robbery: 'fallen_angel_army_1',
+  fallen_angel: 'fallen_angel_army_2',
+  orc_horde: 'orc_horde_boss',
+  kobold_nation: 'king_kobold_nation',
+  barbarian_tribes: 'barbarian_horde',
 }
 
 const userEnabled = () => {
@@ -73,34 +72,33 @@ const executeAction = async () => {
 
         if (
           state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options.dangerousFights &&
-          dangerousFightsMapping[research.id]
+          dangerousFightsMapping[research.key]
         ) {
-          const army = armyCalculator.getEnemyArmy(dangerousFightsMapping[research.id])
+          const army = armyCalculator.getEnemyArmy(dangerousFightsMapping[research.key])
 
           const enemyStats = armyCalculator.calculateEnemyStats(army)
-          const garrison = armyCalculator.getGarrison()
+          const garrison = armyCalculator.getGarrison(true)
 
           const canWinNow = armyCalculator.canWinBattle(enemyStats, garrison, true, true)
 
           if (canWinNow) {
             state.stopAttacks = false
-            console.log('Will try starting a dangerous research (canWinNow). Values:')
-            console.log('research', research.id)
-            console.log('fight', dangerousFightsMapping[research.id])
-            console.log('army', army)
-            console.log('enemyStats', enemyStats)
-            console.log('garrison', garrison)
+            logger({ msgLevel: 'debug', msg: 'Will try starting a dangerous research (canWinNow). Values:' })
+            logger({ msgLevel: 'debug', msg: `Research: ${research.id} (${research.key}). Fight: ${dangerousFightsMapping[research.key]}` })
+            logger({ msgLevel: 'debug', msg: `Army: ${JSON.stringify(army)}` })
+            logger({ msgLevel: 'debug', msg: `Enemy stats: ${JSON.stringify(enemyStats)}` })
+            logger({ msgLevel: 'debug', msg: `Garrison: ${JSON.stringify(garrison)}` })
           } else {
             ignoredTech.push(research.id)
+            logger({ msgLevel: 'debug', msg: `Can't win ${research.id}, ignoring it for this round.` })
 
             const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
             if (canWinEmpty) {
-              console.log('Will try starting a dangerous research later (canWinEmpty). Values:')
-              console.log('research', research.id)
-              console.log('fight', dangerousFightsMapping[research.id])
-              console.log('army', army)
-              console.log('enemyStats', enemyStats)
-              console.log('garrison', garrison)
+              logger({ msgLevel: 'debug', msg: 'Will try starting a dangerous research later (canWinEmpty). Values:' })
+              logger({ msgLevel: 'debug', msg: `Research: ${research.id} (${research.key}). Fight: ${dangerousFightsMapping[research.key]}` })
+              logger({ msgLevel: 'debug', msg: `Army: ${JSON.stringify(army)}` })
+              logger({ msgLevel: 'debug', msg: `Enemy stats: ${JSON.stringify(enemyStats)}` })
+              logger({ msgLevel: 'debug', msg: `Garrison: ${JSON.stringify(garrison)}` })
               state.stopAttacks = true
             } else {
               state.stopAttacks = false

@@ -66,7 +66,7 @@ const getEnemyArmy = (enemyId) => {
   return army
 }
 
-const getGarrison = () => {
+const getGarrison = (getAll = false) => {
   const garrison = []
 
   let run = window.localStorage.getItem('run')
@@ -78,7 +78,7 @@ const getGarrison = () => {
     for (let i = 0; i < run.army.length; i++) {
       const unit = run.army[i]
 
-      if (unit.value - unit.away > 0) {
+      if (unit.value - unit.away > 0 || getAll) {
         const unitDetails = units.find((unitDetails) => unitDetails.id === unit.id)
 
         if (unitDetails) {
