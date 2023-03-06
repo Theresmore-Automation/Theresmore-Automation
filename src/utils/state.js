@@ -1,5 +1,6 @@
 import localStorage from './localStorage'
 import CONSTANTS from './constants'
+import reactUtil from "./reactUtil"
 
 export const getDefaultOptions = () => {
   const options = {
@@ -55,6 +56,9 @@ const state = {
   lastVisited: {},
   buildings: [],
   options: getDefaultOptions(),
+  get haveMask() {
+    return reactUtil.getGameData().SettingsStore.showSettings
+  },
 }
 
 if (typeof localStorage.get('scriptPaused') !== 'undefined') {

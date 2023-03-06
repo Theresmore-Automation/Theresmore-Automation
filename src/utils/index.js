@@ -11,5 +11,7 @@ import resources from './resources'
 import state from './state'
 import runMigrations from './migrations'
 import armyCalculator from './armyCalculator'
+import reactUtil from './reactUtil'
+import keyGen from './keyGen'
 
-export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations, armyCalculator }
+export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations, armyCalculator, reactUtil, keyGen }

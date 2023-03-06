@@ -44,6 +44,15 @@ const taVersion = "3.9.1";
     MAGIC: 'Magic',
     DIPLOMACY: 'Diplomacy'
   };
+  const PAGES_INDEX = {
+    [PAGES.BUILD]: 0,
+    [PAGES.RESEARCH]: 1,
+    [PAGES.POPULATION]: 2,
+    [PAGES.ARMY]: 4,
+    [PAGES.MARKETPLACE]: 6,
+    [PAGES.MAGIC]: 3,
+    [PAGES.DIPLOMACY]: 5
+  };
   const SUBPAGES = {
     CITY: 'City',
     COLONY: 'Colony',
@@ -54,6 +63,17 @@ const taVersion = "3.9.1";
     EXPLORE: 'Explore',
     ATTACK: 'Attack',
     GARRISON: 'Garrison'
+  };
+  const SUBPAGES_INDEX = {
+    [SUBPAGES.CITY]: 0,
+    [SUBPAGES.COLONY]: 1,
+    [SUBPAGES.RESEARCH]: 0,
+    [SUBPAGES.SPELLS]: 0,
+    [SUBPAGES.PRAYERS]: 1,
+    [SUBPAGES.ARMY]: 0,
+    [SUBPAGES.EXPLORE]: 1,
+    [SUBPAGES.ATTACK]: 3,
+    [SUBPAGES.GARRISON]: 4
   };
   const SUBPAGE_MAPPING = {
     CITY: 'BUILD',
@@ -82,12 +102,23 @@ const taVersion = "3.9.1";
     IMPROVE_RELATIONSHIPS: 'Improve relationships',
     ALLY: 'Alliance'
   };
+  const TOOLTIP_PREFIX = {
+    BUILDING: "bui_",
+    TECH: "tech_",
+    PRAYER: "pray_",
+    UNIT: "uni_",
+    FACTION_IMPROVE: "improve_",
+    FACTION_DELEGATION: "delegation_"
+  };
   var CONSTANTS = {
     PAGES,
     SUBPAGES,
     SUBPAGE_MAPPING,
+    PAGES_INDEX,
+    SUBPAGES_INDEX,
     DIPLOMACY,
-    DIPLOMACY_BUTTONS
+    DIPLOMACY_BUTTONS,
+    TOOLTIP_PREFIX
   };
 
   // https://stackoverflow.com/a/55366435
@@ -28430,6 +28461,64 @@ const taVersion = "3.9.1";
     remove
   };
 
+  let reactVarCache;
+  function getReactData(el, level = 0) {
+    let data;
+    if (reactVarCache && el[reactVarCache]) {
+      data = el[reactVarCache];
+    } else {
+      const key = Object.keys(el).find(k => k.startsWith('__reactFiber$'));
+      if (key) {
+        reactVarCache = key;
+        data = el[reactVarCache];
+      }
+    }
+    for (let i = 0; i < level && data; i++) {
+      data = data.return;
+    }
+    return data;
+  }
+  function getNearestKey(el, limit = -1) {
+    let key = undefined;
+    let data = getReactData(el);
+    let level = 0;
+    while (!key && data && (limit < 0 || level <= limit)) {
+      key = data.key;
+      data = data.return;
+      level++;
+    }
+    return key;
+  }
+  function getBtnIndex(el, level = 0) {
+    let data = getReactData(el, level);
+    if (data) {
+      return data.index;
+    } else {
+      return undefined;
+    }
+  }
+  let gameDataCache;
+  function getGameData() {
+    if (gameDataCache) {
+      return gameDataCache;
+    }
+    const root = document.querySelector('#root');
+    const key = Object.keys(root).find(k => k.startsWith('__reactContainer$'));
+    if (key) {
+      const container = root[key];
+      gameDataCache = container.stateNode.current.child.memoizedProps.MainStore;
+      return gameDataCache;
+    } else {
+      return undefined;
+    }
+  }
+  var reactUtil$1 = {
+    getReactData,
+    getNearestKey,
+    getBtnIndex,
+    getGameData
+  };
+
   const getPagesSelector = () => {
     return [...document.querySelectorAll('#main-tabs > div > button')];
   };
@@ -28453,18 +28542,22 @@ const taVersion = "3.9.1";
   };
   const hasPage = page => {
     const navButtons = getPagesSelector();
-    return !!navButtons.find(button => button.innerText.includes(page));
+    const pageIndex = CONSTANTS.PAGES_INDEX[page];
+    return !!navButtons.find(button => reactUtil$1.getBtnIndex(button, 1) === pageIndex);
   };
   const checkPage = (page, subPage) => {
     const currentPage = getCurrentPageSelector();
     const currentSubPage = getCurrentSubPageSelector();
-    const isCorrectPage = !page || page && currentPage && currentPage.innerText.includes(page);
-    const isCorrectSubPage = !subPage || subPage && currentSubPage && currentSubPage.innerText.includes(subPage);
+    const pageIndex = CONSTANTS.PAGES_INDEX[page];
+    const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+    const isCorrectPage = !page || page && currentPage && reactUtil$1.getBtnIndex(currentPage, 1) === pageIndex;
+    const isCorrectSubPage = !subPage || subPage && currentSubPage && reactUtil$1.getBtnIndex(currentSubPage, 1) === subPageIndex;
     return isCorrectPage && isCorrectSubPage;
   };
   const hasSubPage = subPage => {
     const subTabs = getSubPagesSelector();
-    return !!subTabs.find(button => button.innerText.includes(subPage));
+    const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+    return !!subTabs.find(button => reactUtil$1.getBtnIndex(button, 1) === subPageIndex);
   };
   const switchPage = async page => {
     let foundPage = hasPage(page);
@@ -28474,7 +28567,8 @@ const taVersion = "3.9.1";
     }
     let switchedPage = false;
     const navButtons = getPagesSelector();
-    const pageButton = navButtons.find(button => button.innerText.includes(page) && button.getAttribute('aria-selected') !== 'true');
+    const pageIndex = CONSTANTS.PAGES_INDEX[page];
+    const pageButton = navButtons.find(button => reactUtil$1.getBtnIndex(button, 1) === pageIndex && button.getAttribute('aria-selected') !== 'true');
     if (pageButton) {
       pageButton.click();
       switchedPage = true;
@@ -28495,7 +28589,8 @@ const taVersion = "3.9.1";
     if (foundSubPage) {
       let switchedSubPage = false;
       const navButtons = getSubPagesSelector();
-      const subPageButton = navButtons.find(button => button.innerText.includes(subPage) && button.getAttribute('aria-selected') !== 'true');
+      const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+      const subPageButton = navButtons.find(button => reactUtil$1.getBtnIndex(button, 1) === subPageIndex && button.getAttribute('aria-selected') !== 'true');
       if (subPageButton) {
         subPageButton.click();
         switchedSubPage = true;
@@ -28529,7 +28624,37 @@ const taVersion = "3.9.1";
     getAllButtons: getAllButtons$5
   };
 
-  const get = (resourceName = 'Gold') => {
+  let keyGen$1 = {
+    manual: _gen('manual_'),
+    armyArmy: _gen('army_create_'),
+    armyAttack: _gen('army_combat_'),
+    market: _gen('stock_'),
+    resource: _gen('resource_'),
+    research: _gen('tec_'),
+    building: _gen('bui_'),
+    population: _gen('population_'),
+    magic: _gen('fai_'),
+    enemy: _gen('enemy-'),
+    diplomacy: _gen('dip_card_'),
+    tooltipReq: _gen('tooltip_req_'),
+    legacy: _gen('leg_'),
+    ancestor: _gen('ancestor_')
+  };
+  function _gen(prefix) {
+    return {
+      key(id) {
+        return prefix + id;
+      },
+      id(key) {
+        return key.replace(new RegExp('^' + prefix), '');
+      },
+      check(key) {
+        return key && !!key.match(new RegExp('^' + prefix + '.+'));
+      }
+    };
+  }
+
+  const get = (resourceName = 'gold') => {
     let resourceFound = false;
     let resourceToFind = {
       name: resourceName,
@@ -28541,7 +28666,8 @@ const taVersion = "3.9.1";
     };
     const resources = [...document.querySelectorAll('#root div > div > div > table > tbody > tr > td:nth-child(1) > span')];
     resources.map(resource => {
-      if (resource.textContent.includes(resourceName)) {
+      const key = reactUtil$1.getNearestKey(resource, 6);
+      if (key === keyGen$1.resource.key(resourceName)) {
         resourceFound = true;
         const values = resource.parentNode.parentNode.childNodes[1].textContent.split('/').map(x => numberParser.parse(x.replace(/[^0-9KM\-,\.]/g, '').trim()));
         resourceToFind.current = values[0];
@@ -28603,7 +28729,10 @@ const taVersion = "3.9.1";
     haveManualResourceButtons: true,
     lastVisited: {},
     buildings: [],
-    options: getDefaultOptions()
+    options: getDefaultOptions(),
+    get haveMask() {
+      return reactUtil$1.getGameData().SettingsStore.showSettings;
+    }
   };
   if (typeof localStorage.get('scriptPaused') !== 'undefined') {
     state.scriptPaused = localStorage.get('scriptPaused');
@@ -28708,10 +28837,7 @@ const taVersion = "3.9.1";
     const unitCopy = {
       ...unit
     };
-    let run = window.localStorage.getItem('run');
-    if (run) {
-      run = JSON.parse(run);
-    }
+    let run = reactUtil$1.getGameData().run;
     if (unitCopy && run && run.modifiers) {
       let bonusAttack = 0;
       let bonusDefense = 0;
@@ -28737,7 +28863,7 @@ const taVersion = "3.9.1";
     return unitCopy;
   };
   const getEnemyArmy = enemyId => {
-    const difficultyMode = window.localStorage.getItem('difficultyMode');
+    const difficultyMode = reactUtil$1.getGameData().SettingsStore.difficultyMode;
     const difficultyModeMultiplier = difficultyMode === '0' ? 1 : difficultyMode === '1' ? 1.5 : 2;
     const randomBonus = 1.3;
     const army = fights$2.find(fight => fight.key === enemyId || fight.id === enemyId).army.map(unit => {
@@ -28752,10 +28878,7 @@ const taVersion = "3.9.1";
   };
   const getGarrison = (getAll = false) => {
     const garrison = [];
-    let run = window.localStorage.getItem('run');
-    if (run) {
-      run = JSON.parse(run);
-    }
+    let run = reactUtil$1.getGameData().run;
     if (run && run.army) {
       for (let i = 0; i < run.army.length; i++) {
         const unit = run.army[i];
@@ -28775,10 +28898,7 @@ const taVersion = "3.9.1";
   };
   const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll = false) => {
     let canWin = false;
-    let run = window.localStorage.getItem('run');
-    if (run) {
-      run = JSON.parse(run);
-    }
+    let run = reactUtil$1.getGameData().run;
     if (run && run.army) {
       const sortMethod = (type = 'defense') => {
         return (a, b) => {
@@ -28929,7 +29049,7 @@ const taVersion = "3.9.1";
     return (state.options.pages[CONSTANTS.PAGES.ARMY].enabled || false) && (state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ARMY].enabled || false);
   };
   const getArmyNumbers = () => {
-    return document.querySelectorAll('div[role="tablist"]')[1].querySelector('[aria-selected="true"]').innerText.replace('Army', '').split('/').map(text => +text.trim());
+    return [reactUtil$1.getGameData().ArmyStore.ownedCount, reactUtil$1.getGameData().ArmyStore.cap];
   };
   const getControls = () => {
     const armyNumbers = getArmyNumbers();
@@ -28940,22 +29060,26 @@ const taVersion = "3.9.1";
       counts: {}
     };
     allButtons.forEach(button => {
-      const buttonText = button.innerText.trim();
-      if (buttonText === '+1') {
-        controls.counts['1'] = button;
-      } else if (buttonText === '+10') {
-        controls.counts['10'] = button;
-      } else if (buttonText === '+50') {
-        controls.counts['50'] = button;
-      } else if (buttonText) {
-        const unitDetails = buttonText.split('\n');
-        const unit = units.find(unit => translate(unit.id, 'uni_') === unitDetails[0].trim());
-        if (unit) {
-          if (unitDetails[1]) {
-            unit.count = +unitDetails[1];
-          } else {
-            unit.count = 0;
+      const btnKey = reactUtil$1.getNearestKey(button, 7);
+      if (!btnKey) {
+        const buttonText = button.innerText.trim();
+        if (buttonText === '+1') {
+          controls.counts['1'] = button;
+        } else if (buttonText === '+10') {
+          controls.counts['10'] = button;
+        } else if (buttonText === '+50') {
+          controls.counts['50'] = button;
+        }
+      } else if (btnKey) {
+        const btnData = reactUtil$1.getReactData(button, 3);
+        const unit = units.find(unit => keyGen$1.armyArmy.key(unit.id) === btnKey);
+        if (unit && btnData.memoizedProps.content instanceof Object) {
+          const armyData = reactUtil$1.getGameData().run.army[reactUtil$1.getGameData().idxs.army[unit.id]];
+          let count = 0;
+          if (armyData) {
+            count = armyData.value;
           }
+          unit.count = count;
           unit.button = button;
           unit.key = unit.id;
           const unitOptions = unitsOptionsList.find(unitOption => unitOption.key === unit.key);
@@ -29017,7 +29141,7 @@ const taVersion = "3.9.1";
             const usedResources = Object.keys(totalCost);
             for (let i = 0; i < usedResources.length && maxBulkHire > 1; i++) {
               const resId = usedResources[i];
-              const resource = resources.get(translate(resId, 'res_'));
+              const resource = resources.get(resId);
               if (resource && totalCost[resId] < 0) {
                 if (resource.speed + 10 * totalCost[resId] < 0) {
                   maxBulkHire = Math.min(1, maxBulkHire);
@@ -29031,7 +29155,7 @@ const taVersion = "3.9.1";
           await sleep(25);
           let shouldHire = true;
           const unit = highestPrioUnits.shift();
-          shouldHire = !unit.gen.filter(gen => gen.type === 'resource').find(gen => !resources.get(translate(gen.id, 'res_')) || resources.get(translate(gen.id, 'res_')).speed + maxBulkHire * gen.value <= 0);
+          shouldHire = !unit.gen.filter(gen => gen.type === 'resource').find(gen => !resources.get(gen.id) || resources.get(gen.id).speed + maxBulkHire * gen.value <= 0);
           if (shouldHire) {
             unit.button.click();
             logger({
@@ -29066,8 +29190,9 @@ const taVersion = "3.9.1";
   const userSelectedUnits = () => {
     return state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.EXPLORE].options.scoutsMax || state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.EXPLORE].options.explorersMax;
   };
-  const getSendToExplore = container => {
-    return container.querySelector('button.btn-blue:not(.btn-off)');
+  const getSendToExplore = (container, activeOnly = true) => {
+    const activeOnlySelector = activeOnly ? ':not(.btn-off)' : '';
+    return container.querySelector(`button.btn-blue${activeOnlySelector}`);
   };
   const executeAction$9 = async () => {
     if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.EXPLORE)) return;
@@ -29084,12 +29209,13 @@ const taVersion = "3.9.1";
       let unitsSent = [];
       for (let i = 0; i < boxes.length; i++) {
         const box = boxes[i];
-        const name = box.querySelector('h5.font-bold').innerText.trim();
+        const unitKey = reactUtil$1.getNearestKey(box, 2);
         const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none');
         const addUnitButton = box.querySelector('div.inline-flex button.btn-green.rounded-none');
+        const unit = units.find(unit => keyGen$1.armyAttack.key(unit.id) === unitKey);
         let count = box.querySelector('input[type="text"]').value.split(' / ').map(x => +x);
-        const limitMax = name === 'Scout' ? maxScouts : maxExplorers;
-        const limitMin = name === 'Scout' ? minScouts : minExplorers;
+        const limitMax = unit.id === 'scout' ? maxScouts : maxExplorers;
+        const limitMin = unit.id === 'scout' ? minScouts : minExplorers;
         if (count[1] < limitMin) {
           break;
         }
@@ -29098,7 +29224,7 @@ const taVersion = "3.9.1";
           await sleep(25);
         }
         count = box.querySelector('input[type="text"]').value.split(' / ').map(x => +x);
-        for (let i = 0; i < limitMax - count[0] && addUnitButton && !addUnitButton.disabled && !!getSendToExplore(container); i++) {
+        for (let i = 0; i < limitMax - count[0] && addUnitButton && !addUnitButton.disabled && !!getSendToExplore(container, false); i++) {
           addUnitButton.click();
           await sleep(25);
         }
@@ -29112,7 +29238,7 @@ const taVersion = "3.9.1";
         count = box.querySelector('input[type="text"]').value.split(' / ').map(x => +x);
         if (count[0] >= limitMin) {
           canExplore = true;
-          if (name === 'Scout') {
+          if (unit.id === 'scout') {
             unitsSent.push(`${count[0]} Scout(s)`);
           } else {
             unitsSent.push(`${count[0]} Explorer(s)`);
@@ -29186,18 +29312,18 @@ const taVersion = "3.9.1";
         attackUnits: []
       };
       const enemySelectorButton = controlBox.querySelector('button.btn');
-      const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find(button => button.innerText.includes('Send to attack'));
+      const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find(button => reactUtil$1.getBtnIndex(button, 0) === 1);
       unassignAll(controlBox);
       for (let i = 0; i < boxes.length; i++) {
         const box = boxes[i];
-        const name = box.querySelector('h5.font-bold').innerText.trim();
+        const unitKey = reactUtil$1.getNearestKey(box, 2);
         const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none');
         const addUnitButton = box.querySelector('div.inline-flex button.btn-green.rounded-none');
-        const unitDetails = armyCalculator.applyUnitMods(units.find(unit => translate(unit.id, 'uni_') === name));
+        const unitDetails = armyCalculator.applyUnitMods(units.find(unit => keyGen$1.armyAttack.key(unit.id) === unitKey));
         userUnits.push({
           ...unitDetails,
           key: unitDetails.id,
-          id: name,
+          id: unitDetails.id,
           box,
           removeUnitButton,
           addUnitButton
@@ -29206,15 +29332,19 @@ const taVersion = "3.9.1";
       if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
         enemySelectorButton.click();
         await sleep(250);
-        const modal = [...document.querySelectorAll('h3.modal-title')].find(h3 => h3.innerText.includes('enemies'));
-        if (modal) {
-          enemyList = [...modal.parentElement.querySelectorAll('h5')].map(h5 => {
-            const enemyDetails = fights$1.find(fight => fight.id === h5.innerText.trim());
+        const modals = [...document.querySelectorAll('h3.modal-title')];
+        if (modals.length) {
+          enemyList = [...modals.map(modal => [...modal.parentElement.querySelectorAll('h5')]).flat()].map(h5 => {
+            const key = reactUtil$1.getNearestKey(h5, 2);
+            if (!keyGen$1.enemy.check(key)) {
+              return undefined;
+            }
+            const enemyDetails = fights$1.find(fight => keyGen$1.enemy.key(fight.key) === key);
             return {
               button: h5,
               ...enemyDetails
             };
-          }).filter(fight => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key]).filter(fight => {
+          }).filter(fight => fight).filter(fight => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key]).filter(fight => {
             const army = armyCalculator.getEnemyArmy(fight.key);
             const enemyStats = armyCalculator.calculateEnemyStats(army);
             const canWin = armyCalculator.canWinBattle(enemyStats, userUnits, false);
@@ -29414,7 +29544,7 @@ Estimated damage:
             if (negativeGen.length) {
               const requires = negativeGen.map(gen => {
                 return {
-                  resource: translate(gen.id, 'res_'),
+                  resource: gen.id,
                   parameter: 'speed',
                   minValue: Math.abs(gen.value)
                 };
@@ -29440,13 +29570,13 @@ Estimated damage:
   const getAllButtons$4 = () => {
     const buildingsList = getBuildingsList$1();
     const buttons = selectors.getAllButtons(true).map(button => {
-      const id = button.innerText.split('\n').shift();
+      const id = reactUtil$1.getNearestKey(button, 6);
       const count = button.querySelector('span.right-0') ? numberParser.parse(button.querySelector('span.right-0').innerText) : 0;
       return {
         id: id,
         element: button,
         count: count,
-        building: buildingsList.find(building => building.id === id)
+        building: buildingsList.find(building => keyGen$1.building.key(building.key) === id)
       };
     }).filter(button => button.building && button.count < button.building.max).sort((a, b) => {
       if (a.building.prio !== b.building.prio) {
@@ -29489,9 +29619,9 @@ Estimated damage:
     }
     const buildingsList = getBuildingsList$1();
     state.buildings = selectors.getAllButtons(false).map(button => {
-      const id = button.innerText.split('\n').shift();
-      let count = button.querySelector('span.right-0') ? numberParser.parse(button.querySelector('span.right-0').innerText) : 0;
-      const building = buildingsList.find(building => building.id === id);
+      const id = reactUtil$1.getNearestKey(button, 6);
+      let count = reactUtil$1.getGameData().idxs.buildings[id] ? reactUtil$1.getGameData().idxs.buildings[id] : 0;
+      const building = buildingsList.find(building => keyGen$1.building.key(building.key) === id);
       if (!building) {
         return {};
       }
@@ -29535,7 +29665,7 @@ Estimated damage:
             if (negativeGen.length) {
               const requires = negativeGen.map(gen => {
                 return {
-                  resource: translate(gen.id, 'res_'),
+                  resource: gen.id,
                   parameter: 'speed',
                   minValue: Math.abs(gen.value)
                 };
@@ -29561,13 +29691,13 @@ Estimated damage:
   const getAllButtons$3 = () => {
     const buildingsList = getBuildingsList();
     const buttons = selectors.getAllButtons(true).map(button => {
-      const id = button.innerText.split('\n').shift();
+      const id = reactUtil$1.getNearestKey(button, 6);
       const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
       return {
         id: id,
         element: button,
         count: count,
-        building: buildingsList.find(building => building.id === id)
+        building: buildingsList.find(building => keyGen$1.building.key(building.key) === id)
       };
     }).filter(button => button.building && button.count < button.building.max).sort((a, b) => {
       if (a.building.prio !== b.building.prio) {
@@ -29610,9 +29740,9 @@ Estimated damage:
     }
     const buildingsList = getBuildingsList();
     state.buildings = selectors.getAllButtons(false).map(button => {
-      const id = button.innerText.split('\n').shift();
+      const id = reactUtil$1.getNearestKey(button, 6);
       let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0;
-      const building = buildingsList.find(building => building.id === id);
+      const building = buildingsList.find(building => keyGen$1.building.key(building.key) === id);
       if (!building) {
         return {};
       }
@@ -29637,7 +29767,7 @@ Estimated damage:
     }
   };
 
-  const resourcesToTrade = ['Cow', 'Horse', 'Food', 'Copper', 'Wood', 'Stone', 'Iron', 'Tools'];
+  const resourcesToTrade = ['cow', 'horse', 'food', 'copper', 'wood', 'stone', 'iron', 'tools'];
   const timeToFillResource = 90;
   const timeToWaitUntilFullGold = 60;
   const secondsBetweenSells = 90;
@@ -29651,7 +29781,7 @@ Estimated damage:
     return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options.secondsBetweenSells || secondsBetweenSells;
   };
   const getResourcesToTrade = () => {
-    const userResourcesToTrade = Object.keys(state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options).filter(key => key.includes('resource_') && state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options[key]).map(key => translate(key.replace('resource_', '')));
+    const userResourcesToTrade = Object.keys(state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options).filter(key => key.includes('resource_') && state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options[key]).map(key => key.replace('resource_', ''));
     return userResourcesToTrade.length ? userResourcesToTrade : resourcesToTrade;
   };
   const lastSell = localStorage.get('lastSell') || {};
@@ -29663,20 +29793,20 @@ Estimated damage:
     });
   };
   const hasNotEnoughGold = () => {
-    const gold = resources.get('Gold');
+    const gold = resources.get('gold');
     return gold.current + gold.speed * getTimeToWaitUntilFullGold() < gold.max;
   };
   const userEnabled$5 = () => {
     return state.options.pages[CONSTANTS.PAGES.MARKETPLACE].enabled || false;
   };
   const executeAction$5 = async () => {
-    let gold = resources.get('Gold');
+    let gold = resources.get('gold');
     if (gold && gold.current < gold.max && shouldSell()) {
       const resourceHolders = [];
       [...document.querySelectorAll('div > div.tab-container > div > div > div')].forEach(resourceHolder => {
-        const resNameElem = resourceHolder.querySelector('h5');
-        if (resNameElem) {
-          const resName = resNameElem.innerText;
+        const resKey = reactUtil$1.getNearestKey(resourceHolder, 2);
+        if (resKey) {
+          const resName = keyGen$1.market.id(resKey);
           const res = resources.get(resName);
           if (getResourcesToTrade().includes(resName) && res && (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max)) {
             resourceHolders.push(resourceHolder);
@@ -29686,9 +29816,10 @@ Estimated damage:
       let goldEarned = 0;
       let soldTotals = {};
       for (let i = 0; i < resourceHolders.length && !state.scriptPaused; i++) {
-        gold = resources.get('Gold');
+        gold = resources.get('gold');
         const resourceHolder = resourceHolders[i];
-        const resName = resourceHolder.querySelector('h5').innerText;
+        const resKey = reactUtil$1.getNearestKey(resourceHolder, 2);
+        const resName = keyGen$1.market.id(resKey);
         let res = resources.get(resName);
         const initialPrice = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
         let price = initialPrice;
@@ -29718,7 +29849,7 @@ Estimated damage:
           await sleep(10);
           if (!navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) return;
           sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)');
-          gold = resources.get('Gold');
+          gold = resources.get('gold');
           res = resources.get(resName);
           price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
           await sleep(25);
@@ -29749,12 +29880,16 @@ Estimated damage:
   const hasUnassignedPopulation = () => {
     let unassignedPopulation = false;
     const navButtons = navigation.getPagesSelector();
+    const pageIndex = CONSTANTS.PAGES_INDEX[CONSTANTS.PAGES.POPULATION];
     navButtons.forEach(button => {
-      if (button.innerText.includes(CONSTANTS.PAGES.POPULATION)) {
+      if (reactUtil$1.getBtnIndex(button, 1) === pageIndex) {
         unassignedPopulation = !!button.querySelector('span');
       }
     });
     return unassignedPopulation;
+  };
+  const shouldRebalance = () => {
+    return state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime > 0 && (!state.lastVisited.populationRebalance || state.lastVisited.populationRebalance + state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime * 60 * 1000 < new Date().getTime());
   };
   const allJobs = jobs.filter(job => job.gen && job.gen.length).map(job => {
     return {
@@ -29763,7 +29898,7 @@ Estimated damage:
       key: job.id,
       gen: job.gen.filter(gen => gen.type === 'resource').map(gen => {
         return {
-          id: translate(gen.id, 'res_'),
+          id: gen.id,
           value: gen.value
         };
       })
@@ -29809,9 +29944,9 @@ Estimated damage:
   const getAllAvailableJobs = () => {
     const container = selectors.getActivePageContent();
     const availableJobs = [...container.querySelectorAll('h5')].map(job => {
-      const jobTitle = job.textContent.trim();
+      const jobTitle = reactUtil$1.getNearestKey(job, 7);
       return {
-        ...allowedJobs.find(allowedJob => allowedJob.id === jobTitle),
+        ...allowedJobs.find(allowedJob => keyGen$1.population.key(allowedJob.key) === jobTitle),
         container: job.parentElement.parentElement,
         current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
         maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim()
@@ -29826,8 +29961,7 @@ Estimated damage:
   };
   const executeAction$4 = async () => {
     allowedJobs = getAllJobs();
-    const shouldRebalance = state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime > 0 && (!state.lastVisited.populationRebalance || state.lastVisited.populationRebalance + state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime * 60 * 1000 < new Date().getTime());
-    if (allowedJobs.length && shouldRebalance) {
+    if (allowedJobs.length && shouldRebalance()) {
       const unassignAllButton = document.querySelector('div.flex.justify-center.mx-auto.pt-3.font-bold.text-lg > button');
       if (unassignAllButton) {
         unassignAllButton.click();
@@ -29849,8 +29983,8 @@ Estimated damage:
       while (!state.scriptPaused && canAssignJobs) {
         canAssignJobs = false;
         if (availableJobs.length) {
-          const foodJob = availableJobs.find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
-          if (foodJob && resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable) {
+          const foodJob = availableJobs.find(job => job.resourcesGenerated.find(res => res.id === 'food'));
+          if (foodJob && resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable) {
             const addJobButton = foodJob.container.querySelector('button.btn-green');
             if (addJobButton) {
               logger({
@@ -29866,7 +30000,7 @@ Estimated damage:
           } else {
             let unassigned = container.querySelector('div > span.ml-2').textContent.split('/').map(pop => numberParser.parse(pop.trim())).shift();
             if (unassigned > 0) {
-              const resourcesToProduce = ['Natronite', 'Saltpetre', 'Tools', 'Wood', 'Stone', 'Iron', 'Copper', 'Mana', 'Faith', 'Research', 'Materials', 'Steel', 'Supplies', 'Gold', 'Crystal', 'Horse', 'Cow', 'Food'].filter(res => resources.get(res)).filter(res => availableJobs.find(job => job.resourcesGenerated.find(resGen => resGen.id === res)));
+              const resourcesToProduce = ['natronite', 'saltpetre', 'tools', 'wood', 'stone', 'iron', 'copper', 'mana', 'faith', 'research', 'materials', 'steel', 'supplies', 'gold', 'crystal', 'horse', 'cow', 'food'].filter(res => resources.get(res)).filter(res => availableJobs.find(job => job.resourcesGenerated.find(resGen => resGen.id === res)));
               const resourcesWithNegativeGen = resourcesToProduce.filter(res => resources.get(res) && resources.get(res).speed < 0);
               const resourcesWithNoGen = resourcesToProduce.filter(res => !resourcesWithNegativeGen.includes(res) && resources.get(res) && !resources.get(res).speed);
               const resourcesSorted = resourcesWithNegativeGen.concat(resourcesWithNoGen);
@@ -29880,9 +30014,9 @@ Estimated damage:
                       if (unassigned === 0) break;
                       const job = jobsForResource[i];
                       let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable);
-                      const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'Food');
+                      const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'food');
                       if (isFoodJob) {
-                        isSafeToAdd = isSafeToAdd || resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
+                        isSafeToAdd = isSafeToAdd || resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
                       }
                       if (!job.isSafe) {
                         job.resourcesUsed.every(resUsed => {
@@ -29890,8 +30024,8 @@ Estimated damage:
                           if (!res || res.speed < Math.abs(resUsed.value * 2)) {
                             isSafeToAdd = false;
                           }
-                          if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
-                            const foodJob = getAllAvailableJobs().find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
+                          if (res && resUsed.id === 'food' && res.speed - resUsed.value < minimumFood) {
+                            const foodJob = getAllAvailableJobs().find(job => job.resourcesGenerated.find(res => res.id === 'food'));
                             if (foodJob) {
                               i -= 1;
                               job = foodJob;
@@ -29929,9 +30063,9 @@ Estimated damage:
                 if (state.scriptPaused) break;
                 const job = availableJobs[i];
                 let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable);
-                const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'Food');
+                const isFoodJob = !!job.resourcesGenerated.find(res => res.id === 'food');
                 if (isFoodJob) {
-                  isSafeToAdd = isSafeToAdd || resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
+                  isSafeToAdd = isSafeToAdd || resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable;
                 }
                 if (!job.isSafe) {
                   job.resourcesUsed.every(resUsed => {
@@ -29939,8 +30073,8 @@ Estimated damage:
                     if (!res || res.speed < Math.abs(resUsed.value * 2)) {
                       isSafeToAdd = false;
                     }
-                    if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
-                      const foodJob = availableJobs.find(job => job.resourcesGenerated.find(res => res.id === 'Food'));
+                    if (res && resUsed.id === 'food' && res.speed - resUsed.value < minimumFood) {
+                      const foodJob = availableJobs.find(job => job.resourcesGenerated.find(res => res.id === 'food'));
                       if (foodJob) {
                         job = foodJob;
                         isSafeToAdd = true;
@@ -29984,7 +30118,7 @@ Estimated damage:
   };
   var Population = {
     page: CONSTANTS.PAGES.POPULATION,
-    enabled: () => userEnabled$4() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
+    enabled: () => userEnabled$4() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && (hasUnassignedPopulation() || shouldRebalance()) && getAllJobs().length,
     action: async () => {
       await navigation.switchPage(CONSTANTS.PAGES.POPULATION);
       if (navigation.checkPage(CONSTANTS.PAGES.POPULATION)) await executeAction$4();
@@ -30025,10 +30159,7 @@ Estimated damage:
   const getAllButtons$2 = () => {
     const buttonsList = selectors.getAllButtons(true);
     const allowedResearch = getAllowedResearch().map(tech => {
-      let button = buttonsList.find(button => button.innerText.split('\n').shift().trim() === tech.id);
-      if (!button && tech.id === 'A moonlit night') {
-        button = buttonsList.find(button => button.innerText.split('\n').shift().trim() === 'A moonlight night');
-      }
+      let button = buttonsList.find(button => reactUtil$1.getNearestKey(button, 6) === keyGen$1.research.key(tech.key));
       return {
         ...tech,
         button
@@ -30116,7 +30247,7 @@ Estimated damage:
           if (research.confirm) {
             if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
             await sleep(1000);
-            const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
+            const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil$1.getBtnIndex(button, 0) === 1);
             if (redConfirmButton) {
               redConfirmButton.click();
               await sleep(4000);
@@ -30131,7 +30262,8 @@ Estimated damage:
     }
   };
   const hasResearches = () => {
-    const resNavButton = navigation.getPagesSelector().find(page => page.innerText.includes(CONSTANTS.PAGES.RESEARCH));
+    const pageIndex = CONSTANTS.PAGES_INDEX[CONSTANTS.PAGES.RESEARCH];
+    const resNavButton = navigation.getPagesSelector().find(page => reactUtil$1.getBtnIndex(page, 1) === pageIndex);
     if (resNavButton) {
       const researchesAvailable = resNavButton.querySelector('span.inline-block');
       if (researchesAvailable) {
@@ -30175,7 +30307,7 @@ Estimated damage:
   const getAllButtons$1 = () => {
     const buttonsList = selectors.getAllButtons(true, ':not(.btn-progress)');
     const allowedPrayers = getAllowedPrayers().map(prayer => {
-      const button = buttonsList.find(button => button.innerText.split('\n').shift().trim() === prayer.id);
+      const button = buttonsList.find(button => reactUtil$1.getNearestKey(button, 6) === keyGen$1.magic.key(prayer.key));
       return {
         ...prayer,
         button
@@ -30207,7 +30339,7 @@ Estimated damage:
   var MagicPrayers = {
     page: CONSTANTS.PAGES.MAGIC,
     subpage: CONSTANTS.SUBPAGES.PRAYERS,
-    enabled: () => userEnabled$2() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length && resources.get('Faith') && resources.get('Faith').max,
+    enabled: () => userEnabled$2() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length && resources.get('faith') && resources.get('faith').max,
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.PRAYERS, CONSTANTS.PAGES.MAGIC);
       if (navigation.checkPage(CONSTANTS.PAGES.MAGIC, CONSTANTS.SUBPAGES.PRAYERS)) await executeAction$2();
@@ -30239,11 +30371,7 @@ Estimated damage:
   const getAllButtons = () => {
     const allowedSpells = getAllowedSpells();
     const buttonsList = selectors.getAllButtons(true).map(button => {
-      const h5 = button.parentElement.parentElement.querySelector('h5');
-      if (!h5) {
-        return {};
-      }
-      const spell = allowedSpells.find(spell => h5.innerText.trim() === spell.id);
+      const spell = allowedSpells.find(spell => reactUtil$1.getNearestKey(button, 4) === keyGen$1.magic.key(spell.key));
       return {
         ...spell,
         button
@@ -30257,7 +30385,7 @@ Estimated damage:
     const disabledSpells = buttonsList.filter(button => !button.enabled);
     for (let i = 0; i < disabledSpells.length && !state.scriptPaused; i++) {
       const spell = disabledSpells[i];
-      if (spell.button.innerText.includes('Cancel this spell')) {
+      if (spell.button.classList.contains('btn-dark')) {
         logger({
           msgLevel: 'log',
           msg: `Cancelling spell ${spell.id}`
@@ -30269,8 +30397,8 @@ Estimated damage:
     }
     for (let i = 0; i < enabledSpells.length && !state.scriptPaused; i++) {
       const spell = enabledSpells[i];
-      const hasEnoughMana = resources.get('Mana').speed + spell.gen.find(gen => gen.id === 'mana').value > (state.options.pages[CONSTANTS.PAGES.MAGIC].subpages[CONSTANTS.SUBPAGES.SPELLS].options.minimumMana || 0);
-      if (spell.button.innerText.includes('Cast this spell') && hasEnoughMana) {
+      const hasEnoughMana = resources.get('mana').speed + spell.gen.find(gen => gen.id === 'mana').value > (state.options.pages[CONSTANTS.PAGES.MAGIC].subpages[CONSTANTS.SUBPAGES.SPELLS].options.minimumMana || 0);
+      if (!spell.button.classList.contains('btn-dark') && hasEnoughMana) {
         logger({
           msgLevel: 'log',
           msg: `Casting spell ${spell.id}`
@@ -30284,7 +30412,7 @@ Estimated damage:
   var MagicSpells = {
     page: CONSTANTS.PAGES.MAGIC,
     subpage: CONSTANTS.SUBPAGES.SPELLS,
-    enabled: () => userEnabled$1() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('Mana') && resources.get('Mana').max,
+    enabled: () => userEnabled$1() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('mana') && resources.get('mana').max,
     action: async () => {
       await navigation.switchSubPage(CONSTANTS.SUBPAGES.SPELLS, CONSTANTS.PAGES.MAGIC);
       if (navigation.checkPage(CONSTANTS.PAGES.MAGIC, CONSTANTS.SUBPAGES.SPELLS)) await executeAction$1();
@@ -30298,24 +30426,25 @@ Estimated damage:
     return state.options.pages[CONSTANTS.PAGES.DIPLOMACY].enabled || false;
   };
   const mapToFaction = button => {
+    let factionName = reactUtil$1.getNearestKey(button, 12);
     let level = 0;
     let parent = button.parentElement;
-    let factionName;
-    while (!factionName && level < 5) {
-      factionName = parent.querySelector('div.font-bold > button.font-bold');
-      if (factionName) {
-        factionName = factionName.innerText.split('\n').shift().trim();
-      } else {
-        factionName = null;
+    let factionNameEl;
+    while (!factionNameEl && level < 5) {
+      factionNameEl = parent.querySelector('div.font-bold > button.font-bold');
+      if (factionNameEl) ; else {
+        factionNameEl = null;
         parent = parent.parentElement;
         level += 1;
       }
     }
-    if (factionName) {
-      const factionData = factions.find(faction => translate(faction.id, 'dip_') === factionName);
+    if (factionName && factionNameEl) {
+      const factionData = factions.find(faction => keyGen$1.diplomacy.key(faction.id) === factionName);
       return {
         ...factionData,
         button,
+        level: level,
+        buttonCount: parent.querySelectorAll(`button.btn`).length,
         key: factionData.id,
         id: translate(factionData.id, 'dip_'),
         option: state.options.pages[CONSTANTS.PAGES.DIPLOMACY].options[factionData.id]
@@ -30329,10 +30458,30 @@ Estimated damage:
       const button = allButtons[i];
       listOfFactions[button.key] = listOfFactions[button.key] ? listOfFactions[button.key] : button;
       listOfFactions[button.key].buttons = listOfFactions[button.key].buttons ? listOfFactions[button.key].buttons : {};
-      const buttonText = button.button.innerText.trim();
-      const buttonType = Object.keys(CONSTANTS.DIPLOMACY_BUTTONS).find(key => buttonText.includes(CONSTANTS.DIPLOMACY_BUTTONS[key]));
+      let buttonType = undefined;
+      if (button.level === 2) {
+        buttonType = CONSTANTS.DIPLOMACY_BUTTONS.DELEGATION;
+      } else if (button.level === 3) {
+        if (button.button.classList.contains('btn-dark')) {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.CANCEL_TRADE;
+        } else {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.ACCEPT_TRADE;
+        }
+      } else if (button.level === 4) {
+        if (button.button.classList.contains('btn-blue')) {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.ALLY;
+        } else if (button.button.classList.contains('btn-green')) {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.IMPROVE_RELATIONSHIPS;
+        } else {
+          if (button.button.parentElement.parentElement.parentElement.className.includes("border-red")) {
+            buttonType = CONSTANTS.DIPLOMACY_BUTTONS.WAR;
+          } else {
+            buttonType = CONSTANTS.DIPLOMACY_BUTTONS.INSULT;
+          }
+        }
+      }
       if (buttonType) {
-        listOfFactions[button.key].buttons[CONSTANTS.DIPLOMACY_BUTTONS[buttonType]] = button.button;
+        listOfFactions[button.key].buttons[buttonType] = button.button;
       }
       delete listOfFactions[button.key].button;
     }
@@ -30369,7 +30518,7 @@ Estimated damage:
               } else {
                 canTrade = faction.commercial.filter(res => res.type === 'resource').every(res => {
                   if (res.value < 0) {
-                    const currentRes = resources.get(translate(res.id, 'res_'));
+                    const currentRes = resources.get(res.id);
                     return currentRes.speed > Math.abs(res.value);
                   } else {
                     return true;
@@ -30417,7 +30566,7 @@ Estimated damage:
                 tookAction = true;
                 faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click();
                 await sleep(200);
-                const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
+                const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil$1.getBtnIndex(button, 0) === 1);
                 if (redConfirmButton) {
                   redConfirmButton.click();
                   await sleep(200);
@@ -30503,8 +30652,56 @@ Estimated damage:
       const rows = potentialResourcesToFillTable.querySelectorAll('tr');
       rows.forEach(row => {
         const cells = row.querySelectorAll('td');
-        const resourceName = cells[0].textContent.trim();
-        const resource = resources.get(resourceName);
+        let reqKey = reactUtil$1.getNearestKey(cells[0], 1);
+        if (!keyGen$1.tooltipReq.check(reqKey)) {
+          return;
+        }
+        reqKey = keyGen$1.tooltipReq.id(reqKey);
+        let dataList;
+        let dataId;
+        let reqField = "req";
+        if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.BUILDING)) {
+          dataList = buildings;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.BUILDING, "");
+        } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.TECH)) {
+          dataList = tech;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.TECH, "");
+        } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.PRAYER)) {
+          dataList = spells;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.PRAYER, "");
+        } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.UNIT)) {
+          dataList = units;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.UNIT, "");
+        } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE)) {
+          dataList = factions;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE, "");
+          reqField = "reqImproveRelationship";
+        } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION)) {
+          dataList = factions;
+          dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION, "");
+          reqField = "reqDelegation";
+        }
+        if (!dataId || !dataList) {
+          return;
+        }
+        let match = dataId.match(/^([a-zA-Z_]+)(\d+)$/);
+        if (!match) {
+          return;
+        }
+        dataId = match[1];
+        let reqIdx = match[2];
+        let data = dataList.find(d => dataId === d.id);
+        if (!data) {
+          return;
+        }
+        let req = data[reqField];
+        if (req) {
+          req = req[reqIdx];
+        }
+        if (!req) {
+          return;
+        }
+        const resource = resources.get(req.id);
         if (resource) {
           let ttf = '✅';
           const target = numberParser.parse(cells[1].textContent.split(' ').shift().replace(/[^0-9KM\-,\.]/g, '').trim());
@@ -30530,7 +30727,7 @@ Estimated damage:
     const resourceTrNodes = document.querySelectorAll('#root > div > div:not(#maintabs-container) > div > div > div > table:not(.hidden) > tbody > tr');
     resourceTrNodes.forEach(row => {
       const cells = row.querySelectorAll('td');
-      const resourceName = cells[0].textContent.trim();
+      const resourceName = keyGen$1.resource.id(reactUtil$1.getNearestKey(cells[0], 5));
       const resource = resources.get(resourceName);
       let ttf = '';
       if (resource && resource.current < resource.max && resource.speed) {
@@ -30605,31 +30802,34 @@ Estimated damage:
   const autoClicker = async () => {
     if (!state.haveManualResourceButtons) return;
     if (state.scriptPaused) return;
-    const manualResources = ['Food', 'Wood', 'Stone'];
+    const manualResources = [keyGen$1.manual.key("food"), keyGen$1.manual.key("wood"), keyGen$1.manual.key("stone")];
     while (!state.scriptPaused && state.haveManualResourceButtons) {
       const buttons = [...document.querySelectorAll('#root > div.flex.flex-wrap.w-full.mx-auto.p-2 > div.w-full.lg\\:pl-2 > div > div.order-2.flex.flex-wrap.gap-3 > button')];
       if (!buttons.length) {
         state.haveManualResourceButtons = false;
         return;
       }
-      const buttonsToClick = buttons.filter(button => manualResources.includes(button.innerText.trim()));
-      while (buttonsToClick.length) {
-        const buttonToClick = buttonsToClick.shift();
-        buttonToClick.click();
-        await sleep(100);
+      const buttonsToClick = buttons.filter(button => manualResources.includes(reactUtil$1.getNearestKey(button, 2)));
+      if (buttonsToClick.length && !state.haveMask) {
+        while (buttonsToClick.length && !state.haveMask) {
+          const buttonToClick = buttonsToClick.shift();
+          buttonToClick.click();
+          await sleep(100);
+        }
+      } else {
+        await sleep(1000);
       }
     }
   };
 
-  const defaultAncestor = translate('ancestor_gatherer');
   const autoAncestor = async () => {
     if (!state.options.ancestor.enabled || !state.options.ancestor.selected) return;
-    const ancestorToSelect = translate(state.options.ancestor.selected);
+    const ancestorToSelect = state.options.ancestor.selected;
     const ancestorPage = document.querySelector('#root > div.mt-6.lg\\:mt-12.xl\\:mt-24.\\32 xl\\:mt-12.\\34 xl\\:mt-24 > div > div.text-center > p.mt-6.lg\\:mt-8.text-lg.lg\\:text-xl.text-gray-500.dark\\:text-gray-400');
     if (ancestorPage) {
-      let ancestor = [...document.querySelectorAll('button.btn')].find(button => button.parentElement.innerText.includes(ancestorToSelect));
+      let ancestor = [...document.querySelectorAll('button.btn')].find(button => reactUtil$1.getNearestKey(button, 3) === keyGen$1.ancestor.key(ancestorToSelect));
       if (!ancestor) {
-        ancestor = [...document.querySelectorAll('button.btn')].find(button => button.parentElement.innerText.includes(defaultAncestor));
+        ancestor = [...document.querySelectorAll('button.btn')].find(button => reactUtil$1.getNearestKey(button.parentElement, 3) === keyGen$1.ancestor.key(ancestorToSelect));
       }
       if (ancestor) {
         ancestor.click();
@@ -30642,18 +30842,23 @@ Estimated damage:
 
   const autoPrestige = async () => {
     if (!state.options.prestige.enabled) return;
-    let prestigeButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Prestige'));
+    let buttons = [...document.querySelectorAll('h3.modal-title')].map(h3 => [...h3.parentElement.querySelectorAll('button.btn')]).flat();
+    let legacyBtn = buttons.find(button => keyGen$1.legacy.check(reactUtil$1.getNearestKey(button, 6)));
+    if (!legacyBtn) {
+      return;
+    }
+    let prestigeButton = [...legacyBtn.parentElement.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.btn.btn-red')].find(button => button);
     if (prestigeButton) {
       localStorage.set('lastVisited', {});
       state.stopAttacks = false;
       state.haveManualResourceButtons = true;
       prestigeButton.click();
       await sleep(5000);
-      let redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
+      let redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil$1.getBtnIndex(button, 0) === 1);
       while (redConfirmButton) {
         redConfirmButton.click();
         await sleep(2000);
-        redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find(button => button.innerText.includes('Confirm'));
+        redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil$1.getBtnIndex(button, 0) === 1);
       }
     }
   };
@@ -31792,13 +31997,19 @@ Estimated damage:
   };
 
   const hideFullPageOverlay = () => {
-    const modalsToIgnore = ['enemies'];
     if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
       const modalContainer = document.querySelector('div.modal-container');
       if (modalContainer) {
         const modalTitle = modalContainer.querySelector('h3.modal-title');
-        if (modalTitle && modalsToIgnore.includes(modalTitle.innerText.trim())) {
-          return;
+        if (modalTitle) {
+          //enemies
+          const enemyList = [...modalTitle.parentElement.querySelectorAll('h5')].map(h5 => {
+            const key = reactUtil.getNearestKey(h5, 2);
+            return keyGen.enemy.check(key);
+          }).filter(isEnemy => isEnemy);
+          if (enemyList.length) {
+            return;
+          }
         }
         const fullPageOverlay = modalContainer.querySelector('div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
         if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {

@@ -1,6 +1,6 @@
-import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage } from '../utils'
+import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage, reactUtil, keyGen } from '../utils'
 
-const resourcesToTrade = ['Cow', 'Horse', 'Food', 'Copper', 'Wood', 'Stone', 'Iron', 'Tools']
+const resourcesToTrade = ['cow', 'horse', 'food', 'copper', 'wood', 'stone', 'iron', 'tools']
 const timeToFillResource = 90
 const timeToWaitUntilFullGold = 60
 const secondsBetweenSells = 90
@@ -20,7 +20,7 @@ const getSecondsBetweenSells = () => {
 const getResourcesToTrade = () => {
   const userResourcesToTrade = Object.keys(state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options)
     .filter((key) => key.includes('resource_') && state.options.pages[CONSTANTS.PAGES.MARKETPLACE].options[key])
-    .map((key) => translate(key.replace('resource_', '')))
+    .map((key) => key.replace('resource_', ''))
   return userResourcesToTrade.length ? userResourcesToTrade : resourcesToTrade
 }
 
@@ -42,7 +42,7 @@ const shouldSell = () => {
 }
 
 const hasNotEnoughGold = () => {
-  const gold = resources.get('Gold')
+  const gold = resources.get('gold')
 
   return gold.current + gold.speed * getTimeToWaitUntilFullGold() < gold.max
 }
@@ -52,15 +52,15 @@ const userEnabled = () => {
 }
 
 const executeAction = async () => {
-  let gold = resources.get('Gold')
+  let gold = resources.get('gold')
 
   if (gold && gold.current < gold.max && shouldSell()) {
     const resourceHolders = []
 
     ;[...document.querySelectorAll('div > div.tab-container > div > div > div')].forEach((resourceHolder) => {
-      const resNameElem = resourceHolder.querySelector('h5')
-      if (resNameElem) {
-        const resName = resNameElem.innerText
+      const resKey = reactUtil.getNearestKey(resourceHolder, 2)
+      if (resKey) {
+        const resName = keyGen.market.id(resKey)
         const res = resources.get(resName)
 
         if (getResourcesToTrade().includes(resName) && res && (res.current === res.max || res.current + res.speed * getTimeToFillResource() >= res.max)) {
@@ -73,9 +73,10 @@ const executeAction = async () => {
     let soldTotals = {}
 
     for (let i = 0; i < resourceHolders.length && !state.scriptPaused; i++) {
-      gold = resources.get('Gold')
+      gold = resources.get('gold')
       const resourceHolder = resourceHolders[i]
-      const resName = resourceHolder.querySelector('h5').innerText
+      const resKey = reactUtil.getNearestKey(resourceHolder, 2)
+      const resName = keyGen.market.id(resKey)
       let res = resources.get(resName)
 
       const initialPrice = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText)
@@ -108,7 +109,7 @@ const executeAction = async () => {
         await sleep(10)
         if (!navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) return
         sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)')
-        gold = resources.get('Gold')
+        gold = resources.get('gold')
         res = resources.get(resName)
         price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText)
         await sleep(25)

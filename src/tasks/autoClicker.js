@@ -1,10 +1,10 @@
-import { sleep, state } from '../utils'
+import { sleep, state, reactUtil, keyGen } from '../utils'
 
 const autoClicker = async () => {
   if (!state.haveManualResourceButtons) return
   if (state.scriptPaused) return
 
-  const manualResources = ['Food', 'Wood', 'Stone']
+  const manualResources = [keyGen.manual.key("food"), keyGen.manual.key("wood"), keyGen.manual.key("stone")]
 
   while (!state.scriptPaused && state.haveManualResourceButtons) {
     const buttons = [
@@ -16,11 +16,15 @@ const autoClicker = async () => {
       return
     }
 
-    const buttonsToClick = buttons.filter((button) => manualResources.includes(button.innerText.trim()))
-    while (buttonsToClick.length) {
-      const buttonToClick = buttonsToClick.shift()
-      buttonToClick.click()
-      await sleep(100)
+    const buttonsToClick = buttons.filter((button) => manualResources.includes(reactUtil.getNearestKey(button, 2)))
+    if (buttonsToClick.length && !state.haveMask) {
+      while (buttonsToClick.length && !state.haveMask) {
+        const buttonToClick = buttonsToClick.shift()
+        buttonToClick.click()
+        await sleep(100)
+      }
+    } else {
+      await sleep(1000)
     }
   }
 }

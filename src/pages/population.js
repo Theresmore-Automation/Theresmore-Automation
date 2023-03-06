@@ -1,17 +1,26 @@
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources, numberParser, localStorage } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources, numberParser, localStorage, reactUtil, keyGen } from '../utils'
 import { jobs } from '../data'
 
 const hasUnassignedPopulation = () => {
   let unassignedPopulation = false
 
   const navButtons = navigation.getPagesSelector()
+  const pageIndex = CONSTANTS.PAGES_INDEX[CONSTANTS.PAGES.POPULATION]
   navButtons.forEach((button) => {
-    if (button.innerText.includes(CONSTANTS.PAGES.POPULATION)) {
+    if (reactUtil.getBtnIndex(button, 1) === pageIndex) {
       unassignedPopulation = !!button.querySelector('span')
     }
   })
 
   return unassignedPopulation
+}
+const shouldRebalance = () => {
+  return (
+    state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime > 0 &&
+    (!state.lastVisited.populationRebalance ||
+      state.lastVisited.populationRebalance + state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime * 60 * 1000 <
+        new Date().getTime())
+  )
 }
 
 const allJobs = jobs
@@ -25,7 +34,7 @@ const allJobs = jobs
         .filter((gen) => gen.type === 'resource')
         .map((gen) => {
           return {
-            id: translate(gen.id, 'res_'),
+            id: gen.id,
             value: gen.value,
           }
         }),
@@ -84,9 +93,9 @@ const getAllAvailableJobs = () => {
 
   const availableJobs = [...container.querySelectorAll('h5')]
     .map((job) => {
-      const jobTitle = job.textContent.trim()
+      const jobTitle = reactUtil.getNearestKey(job, 7)
       return {
-        ...allowedJobs.find((allowedJob) => allowedJob.id === jobTitle),
+        ...allowedJobs.find((allowedJob) => keyGen.population.key(allowedJob.key) === jobTitle),
         container: job.parentElement.parentElement,
         current: +job.parentElement.parentElement.querySelector('input').value.split('/').shift().trim(),
         maxAvailable: +job.parentElement.parentElement.querySelector('input').value.split('/').pop().trim(),
@@ -107,13 +116,7 @@ const getAllAvailableJobs = () => {
 const executeAction = async () => {
   allowedJobs = getAllJobs()
 
-  const shouldRebalance =
-    state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime > 0 &&
-    (!state.lastVisited.populationRebalance ||
-      state.lastVisited.populationRebalance + state.options.pages[CONSTANTS.PAGES.POPULATION].options.populationRebalanceTime * 60 * 1000 <
-        new Date().getTime())
-
-  if (allowedJobs.length && shouldRebalance) {
+  if (allowedJobs.length && shouldRebalance()) {
     const unassignAllButton = document.querySelector('div.flex.justify-center.mx-auto.pt-3.font-bold.text-lg > button')
 
     if (unassignAllButton) {
@@ -143,9 +146,9 @@ const executeAction = async () => {
       canAssignJobs = false
 
       if (availableJobs.length) {
-        const foodJob = availableJobs.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
+        const foodJob = availableJobs.find((job) => job.resourcesGenerated.find((res) => res.id === 'food'))
 
-        if (foodJob && resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable) {
+        if (foodJob && resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable) {
           const addJobButton = foodJob.container.querySelector('button.btn-green')
           if (addJobButton) {
             logger({ msgLevel: 'log', msg: `Assigning worker as ${foodJob.id}` })
@@ -165,24 +168,24 @@ const executeAction = async () => {
 
           if (unassigned > 0) {
             const resourcesToProduce = [
-              'Natronite',
-              'Saltpetre',
-              'Tools',
-              'Wood',
-              'Stone',
-              'Iron',
-              'Copper',
-              'Mana',
-              'Faith',
-              'Research',
-              'Materials',
-              'Steel',
-              'Supplies',
-              'Gold',
-              'Crystal',
-              'Horse',
-              'Cow',
-              'Food',
+              'natronite',
+              'saltpetre',
+              'tools',
+              'wood',
+              'stone',
+              'iron',
+              'copper',
+              'mana',
+              'faith',
+              'research',
+              'materials',
+              'steel',
+              'supplies',
+              'gold',
+              'crystal',
+              'horse',
+              'cow',
+              'food',
             ]
               .filter((res) => resources.get(res))
               .filter((res) => availableJobs.find((job) => job.resourcesGenerated.find((resGen) => resGen.id === res)))
@@ -214,9 +217,9 @@ const executeAction = async () => {
 
                     let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable)
 
-                    const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'Food')
+                    const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'food')
                     if (isFoodJob) {
-                      isSafeToAdd = isSafeToAdd || (resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
+                      isSafeToAdd = isSafeToAdd || (resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
                     }
 
                     if (!job.isSafe) {
@@ -227,8 +230,8 @@ const executeAction = async () => {
                           isSafeToAdd = false
                         }
 
-                        if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
-                          const foodJob = getAllAvailableJobs().find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
+                        if (res && resUsed.id === 'food' && res.speed - resUsed.value < minimumFood) {
+                          const foodJob = getAllAvailableJobs().find((job) => job.resourcesGenerated.find((res) => res.id === 'food'))
 
                           if (foodJob) {
                             i -= 1
@@ -271,9 +274,9 @@ const executeAction = async () => {
 
               let isSafeToAdd = job.current < Math.min(job.max, job.maxAvailable)
 
-              const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'Food')
+              const isFoodJob = !!job.resourcesGenerated.find((res) => res.id === 'food')
               if (isFoodJob) {
-                isSafeToAdd = isSafeToAdd || (resources.get('Food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
+                isSafeToAdd = isSafeToAdd || (resources.get('food').speed <= minimumFood && foodJob.current < foodJob.maxAvailable)
               }
 
               if (!job.isSafe) {
@@ -284,8 +287,8 @@ const executeAction = async () => {
                     isSafeToAdd = false
                   }
 
-                  if (res && resUsed.id === 'Food' && res.speed - resUsed.value < minimumFood) {
-                    const foodJob = availableJobs.find((job) => job.resourcesGenerated.find((res) => res.id === 'Food'))
+                  if (res && resUsed.id === 'food' && res.speed - resUsed.value < minimumFood) {
+                    const foodJob = availableJobs.find((job) => job.resourcesGenerated.find((res) => res.id === 'food'))
 
                     if (foodJob) {
                       job = foodJob
@@ -338,7 +341,7 @@ const executeAction = async () => {
 
 export default {
   page: CONSTANTS.PAGES.POPULATION,
-  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && hasUnassignedPopulation() && getAllJobs().length,
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.POPULATION) && (hasUnassignedPopulation() || shouldRebalance()) && getAllJobs().length,
   action: async () => {
     await navigation.switchPage(CONSTANTS.PAGES.POPULATION)
 

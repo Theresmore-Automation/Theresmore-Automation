@@ -1,16 +1,23 @@
 import { state } from '../utils'
 
 const hideFullPageOverlay = () => {
-  const modalsToIgnore = ['enemies']
-
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
     const modalContainer = document.querySelector('div.modal-container')
 
     if (modalContainer) {
       const modalTitle = modalContainer.querySelector('h3.modal-title')
 
-      if (modalTitle && modalsToIgnore.includes(modalTitle.innerText.trim())) {
-        return
+      if (modalTitle) {
+        //enemies
+        const enemyList = [...modalTitle.parentElement.querySelectorAll('h5')]
+          .map((h5) => {
+            const key = reactUtil.getNearestKey(h5, 2)
+            return keyGen.enemy.check(key)
+          })
+          .filter((isEnemy) => isEnemy)
+		if (enemyList.length) {
+			return
+		}
       }
 
       const fullPageOverlay = modalContainer.querySelector('div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
