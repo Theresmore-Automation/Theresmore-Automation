@@ -1,5 +1,6 @@
 import { factions, locations, units } from '../data'
 import translate from './translate'
+import { reactUtil } from '../utils'
 
 const fights = factions.concat(locations).map((fight) => {
   return {
@@ -11,10 +12,7 @@ const fights = factions.concat(locations).map((fight) => {
 
 const applyUnitMods = (unit) => {
   const unitCopy = { ...unit }
-  let run = window.localStorage.getItem('run')
-  if (run) {
-    run = JSON.parse(run)
-  }
+  let run = reactUtil.getGameData().run
 
   if (unitCopy && run && run.modifiers) {
     let bonusAttack = 0
@@ -48,7 +46,7 @@ const applyUnitMods = (unit) => {
 }
 
 const getEnemyArmy = (enemyId) => {
-  const difficultyMode = window.localStorage.getItem('difficultyMode')
+  const difficultyMode = reactUtil.getGameData().SettingsStore.difficultyMode
   const difficultyModeMultiplier = difficultyMode === '0' ? 1 : difficultyMode === '1' ? 1.5 : 2
   const randomBonus = 1.3
   const army = fights
@@ -69,10 +67,7 @@ const getEnemyArmy = (enemyId) => {
 const getGarrison = (getAll = false) => {
   const garrison = []
 
-  let run = window.localStorage.getItem('run')
-  if (run) {
-    run = JSON.parse(run)
-  }
+  let run = reactUtil.getGameData().run
 
   if (run && run.army) {
     for (let i = 0; i < run.army.length; i++) {
@@ -93,10 +88,7 @@ const getGarrison = (getAll = false) => {
 
 const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll = false) => {
   let canWin = false
-  let run = window.localStorage.getItem('run')
-  if (run) {
-    run = JSON.parse(run)
-  }
+  let run = reactUtil.getGameData().run
 
   if (run && run.army) {
     const sortMethod = (type = 'defense') => {

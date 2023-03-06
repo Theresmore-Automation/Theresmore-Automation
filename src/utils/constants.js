@@ -8,6 +8,16 @@ const PAGES = {
   DIPLOMACY: 'Diplomacy',
 }
 
+const PAGES_INDEX = {
+  [PAGES.BUILD]: 0,
+  [PAGES.RESEARCH]: 1,
+  [PAGES.POPULATION]: 2,
+  [PAGES.ARMY]: 4,
+  [PAGES.MARKETPLACE]: 6,
+  [PAGES.MAGIC]: 3,
+  [PAGES.DIPLOMACY]: 5,
+}
+
 const SUBPAGES = {
   CITY: 'City',
   COLONY: 'Colony',
@@ -18,6 +28,18 @@ const SUBPAGES = {
   EXPLORE: 'Explore',
   ATTACK: 'Attack',
   GARRISON: 'Garrison',
+}
+
+const SUBPAGES_INDEX = {
+  [SUBPAGES.CITY]: 0,
+  [SUBPAGES.COLONY]: 1,
+  [SUBPAGES.RESEARCH]: 0,
+  [SUBPAGES.SPELLS]: 0,
+  [SUBPAGES.PRAYERS]: 1,
+  [SUBPAGES.ARMY]: 0,
+  [SUBPAGES.EXPLORE]: 1,
+  [SUBPAGES.ATTACK]: 3,
+  [SUBPAGES.GARRISON]: 4,
 }
 
 const SUBPAGE_MAPPING = {
@@ -50,10 +72,22 @@ const DIPLOMACY_BUTTONS = {
   ALLY: 'Alliance',
 }
 
+const TOOLTIP_PREFIX = {
+	BUILDING: "bui_",
+	TECH: "tech_",
+	PRAYER: "pray_",
+	UNIT: "uni_",
+	FACTION_IMPROVE: "improve_",
+	FACTION_DELEGATION: "delegation_",
+}
+
 export default {
   PAGES,
   SUBPAGES,
   SUBPAGE_MAPPING,
+  PAGES_INDEX,
+  SUBPAGES_INDEX,
   DIPLOMACY,
   DIPLOMACY_BUTTONS,
+  TOOLTIP_PREFIX,
 }

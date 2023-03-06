@@ -1,5 +1,5 @@
 import { factions, locations, units } from '../data'
-import { CONSTANTS, navigation, logger, sleep, state, resources, selectors, translate, armyCalculator } from '../utils'
+import { CONSTANTS, navigation, logger, sleep, state, resources, selectors, translate, armyCalculator, reactUtil, keyGen } from '../utils'
 
 const fights = factions
   .concat(locations)
@@ -55,21 +55,21 @@ const executeAction = async () => {
     let attackLog = { attackUnits: [] }
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
-    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => button.innerText.includes('Send to attack'))
+    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     unassignAll(controlBox)
 
     for (let i = 0; i < boxes.length; i++) {
       const box = boxes[i]
-      const name = box.querySelector('h5.font-bold').innerText.trim()
+      const unitKey = reactUtil.getNearestKey(box, 2)
       const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none')
       const addUnitButton = box.querySelector('div.inline-flex button.btn-green.rounded-none')
 
-      const unitDetails = armyCalculator.applyUnitMods(units.find((unit) => translate(unit.id, 'uni_') === name))
+      const unitDetails = armyCalculator.applyUnitMods(units.find((unit) => keyGen.armyAttack.key(unit.id) === unitKey))
 
       userUnits.push({
         ...unitDetails,
         key: unitDetails.id,
-        id: name,
+        id: unitDetails.id,
         box,
         removeUnitButton,
         addUnitButton,
@@ -79,18 +79,23 @@ const executeAction = async () => {
     if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
       enemySelectorButton.click()
       await sleep(250)
-      const modal = [...document.querySelectorAll('h3.modal-title')].find((h3) => h3.innerText.includes('enemies'))
+      const modals = [...document.querySelectorAll('h3.modal-title')]
 
-      if (modal) {
-        enemyList = [...modal.parentElement.querySelectorAll('h5')]
+      if (modals.length) {
+        enemyList = [...modals.map(modal => [...modal.parentElement.querySelectorAll('h5')]).flat()]
           .map((h5) => {
-            const enemyDetails = fights.find((fight) => fight.id === h5.innerText.trim())
+			const key = reactUtil.getNearestKey(h5, 2);
+			if (!keyGen.enemy.check(key)) {
+				return undefined
+			}
+            const enemyDetails = fights.find((fight) => keyGen.enemy.key(fight.key) === key)
 
             return {
               button: h5,
               ...enemyDetails,
             }
           })
+		  .filter((fight) => fight)
           .filter((fight) => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key])
           .filter((fight) => {
             const army = armyCalculator.getEnemyArmy(fight.key)

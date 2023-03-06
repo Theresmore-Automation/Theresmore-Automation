@@ -1,5 +1,5 @@
 import { tech } from '../data'
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator, reactUtil, keyGen } from '../utils'
 
 const dangerousFightsMapping = {
   moonlight_night: 'army_of_goblin',
@@ -44,11 +44,7 @@ const getAllButtons = () => {
 
   const allowedResearch = getAllowedResearch()
     .map((tech) => {
-      let button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === tech.id)
-
-      if (!button && tech.id === 'A moonlit night') {
-        button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === 'A moonlight night')
-      }
+      let button = buttonsList.find((button) => reactUtil.getNearestKey(button, 6) === keyGen.research.key(tech.key))
 
       return { ...tech, button }
     })
@@ -114,7 +110,7 @@ const executeAction = async () => {
         if (research.confirm) {
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
           await sleep(1000)
-          const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+          const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
 
           if (redConfirmButton) {
             redConfirmButton.click()
@@ -133,7 +129,8 @@ const executeAction = async () => {
 }
 
 const hasResearches = () => {
-  const resNavButton = navigation.getPagesSelector().find((page) => page.innerText.includes(CONSTANTS.PAGES.RESEARCH))
+  const pageIndex = CONSTANTS.PAGES_INDEX[CONSTANTS.PAGES.RESEARCH]
+  const resNavButton = navigation.getPagesSelector().find((page) => reactUtil.getBtnIndex(page, 1) === pageIndex)
 
   if (resNavButton) {
     const researchesAvailable = resNavButton.querySelector('span.inline-block')

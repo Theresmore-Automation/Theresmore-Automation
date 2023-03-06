@@ -1,5 +1,19 @@
 import { factions } from '../data'
-import { CONSTANTS, navigation, logger, sleep, state, resources, numberParser, translate, localStorage, selectors, armyCalculator } from '../utils'
+import {
+  CONSTANTS,
+  navigation,
+  logger,
+  sleep,
+  state,
+  resources,
+  numberParser,
+  translate,
+  localStorage,
+  selectors,
+  armyCalculator,
+  reactUtil,
+  keyGen,
+} from '../utils'
 
 const isAtWar = () => {
   return !![...document.querySelectorAll('p.text-red-700')].find((p) => p.innerText.includes('You are now at war with this faction'))
@@ -10,28 +24,30 @@ const userEnabled = () => {
 }
 
 const mapToFaction = (button) => {
+  let factionName = reactUtil.getNearestKey(button, 12)
+
   let level = 0
   let parent = button.parentElement
-  let factionName
+  let factionNameEl
+  while (!factionNameEl && level < 5) {
+    factionNameEl = parent.querySelector('div.font-bold > button.font-bold')
 
-  while (!factionName && level < 5) {
-    factionName = parent.querySelector('div.font-bold > button.font-bold')
-
-    if (factionName) {
-      factionName = factionName.innerText.split('\n').shift().trim()
+    if (factionNameEl) {
     } else {
-      factionName = null
+      factionNameEl = null
       parent = parent.parentElement
       level += 1
     }
   }
 
-  if (factionName) {
-    const factionData = factions.find((faction) => translate(faction.id, 'dip_') === factionName)
+  if (factionName && factionNameEl) {
+    const factionData = factions.find((faction) => keyGen.diplomacy.key(faction.id) === factionName)
 
     return {
       ...factionData,
       button,
+      level: level,
+      buttonCount: parent.querySelectorAll(`button.btn`).length,
       key: factionData.id,
       id: translate(factionData.id, 'dip_'),
       option: state.options.pages[CONSTANTS.PAGES.DIPLOMACY].options[factionData.id],
@@ -51,11 +67,31 @@ const getFactionsWithButtons = () => {
     listOfFactions[button.key] = listOfFactions[button.key] ? listOfFactions[button.key] : button
     listOfFactions[button.key].buttons = listOfFactions[button.key].buttons ? listOfFactions[button.key].buttons : {}
 
-    const buttonText = button.button.innerText.trim()
-    const buttonType = Object.keys(CONSTANTS.DIPLOMACY_BUTTONS).find((key) => buttonText.includes(CONSTANTS.DIPLOMACY_BUTTONS[key]))
+    let buttonType = undefined
+    if (button.level === 2) {
+      buttonType = CONSTANTS.DIPLOMACY_BUTTONS.DELEGATION
+    } else if (button.level === 3) {
+      if (button.button.classList.contains('btn-dark')) {
+        buttonType = CONSTANTS.DIPLOMACY_BUTTONS.CANCEL_TRADE
+      } else {
+        buttonType = CONSTANTS.DIPLOMACY_BUTTONS.ACCEPT_TRADE
+      }
+    } else if (button.level === 4) {
+      if (button.button.classList.contains('btn-blue')) {
+        buttonType = CONSTANTS.DIPLOMACY_BUTTONS.ALLY
+      } else if (button.button.classList.contains('btn-green')) {
+        buttonType = CONSTANTS.DIPLOMACY_BUTTONS.IMPROVE_RELATIONSHIPS
+      } else {
+		if (button.button.parentElement.parentElement.parentElement.className.includes("border-red")) {
+			buttonType = CONSTANTS.DIPLOMACY_BUTTONS.WAR
+		} else {
+			buttonType = CONSTANTS.DIPLOMACY_BUTTONS.INSULT
+		}
+      }
+    }
 
     if (buttonType) {
-      listOfFactions[button.key].buttons[CONSTANTS.DIPLOMACY_BUTTONS[buttonType]] = button.button
+      listOfFactions[button.key].buttons[buttonType] = button.button
     }
 
     delete listOfFactions[button.key].button
@@ -101,7 +137,7 @@ const executeAction = async () => {
                 .filter((res) => res.type === 'resource')
                 .every((res) => {
                   if (res.value < 0) {
-                    const currentRes = resources.get(translate(res.id, 'res_'))
+                    const currentRes = resources.get(res.id)
                     return currentRes.speed > Math.abs(res.value)
                   } else {
                     return true
@@ -147,7 +183,7 @@ const executeAction = async () => {
               faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click()
               await sleep(200)
 
-              const redConfirmButton = [...document.querySelectorAll('.btn.btn-red')].find((button) => button.innerText.includes('Confirm'))
+              const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
               if (redConfirmButton) {
                 redConfirmButton.click()
                 await sleep(200)

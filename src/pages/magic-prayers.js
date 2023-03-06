@@ -1,5 +1,5 @@
 import { spells } from '../data'
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources, reactUtil, keyGen } from '../utils'
 
 const userEnabled = () => {
   return (
@@ -37,7 +37,7 @@ const getAllButtons = () => {
 
   const allowedPrayers = getAllowedPrayers()
     .map((prayer) => {
-      const button = buttonsList.find((button) => button.innerText.split('\n').shift().trim() === prayer.id)
+      const button = buttonsList.find((button) => reactUtil.getNearestKey(button, 6) === keyGen.magic.key(prayer.key))
 
       return { ...prayer, button }
     })
@@ -75,7 +75,7 @@ export default {
   page: CONSTANTS.PAGES.MAGIC,
   subpage: CONSTANTS.SUBPAGES.PRAYERS,
   enabled: () =>
-    userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length && resources.get('Faith') && resources.get('Faith').max,
+    userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedPrayers().length && resources.get('faith') && resources.get('faith').max,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.PRAYERS, CONSTANTS.PAGES.MAGIC)
 

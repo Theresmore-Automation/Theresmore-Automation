@@ -1,5 +1,5 @@
 import { buildings } from '../data'
-import { CONSTANTS, navigation, selectors, logger, resources, sleep, state, numberParser, translate } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, resources, sleep, state, numberParser, translate, reactUtil, keyGen } from '../utils'
 
 const getBuildingsList = () => {
   const buildingsObject = state.options.pages[CONSTANTS.PAGES.BUILD].subpages[CONSTANTS.SUBPAGES.COLONY].options
@@ -26,7 +26,7 @@ const getBuildingsList = () => {
 
             if (negativeGen.length) {
               const requires = negativeGen.map((gen) => {
-                return { resource: translate(gen.id, 'res_'), parameter: 'speed', minValue: Math.abs(gen.value) }
+                return { resource: gen.id, parameter: 'speed', minValue: Math.abs(gen.value) }
               })
 
               building.requires = requires
@@ -59,9 +59,9 @@ const getAllButtons = () => {
   const buttons = selectors
     .getAllButtons(true)
     .map((button) => {
-      const id = button.innerText.split('\n').shift()
+      const id = reactUtil.getNearestKey(button, 6)
       const count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-      return { id: id, element: button, count: count, building: buildingsList.find((building) => building.id === id) }
+      return { id: id, element: button, count: count, building: buildingsList.find((building) => keyGen.building.key(building.key) === id) }
     })
     .filter((button) => button.building && button.count < button.building.max)
     .sort((a, b) => {
@@ -113,9 +113,9 @@ const executeAction = async () => {
   state.buildings = selectors
     .getAllButtons(false)
     .map((button) => {
-      const id = button.innerText.split('\n').shift()
+      const id = reactUtil.getNearestKey(button, 6)
       let count = button.querySelector('span') ? numberParser.parse(button.querySelector('span').innerText) : 0
-      const building = buildingsList.find((building) => building.id === id)
+      const building = buildingsList.find((building) => keyGen.building.key(building.key) === id)
 
       if (!building) {
         return {}
