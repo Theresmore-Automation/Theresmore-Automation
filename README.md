@@ -43,3 +43,11 @@ or on Windows
 
 - Template based on [rollup-userscript-template](https://github.com/cvzi/rollup-userscript-template)
 - Options are imported/exported using [LZString](https://github.com/pieroxy/lz-string)
+
+## Usage Tips
+
+ - Each section is independently enabled/disabled.
+ - It is generally safe to enable all production/buildings, but you may want to limit how many 'Pillars of Mana' manually - like 2 or so at first.
+ - The 'Marketplace' tweaks are very handy.  The idea is to act as though gold is the limiting factor to growth.  Try just selling cows at first, and grok the neat limits that will allow you to check more things to auto sell (ie: when they are pretty much full, with a timer to reset the prices)
+ - The 'Population' tab is neat to play with, especially with the smart 'minimum food' toggle at bottom.
+ - Automating an army build when you are ready to rumble is the best part of this!
