@@ -1,4 +1,6 @@
-import { state } from '../utils'
+import { state, reactUtil } from '../utils'
+
+const modalsToIgnore = ['enemies']
 
 const hideFullPageOverlay = () => {
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
@@ -6,8 +8,11 @@ const hideFullPageOverlay = () => {
 
     if (modalContainer) {
       const modalTitle = modalContainer.querySelector('h3.modal-title')
-
       if (modalTitle) {
+        if (modalsToIgnore.includes(modalTitle.innerText.trim())) {
+          return
+        }
+
         //enemies
         const enemyList = [...modalTitle.parentElement.querySelectorAll('h5')]
           .map((h5) => {
