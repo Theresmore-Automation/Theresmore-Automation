@@ -46,8 +46,10 @@ or on Windows
 
 ## Usage Tips
 
- - Each section is independently enabled/disabled.
- - It is generally safe to enable all production/buildings, but you may want to limit how many 'Pillars of Mana' manually - like 2 or so at first.
- - The 'Marketplace' tweaks are very handy.  The idea is to act as though gold is the limiting factor to growth.  Try just selling cows at first, and grok the neat limits that will allow you to check more things to auto sell (ie: when they are pretty much full, with a timer to reset the prices)
- - The 'Population' tab is neat to play with, especially with the smart 'minimum food' toggle at bottom.
- - Automating an army build when you are ready to rumble is the best part of this!
+- Each section is independently enabled/disabled.
+- It is generally safe to enable all production/buildings. You may want to select the mutually exclusive buildings (like `Statue of Atamar/Firio/Lurezia` or
+  `Harvest/War/Mind Shrine`) by hand, and limit how many `Pillars of Mana` you want built.
+- The `Marketplace` can help overcome some gold problems. Be sure to tweak the numbers to match your production speed, allowing enough time for the prices to
+  return to normal. Try starting with limited amount of resources to sell (like `Cows`) until you feel comfortable to enable others.
+- The `Population` tab can help auto-assign workers. Take note of `Minimum food` toggle at bottom.
+- When you're ready for some action, you can automate army production, scouting, and fighting in the `Army` tab.
