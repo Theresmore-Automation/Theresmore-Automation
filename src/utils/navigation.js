@@ -1,7 +1,7 @@
 import CONSTANTS from './constants'
 import logger from './logger'
 import sleep from './sleep'
-import reactUtil from "./reactUtil"
+import reactUtil from './reactUtil'
 
 const getPagesSelector = () => {
   return [...document.querySelectorAll('#main-tabs > div > button')]
@@ -34,7 +34,7 @@ const getCurrentSubPageSelector = () => {
 
 const hasPage = (page) => {
   const navButtons = getPagesSelector()
-  const pageIndex = CONSTANTS.PAGES_INDEX[page];
+  const pageIndex = CONSTANTS.PAGES_INDEX[page]
 
   return !!navButtons.find((button) => reactUtil.getBtnIndex(button, 1) === pageIndex)
 }
@@ -42,8 +42,8 @@ const hasPage = (page) => {
 const checkPage = (page, subPage) => {
   const currentPage = getCurrentPageSelector()
   const currentSubPage = getCurrentSubPageSelector()
-  const pageIndex = CONSTANTS.PAGES_INDEX[page];
-  const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+  const pageIndex = CONSTANTS.PAGES_INDEX[page]
+  const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage]
 
   const isCorrectPage = !page || (page && currentPage && reactUtil.getBtnIndex(currentPage, 1) === pageIndex)
   const isCorrectSubPage = !subPage || (subPage && currentSubPage && reactUtil.getBtnIndex(currentSubPage, 1) === subPageIndex)
@@ -53,7 +53,7 @@ const checkPage = (page, subPage) => {
 
 const hasSubPage = (subPage) => {
   const subTabs = getSubPagesSelector()
-  const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+  const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage]
 
   return !!subTabs.find((button) => reactUtil.getBtnIndex(button, 1) === subPageIndex)
 }
@@ -68,7 +68,7 @@ const switchPage = async (page) => {
   let switchedPage = false
 
   const navButtons = getPagesSelector()
-  const pageIndex = CONSTANTS.PAGES_INDEX[page];
+  const pageIndex = CONSTANTS.PAGES_INDEX[page]
   const pageButton = navButtons.find((button) => reactUtil.getBtnIndex(button, 1) === pageIndex && button.getAttribute('aria-selected') !== 'true')
 
   if (pageButton) {
@@ -92,7 +92,7 @@ const switchSubPage = async (subPage, page) => {
     let switchedSubPage = false
 
     const navButtons = getSubPagesSelector()
-	const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage];
+    const subPageIndex = CONSTANTS.SUBPAGES_INDEX[subPage]
     const subPageButton = navButtons.find((button) => reactUtil.getBtnIndex(button, 1) === subPageIndex && button.getAttribute('aria-selected') !== 'true')
 
     if (subPageButton) {

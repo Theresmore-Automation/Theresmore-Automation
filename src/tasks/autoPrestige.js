@@ -3,13 +3,15 @@ import { sleep, state, translate, localStorage, reactUtil, keyGen } from '../uti
 const autoPrestige = async () => {
   if (!state.options.prestige.enabled) return
 
-  let buttons = [...document.querySelectorAll('h3.modal-title')].map(h3 => [...h3.parentElement.querySelectorAll('button.btn')]).flat();
-  let legacyBtn = buttons.find(button => keyGen.legacy.check(reactUtil.getNearestKey(button, 6)));
+  let buttons = [...document.querySelectorAll('h3.modal-title')].map((h3) => [...h3.parentElement.querySelectorAll('button.btn')]).flat()
+  let legacyBtn = buttons.find((button) => keyGen.legacy.check(reactUtil.getNearestKey(button, 6)))
   if (!legacyBtn) {
-	return;
+    return
   }
-  
-  let prestigeButton = [...legacyBtn.parentElement.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.btn.btn-red')].find((button) => button)
+
+  let prestigeButton = [...legacyBtn.parentElement.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.btn.btn-red')].find(
+    (button) => button
+  )
   if (prestigeButton) {
     localStorage.set('lastVisited', {})
     state.stopAttacks = false

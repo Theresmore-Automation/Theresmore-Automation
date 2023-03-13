@@ -15,9 +15,9 @@ const hideFullPageOverlay = () => {
             return keyGen.enemy.check(key)
           })
           .filter((isEnemy) => isEnemy)
-		if (enemyList.length) {
-			return
-		}
+        if (enemyList.length) {
+          return
+        }
       }
 
       const fullPageOverlay = modalContainer.querySelector('div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')

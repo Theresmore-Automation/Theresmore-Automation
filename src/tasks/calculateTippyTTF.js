@@ -13,58 +13,58 @@ const calculateTippyTTF = () => {
         return
       }
 
-	  reqKey = keyGen.tooltipReq.id(reqKey)
-	  
-	  let dataList;
-	  let dataId;
-	  let reqField = "req"
-	  if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.BUILDING)) {
-		dataList = buildings;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.BUILDING, "");
-	  } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.TECH)) {
-		dataList = tech;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.TECH, "");
-	  } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.PRAYER)) {
-		dataList = spells;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.PRAYER, "");
-	  } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.UNIT)) {
-		dataList = units;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.UNIT, "");
-	  } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE)) {
-		dataList = factions;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE, "");
-		reqField = "reqImproveRelationship"
-	  } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION)) {
-		dataList = factions;
-		dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION, "");
-		reqField = "reqDelegation"
-	  }
-	  
-	  if (!dataId || !dataList) {
+      reqKey = keyGen.tooltipReq.id(reqKey)
+
+      let dataList
+      let dataId
+      let reqField = 'req'
+      if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.BUILDING)) {
+        dataList = buildings
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.BUILDING, '')
+      } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.TECH)) {
+        dataList = tech
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.TECH, '')
+      } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.PRAYER)) {
+        dataList = spells
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.PRAYER, '')
+      } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.UNIT)) {
+        dataList = units
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.UNIT, '')
+      } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE)) {
+        dataList = factions
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_IMPROVE, '')
+        reqField = 'reqImproveRelationship'
+      } else if (reqKey.startsWith(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION)) {
+        dataList = factions
+        dataId = reqKey.replace(CONSTANTS.TOOLTIP_PREFIX.FACTION_DELEGATION, '')
+        reqField = 'reqDelegation'
+      }
+
+      if (!dataId || !dataList) {
         return
       }
 
-	  let match = dataId.match(/^([a-zA-Z_]+)(\d+)$/);
-	  if (!match) {
-		return;
-	  }
+      let match = dataId.match(/^([a-zA-Z_]+)(\d+)$/)
+      if (!match) {
+        return
+      }
 
-	  dataId = match[1];
-	  let reqIdx = match[2];
-	  let data = dataList.find(d => dataId === d.id);
+      dataId = match[1]
+      let reqIdx = match[2]
+      let data = dataList.find((d) => dataId === d.id)
 
-	  if (!data) {
-		return;
-	  }
+      if (!data) {
+        return
+      }
 
-	  let req = data[reqField]
-	  if (req) {
-		req = req[reqIdx]
-	  }
+      let req = data[reqField]
+      if (req) {
+        req = req[reqIdx]
+      }
 
-	  if (!req) {
-		return;
-	  }
+      if (!req) {
+        return
+      }
 
       const resource = resources.get(req.id)
       if (resource) {

@@ -4,7 +4,7 @@ const autoClicker = async () => {
   if (!state.haveManualResourceButtons) return
   if (state.scriptPaused) return
 
-  const manualResources = [keyGen.manual.key("food"), keyGen.manual.key("wood"), keyGen.manual.key("stone")]
+  const manualResources = [keyGen.manual.key('food'), keyGen.manual.key('wood'), keyGen.manual.key('stone')]
 
   while (!state.scriptPaused && state.haveManualResourceButtons) {
     const buttons = [
@@ -17,8 +17,8 @@ const autoClicker = async () => {
     }
 
     const buttonsToClick = buttons.filter((button) => manualResources.includes(reactUtil.getNearestKey(button, 2)))
-    if (buttonsToClick.length && !state.haveMask) {
-      while (buttonsToClick.length && !state.haveMask) {
+    if (buttonsToClick.length && !reactUtil.getGameData().SettingsStore.showSettings) {
+      while (buttonsToClick.length && !reactUtil.getGameData().SettingsStore.showSettings) {
         const buttonToClick = buttonsToClick.shift()
         buttonToClick.click()
         await sleep(100)

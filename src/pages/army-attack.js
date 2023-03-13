@@ -82,12 +82,12 @@ const executeAction = async () => {
       const modals = [...document.querySelectorAll('h3.modal-title')]
 
       if (modals.length) {
-        enemyList = [...modals.map(modal => [...modal.parentElement.querySelectorAll('h5')]).flat()]
+        enemyList = [...modals.map((modal) => [...modal.parentElement.querySelectorAll('h5')]).flat()]
           .map((h5) => {
-			const key = reactUtil.getNearestKey(h5, 2);
-			if (!keyGen.enemy.check(key)) {
-				return undefined
-			}
+            const key = reactUtil.getNearestKey(h5, 2)
+            if (!keyGen.enemy.check(key)) {
+              return undefined
+            }
             const enemyDetails = fights.find((fight) => keyGen.enemy.key(fight.key) === key)
 
             return {
@@ -95,7 +95,7 @@ const executeAction = async () => {
               ...enemyDetails,
             }
           })
-		  .filter((fight) => fight)
+          .filter((fight) => fight)
           .filter((fight) => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key])
           .filter((fight) => {
             const army = armyCalculator.getEnemyArmy(fight.key)

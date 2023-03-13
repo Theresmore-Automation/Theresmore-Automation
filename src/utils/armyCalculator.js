@@ -1,6 +1,6 @@
 import { factions, locations, units } from '../data'
 import translate from './translate'
-import { reactUtil } from '../utils'
+import reactUtil from './reactUtil'
 
 const fights = factions.concat(locations).map((fight) => {
   return {

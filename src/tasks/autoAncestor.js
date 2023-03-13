@@ -15,7 +15,9 @@ const autoAncestor = async () => {
     let ancestor = [...document.querySelectorAll('button.btn')].find((button) => reactUtil.getNearestKey(button, 3) === keyGen.ancestor.key(ancestorToSelect))
 
     if (!ancestor) {
-      ancestor = [...document.querySelectorAll('button.btn')].find((button) => reactUtil.getNearestKey(button.parentElement, 3) === keyGen.ancestor.key(ancestorToSelect))
+      ancestor = [...document.querySelectorAll('button.btn')].find(
+        (button) => reactUtil.getNearestKey(button.parentElement, 3) === keyGen.ancestor.key(ancestorToSelect)
+      )
     }
 
     if (ancestor) {

@@ -110,7 +110,9 @@ const executeAction = async () => {
         if (research.confirm) {
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return
           await sleep(1000)
-          const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
+          const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(
+            (button) => reactUtil.getBtnIndex(button, 0) === 1
+          )
 
           if (redConfirmButton) {
             redConfirmButton.click()

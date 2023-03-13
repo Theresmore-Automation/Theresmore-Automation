@@ -73,12 +73,12 @@ const DIPLOMACY_BUTTONS = {
 }
 
 const TOOLTIP_PREFIX = {
-	BUILDING: "bui_",
-	TECH: "tech_",
-	PRAYER: "pray_",
-	UNIT: "uni_",
-	FACTION_IMPROVE: "improve_",
-	FACTION_DELEGATION: "delegation_",
+  BUILDING: 'bui_',
+  TECH: 'tech_',
+  PRAYER: 'pray_',
+  UNIT: 'uni_',
+  FACTION_IMPROVE: 'improve_',
+  FACTION_DELEGATION: 'delegation_',
 }
 
 export default {

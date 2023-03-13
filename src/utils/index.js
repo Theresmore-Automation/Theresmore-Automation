@@ -14,4 +14,20 @@ import armyCalculator from './armyCalculator'
 import reactUtil from './reactUtil'
 import keyGen from './keyGen'
 
-export { CONSTANTS, numberParser, sleep, translate, formatTime, logger, localStorage, navigation, selectors, resources, state, runMigrations, armyCalculator, reactUtil, keyGen }
+export {
+  CONSTANTS,
+  numberParser,
+  sleep,
+  translate,
+  formatTime,
+  logger,
+  localStorage,
+  navigation,
+  selectors,
+  resources,
+  state,
+  runMigrations,
+  armyCalculator,
+  reactUtil,
+  keyGen,
+}

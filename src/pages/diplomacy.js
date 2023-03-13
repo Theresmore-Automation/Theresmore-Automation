@@ -82,11 +82,11 @@ const getFactionsWithButtons = () => {
       } else if (button.button.classList.contains('btn-green')) {
         buttonType = CONSTANTS.DIPLOMACY_BUTTONS.IMPROVE_RELATIONSHIPS
       } else {
-		if (button.button.parentElement.parentElement.parentElement.className.includes("border-red")) {
-			buttonType = CONSTANTS.DIPLOMACY_BUTTONS.WAR
-		} else {
-			buttonType = CONSTANTS.DIPLOMACY_BUTTONS.INSULT
-		}
+        if (button.button.parentElement.parentElement.parentElement.className.includes('border-red')) {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.WAR
+        } else {
+          buttonType = CONSTANTS.DIPLOMACY_BUTTONS.INSULT
+        }
       }
     }
 
@@ -183,7 +183,9 @@ const executeAction = async () => {
               faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click()
               await sleep(200)
 
-              const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
+              const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(
+                (button) => reactUtil.getBtnIndex(button, 0) === 1
+              )
               if (redConfirmButton) {
                 redConfirmButton.click()
                 await sleep(200)
