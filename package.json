@@ -17,7 +17,10 @@
   },
   "author": "Theresmore Automation team",
   "license": "MIT",
+  "private": true,
   "scripts": {
+    "prepare": "husky install",
+    "postinstall": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup --config rollup.config.mjs",
     "watch": "npx rollup --config rollup.config.mjs --watch",
@@ -28,7 +31,7 @@
     "build:release:win32": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist\\release-%npm_package_version%.user.js",
     "version": "npm run build:release && git add dist/release-$npm_package_version.user.js",
     "prepublishOnly": "npm run build:release && git add dist/release-$npm_package_version.user.js",
-    "prepare": "husky install"
+    "format": "npx pretty-quick"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
