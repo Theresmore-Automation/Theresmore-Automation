@@ -43,3 +43,13 @@ or on Windows
 
 - Template based on [rollup-userscript-template](https://github.com/cvzi/rollup-userscript-template)
 - Options are imported/exported using [LZString](https://github.com/pieroxy/lz-string)
+
+## Usage Tips
+
+- Each section is independently enabled/disabled.
+- It is generally safe to enable all production/buildings. You may want to select the mutually exclusive buildings (like `Statue of Atamar/Firio/Lurezia` or
+  `Harvest/War/Mind Shrine`) by hand, and limit how many `Pillars of Mana` you want built.
+- The `Marketplace` can help overcome some gold problems. Be sure to tweak the numbers to match your production speed, allowing enough time for the prices to
+  return to normal. Try starting with limited amount of resources to sell (like `Cows`) until you feel comfortable to enable others.
+- The `Population` tab can help auto-assign workers. Take note of `Minimum food` toggle at bottom.
+- When you're ready for some action, you can automate army production, scouting, and fighting in the `Army` tab.
