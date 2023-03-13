@@ -1,3 +1,5 @@
 node_modules/
 dist/dev.user.js
 .vscode/
+yarn.lock
+todo.md

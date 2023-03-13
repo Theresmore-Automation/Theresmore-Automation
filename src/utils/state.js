@@ -1,5 +1,6 @@
 import localStorage from './localStorage'
 import CONSTANTS from './constants'
+import reactUtil from './reactUtil'
 
 export const getDefaultOptions = () => {
   const options = {

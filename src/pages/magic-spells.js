@@ -1,5 +1,5 @@
 import { spells } from '../data'
-import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources } from '../utils'
+import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, resources, reactUtil, keyGen } from '../utils'
 
 const userEnabled = () => {
   return (
@@ -37,12 +37,7 @@ const getAllButtons = () => {
   const buttonsList = selectors
     .getAllButtons(true)
     .map((button) => {
-      const h5 = button.parentElement.parentElement.querySelector('h5')
-      if (!h5) {
-        return {}
-      }
-
-      const spell = allowedSpells.find((spell) => h5.innerText.trim() === spell.id)
+      const spell = allowedSpells.find((spell) => reactUtil.getNearestKey(button, 4) === keyGen.magic.key(spell.key))
 
       return { ...spell, button }
     })
@@ -60,7 +55,7 @@ const executeAction = async () => {
   for (let i = 0; i < disabledSpells.length && !state.scriptPaused; i++) {
     const spell = disabledSpells[i]
 
-    if (spell.button.innerText.includes('Cancel this spell')) {
+    if (spell.button.classList.contains('btn-dark')) {
       logger({ msgLevel: 'log', msg: `Cancelling spell ${spell.id}` })
       spell.button.click()
       await sleep(25)
@@ -72,10 +67,10 @@ const executeAction = async () => {
   for (let i = 0; i < enabledSpells.length && !state.scriptPaused; i++) {
     const spell = enabledSpells[i]
     const hasEnoughMana =
-      resources.get('Mana').speed + spell.gen.find((gen) => gen.id === 'mana').value >
+      resources.get('mana').speed + spell.gen.find((gen) => gen.id === 'mana').value >
       (state.options.pages[CONSTANTS.PAGES.MAGIC].subpages[CONSTANTS.SUBPAGES.SPELLS].options.minimumMana || 0)
 
-    if (spell.button.innerText.includes('Cast this spell') && hasEnoughMana) {
+    if (!spell.button.classList.contains('btn-dark') && hasEnoughMana) {
       logger({ msgLevel: 'log', msg: `Casting spell ${spell.id}` })
       spell.button.click()
       await sleep(25)
@@ -88,7 +83,7 @@ const executeAction = async () => {
 export default {
   page: CONSTANTS.PAGES.MAGIC,
   subpage: CONSTANTS.SUBPAGES.SPELLS,
-  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('Mana') && resources.get('Mana').max,
+  enabled: () => userEnabled() && navigation.hasPage(CONSTANTS.PAGES.MAGIC) && getAllowedSpells().length && resources.get('mana') && resources.get('mana').max,
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.SPELLS, CONSTANTS.PAGES.MAGIC)
 

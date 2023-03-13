@@ -1,10 +1,10 @@
-import { resources } from '../utils'
+import { resources, reactUtil, keyGen } from '../utils'
 
 const calculateTTF = () => {
   const resourceTrNodes = document.querySelectorAll('#root > div > div:not(#maintabs-container) > div > div > div > table:not(.hidden) > tbody > tr')
   resourceTrNodes.forEach((row) => {
     const cells = row.querySelectorAll('td')
-    const resourceName = cells[0].textContent.trim()
+    const resourceName = keyGen.resource.id(reactUtil.getNearestKey(cells[0], 5))
     const resource = resources.get(resourceName)
     let ttf = ''
 

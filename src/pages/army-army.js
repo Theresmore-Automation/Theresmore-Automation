@@ -1,5 +1,5 @@
 import { units } from '../data'
-import { CONSTANTS, navigation, logger, sleep, state, resources, selectors, translate } from '../utils'
+import { CONSTANTS, navigation, logger, sleep, state, resources, selectors, translate, reactUtil, keyGen } from '../utils'
 
 const getUnitsList = () => {
   const unitsObject = state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ARMY].options
@@ -37,12 +37,7 @@ const userEnabled = () => {
 }
 
 const getArmyNumbers = () => {
-  return document
-    .querySelectorAll('div[role="tablist"]')[1]
-    .querySelector('[aria-selected="true"]')
-    .innerText.replace('Army', '')
-    .split('/')
-    .map((text) => +text.trim())
+  return [reactUtil.getGameData().ArmyStore.ownedCount, reactUtil.getGameData().ArmyStore.cap]
 }
 
 const getControls = () => {
@@ -55,24 +50,28 @@ const getControls = () => {
   }
 
   allButtons.forEach((button) => {
-    const buttonText = button.innerText.trim()
+    const btnKey = reactUtil.getNearestKey(button, 7)
 
-    if (buttonText === '+1') {
-      controls.counts['1'] = button
-    } else if (buttonText === '+10') {
-      controls.counts['10'] = button
-    } else if (buttonText === '+50') {
-      controls.counts['50'] = button
-    } else if (buttonText) {
-      const unitDetails = buttonText.split('\n')
-      const unit = units.find((unit) => translate(unit.id, 'uni_') === unitDetails[0].trim())
+    if (!btnKey) {
+      const buttonText = button.innerText.trim()
+      if (buttonText === '+1') {
+        controls.counts['1'] = button
+      } else if (buttonText === '+10') {
+        controls.counts['10'] = button
+      } else if (buttonText === '+50') {
+        controls.counts['50'] = button
+      }
+    } else if (btnKey) {
+      const btnData = reactUtil.getReactData(button, 3)
+      const unit = units.find((unit) => keyGen.armyArmy.key(unit.id) === btnKey)
 
-      if (unit) {
-        if (unitDetails[1]) {
-          unit.count = +unitDetails[1]
-        } else {
-          unit.count = 0
+      if (unit && btnData.memoizedProps.content instanceof Object) {
+        const armyData = reactUtil.getGameData().run.army[reactUtil.getGameData().idxs.army[unit.id]]
+        let count = 0
+        if (armyData) {
+          count = armyData.value
         }
+        unit.count = count
 
         unit.button = button
         unit.key = unit.id
@@ -148,7 +147,7 @@ const executeAction = async () => {
           const usedResources = Object.keys(totalCost)
           for (let i = 0; i < usedResources.length && maxBulkHire > 1; i++) {
             const resId = usedResources[i]
-            const resource = resources.get(translate(resId, 'res_'))
+            const resource = resources.get(resId)
             if (resource && totalCost[resId] < 0) {
               if (resource.speed + 10 * totalCost[resId] < 0) {
                 maxBulkHire = Math.min(1, maxBulkHire)
@@ -167,7 +166,7 @@ const executeAction = async () => {
 
         shouldHire = !unit.gen
           .filter((gen) => gen.type === 'resource')
-          .find((gen) => !resources.get(translate(gen.id, 'res_')) || resources.get(translate(gen.id, 'res_')).speed + maxBulkHire * gen.value <= 0)
+          .find((gen) => !resources.get(gen.id) || resources.get(gen.id).speed + maxBulkHire * gen.value <= 0)
 
         if (shouldHire) {
           unit.button.click()
