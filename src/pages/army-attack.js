@@ -128,7 +128,7 @@ const executeAction = async () => {
           await sleep(1000)
         } else {
           targetSelected = false
-          const closeButton = modal.parentElement.parentElement.parentElement.querySelector('div.absolute > button')
+          const closeButton = modals[0].parentElement.parentElement.parentElement.querySelector('div.absolute > button')
           if (closeButton) {
             closeButton.click()
             await sleep(20)
