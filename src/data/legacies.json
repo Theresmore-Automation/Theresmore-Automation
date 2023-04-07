@@ -497,6 +497,16 @@
     ]
   },
   {
+    "id": "zenix_familiar_l",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 4
+      }
+    ]
+  },
+  {
     "id": "enhanced_axes_II",
     "req": [
       {

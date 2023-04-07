@@ -1217,6 +1217,52 @@
     ]
   },
   {
+    "id": "summon_nikharul",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "dark_crystal",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "control_fortress",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "control_fortress",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "dark_crystal",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "summon_nikharul",
+        "value": -1
+      }
+    ]
+  },
+  {
     "id": "temple_ritual",
     "type": "spell",
     "req": [

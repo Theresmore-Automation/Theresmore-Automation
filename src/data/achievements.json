@@ -119,6 +119,197 @@
     ]
   },
   {
+    "id": "ng_reset",
+    "ach": [
+      {
+        "id": "1_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "wood",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "stone",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "5_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 5,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 5,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "tools",
+            "value": 5,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "copper",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "iron",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 10,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "20_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 20
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "building_material",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "supplies",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 10,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "saltpetre",
+            "value": 10,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "40_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 40
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 15,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 15,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 15,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "80_ng_reset",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ng_reset",
+            "value": 80
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 20,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "persuade_nobility",
     "ach": [
       {
@@ -1627,6 +1818,65 @@
             "id": "research",
             "value": 3,
             "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alchemist_complex",
+    "ach": [
+      {
+        "id": "5_alchemist_complex",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "alchemist_complex",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "saltpetre",
+            "value": 1000
+          }
+        ]
+      },
+      {
+        "id": "15_alchemist_complex",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "alchemist_complex",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "saltpetre",
+            "value": 2000
+          }
+        ]
+      },
+      {
+        "id": "25_alchemist_complex",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "alchemist_complex",
+            "value": 25
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "saltpetre",
+            "value": 4000
           }
         ]
       }

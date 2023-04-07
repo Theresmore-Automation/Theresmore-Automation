@@ -96,6 +96,51 @@
     ]
   },
   {
+    "id": "familiar",
+    "type": "recon",
+    "attack": 4,
+    "defense": 4,
+    "order": 3,
+    "cap": 5,
+    "category": 0,
+    "req": [
+      {
+        "type": "tech",
+        "id": "zenix_familiar_t",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 0.4
+      }
+    ]
+  },
+  {
     "id": "spy",
     "type": "spy",
     "attack": 7,
@@ -1789,6 +1834,41 @@
     ]
   },
   {
+    "id": "nikharul_soulstealer",
+    "type": "army",
+    "attack": 1200,
+    "defense": 150,
+    "order": 2,
+    "cap": 1,
+    "category": 2,
+    "req": [
+      {
+        "type": "prayer",
+        "id": "summon_nikharul",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 6000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -100
+      }
+    ]
+  },
+  {
     "id": "light_cavarly",
     "type": "army",
     "attack": 10,
@@ -2944,6 +3024,15 @@
     "defense": 12,
     "order": 1,
     "category": 4
+  },
+  {
+    "id": "nikharul",
+    "type": "enemy",
+    "attack": 780,
+    "defense": 1020,
+    "order": 3,
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "red_dragon",

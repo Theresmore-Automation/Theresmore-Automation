@@ -47,6 +47,73 @@
     ]
   },
   {
+    "id": "house_workers",
+    "cat": "living_quarters",
+    "tab": 1,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 45,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 30,
+        "multi": 1.3
+      },
+      {
+        "type": "tech",
+        "id": "house_of_workers",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.5
+      },
+      {
+        "type": "population",
+        "id": "farmer",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "miner",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 0.5
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "monument",
     "cat": "living_quarters",
     "cap": 1,
@@ -1966,22 +2033,22 @@
       {
         "type": "resource",
         "id": "building_material",
-        "value": 0.1
+        "value": 0.2
       },
       {
         "type": "resource",
         "id": "steel",
-        "value": 0.1
+        "value": 0.2
       },
       {
         "type": "resource",
         "id": "crystal",
-        "value": 0.1
+        "value": 0.2
       },
       {
         "type": "resource",
         "id": "supplies",
-        "value": 0.1
+        "value": 0.2
       },
       {
         "type": "resource",
@@ -3842,6 +3909,86 @@
         "type_gen": "stat",
         "gen": "defense",
         "value": 50,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "soulstealer_citadel",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 5,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 125000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 25000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 17500,
+        "multi": 1.3
+      },
+      {
+        "type": "prayer",
+        "id": "control_fortress",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -120
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -120
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "heavy_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "crossbowman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 11,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "crossbowman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 6,
         "perc": false
       }
     ]
@@ -7298,6 +7445,64 @@
         "type": "cap",
         "id": "tools",
         "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "alchemist_complex",
+    "cat": "resource",
+    "tab": 2,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 24000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 20000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 11000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "alchemist_complex_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "alchemist",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "alchemist",
+        "type_gen": "resource",
+        "gen": "saltpetre",
+        "value": 1,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "saltpetre",
+        "value": 2000
       }
     ]
   },

@@ -834,6 +834,52 @@
     ]
   },
   {
+    "id": "lich_fortress",
+    "found": [31, 32, 33, 34, 35],
+    "esp": 50,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "huge_cave_t",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "nikharul",
+        "value": 1
+      },
+      {
+        "id": "skeletal_knight",
+        "value": 750
+      },
+      {
+        "id": "skeleton",
+        "value": 8000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 2
+      }
+    ]
+  },
+  {
     "id": "army_of_the_dead",
     "found": [0],
     "relationship": 0,

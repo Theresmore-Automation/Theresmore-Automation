@@ -2700,6 +2700,36 @@
     ]
   },
   {
+    "id": "huge_cave",
+    "found": [11],
+    "esp": 26,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "underground_library",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "skeletal_knight",
+        "value": 50
+      },
+      {
+        "id": "skeleton",
+        "value": 750
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1.5
+      }
+    ]
+  },
+  {
     "id": "wyvern_nest",
     "found": [36],
     "esp": 12,

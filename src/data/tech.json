@@ -609,6 +609,26 @@
     ]
   },
   {
+    "id": "house_of_workers",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250
+      },
+      {
+        "type": "tech",
+        "id": "mining",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "ng_reset",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "architecture_titan_t",
     "req": [
       {
@@ -824,6 +844,31 @@
       {
         "type": "tech",
         "id": "religion",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "zenix_familiar_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 720
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 500
+      },
+      {
+        "type": "tech",
+        "id": "magic",
+        "value": 1
+      },
+      {
+        "type": "legacy",
+        "id": "zenix_familiar_l",
         "value": 1
       }
     ]
@@ -2694,6 +2739,41 @@
       {
         "type": "tech",
         "id": "moonlight_night",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "underground_library",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 7000
+      },
+      {
+        "type": "building",
+        "id": "library_souls",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "huge_cave_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 26000
+      },
+      {
+        "type": "enemy",
+        "id": "huge_cave",
         "value": 1
       }
     ]
@@ -4828,6 +4908,26 @@
     ]
   },
   {
+    "id": "alchemist_complex_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 128000
+      },
+      {
+        "type": "building",
+        "id": "colony_hall",
+        "value": 5
+      },
+      {
+        "type": "tech",
+        "id": "artisan_complex",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "large_shed_t",
     "req": [
       {
@@ -5356,6 +5456,21 @@
         "id": "titan_gift",
         "value": 1,
         "fix": true
+      }
+    ]
+  },
+  {
+    "id": "dark_crystal",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 200000
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "lich_fortress",
+        "value": 1
       }
     ]
   }
