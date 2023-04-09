@@ -91,6 +91,10 @@ const executeAction = async () => {
 
         if (!button.building.isSafe && button.building.requires.length) {
           shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
+
+          if (button.building.key === 'common_house' && !button.count) {
+            shouldBuild = true
+          }
         }
 
         if (shouldBuild) {
