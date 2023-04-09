@@ -141,6 +141,7 @@ const executeAction = async () => {
 
   if (availablePop[0] > 0 && availableJobs.length) {
     const minimumFood = state.options.pages[CONSTANTS.PAGES.POPULATION].options.minimumFood || 0
+    const unsafeJobRatio = state.options.pages[CONSTANTS.PAGES.POPULATION].options.unsafeJobRatio ?? 2
 
     while (!state.scriptPaused && canAssignJobs) {
       canAssignJobs = false
@@ -226,7 +227,7 @@ const executeAction = async () => {
                       job.resourcesUsed.every((resUsed) => {
                         const res = resources.get(resUsed.id)
 
-                        if (!res || res.speed < Math.abs(resUsed.value * 2)) {
+                        if (!res || res.speed <= Math.abs(resUsed.value * unsafeJobRatio)) {
                           isSafeToAdd = false
                         }
 
@@ -283,7 +284,7 @@ const executeAction = async () => {
                 job.resourcesUsed.every((resUsed) => {
                   const res = resources.get(resUsed.id)
 
-                  if (!res || res.speed < Math.abs(resUsed.value * 2)) {
+                  if (!res || res.speed <= Math.abs(resUsed.value * unsafeJobRatio)) {
                     isSafeToAdd = false
                   }
 
