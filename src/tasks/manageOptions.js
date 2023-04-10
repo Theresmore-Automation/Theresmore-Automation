@@ -1066,7 +1066,7 @@ const saveOptions = () => {
     if (option.type === 'checkbox') {
       value = !!option.checked
     } else if (option.type === 'number') {
-      value = Math.round(Number(option.value))
+      value = Number(option.value)
     } else if (option.type === 'select-one') {
       value = option.value
     }
