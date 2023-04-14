@@ -250,7 +250,7 @@ const id = 'theresmore-automation-options-panel'
 let start
 
 const buildingCats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
-const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat']
+const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat', 'huge_cave_t']
 
 const userUnits = units.filter((unit) => unit.type !== 'enemy' && unit.type !== 'settlement' && unit.type !== 'spy')
 const userUnitsCategory = ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
