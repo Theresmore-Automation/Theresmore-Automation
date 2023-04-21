@@ -12,6 +12,7 @@ export const getDefaultOptions = () => {
     prestige: {
       enabled: false,
       selected: '',
+      options: {},
     },
     cosmetics: {
       hideFullPageOverlay: {

@@ -1,6 +1,6 @@
 {
   "name": "theresmore-automation",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "description": "Automation suite for Theresmore game",
   "keywords": [
     "userscript",
@@ -27,10 +27,8 @@
     "serve": "node server.js",
     "start": "node server.js",
     "testserve": "node server.js --test",
-    "build:release": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist/release-$npm_package_version.user.js",
-    "build:release:win32": "npx rollup --config rollup.config.mjs --sourcemap 0 --file dist\\release-%npm_package_version%.user.js",
-    "version": "npm run build:release && git add dist/release-$npm_package_version.user.js",
-    "prepublishOnly": "npm run build:release && git add dist/release-$npm_package_version.user.js",
+    "build:release": "npm run build && npx rollup --config rollup.config.mjs --sourcemap 0 --file dist/release-$npm_package_version.user.js",
+    "build:release:win32": "npm run build && npx rollup --config rollup.config.mjs --sourcemap 0 --file dist\\release-%npm_package_version%.user.js",
     "format": "npx pretty-quick"
   },
   "devDependencies": {

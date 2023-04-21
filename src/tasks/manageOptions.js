@@ -1,4 +1,4 @@
-import { buildings, tech, jobs, spells, factions, units, locations } from '../data'
+import { buildings, tech, jobs, spells, factions, units, locations, legacies } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 
@@ -295,6 +295,7 @@ const generatePrioritySelect = (data, defaultOptions) => {
   })
 
   return `<select class="option dark:bg-mydark-200"
+  ${data.setting ? `data-setting="${data.setting}"` : ''}
   ${data.page ? `data-page="${data.page}"` : ''}
   ${data.subpage ? `data-subpage="${data.subpage}"` : ''}
   ${data.key ? `data-key="${data.key}"` : ''}
@@ -894,6 +895,27 @@ const createPanel = (startFunction) => {
             <div class="mb-2"><label>Enabled:
               <input type="checkbox" data-setting="prestige" data-key="enabled" class="option" />
             </label></div>
+          </div>
+
+          <div class="mb-2">
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to Medium</button>
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to Disabled</button>
+          </div>
+
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${legacies
+                .map((legacy) => {
+                  return `<div class="flex flex-col mb-2"><label>
+                  <span class="font-bold">${translate(legacy.id, 'leg_')} (${legacy.req.find((req) => req.id === 'legacy').value})</span><br />
+                  Prio: ${generatePrioritySelect({
+                    setting: 'prestige',
+                    key: 'options',
+                    subkey: legacy.id,
+                  })}</label></div>`
+                })
+                .join('')}
+            </div>
           </div>
 
         </div>

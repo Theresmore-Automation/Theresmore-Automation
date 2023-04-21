@@ -14,7 +14,7 @@ const appendStyles = () => {
     position: fixed;
     bottom: 10px;
     left: 10px;
-    zIndex: 99999999;
+    z-index: 99999999;
     border: 1px black solid;
     padding: 10px;
   }
