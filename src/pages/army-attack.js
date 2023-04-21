@@ -296,13 +296,29 @@ Estimated damage:
   }
 }
 
+const getMinWaitTime = () => {
+  let waitTime = 60000
+
+  if (reactUtil.getGameData().StatsStore && reactUtil.getGameData().StatsStore.ngResetNumber) {
+    const ngResets = reactUtil.getGameData().StatsStore.ngResetNumber
+
+    for (let i = 0; i < ngResets; i++) {
+      waitTime = waitTime / 2
+    }
+  }
+
+  waitTime = Math.ceil(Math.max(waitTime, 3000) / 2) + 1000
+
+  return waitTime
+}
+
 export default {
   page: CONSTANTS.PAGES.ARMY,
   subpage: CONSTANTS.SUBPAGES.ATTACK,
   enabled: () =>
     userEnabled() &&
     navigation.hasPage(CONSTANTS.PAGES.ARMY) &&
-    new Date().getTime() - (state.lastVisited[`${CONSTANTS.PAGES.ARMY}${CONSTANTS.SUBPAGES.ATTACK}`] || 0) > 35 * 1000,
+    new Date().getTime() - (state.lastVisited[`${CONSTANTS.PAGES.ARMY}${CONSTANTS.SUBPAGES.ATTACK}`] || 0) > getMinWaitTime(),
   action: async () => {
     await navigation.switchSubPage(CONSTANTS.SUBPAGES.ATTACK, CONSTANTS.PAGES.ARMY)
 

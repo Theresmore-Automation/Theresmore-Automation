@@ -660,6 +660,15 @@ const createPanel = (startFunction) => {
               Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
               data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
               data-key="options" data-subkey="explorersMax" value="0" min="0" max="999999" step="1" /></label></div>
+
+
+              <div class="mb-2"><label>Familiars to send:<br />
+              Min: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="familiarsMin" value="0" min="0" max="999999" step="1" /><br />
+              Max: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}"
+              data-key="options" data-subkey="familiarsMax" value="0" min="0" max="999999" step="1" /></label></div>
             </div>
           </div>
 
