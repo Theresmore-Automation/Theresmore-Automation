@@ -7,6 +7,11 @@ const autoClicker = async () => {
   const manualResources = [keyGen.manual.key('food'), keyGen.manual.key('wood'), keyGen.manual.key('stone')]
 
   while (!state.scriptPaused && state.haveManualResourceButtons) {
+    if (state.stopAutoClicking) {
+      await sleep(1000)
+      continue
+    }
+
     const buttons = [
       ...document.querySelectorAll('#root > div.flex.flex-wrap.w-full.mx-auto.p-2 > div.w-full.lg\\:pl-2 > div > div.order-2.flex.flex-wrap.gap-3 > button'),
     ]

@@ -1,6 +1,5 @@
 import localStorage from './localStorage'
 import CONSTANTS from './constants'
-import reactUtil from './reactUtil'
 
 export const getDefaultOptions = () => {
   const options = {
@@ -13,6 +12,10 @@ export const getDefaultOptions = () => {
       enabled: false,
       selected: '',
       options: {},
+    },
+    ngplus: {
+      enabled: false,
+      value: 0,
     },
     cosmetics: {
       hideFullPageOverlay: {
@@ -54,6 +57,7 @@ export const getDefaultOptions = () => {
 const state = {
   scriptPaused: true,
   haveManualResourceButtons: true,
+  stopAutoClicking: false,
   lastVisited: {},
   buildings: [],
   options: getDefaultOptions(),

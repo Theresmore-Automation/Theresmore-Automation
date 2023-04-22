@@ -62,9 +62,11 @@ const autoPrestige = async () => {
   let prestigeButton = buttons.find((button) => button.classList.contains('btn-red'))
   if (prestigeButton) {
     localStorage.set('lastVisited', {})
+    state.stopAutoClicking = true
     state.stopAttacks = false
     state.haveManualResourceButtons = true
 
+    await sleep(300)
     prestigeButton.click()
     await sleep(5000)
 
@@ -75,6 +77,8 @@ const autoPrestige = async () => {
 
       redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     }
+
+    state.stopAutoClicking = false
   }
 }
 

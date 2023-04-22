@@ -900,6 +900,18 @@ const createPanel = (startFunction) => {
           </div>
 
           <div class="mb-6">
+            <h3 class="text-lg">Auto-NG+:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="ngplus" data-key="enabled" class="option" />
+            </label></div>
+
+            <div class="mb-2"><label>Minimum Legacies to NG+:
+              <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+              data-setting="ngplus" data-key="value" value="0" min="0" max="999" step="1" /></label>
+            </div>
+          </div>
+
+          <div class="mb-6">
             <h3 class="text-lg">Auto-prestige:</h3>
             <div class="mb-2"><label>Enabled:
               <input type="checkbox" data-setting="prestige" data-key="enabled" class="option" />

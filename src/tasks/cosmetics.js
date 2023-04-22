@@ -1,31 +1,20 @@
-import { state, reactUtil } from '../utils'
+import { i18n } from '../data'
+import { state } from '../utils'
 
-const modalsToIgnore = ['enemies']
+const modalsToKill = Object.keys(i18n.en)
+  .filter((key) => key.includes('img_') && !key.includes('_description'))
+  .map((key) => i18n.en[key])
 
 const hideFullPageOverlay = () => {
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
-    const modalContainer = document.querySelector('div.modal-container')
+    const modalTitle = document.querySelector('#headlessui-portal-root div.modal-container h3.modal-title')
 
-    if (modalContainer) {
-      const modalTitle = modalContainer.querySelector('h3.modal-title')
-      if (modalTitle) {
-        if (modalsToIgnore.includes(modalTitle.innerText.trim())) {
-          return
-        }
-
-        //enemies
-        const enemyList = [...modalTitle.parentElement.querySelectorAll('h5')]
-          .map((h5) => {
-            const key = reactUtil.getNearestKey(h5, 2)
-            return keyGen.enemy.check(key)
-          })
-          .filter((isEnemy) => isEnemy)
-        if (enemyList.length) {
-          return
-        }
+    if (modalTitle) {
+      if (!modalsToKill.includes(modalTitle.innerText.trim())) {
+        return
       }
 
-      const fullPageOverlay = modalContainer.querySelector('div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
+      const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
       if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
         fullPageOverlay.click()
       }

@@ -28,6 +28,7 @@ const mainLoop = async () => {
   while (!state.scriptPaused) {
     tasks.cosmetics.removeToasts()
     await tasks.autoPrestige()
+    await tasks.autoNGPlus()
     await tasks.autoAncestor()
 
     const pagesToCheck = []
@@ -97,14 +98,14 @@ const start = async () => {
 
     if (!hideFullPageOverlayInterval) {
       clearInterval(hideFullPageOverlayInterval)
-      hideFullPageOverlayInterval = setInterval(tasks.cosmetics.hideFullPageOverlay, 1000)
+      hideFullPageOverlayInterval = setInterval(tasks.cosmetics.hideFullPageOverlay, 500)
     }
 
     await sleep(2000)
 
     mainLoop()
 
-    await sleep(5000)
+    await sleep(1000)
     tasks.autoClicker()
   } else {
     if (!hideFullPageOverlayInterval) {
