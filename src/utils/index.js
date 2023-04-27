@@ -13,6 +13,7 @@ import runMigrations from './migrations'
 import armyCalculator from './armyCalculator'
 import reactUtil from './reactUtil'
 import keyGen from './keyGen'
+import cheats from './cheats'
 
 export {
   CONSTANTS,
@@ -30,4 +31,5 @@ export {
   armyCalculator,
   reactUtil,
   keyGen,
+  cheats,
 }

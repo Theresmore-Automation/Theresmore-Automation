@@ -1,5 +1,5 @@
 import { buildings, tech, jobs, spells, factions, units, locations, legacies } from '../data'
-import { state, localStorage, translate, CONSTANTS, runMigrations } from '../utils'
+import { state, localStorage, translate, CONSTANTS, runMigrations, cheats } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 
 // https://github.com/pieroxy/lz-string
@@ -956,6 +956,19 @@ const createPanel = (startFunction) => {
           </div>
         </div>
       </div>
+
+      <div class="taTab">
+        <input type="radio" name="topLevelOptions" id="topLevelOptions-Cheats" class="taTab-switch">
+        <label for="topLevelOptions-Cheats" class="taTab-label">Cheats</label>
+        <div class="taTab-content">
+
+          <div class="mb-2">
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 maxResources">Max resources</button>
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 maxLegacyPoints">Max Legacy points</button>
+            <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies">Max prestige currencies</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="absolute top-0 right-0 z-20 pt-4 pr-4">
@@ -970,6 +983,11 @@ const createPanel = (startFunction) => {
   document.querySelector('#saveOptions').addEventListener('click', saveOptions)
   document.querySelector('#exportOptions').addEventListener('click', exportOptions)
   document.querySelector('#importOptions').addEventListener('click', importOptions)
+
+  // Cheats
+  document.querySelector('button.maxResources').addEventListener('click', cheats.maxResources)
+  document.querySelector('button.maxLegacyPoints').addEventListener('click', cheats.maxLegacyPoints)
+  document.querySelector('button.maxPrestigeCurrencies').addEventListener('click', cheats.maxPrestigeCurrencies)
 
   const setAllValues = (allContainers, options) => {
     allContainers.forEach((container) => {
