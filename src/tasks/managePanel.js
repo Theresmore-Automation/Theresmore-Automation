@@ -1,4 +1,4 @@
-import { state } from '../utils'
+import { state, reactUtil } from '../utils'
 import manageOptions from './manageOptions'
 
 const id = 'theresmore-automation'
@@ -18,6 +18,9 @@ const createPanel = (switchScriptState) => {
     <div>
       <button type="button" class="btn btn-blue mb-2 taScriptState">${scriptState}</button>
       <button type="button" class="btn btn-blue mb-2 taManageOptions">Manage Options</button>
+    </div>
+    <div class="mb-2">
+      Legacies: <span class="legacyCount">0</span>; LP: <span class="lpCount">0</span>
     </div>
   </p>
   `

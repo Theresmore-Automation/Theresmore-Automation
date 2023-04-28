@@ -9,6 +9,7 @@ import managePanel from './managePanel'
 import manageOptions from './manageOptions'
 import manageStyles from './manageStyles'
 import cosmetics from './cosmetics'
+import updateStats from './updateStats'
 
 export default {
   calculateTippyTTF,
@@ -22,4 +23,5 @@ export default {
   manageOptions,
   manageStyles,
   cosmetics,
+  updateStats,
 }

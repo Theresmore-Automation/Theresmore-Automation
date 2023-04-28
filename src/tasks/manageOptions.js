@@ -961,12 +961,28 @@ const createPanel = (startFunction) => {
         <input type="radio" name="topLevelOptions" id="topLevelOptions-Cheats" class="taTab-switch">
         <label for="topLevelOptions-Cheats" class="taTab-label">Cheats</label>
         <div class="taTab-content">
+          <div class="mb-2">
+            The cheats will be applied immediately upon pressing the button. Please save your game state before if you're unsure about your decisions.
+          </div>
 
           <div class="mb-2">
             <button type="button" class="btn btn-blue w-min px-4 mr-2 maxResources">Max resources</button>
-            <button type="button" class="btn btn-blue w-min px-4 mr-2 maxLegacyPoints">Max Legacy points</button>
-            <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies">Max prestige currencies</button>
           </div>
+
+          <div class="mb-2">
+            Legacy Points:
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxLegacyPoints10">+10</button>
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxLegacyPoints100">+100</button>
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxLegacyPoints1000">+1000</button>
+          </div>
+
+          <div class="mb-2">
+            Presitge Currencies:
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies1">+1</button>
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies10">+10</button>
+              <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies100">+100</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -986,8 +1002,24 @@ const createPanel = (startFunction) => {
 
   // Cheats
   document.querySelector('button.maxResources').addEventListener('click', cheats.maxResources)
-  document.querySelector('button.maxLegacyPoints').addEventListener('click', cheats.maxLegacyPoints)
-  document.querySelector('button.maxPrestigeCurrencies').addEventListener('click', cheats.maxPrestigeCurrencies)
+  document.querySelector('button.maxLegacyPoints10').addEventListener('click', () => {
+    cheats.maxLegacyPoints(10)
+  })
+  document.querySelector('button.maxLegacyPoints100').addEventListener('click', () => {
+    cheats.maxLegacyPoints(100)
+  })
+  document.querySelector('button.maxLegacyPoints1000').addEventListener('click', () => {
+    cheats.maxLegacyPoints(1000)
+  })
+  document.querySelector('button.maxPrestigeCurrencies1').addEventListener('click', () => {
+    cheats.maxPrestigeCurrencies(1)
+  })
+  document.querySelector('button.maxPrestigeCurrencies10').addEventListener('click', () => {
+    cheats.maxPrestigeCurrencies(10)
+  })
+  document.querySelector('button.maxPrestigeCurrencies100').addEventListener('click', () => {
+    cheats.maxPrestigeCurrencies(100)
+  })
 
   const setAllValues = (allContainers, options) => {
     allContainers.forEach((container) => {

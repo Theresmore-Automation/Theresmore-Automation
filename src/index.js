@@ -84,6 +84,7 @@ const init = async () => {
   setInterval(tasks.calculateTTF, 100)
   setInterval(tasks.calculateTippyTTF, 100)
   setInterval(tasks.addArmyButtons, 100)
+  setInterval(tasks.updateStats, 100)
 
   start()
 }

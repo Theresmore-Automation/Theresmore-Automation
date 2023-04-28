@@ -26,11 +26,11 @@ const ids = {
   special: ['relic', 'coin', 'tome_wisdom', 'gem', 'titan_gift'],
 }
 
-const setMaxResources = (type) => {
+const setMaxResources = (type, amount = 1000000000) => {
   const resources = reactUtil.getGameData().run.resources
   for (let i = 0; i < resources.length; i++) {
     if (ids[type].includes(resources[i].id)) {
-      resources[i].value = 1000000000
+      resources[i].value = amount + (resources[i].value ?? 0)
     }
   }
 }
@@ -39,11 +39,11 @@ const cheats = {
   maxResources: () => {
     setMaxResources('resources')
   },
-  maxLegacyPoints: () => {
-    setMaxResources('prestige')
+  maxLegacyPoints: (amount = 1) => {
+    setMaxResources('prestige', amount)
   },
-  maxPrestigeCurrencies: () => {
-    setMaxResources('special')
+  maxPrestigeCurrencies: (amount = 1) => {
+    setMaxResources('special', amount)
   },
 }
 
