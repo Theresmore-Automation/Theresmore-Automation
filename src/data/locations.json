@@ -1088,6 +1088,10 @@
       {
         "id": "werewolf",
         "value": 1
+      },
+      {
+        "id": "wolf",
+        "value": 130
       }
     ],
     "gen": [
@@ -1153,6 +1157,10 @@
       {
         "id": "gorgon",
         "value": 1
+      },
+      {
+        "id": "naga",
+        "value": 70
       }
     ],
     "gen": [
@@ -1445,6 +1453,10 @@
       {
         "id": "hydra",
         "value": 1
+      },
+      {
+        "id": "giant_snake",
+        "value": 110
       }
     ],
     "gen": [
@@ -1662,6 +1674,10 @@
       {
         "id": "markanat",
         "value": 1
+      },
+      {
+        "id": "giant_spider",
+        "value": 140
       }
     ],
     "gen": [
@@ -1694,6 +1710,10 @@
       {
         "id": "minotaur",
         "value": 1
+      },
+      {
+        "id": "kobold",
+        "value": 210
       }
     ],
     "gen": [

@@ -824,6 +824,55 @@
     ]
   },
   {
+    "id": "phalanx",
+    "type": "army",
+    "attack": 6,
+    "defense": 20,
+    "order": 1,
+    "category": 3,
+    "req": [
+      {
+        "type": "tech",
+        "id": "phalanx_combat",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 200
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 150
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 150
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 30
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 30
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -0.3
+      }
+    ]
+  },
+  {
     "id": "warrior_monk",
     "type": "army",
     "attack": 3,

@@ -297,6 +297,22 @@
     ]
   },
   {
+    "id": "ancient_spell_p",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1250
+      },
+      {
+        "type": "tech",
+        "id": "ancient_spell",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "sacred_place",
     "type": "prayer",
     "req": [
@@ -1586,6 +1602,49 @@
         "gen": "defense",
         "value": 20,
         "perc": false
+      }
+    ]
+  },
+  {
+    "id": "spell_ancient",
+    "type": "spell",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "ancient_spell_p",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
       }
     ]
   },

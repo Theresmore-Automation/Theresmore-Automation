@@ -849,6 +849,26 @@
     ]
   },
   {
+    "id": "ancient_spell",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1250
+      },
+      {
+        "type": "tech",
+        "id": "magic",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "ng_reset",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "zenix_familiar_t",
     "req": [
       {
@@ -1175,6 +1195,46 @@
         "id": "fame",
         "value": 25,
         "fix": true
+      }
+    ]
+  },
+  {
+    "id": "phalanx_combat",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2500
+      },
+      {
+        "type": "tech",
+        "id": "warfare",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "ng_reset",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "boot_camp_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 3000
+      },
+      {
+        "type": "tech",
+        "id": "phalanx_combat",
+        "value": 1
+      },
+      {
+        "type": "stat",
+        "id": "ng_reset",
+        "value": 2
       }
     ]
   },
@@ -2759,21 +2819,6 @@
       {
         "type": "building",
         "id": "library_souls",
-        "value": 1
-      }
-    ]
-  },
-  {
-    "id": "huge_cave_t",
-    "req": [
-      {
-        "type": "resource",
-        "id": "research",
-        "value": 26000
-      },
-      {
-        "type": "enemy",
-        "id": "huge_cave",
         "value": 1
       }
     ]
@@ -4513,6 +4558,21 @@
       {
         "type": "tech",
         "id": "seafaring",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "huge_cave_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 125000
+      },
+      {
+        "type": "enemy",
+        "id": "huge_cave",
         "value": 1
       }
     ]

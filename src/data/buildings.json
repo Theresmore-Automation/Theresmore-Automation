@@ -3060,6 +3060,81 @@
     ]
   },
   {
+    "id": "boot_camp",
+    "cat": "defense",
+    "tab": 1,
+    "cap": 8,
+    "age": 100,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2500,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1500,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1500,
+        "multi": 1.4
+      },
+      {
+        "type": "tech",
+        "id": "boot_camp_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "archer",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "phalanx",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 12
+      }
+    ]
+  },
+  {
     "id": "castrum_militia",
     "cat": "defense",
     "tab": 1,
