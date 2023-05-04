@@ -35,7 +35,7 @@ const autoPrestige = async () => {
 
   const enabledLegacies = getEnabledLegacies()
   const activeLegacies = buttons
-    .filter((button) => !button.classList.contains('btn-red') && !button.classList.toString().contains('btn-off'))
+    .filter((button) => !button.classList.contains('btn-red') && !button.classList.toString().includes('btn-off'))
     .map((button) => {
       const id = reactUtil.getNearestKey(button, 6)
       const legacyData = enabledLegacies.find((leg) => `leg_${leg.key}` === id)
