@@ -9,7 +9,7 @@ const userEnabled = () => {
 }
 
 const getSendToExplore = (container, activeOnly = true) => {
-  const activeOnlySelector = activeOnly ? ':not(.btn-off)' : ''
+  const activeOnlySelector = activeOnly ? ':not(.btn-off):not(.btn-off-cap)' : ''
   return container.querySelector(`button.btn-blue${activeOnlySelector}`)
 }
 

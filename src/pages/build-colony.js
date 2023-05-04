@@ -125,7 +125,7 @@ const executeAction = async () => {
         count = building.cap
       }
 
-      return { id: id, count: count, canBuild: !button.className.includes('btn-off'), ...building }
+      return { id: id, count: count, canBuild: !button.classList.toString().includes('btn-off'), ...building }
     })
     .filter((building) => building.id)
 }
