@@ -45,6 +45,13 @@ const applyUnitMods = (unit) => {
   return unitCopy
 }
 
+const getRandomNumber = (min, max) => {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 const getEnemyArmy = (enemyId) => {
   const difficultyMode = reactUtil.getGameData().SettingsStore.difficultyMode
   const difficultyModeMultiplier = difficultyMode === '0' ? 1 : difficultyMode === '1' ? 1.5 : 2
@@ -64,176 +71,147 @@ const getEnemyArmy = (enemyId) => {
   return army
 }
 
-const getGarrison = (getAll = false) => {
-  const garrison = []
+const getUserArmy = (isDefending = false, onlyAvailable = false) => {
+  const userArmy = []
 
   let run = reactUtil.getGameData().run
 
   if (run && run.army) {
     for (let i = 0; i < run.army.length; i++) {
       const unit = run.army[i]
+      const unitsValue = onlyAvailable ? unit.value - unit.away : unit.value
 
-      if (unit.value - unit.away > 0 || getAll) {
+      if (unitsValue) {
         const unitDetails = units.find((unitDetails) => unitDetails.id === unit.id)
 
         if (unitDetails) {
-          garrison.push({ ...applyUnitMods(unitDetails), key: unitDetails.id, value: unit.value - unit.away })
-        }
-      }
-    }
-  }
-
-  return garrison
-}
-
-const canWinBattle = (enemyStats, userArmy, onlyAvailable = true, calculateAll = false) => {
-  let canWin = false
-  let run = reactUtil.getGameData().run
-
-  if (run && run.army) {
-    const sortMethod = (type = 'defense') => {
-      return (a, b) => {
-        const aHasAdvantage = a.category !== 4 ? enemyStats.defense[a.category + 1] : enemyStats.defense[1]
-        const bHasAdvantage = b.category !== 4 ? enemyStats.defense[b.category + 1] : enemyStats.defense[1]
-
-        const aGivesAdvantage = a.category !== 1 ? enemyStats.attack[a.category - 1] : enemyStats.attack[4]
-        const bGivesAdvantage = b.category !== 1 ? enemyStats.attack[b.category - 1] : enemyStats.attack[4]
-
-        if (aGivesAdvantage === bGivesAdvantage) {
-          if (aHasAdvantage === bHasAdvantage) {
-            if (type === 'defense') {
-              return b.defense - a.defense
-            } else {
-              return b.attack - a.attack
+          if (unitDetails.category === 0) {
+            if (!isDefending || unit.id !== 'settlement_defenses') {
+              continue
             }
-          } else {
-            return bHasAdvantage - aHasAdvantage
           }
+
+          userArmy.push({ ...applyUnitMods(unitDetails), key: unitDetails.id, value: unitsValue })
+        }
+      }
+    }
+  }
+
+  return userArmy
+}
+
+const generateArmy = (army = [], attacker = false, isDefending = false) => {
+  army = army.filter((unit) => (isDefending ? true : unit.category))
+
+  const units = []
+  army.forEach((squad) => {
+    for (let i = 0; i < squad.value; i++) {
+      units.push({
+        ...squad,
+        sortOrder: Number(
+          attacker
+            ? squad.category.toString() + (1000 + getRandomNumber(0, 900)).toString()
+            : squad.order.toString() + (1e3 + getRandomNumber(0, 900)).toString()
+        ),
+      })
+    }
+  })
+
+  return units.sort((a, b) => a.sortOrder - b.sortOrder)
+}
+
+const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
+  const forces = {
+    player: {
+      attack: generateArmy(getUserArmy(isDefending, onlyAvailable), true, isDefending),
+      defense: generateArmy(getUserArmy(isDefending, onlyAvailable), false, isDefending),
+    },
+    enemy: {
+      attack: generateArmy(getEnemyArmy(enemyId), true),
+      defense: generateArmy(getEnemyArmy(enemyId), false),
+    },
+  }
+
+  let result = 0
+  while (!result) {
+    const deadUnits = {
+      player: [],
+      enemy: [],
+    }
+
+    let enemyUnitIdx = 0
+    let playerUnitIdx = 0
+
+    forces.player.attack.forEach((attUnit) => {
+      if (typeof forces.enemy.defense[enemyUnitIdx] !== 'undefined') {
+        let unitAttack = attUnit.attack
+        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
+        if (effectiveType === forces.enemy.defense[enemyUnitIdx].cat) {
+          unitAttack *= 2
+        }
+
+        if (unitAttack >= forces.enemy.defense[enemyUnitIdx].defense) {
+          deadUnits.enemy.push(forces.enemy.defense[enemyUnitIdx].id)
+          enemyUnitIdx += 1
         } else {
-          return aGivesAdvantage - bGivesAdvantage
+          forces.enemy.defense[enemyUnitIdx].defense -= unitAttack
         }
       }
-    }
+    })
 
-    const userStats = {
-      attack: [0, 0, 0, 0, 0],
-      defense: [0, 0, 0, 0, 0],
-    }
-
-    const defUnits = [...userArmy].sort(sortMethod('defense'))
-    const attUnits = [...userArmy].sort(sortMethod('attack'))
-
-    const usedUnits = []
-
-    let gotDef = false
-    let gotAtt = false
-    for (let i = 0; i < defUnits.length && (!canWin || calculateAll); i++) {
-      if (gotDef && !calculateAll) break
-
-      const unit = defUnits[i]
-      if (usedUnits.includes(unit.id)) {
-        continue
-      }
-
-      if (!gotDef || calculateAll) {
-        const runUnit = run.army.find((runUnit) => runUnit.id === unit.key)
-
-        if (runUnit && runUnit.value > 0) {
-          const unitCount = onlyAvailable ? runUnit.value - runUnit.away : runUnit.value
-
-          userStats.attack[unit.category] += unitCount * unit.attack
-          userStats.defense[unit.category] += unitCount * unit.defense
-
-          const damages = calculateDamages(enemyStats, userStats)
-
-          if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
-          if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
-
-          usedUnits.push(unit.id)
-          canWin = gotAtt && gotDef
-        }
-      }
-    }
-
-    if (!gotDef || !gotAtt || calculateAll) {
-      for (let i = 0; i < attUnits.length && (!canWin || calculateAll); i++) {
-        if (gotAtt && !calculateAll) break
-
-        const unit = attUnits[i]
-        if (usedUnits.includes(unit.id)) {
-          continue
+    forces.enemy.attack.forEach((attUnit) => {
+      if (typeof forces.player.defense[playerUnitIdx] !== 'undefined') {
+        let unitAttack = attUnit.attack
+        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
+        if (effectiveType === forces.player.defense[playerUnitIdx].cat) {
+          unitAttack *= 2
         }
 
-        if (!gotAtt || calculateAll) {
-          const runUnit = run.army.find((runUnit) => runUnit.id === unit.key)
-
-          if (runUnit && runUnit.value > 0) {
-            const unitCount = onlyAvailable ? runUnit.value - runUnit.away : runUnit.value
-
-            userStats.attack[unit.category] += unitCount * unit.attack
-            userStats.defense[unit.category] += unitCount * unit.defense
-
-            const damages = calculateDamages(enemyStats, userStats)
-
-            if (damages.enemy.enemyDefense < damages.user.userAttack) gotAtt = true
-            if (damages.enemy.enemyAttack < damages.user.userDefense) gotDef = true
-
-            usedUnits.push(unit.id)
-            canWin = gotAtt && gotDef
-          }
+        if (unitAttack >= forces.player.defense[playerUnitIdx].defense) {
+          deadUnits.player.push(forces.player.defense[playerUnitIdx].id)
+          playerUnitIdx += 1
+        } else {
+          forces.player.defense[playerUnitIdx].defense -= unitAttack
         }
       }
+    })
+
+    if (deadUnits.enemy.length) {
+      deadUnits.enemy.forEach((deadUnitId) => {
+        const attackIndex = forces.enemy.attack.findIndex((unit) => unit.id === deadUnitId)
+        const defenseIndex = forces.enemy.defense.findIndex((unit) => unit.id === deadUnitId)
+
+        if (attackIndex > -1) {
+          forces.enemy.attack.splice(attackIndex, 1)
+        }
+
+        if (defenseIndex > -1) {
+          forces.enemy.defense.splice(defenseIndex, 1)
+        }
+      })
     }
 
-    canWin = gotAtt && gotDef
+    if (deadUnits.player.length) {
+      deadUnits.player.forEach((deadUnitId) => {
+        const attackIndex = forces.player.attack.findIndex((unit) => unit.id === deadUnitId)
+        const defenseIndex = forces.player.defense.findIndex((unit) => unit.id === deadUnitId)
+
+        if (attackIndex > -1) {
+          forces.player.attack.splice(attackIndex, 1)
+        }
+
+        if (defenseIndex > -1) {
+          forces.player.defense.splice(defenseIndex, 1)
+        }
+      })
+    }
+
+    if (!forces.enemy.attack.length || !forces.player.attack.length) {
+      result = forces.player.attack.length ? 1 : 2
+    }
   }
 
-  return canWin
+  return result === 1 ? true : false
 }
 
-const calculateEnemyStats = (army) => {
-  const enemyStats = {
-    attack: [0, 0, 0, 0, 0],
-    defense: [0, 0, 0, 0, 0],
-  }
-
-  for (let i = 0; i < army.length; i++) {
-    enemyStats.attack[army[i].category] += army[i].attack * army[i].value
-    enemyStats.defense[army[i].category] += army[i].defense * army[i].value
-  }
-
-  return enemyStats
-}
-
-const calculateDamages = (enemyStats, userStats) => {
-  let enemyAttack = 0
-  let enemyDefense = 0
-
-  let userAttack = 0
-  let userDefense = 0
-  // ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
-  for (let i = 0; i < enemyStats.attack.length; i++) {
-    let j = i + 1
-    if (i === 0) j = -1
-    if (i === 4) j = 1
-
-    enemyAttack += userStats.attack[j] ? 2 * enemyStats.attack[i] : enemyStats.attack[i]
-    enemyDefense += enemyStats.defense[i]
-  }
-
-  for (let i = 0; i < userStats.attack.length; i++) {
-    let j = i + 1
-    if (i === 0) j = -1
-    if (i === 4) j = 1
-
-    userAttack += enemyStats.attack[j] ? 2 * userStats.attack[i] : userStats.attack[i]
-    userDefense += userStats.defense[i]
-  }
-
-  return {
-    enemy: { enemyAttack, enemyDefense },
-    user: { userAttack, userDefense },
-  }
-}
-
-export default { applyUnitMods, getGarrison, getEnemyArmy, calculateEnemyStats, calculateDamages, canWinBattle }
+export default { canWinBattle }

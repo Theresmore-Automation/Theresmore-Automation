@@ -2339,6 +2339,10 @@
       {
         "id": "titan",
         "value": 1
+      },
+      {
+        "id": "golem",
+        "value": 750
       }
     ],
     "gen": [

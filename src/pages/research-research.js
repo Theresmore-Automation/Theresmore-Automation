@@ -70,35 +70,26 @@ const executeAction = async () => {
           state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options.dangerousFights &&
           dangerousFightsMapping[research.key]
         ) {
-          const army = armyCalculator.getEnemyArmy(dangerousFightsMapping[research.key])
+          const canWinBattle = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, false)
 
-          const enemyStats = armyCalculator.calculateEnemyStats(army)
-          const garrison = armyCalculator.getGarrison(true)
+          if (canWinBattle) {
+            const canWinNow = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, true)
 
-          const canWinNow = armyCalculator.canWinBattle(enemyStats, garrison, true, true)
-
-          if (canWinNow) {
-            state.stopAttacks = false
-            logger({ msgLevel: 'debug', msg: 'Will try starting a dangerous research (canWinNow). Values:' })
-            logger({ msgLevel: 'debug', msg: `Research: ${research.id} (${research.key}). Fight: ${dangerousFightsMapping[research.key]}` })
-            logger({ msgLevel: 'debug', msg: `Army: ${JSON.stringify(army)}` })
-            logger({ msgLevel: 'debug', msg: `Enemy stats: ${JSON.stringify(enemyStats)}` })
-            logger({ msgLevel: 'debug', msg: `Garrison: ${JSON.stringify(garrison)}` })
+            if (canWinNow) {
+              state.stopAttacks = false
+              logger({
+                msgLevel: 'debug',
+                msg: `Will try starting a dangerous research. Research: ${research.id} (${research.key}). Fight: ${dangerousFightsMapping[research.key]}`,
+              })
+            } else {
+              ignoredTech.push(research.id)
+              logger({ msgLevel: 'debug', msg: `Can win ${research.id}, but we need to unassign all units first.` })
+              state.stopAttacks = true
+              continue
+            }
           } else {
             ignoredTech.push(research.id)
             logger({ msgLevel: 'debug', msg: `Can't win ${research.id}, ignoring it for this round.` })
-
-            const canWinEmpty = armyCalculator.canWinBattle(enemyStats, garrison, false, true)
-            if (canWinEmpty) {
-              logger({ msgLevel: 'debug', msg: 'Will try starting a dangerous research later (canWinEmpty). Values:' })
-              logger({ msgLevel: 'debug', msg: `Research: ${research.id} (${research.key}). Fight: ${dangerousFightsMapping[research.key]}` })
-              logger({ msgLevel: 'debug', msg: `Army: ${JSON.stringify(army)}` })
-              logger({ msgLevel: 'debug', msg: `Enemy stats: ${JSON.stringify(enemyStats)}` })
-              logger({ msgLevel: 'debug', msg: `Garrison: ${JSON.stringify(garrison)}` })
-              state.stopAttacks = true
-            } else {
-              state.stopAttacks = false
-            }
             continue
           }
         }

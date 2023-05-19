@@ -171,11 +171,7 @@ const executeAction = async () => {
           }
 
           if (faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR]) {
-            const army = armyCalculator.getEnemyArmy(faction.key)
-            const enemyStats = armyCalculator.calculateEnemyStats(army)
-            const garrison = armyCalculator.getGarrison().filter((unit) => unit.category !== 0)
-
-            const canWinBattle = armyCalculator.canWinBattle(enemyStats, garrison, true)
+            const canWinBattle = armyCalculator.canWinBattle(faction.key, false, false)
 
             if (canWinBattle) {
               logger({ msgLevel: 'log', msg: `Going to war with ${faction.id}` })
