@@ -853,11 +853,11 @@
       },
       {
         "id": "skeletal_knight",
-        "value": 750
+        "value": 400
       },
       {
         "id": "skeleton",
-        "value": 8000
+        "value": 2000
       }
     ],
     "gen": [
@@ -886,11 +886,11 @@
     "army": [
       {
         "id": "skeleton",
-        "value": 1500
+        "value": 1000
       },
       {
         "id": "zombie",
-        "value": 700
+        "value": 400
       }
     ]
   },
