@@ -42,7 +42,7 @@
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-typescript": "^11.1.2",
-    "@types/react": "^18.2.14",
+    "@types/react": "^18.2.18",
     "colorette": "^2.0.20",
     "esm": "^3.2.25",
     "husky": "^8.0.0",
