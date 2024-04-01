@@ -53,9 +53,9 @@ const getRandomNumber = (min, max) => {
 }
 
 const getEnemyArmy = (enemyId) => {
-  const difficultyMode = reactUtil.getGameData().SettingsStore.difficultyMode
-  const difficultyModeMultiplier = difficultyMode === '0' ? 1 : difficultyMode === '1' ? 1.5 : 2
-  const randomBonus = 1.3
+  const difficultyMode = parseInt(reactUtil.getGameData().SettingsStore.difficultyMode, 10) || 0
+  const difficultyModeMultiplier = difficultyMode === 1 ? 1.5 : difficultyMode === 2 ? 2 : difficultyMode === 3 ? 4.5 : 1
+  const randomBonus = difficultyMode === 1 ? 1.1 : difficultyMode === 2 ? 1.2 : difficultyMode === 3 ? 1.3 : 1
   const army = fights
     .find((fight) => fight.key === enemyId || fight.id === enemyId)
     .army.map((unit) => {
