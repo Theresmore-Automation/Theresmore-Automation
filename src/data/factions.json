@@ -1,158 +1,63 @@
 [
   {
-    "id": "army_of_goblin",
-    "army": [
-      {
-        "id": "goblin_overlord",
-        "value": 1
-      },
-      {
-        "id": "goblin_wolfrider",
-        "value": 30
-      },
-      {
-        "id": "goblin_warrior",
-        "value": 70
-      }
-    ],
-    "level": 0,
-    "tier": 2,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "army_of_dragon",
-    "army": [
-      {
-        "id": "red_dragon",
-        "value": 1
-      },
-      {
-        "id": "draconic_warrior",
-        "value": 100
-      }
-    ],
-    "level": 0,
-    "tier": 5,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "king_kobold_nation",
-    "army": [
-      {
-        "id": "kobold_king",
-        "value": 1
-      },
-      {
-        "id": "kobold_champion",
-        "value": 50
-      },
-      {
-        "id": "kobold",
-        "value": 180
-      }
-    ],
+    "id": "nightdale_protectorate",
+    "found": [1, 2, 3, 4, 5],
+    "relationship": 30,
+    "esp": 30,
     "level": 5,
-    "tier": 5,
-    "gen": [
+    "reqDelegation": [
       {
         "type": "resource",
-        "id": "fame",
-        "value": 100,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 10
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "theresmore_wanders",
-    "army": [
-      {
-        "id": "archer",
-        "value": 60
-      },
-      {
-        "id": "spearman",
-        "value": 40
-      },
-      {
-        "id": "light_cavarly",
-        "value": 80
-      },
-      {
-        "id": "commander",
-        "value": 1
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 8,
-        "perc": true
+        "id": "wood",
+        "value": 500
       },
       {
         "type": "resource",
         "id": "food",
-        "value": 8,
-        "perc": true
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
       },
       {
         "type": "resource",
-        "id": "horse",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "zultan_emirate",
-    "army": [
-      {
-        "id": "archer",
-        "value": 120
-      },
-      {
-        "id": "spearman",
-        "value": 40
-      },
-      {
-        "id": "heavy_warrior",
-        "value": 30
-      },
-      {
-        "id": "commander",
-        "value": 1
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 8,
-        "perc": true
+        "id": "wood",
+        "value": 4
       },
       {
         "type": "resource",
-        "id": "mana",
-        "value": 8,
-        "perc": true
+        "id": "stone",
+        "value": 4
       }
     ],
-    "onlyDefend": false
-  },
-  {
-    "id": "nightdale_protectorate",
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 4
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
     "army": [
       {
         "id": "archer",
@@ -167,8 +72,6 @@
         "value": 1
       }
     ],
-    "level": 5,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -194,28 +97,695 @@
         "value": 8,
         "perc": true
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "army_of_the_dead",
-    "army": [
+    "id": "theresmore_wanders",
+    "found": [6, 7, 8, 9, 10],
+    "relationship": 30,
+    "esp": 20,
+    "level": 5,
+    "reqDelegation": [
       {
-        "id": "skeleton",
-        "value": 1000
-      },
-      {
-        "id": "zombie",
-        "value": 400
+        "type": "resource",
+        "id": "food",
+        "value": 2000
       }
     ],
-    "level": 0,
-    "tier": 7,
-    "gen": [],
-    "onlyDefend": true
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "archer",
+        "value": 60
+      },
+      {
+        "id": "spearman",
+        "value": 40
+      },
+      {
+        "id": "light_cavarly",
+        "value": 80
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "western_kingdom",
+    "found": [11, 12, 13, 14, 15],
+    "relationship": 50,
+    "esp": 50,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 2
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "crossbowman",
+        "value": 60
+      },
+      {
+        "id": "man_at_arms",
+        "value": 50
+      },
+      {
+        "id": "knight",
+        "value": 50
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 8,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "zultan_emirate",
+    "found": [16, 17, 18, 19, 20],
+    "relationship": 50,
+    "esp": 40,
+    "level": 5,
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2000
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ],
+    "army": [
+      {
+        "id": "archer",
+        "value": 120
+      },
+      {
+        "id": "spearman",
+        "value": 40
+      },
+      {
+        "id": "heavy_warrior",
+        "value": 30
+      },
+      {
+        "id": "commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "sssarkat_empire",
+    "found": [1, 2, 3, 4, 5],
+    "relationship": 30,
+    "esp": 40,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 2500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 1000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -30
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 3
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "lizard_warrior",
+        "value": 200
+      },
+      {
+        "id": "lizard_archer",
+        "value": 120
+      },
+      {
+        "id": "lizard_shaman",
+        "value": 20
+      },
+      {
+        "id": "lizard_commander",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "scalerock_tribes",
+    "found": [6, 7, 8, 9, 10],
+    "relationship": 40,
+    "esp": 50,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 1500
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 25000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -30
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 1
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "draconic_warrior",
+        "value": 200
+      },
+      {
+        "id": "draconic_diver",
+        "value": 120
+      },
+      {
+        "id": "draconic_mage",
+        "value": 20
+      },
+      {
+        "id": "draconic_leader",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 200,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 15,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "enso_multitude",
+    "found": [11, 12, 13, 14, 15],
+    "relationship": 50,
+    "esp": 60,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8000
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 1.5
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 15
+      }
+    ],
+    "army": [
+      {
+        "id": "musket_ashigaru",
+        "value": 250
+      },
+      {
+        "id": "katana_samurai",
+        "value": 150
+      },
+      {
+        "id": "cavarly_archer",
+        "value": 60
+      },
+      {
+        "id": "daimyo",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 250,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 20,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 20,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "king_kobold_nation",
+    "found": [21, 22, 23, 24, 25],
+    "esp": 40,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "kobold_nation",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "kobold_king",
+        "value": 1
+      },
+      {
+        "id": "kobold_champion",
+        "value": 50
+      },
+      {
+        "id": "kobold",
+        "value": 180
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      }
+    ]
   },
   {
     "id": "barbarian_horde",
+    "found": [26, 27, 28, 29, 30],
+    "esp": 40,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "barbarian_tribes",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
     "army": [
       {
         "id": "barbarian_king",
@@ -234,8 +804,6 @@
         "value": 120
       }
     ],
-    "level": 6,
-    "tier": 7,
     "gen": [
       {
         "type": "resource",
@@ -263,49 +831,21 @@
         "id": "unemployed",
         "value": 5
       }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "fallen_angel_army_1",
-    "army": [
-      {
-        "id": "fallen_angel",
-        "value": 1
-      },
-      {
-        "id": "demonic_musketeer",
-        "value": 120
-      }
-    ],
-    "level": 0,
-    "tier": 7,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "fallen_angel_army_2",
-    "army": [
-      {
-        "id": "fallen_angel",
-        "value": 1
-      },
-      {
-        "id": "lesser_demon",
-        "value": 150
-      },
-      {
-        "id": "greater_demon",
-        "value": 100
-      }
-    ],
-    "level": 0,
-    "tier": 7,
-    "gen": [],
-    "onlyDefend": true
+    ]
   },
   {
     "id": "lich_fortress",
+    "found": [31, 32, 33, 34, 35],
+    "esp": 50,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "huge_cave_t",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
     "army": [
       {
         "id": "nikharul",
@@ -320,8 +860,6 @@
         "value": 2000
       }
     ],
-    "level": 7,
-    "tier": 7,
     "gen": [
       {
         "type": "resource",
@@ -339,193 +877,511 @@
         "id": "stone",
         "value": 2
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "scalerock_tribes",
+    "id": "army_of_the_dead",
+    "found": [0],
+    "relationship": 0,
     "army": [
+      {
+        "id": "skeleton",
+        "value": 1000
+      },
+      {
+        "id": "zombie",
+        "value": 400
+      }
+    ]
+  },
+  {
+    "id": "army_of_goblin",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "goblin_overlord",
+        "value": 1
+      },
+      {
+        "id": "goblin_wolfrider",
+        "value": 30
+      },
+      {
+        "id": "goblin_warrior",
+        "value": 70
+      }
+    ]
+  },
+  {
+    "id": "army_of_dragon",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "red_dragon",
+        "value": 1
+      },
       {
         "id": "draconic_warrior",
-        "value": 200
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "fallen_angel_army_1",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "fallen_angel",
+        "value": 1
       },
       {
-        "id": "draconic_diver",
+        "id": "demonic_musketeer",
         "value": 120
-      },
-      {
-        "id": "draconic_mage",
-        "value": 20
-      },
-      {
-        "id": "draconic_leader",
-        "value": 1
       }
-    ],
-    "level": 6,
-    "tier": 7,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 200,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 15,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 15,
-        "perc": true
-      }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "western_kingdom",
+    "id": "fallen_angel_army_2",
+    "found": [0],
+    "relationship": 0,
     "army": [
       {
-        "id": "crossbowman",
-        "value": 60
-      },
-      {
-        "id": "man_at_arms",
-        "value": 50
-      },
-      {
-        "id": "knight",
-        "value": 50
-      },
-      {
-        "id": "commander",
+        "id": "fallen_angel",
         "value": 1
-      }
-    ],
-    "level": 5,
-    "tier": 7,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "research",
-        "value": 8,
-        "perc": true
       },
       {
-        "type": "resource",
-        "id": "copper",
-        "value": 8,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 8,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "tools",
-        "value": 8,
-        "perc": true
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "sssarkat_empire",
-    "army": [
-      {
-        "id": "lizard_warrior",
-        "value": 200
-      },
-      {
-        "id": "lizard_archer",
-        "value": 120
-      },
-      {
-        "id": "lizard_shaman",
-        "value": 20
-      },
-      {
-        "id": "lizard_commander",
-        "value": 1
-      }
-    ],
-    "level": 6,
-    "tier": 8,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 150,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 12,
-        "perc": true
-      },
-      {
-        "type": "resource",
-        "id": "saltpetre",
-        "value": 10,
-        "perc": true
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "enso_multitude",
-    "army": [
-      {
-        "id": "musket_ashigaru",
-        "value": 250
-      },
-      {
-        "id": "katana_samurai",
+        "id": "lesser_demon",
         "value": 150
       },
       {
-        "id": "cavarly_archer",
-        "value": 60
+        "id": "greater_demon",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "orc_war_party_1",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 150
       },
       {
-        "id": "daimyo",
+        "id": "orc_stone_thrower",
+        "value": 100
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_2",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 180
+      },
+      {
+        "id": "orc_berserker",
+        "value": 50
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_3",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 200
+      },
+      {
+        "id": "orc_berserker",
+        "value": 100
+      },
+      {
+        "id": "orc_shaman",
+        "value": 40
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 80
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_4",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_ironskin",
+        "value": 200
+      },
+      {
+        "id": "orc_berserker",
+        "value": 100
+      },
+      {
+        "id": "orc_shaman",
+        "value": 40
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 80
+      },
+      {
+        "id": "orc_warlord",
         "value": 1
       }
     ],
-    "level": 7,
-    "tier": 9,
-    "gen": [
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_5",
+    "found": [0],
+    "relationship": 0,
+    "army": [
       {
-        "type": "resource",
-        "id": "fame",
-        "value": 250,
-        "fix": true
+        "id": "orc_warrior",
+        "value": 300
       },
       {
-        "type": "resource",
-        "id": "natronite",
-        "value": 20,
-        "perc": true
+        "id": "orc_ironskin",
+        "value": 200
       },
       {
-        "type": "resource",
-        "id": "steel",
-        "value": 20,
-        "perc": true
+        "id": "orc_berserker",
+        "value": 100
+      },
+      {
+        "id": "orc_shaman",
+        "value": 40
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 80
+      },
+      {
+        "id": "orc_warlord",
+        "value": 1
       }
     ],
-    "onlyDefend": false
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_6",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 30
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_7",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 30
+      },
+      {
+        "id": "orc_berserker",
+        "value": 20
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 30
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_8",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 300
+      },
+      {
+        "id": "orc_berserker",
+        "value": 200
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 300
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_9",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 450
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 140
+      },
+      {
+        "id": "orc_berserker",
+        "value": 10
+      },
+      {
+        "id": "orc_shaman",
+        "value": 20
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 190
+      },
+      {
+        "id": "orc_warlord",
+        "value": 3
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_10",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 450
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 140
+      },
+      {
+        "id": "orc_berserker",
+        "value": 10
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 120
+      },
+      {
+        "id": "orc_shaman",
+        "value": 20
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 190
+      },
+      {
+        "id": "orc_warlord",
+        "value": 3
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_11",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 100
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 190
+      },
+      {
+        "id": "orc_berserker",
+        "value": 120
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 150
+      },
+      {
+        "id": "orc_shaman",
+        "value": 90
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 110
+      },
+      {
+        "id": "orc_warlord",
+        "value": 5
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_12",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 500
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 390
+      },
+      {
+        "id": "orc_berserker",
+        "value": 220
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 450
+      },
+      {
+        "id": "orc_shaman",
+        "value": 190
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 310
+      },
+      {
+        "id": "orc_warlord",
+        "value": 5
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_13",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 1200
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 590
+      },
+      {
+        "id": "orc_berserker",
+        "value": 320
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 350
+      },
+      {
+        "id": "orc_shaman",
+        "value": 90
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 50
+      },
+      {
+        "id": "orc_warlord",
+        "value": 1
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_14",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 400
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 190
+      },
+      {
+        "id": "orc_berserker",
+        "value": 220
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 150
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_15",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 200
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 490
+      },
+      {
+        "id": "orc_berserker",
+        "value": 220
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 550
+      }
+    ],
+    "hidden": true
+  },
+  {
+    "id": "orc_war_party_16",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 50
+      },
+      {
+        "id": "orc_ironskin",
+        "value": 120
+      },
+      {
+        "id": "orc_berserker",
+        "value": 20
+      },
+      {
+        "id": "orc_stone_thrower",
+        "value": 30
+      }
+    ],
+    "hidden": true
   },
   {
     "id": "orc_horde_boss",
+    "found": [0],
+    "relationship": 0,
     "army": [
       {
         "id": "orc_champion",
@@ -563,442 +1419,6 @@
         "id": "orc_warlord",
         "value": 9
       }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_1",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 150
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 100
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_2",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 180
-      },
-      {
-        "id": "orc_berserker",
-        "value": 50
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_3",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 200
-      },
-      {
-        "id": "orc_berserker",
-        "value": 100
-      },
-      {
-        "id": "orc_shaman",
-        "value": 40
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 80
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_4",
-    "army": [
-      {
-        "id": "orc_ironskin",
-        "value": 200
-      },
-      {
-        "id": "orc_berserker",
-        "value": 100
-      },
-      {
-        "id": "orc_shaman",
-        "value": 40
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 80
-      },
-      {
-        "id": "orc_warlord",
-        "value": 1
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_5",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 300
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 200
-      },
-      {
-        "id": "orc_berserker",
-        "value": 100
-      },
-      {
-        "id": "orc_shaman",
-        "value": 40
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 80
-      },
-      {
-        "id": "orc_warlord",
-        "value": 1
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_6",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 30
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_7",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 30
-      },
-      {
-        "id": "orc_berserker",
-        "value": 20
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 30
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_8",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 300
-      },
-      {
-        "id": "orc_berserker",
-        "value": 200
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 300
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_9",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 450
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 140
-      },
-      {
-        "id": "orc_berserker",
-        "value": 10
-      },
-      {
-        "id": "orc_shaman",
-        "value": 20
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 190
-      },
-      {
-        "id": "orc_warlord",
-        "value": 3
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_10",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 450
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 140
-      },
-      {
-        "id": "orc_berserker",
-        "value": 10
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 120
-      },
-      {
-        "id": "orc_shaman",
-        "value": 20
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 190
-      },
-      {
-        "id": "orc_warlord",
-        "value": 3
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_11",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 100
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 190
-      },
-      {
-        "id": "orc_berserker",
-        "value": 120
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 150
-      },
-      {
-        "id": "orc_shaman",
-        "value": 90
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 110
-      },
-      {
-        "id": "orc_warlord",
-        "value": 5
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_12",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 500
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 390
-      },
-      {
-        "id": "orc_berserker",
-        "value": 220
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 450
-      },
-      {
-        "id": "orc_shaman",
-        "value": 190
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 310
-      },
-      {
-        "id": "orc_warlord",
-        "value": 5
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_13",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 1200
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 590
-      },
-      {
-        "id": "orc_berserker",
-        "value": 320
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 350
-      },
-      {
-        "id": "orc_shaman",
-        "value": 90
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 50
-      },
-      {
-        "id": "orc_warlord",
-        "value": 1
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_14",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 400
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 190
-      },
-      {
-        "id": "orc_berserker",
-        "value": 220
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 150
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_15",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 200
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 490
-      },
-      {
-        "id": "orc_berserker",
-        "value": 220
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 550
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
-  },
-  {
-    "id": "orc_war_party_16",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 50
-      },
-      {
-        "id": "orc_ironskin",
-        "value": 120
-      },
-      {
-        "id": "orc_berserker",
-        "value": 20
-      },
-      {
-        "id": "orc_stone_thrower",
-        "value": 30
-      }
-    ],
-    "level": 0,
-    "tier": 10,
-    "gen": [],
-    "onlyDefend": true
+    ]
   }
 ]

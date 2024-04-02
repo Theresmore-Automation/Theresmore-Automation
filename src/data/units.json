@@ -4,17 +4,17 @@
     "type": "settlement",
     "attack": 1,
     "defense": 50,
-    "cap": 1,
     "order": 0,
-    "cat": 0,
-    "category": "RECON"
+    "category": 0
   },
   {
     "id": "scout",
-    "type": "army",
+    "type": "recon",
     "attack": 2,
     "defense": 2,
-    "purchase": [
+    "order": 3,
+    "category": 0,
+    "req": [
       {
         "type": "tech",
         "id": "archery",
@@ -31,7 +31,7 @@
         "value": 200
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -43,23 +43,22 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.1
       }
-    ],
-    "order": 3,
-    "cat": 0,
-    "category": "RECON"
+    ]
   },
   {
     "id": "explorer",
-    "type": "army",
+    "type": "recon",
     "attack": 5,
     "defense": 5,
-    "purchase": [
+    "order": 3,
+    "category": 0,
+    "req": [
       {
         "type": "tech",
         "id": "guild",
@@ -76,7 +75,7 @@
         "value": 100
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -88,24 +87,23 @@
         "value": 20
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.2
       }
-    ],
-    "order": 3,
-    "cat": 0,
-    "category": "RECON"
+    ]
   },
   {
     "id": "familiar",
-    "type": "army",
+    "type": "recon",
     "attack": 4,
     "defense": 4,
+    "order": 3,
     "cap": 5,
-    "purchase": [
+    "category": 0,
+    "req": [
       {
         "type": "tech",
         "id": "zenix_familiar_t",
@@ -122,7 +120,7 @@
         "value": 100
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
@@ -134,23 +132,22 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "research",
         "value": 0.4
       }
-    ],
-    "order": 3,
-    "cat": 0,
-    "category": "RECON"
+    ]
   },
   {
     "id": "spy",
-    "type": "army",
+    "type": "spy",
     "attack": 7,
     "defense": 3,
-    "purchase": [
+    "order": 3,
+    "category": 0,
+    "req": [
       {
         "type": "tech",
         "id": "espionage",
@@ -162,30 +159,29 @@
         "value": 1000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.1
       }
-    ],
-    "order": 3,
-    "cat": 0,
-    "category": "RECON"
+    ]
   },
   {
     "id": "archer",
     "type": "army",
     "attack": 3,
     "defense": 2,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "archery",
@@ -202,7 +198,7 @@
         "value": 100
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -214,23 +210,22 @@
         "value": 20
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.2
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "battering_ram",
     "type": "army",
     "attack": 14,
     "defense": 2,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "warfare",
@@ -247,7 +242,7 @@
         "value": 1000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -259,23 +254,22 @@
         "value": 50
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -4
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "crossbowman",
     "type": "army",
     "attack": 11,
     "defense": 6,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "crossbow",
@@ -297,7 +291,7 @@
         "value": 50
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -309,23 +303,22 @@
         "value": 40
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.5
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "trebuchet",
     "type": "army",
     "attack": 28,
     "defense": 3,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "siege_techniques",
@@ -342,7 +335,7 @@
         "value": 2000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -354,23 +347,22 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -5
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "white_company",
     "type": "army",
     "attack": 18,
     "defense": 11,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "white_t_company",
@@ -382,31 +374,30 @@
         "value": 2500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 75
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -5
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "strategist",
     "type": "army",
     "attack": 72,
     "defense": 12,
+    "order": 3,
     "cap": 1,
-    "purchase": [
+    "category": 1,
+    "req": [
       {
         "type": "prayer",
         "id": "zenix_aid",
@@ -423,7 +414,7 @@
         "value": 400
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -435,7 +426,7 @@
         "value": 300
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "mana",
@@ -451,17 +442,16 @@
         "id": "gold",
         "value": -6
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "arquebusier",
     "type": "army",
     "attack": 16,
     "defense": 7,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "gunpowder",
@@ -478,7 +468,7 @@
         "value": 100
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -490,23 +480,22 @@
         "value": 40
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.9
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "bombard",
     "type": "army",
     "attack": 42,
     "defense": 4,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "military_science",
@@ -528,30 +517,29 @@
         "value": 200
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 200
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -7
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "cannon",
     "type": "army",
     "attack": 88,
     "defense": 8,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "field_artillery",
@@ -573,30 +561,29 @@
         "value": 500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 500
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -15
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "artillery",
     "type": "army",
     "attack": 160,
     "defense": 15,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "metal_alloys",
@@ -623,7 +610,7 @@
         "value": 2500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -635,24 +622,23 @@
         "value": 200
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -25
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "ranger",
     "type": "army",
     "attack": 22,
     "defense": 15,
+    "order": 3,
     "cap": 50,
-    "purchase": [
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "guerrilla_warfare",
@@ -669,7 +655,7 @@
         "value": 500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -681,24 +667,23 @@
         "value": 50
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": 1.2
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "elf_warrior",
     "type": "army",
     "attack": 62,
     "defense": 55,
+    "order": 3,
     "cap": 25,
-    "purchase": [
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "elf_warriors",
@@ -715,7 +700,7 @@
         "value": 2000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "supplies",
@@ -727,23 +712,22 @@
         "value": 150
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -2.5
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "marksman",
     "type": "army",
     "attack": 35,
     "defense": 15,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "trenches",
@@ -765,7 +749,7 @@
         "value": 500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -782,23 +766,22 @@
         "value": 25
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -1.5
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "longbowman",
     "type": "army",
     "attack": 91,
     "defense": 2,
-    "purchase": [
+    "order": 3,
+    "category": 1,
+    "req": [
       {
         "type": "tech",
         "id": "trained_longbowman",
@@ -815,7 +798,7 @@
         "value": 8000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -827,23 +810,22 @@
         "value": 10
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.25
       }
-    ],
-    "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    ]
   },
   {
     "id": "spearman",
     "type": "army",
     "attack": 2,
     "defense": 7,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "bronze_working",
@@ -865,7 +847,7 @@
         "value": 50
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -877,23 +859,22 @@
         "value": 25
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.2
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "phalanx",
     "type": "army",
     "attack": 6,
     "defense": 20,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "phalanx_combat",
@@ -915,7 +896,7 @@
         "value": 150
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -927,23 +908,22 @@
         "value": 30
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.3
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "warrior_monk",
     "type": "army",
     "attack": 3,
     "defense": 13,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "prayer",
         "id": "prayer_for_the_ancient_monk",
@@ -960,30 +940,29 @@
         "value": 400
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
         "value": 10
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.4
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "shieldbearer",
     "type": "army",
     "attack": 5,
     "defense": 23,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "bronze_working",
@@ -1005,7 +984,7 @@
         "value": 350
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1017,23 +996,22 @@
         "value": 30
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.4
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "priest",
     "type": "army",
     "attack": 1,
     "defense": 36,
-    "purchase": [
+    "order": 2,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "religion",
@@ -1055,14 +1033,14 @@
         "value": 800
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
         "value": 80
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
@@ -1073,17 +1051,16 @@
         "id": "gold",
         "value": -1
       }
-    ],
-    "order": 2,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "sacred_golem",
     "type": "army",
     "attack": 8,
     "defense": 22,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "prayer",
         "id": "create_sacred_golem",
@@ -1105,30 +1082,29 @@
         "value": 800
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "mana",
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "mana",
         "value": -1
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "cleric",
     "type": "army",
     "attack": 8,
     "defense": 24,
-    "purchase": [
+    "order": 2,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "order_of_clerics",
@@ -1145,30 +1121,29 @@
         "value": 200
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
         "value": 60
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -1
       }
-    ],
-    "order": 2,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "juggernaut",
     "type": "army",
     "attack": 15,
     "defense": 50,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "bronze_working",
@@ -1195,7 +1170,7 @@
         "value": 400
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
@@ -1207,7 +1182,7 @@
         "value": 150
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
@@ -1218,17 +1193,16 @@
         "id": "mana",
         "value": -1
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "paladin",
     "type": "army",
     "attack": 28,
     "defense": 56,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "prayer",
         "id": "warrior_gods",
@@ -1245,7 +1219,7 @@
         "value": 500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "faith",
@@ -1257,7 +1231,7 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "crystal",
@@ -1268,18 +1242,17 @@
         "id": "food",
         "value": -1.5
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "behemoth",
     "type": "army",
     "attack": 24,
     "defense": 98,
+    "order": 1,
     "cap": 20,
-    "purchase": [
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "steel_flesh",
@@ -1301,7 +1274,7 @@
         "value": 1000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "saltpetre",
@@ -1313,24 +1286,23 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -3
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "ancient_balor",
     "type": "army",
     "attack": 150,
     "defense": 750,
+    "order": 1,
     "cap": 1,
-    "purchase": [
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "ancient_balor_t",
@@ -1347,7 +1319,7 @@
         "value": 10000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "food",
@@ -1359,7 +1331,7 @@
         "value": 1000
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "iron",
@@ -1380,17 +1352,16 @@
         "id": "mana",
         "value": -30
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "smuggler",
     "type": "army",
     "attack": 2,
     "defense": 52,
-    "purchase": [
+    "order": 1,
+    "category": 3,
+    "req": [
       {
         "type": "tech",
         "id": "illgotten_gains",
@@ -1407,7 +1378,7 @@
         "value": 250
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1419,23 +1390,22 @@
         "value": 15
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.2
       }
-    ],
-    "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    ]
   },
   {
     "id": "warrior",
     "type": "army",
     "attack": 8,
     "defense": 8,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "bronze_working",
@@ -1452,7 +1422,7 @@
         "value": 200
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1464,23 +1434,22 @@
         "value": 40
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.4
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "mercenary_veteran",
     "type": "army",
     "attack": 12,
     "defense": 8,
-    "purchase": [
+    "order": 1,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "mercenary_bands",
@@ -1492,30 +1461,29 @@
         "value": 2500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 150
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -5
       }
-    ],
-    "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "heavy_warrior",
     "type": "army",
     "attack": 12,
     "defense": 12,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "iron_working",
@@ -1532,7 +1500,7 @@
         "value": 300
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1544,23 +1512,22 @@
         "value": 70
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.6
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "canava_guard",
     "type": "army",
     "attack": 15,
     "defense": 15,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "canava_mercenary",
@@ -1572,30 +1539,29 @@
         "value": 2000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
         "value": 50
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": -5
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "man_at_arms",
     "type": "army",
     "attack": 18,
     "defense": 14,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "plate_armor",
@@ -1612,7 +1578,7 @@
         "value": 250
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1624,23 +1590,22 @@
         "value": 80
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.8
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "line_infantry",
     "type": "army",
     "attack": 34,
     "defense": 22,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "flintlock_musket",
@@ -1662,7 +1627,7 @@
         "value": 250
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1674,24 +1639,23 @@
         "value": 120
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -1.4
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "jager",
     "type": "army",
     "attack": 82,
     "defense": 18,
+    "order": 2,
     "cap": 100,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "dimensional_device",
@@ -1713,7 +1677,7 @@
         "value": 500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1725,23 +1689,22 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -1.2
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "colonial_militia",
     "type": "army",
     "attack": 7,
     "defense": 8,
-    "purchase": [
+    "order": 1,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "new_world_militia",
@@ -1758,7 +1721,7 @@
         "value": 10
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1770,23 +1733,22 @@
         "value": 5
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.1
       }
-    ],
-    "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "battle_angel",
     "type": "army",
     "attack": 38,
     "defense": 36,
-    "purchase": [
+    "order": 2,
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "holy_fury",
@@ -1803,7 +1765,7 @@
         "value": 600
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "faith",
@@ -1815,24 +1777,23 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "mana",
         "value": -1
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "commander",
     "type": "army",
     "attack": 30,
     "defense": 26,
+    "order": 3,
     "cap": 1,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "warfare",
@@ -1844,7 +1805,7 @@
         "value": 2500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1856,7 +1817,7 @@
         "value": 120
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
@@ -1867,18 +1828,17 @@
         "id": "gold",
         "value": -10
       }
-    ],
-    "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "tamed_djinn",
     "type": "army",
     "attack": 40,
     "defense": 40,
+    "order": 2,
     "cap": 1,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "prayer",
         "id": "desire_war",
@@ -1890,31 +1850,30 @@
         "value": 1000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "mana",
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "mana",
         "value": -5
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "general",
     "type": "army",
     "attack": 60,
     "defense": 100,
+    "order": 3,
     "cap": 1,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "building",
         "id": "officer_training_ground",
@@ -1926,7 +1885,7 @@
         "value": 15000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -1938,7 +1897,7 @@
         "value": 500
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
@@ -1949,18 +1908,17 @@
         "id": "gold",
         "value": -30
       }
-    ],
-    "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "seraphim",
     "type": "army",
     "attack": 450,
     "defense": 400,
+    "order": 2,
     "cap": 1,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "tech",
         "id": "seraphim_t",
@@ -1982,7 +1940,7 @@
         "value": 2000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "faith",
@@ -1994,7 +1952,7 @@
         "value": 1500
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "research",
@@ -2010,18 +1968,17 @@
         "id": "mana",
         "value": -20
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "nikharul_soulstealer",
     "type": "army",
     "attack": 1200,
     "defense": 150,
+    "order": 2,
     "cap": 1,
-    "purchase": [
+    "category": 2,
+    "req": [
       {
         "type": "prayer",
         "id": "summon_nikharul",
@@ -2033,30 +1990,29 @@
         "value": 12500
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "mana",
         "value": 6000
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "mana",
         "value": -100
       }
-    ],
-    "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    ]
   },
   {
     "id": "light_cavarly",
     "type": "army",
     "attack": 10,
     "defense": 4,
-    "purchase": [
+    "order": 2,
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "breeding",
@@ -2078,7 +2034,7 @@
         "value": 25
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -2090,23 +2046,22 @@
         "value": 40
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -0.5
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "knight",
     "type": "army",
     "attack": 26,
     "defense": 22,
-    "purchase": [
+    "order": 2,
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "knighthood",
@@ -2128,7 +2083,7 @@
         "value": 50
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -2140,23 +2095,22 @@
         "value": 100
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -1.2
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "cataphract",
     "type": "army",
     "attack": 18,
     "defense": 48,
-    "purchase": [
+    "order": 2,
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "persuade_nobility",
@@ -2178,7 +2132,7 @@
         "value": 75
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -2190,7 +2144,7 @@
         "value": 50
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
@@ -2201,17 +2155,16 @@
         "id": "gold",
         "value": -0.8
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "cuirassier",
     "type": "army",
     "attack": 36,
     "defense": 28,
-    "purchase": [
+    "order": 2,
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "cuirassiers",
@@ -2238,7 +2191,7 @@
         "value": 200
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -2250,24 +2203,23 @@
         "value": 200
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "food",
         "value": -2
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "cpt_galliard",
     "type": "army",
     "attack": 80,
     "defense": 65,
+    "order": 2,
     "cap": 1,
-    "purchase": [
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "cpt_galliard_t",
@@ -2284,7 +2236,7 @@
         "value": 3000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
@@ -2296,24 +2248,23 @@
         "value": 1000
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "gold",
         "value": 30
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "avatar_fate_u",
     "type": "army",
     "attack": 1250,
     "defense": 1000,
+    "order": 2,
     "cap": 1,
-    "purchase": [
+    "category": 4,
+    "req": [
       {
         "type": "tech",
         "id": "avatar_fate",
@@ -2330,7 +2281,7 @@
         "value": 90000
       }
     ],
-    "deploy": [
+    "reqAttack": [
       {
         "type": "resource",
         "id": "faith",
@@ -2342,7 +2293,7 @@
         "value": 9000
       }
     ],
-    "upkeep": [
+    "gen": [
       {
         "type": "resource",
         "id": "faith",
@@ -2353,20 +2304,16 @@
         "id": "mana",
         "value": 25
       }
-    ],
-    "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    ]
   },
   {
     "id": "ancient_giant",
     "type": "enemy",
     "attack": 250,
     "defense": 16000,
-    "cap": 1,
     "order": 3,
-    "cat": 3,
-    "category": "TANK"
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "archdemon",
@@ -2374,18 +2321,16 @@
     "attack": 90,
     "defense": 52,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "archlich",
     "type": "enemy",
     "attack": 120,
     "defense": 90,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "aqrabuamelu",
@@ -2393,8 +2338,7 @@
     "attack": 46,
     "defense": 63,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "balor",
@@ -2402,8 +2346,7 @@
     "attack": 195,
     "defense": 150,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "bugbear",
@@ -2411,18 +2354,16 @@
     "attack": 7,
     "defense": 16,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "bugbear_chieftain",
     "type": "enemy",
     "attack": 44,
     "defense": 32,
-    "cap": 1,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "bulette",
@@ -2430,8 +2371,7 @@
     "attack": 140,
     "defense": 110,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "basilisk",
@@ -2439,18 +2379,16 @@
     "attack": 35,
     "defense": 16,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "black_mage",
     "type": "enemy",
     "attack": 52,
     "defense": 22,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "cavarly_archer",
@@ -2458,8 +2396,7 @@
     "attack": 18,
     "defense": 10,
     "order": 3,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "charmed_dweller",
@@ -2467,8 +2404,7 @@
     "attack": 4,
     "defense": 4,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "cyclop",
@@ -2476,38 +2412,34 @@
     "attack": 25,
     "defense": 76,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "cult_master",
     "type": "enemy",
     "attack": 80,
     "defense": 55,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "daimyo",
     "type": "enemy",
     "attack": 90,
     "defense": 90,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "demoness",
     "type": "enemy",
     "attack": 50,
     "defense": 80,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "demonic_musketeer",
@@ -2515,8 +2447,7 @@
     "attack": 20,
     "defense": 20,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "dirty_rat",
@@ -2524,8 +2455,7 @@
     "attack": 1,
     "defense": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "draconic_warrior",
@@ -2533,8 +2463,7 @@
     "attack": 8,
     "defense": 14,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "draconic_diver",
@@ -2542,8 +2471,7 @@
     "attack": 20,
     "defense": 10,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "draconic_mage",
@@ -2551,8 +2479,7 @@
     "attack": 32,
     "defense": 10,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "draconic_leader",
@@ -2560,8 +2487,7 @@
     "attack": 80,
     "defense": 65,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "eternal_guardian",
@@ -2569,8 +2495,7 @@
     "attack": 22,
     "defense": 84,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "ettin",
@@ -2578,18 +2503,16 @@
     "attack": 39,
     "defense": 67,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "fallen_angel",
     "type": "enemy",
     "attack": 150,
     "defense": 100,
-    "cap": 1,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "frost_elemental",
@@ -2597,18 +2520,16 @@
     "attack": 20,
     "defense": 42,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "frost_giant",
     "type": "enemy",
     "attack": 112,
     "defense": 140,
-    "cap": 1,
     "order": 2,
-    "cat": 3,
-    "category": "TANK"
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "fire_elemental",
@@ -2616,8 +2537,7 @@
     "attack": 28,
     "defense": 28,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "gargoyle",
@@ -2625,8 +2545,7 @@
     "attack": 8,
     "defense": 28,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "golem",
@@ -2634,18 +2553,16 @@
     "attack": 11,
     "defense": 42,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "gulud",
     "type": "enemy",
     "attack": 250,
     "defense": 180,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "korrigan_slinger",
@@ -2653,8 +2570,7 @@
     "attack": 3,
     "defense": 2,
     "order": 2,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "korrigan_swindler",
@@ -2662,8 +2578,7 @@
     "attack": 3,
     "defense": 5,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "earth_elemental",
@@ -2671,8 +2586,7 @@
     "attack": 20,
     "defense": 48,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "harpy",
@@ -2680,8 +2594,7 @@
     "attack": 6,
     "defense": 6,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "hobgoblin_archer",
@@ -2689,18 +2602,16 @@
     "attack": 11,
     "defense": 4,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "hobgoblin_chieftain",
     "type": "enemy",
     "attack": 20,
     "defense": 34,
-    "cap": 1,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "hobgoblin_grunt",
@@ -2708,28 +2619,25 @@
     "attack": 6,
     "defense": 12,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "hydra",
     "type": "enemy",
     "attack": 950,
     "defense": 900,
-    "cap": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "cap": 1,
+    "category": 4
   },
   {
     "id": "gorgon",
     "type": "enemy",
     "attack": 950,
     "defense": 600,
-    "cap": 1,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "lead_golem",
@@ -2737,8 +2645,7 @@
     "attack": 22,
     "defense": 72,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "bandit",
@@ -2746,8 +2653,7 @@
     "attack": 3,
     "defense": 4,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "barbarian_warrior",
@@ -2755,8 +2661,7 @@
     "attack": 13,
     "defense": 6,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "barbarian_chosen",
@@ -2764,8 +2669,7 @@
     "attack": 30,
     "defense": 12,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "barbarian_drummer",
@@ -2773,8 +2677,7 @@
     "attack": 6,
     "defense": 18,
     "order": 2,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "barbarian_leader",
@@ -2782,28 +2685,25 @@
     "attack": 48,
     "defense": 22,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "barbarian_king",
     "type": "enemy",
     "attack": 76,
     "defense": 56,
-    "cap": 1,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "djinn",
     "type": "enemy",
     "attack": 46,
     "defense": 36,
-    "cap": 1,
     "order": 2,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "fire_salamander",
@@ -2811,18 +2711,16 @@
     "attack": 32,
     "defense": 20,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "galliard",
     "type": "enemy",
     "attack": 70,
     "defense": 120,
-    "cap": 1,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "ghast",
@@ -2830,8 +2728,7 @@
     "attack": 6,
     "defense": 8,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "ghoul",
@@ -2839,8 +2736,7 @@
     "attack": 4,
     "defense": 5,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "giant_wasp",
@@ -2848,8 +2744,7 @@
     "attack": 8,
     "defense": 4,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "goblin_marauder",
@@ -2857,8 +2752,7 @@
     "attack": 3,
     "defense": 3,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "goblin_warrior",
@@ -2866,8 +2760,7 @@
     "attack": 3,
     "defense": 4,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "goblin_wolfrider",
@@ -2875,28 +2768,25 @@
     "attack": 6,
     "defense": 7,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "goblin_overlord",
     "type": "enemy",
     "attack": 20,
     "defense": 15,
-    "cap": 1,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "lich",
     "type": "enemy",
     "attack": 60,
     "defense": 50,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "ball_lightning",
@@ -2904,8 +2794,7 @@
     "attack": 55,
     "defense": 20,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "lizard_warrior",
@@ -2913,8 +2802,7 @@
     "attack": 12,
     "defense": 12,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "lizard_archer",
@@ -2922,8 +2810,7 @@
     "attack": 13,
     "defense": 6,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "lizard_shaman",
@@ -2931,8 +2818,7 @@
     "attack": 22,
     "defense": 32,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "lizard_commander",
@@ -2940,8 +2826,7 @@
     "attack": 50,
     "defense": 75,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "katana_samurai",
@@ -2949,18 +2834,16 @@
     "attack": 26,
     "defense": 28,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "markanat",
     "type": "enemy",
     "attack": 900,
     "defense": 600,
-    "cap": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "cap": 1,
+    "category": 4
   },
   {
     "id": "myconid",
@@ -2968,8 +2851,7 @@
     "attack": 3,
     "defense": 10,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "musket_ashigaru",
@@ -2977,8 +2859,7 @@
     "attack": 22,
     "defense": 18,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "hill_giant",
@@ -2986,18 +2867,16 @@
     "attack": 20,
     "defense": 36,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "minotaur",
     "type": "enemy",
     "attack": 1000,
     "defense": 1800,
-    "cap": 1,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "mountain_giant",
@@ -3005,8 +2884,7 @@
     "attack": 34,
     "defense": 42,
     "order": 3,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "pillager",
@@ -3014,8 +2892,7 @@
     "attack": 3,
     "defense": 5,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "deserter",
@@ -3023,8 +2900,7 @@
     "attack": 7,
     "defense": 6,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "snake",
@@ -3032,8 +2908,7 @@
     "attack": 4,
     "defense": 4,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "giant_snake",
@@ -3041,8 +2916,7 @@
     "attack": 16,
     "defense": 8,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "ravenous_crab",
@@ -3050,8 +2924,7 @@
     "attack": 2,
     "defense": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "spider",
@@ -3059,8 +2932,7 @@
     "attack": 3,
     "defense": 2,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "sluagh",
@@ -3068,8 +2940,7 @@
     "attack": 26,
     "defense": 6,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "giant_spider",
@@ -3077,8 +2948,7 @@
     "attack": 10,
     "defense": 8,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "skeleton",
@@ -3086,8 +2956,7 @@
     "attack": 2,
     "defense": 2,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "skeletal_knight",
@@ -3095,18 +2964,16 @@
     "attack": 18,
     "defense": 22,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "skullface",
     "type": "enemy",
     "attack": 76,
     "defense": 60,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "son_atamar",
@@ -3114,18 +2981,16 @@
     "attack": 22,
     "defense": 20,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "swamp_horror",
     "type": "enemy",
     "attack": 900,
     "defense": 1400,
-    "cap": 1,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "spectra_memory",
@@ -3133,8 +2998,7 @@
     "attack": 5,
     "defense": 8,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "succubus",
@@ -3142,18 +3006,16 @@
     "attack": 37,
     "defense": 23,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "succubus_queen",
     "type": "enemy",
     "attack": 1500,
     "defense": 1750,
-    "cap": 1,
     "order": 2,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "zombie",
@@ -3161,8 +3023,7 @@
     "attack": 3,
     "defense": 3,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "ghost",
@@ -3170,18 +3031,16 @@
     "attack": 5,
     "defense": 5,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "gnoll_leader",
     "type": "enemy",
     "attack": 23,
     "defense": 18,
-    "cap": 1,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "gnoll_raider",
@@ -3189,8 +3048,7 @@
     "attack": 6,
     "defense": 5,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "oni",
@@ -3198,8 +3056,7 @@
     "attack": 45,
     "defense": 99,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "orc_champion",
@@ -3207,8 +3064,7 @@
     "attack": 35,
     "defense": 130,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "orc_berserker",
@@ -3216,8 +3072,7 @@
     "attack": 55,
     "defense": 11,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "orc_flame_caster",
@@ -3225,8 +3080,7 @@
     "attack": 45,
     "defense": 12,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "orc_ironskin",
@@ -3234,8 +3088,7 @@
     "attack": 18,
     "defense": 169,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "orc_shaman",
@@ -3243,8 +3096,7 @@
     "attack": 33,
     "defense": 28,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "orc_stone_thrower",
@@ -3252,8 +3104,7 @@
     "attack": 31,
     "defense": 10,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "orc_warg_rider",
@@ -3261,8 +3112,7 @@
     "attack": 33,
     "defense": 70,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "orc_warlord",
@@ -3270,8 +3120,7 @@
     "attack": 70,
     "defense": 150,
     "order": 2,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "orc_warrior",
@@ -3279,8 +3128,7 @@
     "attack": 25,
     "defense": 63,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "orc_worker",
@@ -3288,18 +3136,16 @@
     "attack": 17,
     "defense": 48,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "necromancer",
     "type": "enemy",
     "attack": 28,
     "defense": 15,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "imp",
@@ -3307,8 +3153,7 @@
     "attack": 3,
     "defense": 1,
     "order": 2,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "lesser_demon",
@@ -3316,8 +3161,7 @@
     "attack": 8,
     "defense": 8,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "greater_demon",
@@ -3325,8 +3169,7 @@
     "attack": 16,
     "defense": 16,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "griffin",
@@ -3334,8 +3177,7 @@
     "attack": 42,
     "defense": 58,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "kobold",
@@ -3343,8 +3185,7 @@
     "attack": 3,
     "defense": 2,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "kobold_champion",
@@ -3352,18 +3193,16 @@
     "attack": 5,
     "defense": 12,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "kobold_king",
     "type": "enemy",
     "attack": 42,
     "defense": 48,
-    "cap": 1,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "naga",
@@ -3371,38 +3210,34 @@
     "attack": 12,
     "defense": 12,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "nikharul",
     "type": "enemy",
     "attack": 780,
     "defense": 1020,
-    "cap": 1,
     "order": 3,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "red_dragon",
     "type": "enemy",
     "attack": 280,
     "defense": 180,
-    "cap": 1,
     "order": 3,
-    "cat": 4,
-    "category": "RIDER"
+    "cap": 1,
+    "category": 4
   },
   {
     "id": "titan",
     "type": "enemy",
     "attack": 1,
     "defense": 52000,
-    "cap": 1,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "troll_cave",
@@ -3410,8 +3245,7 @@
     "attack": 16,
     "defense": 28,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "troll_battle",
@@ -3419,28 +3253,25 @@
     "attack": 42,
     "defense": 56,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "tyrannosaurus",
     "type": "enemy",
     "attack": 1750,
     "defense": 1200,
-    "cap": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "cap": 1,
+    "category": 4
   },
   {
     "id": "vampire",
     "type": "enemy",
     "attack": 80,
     "defense": 90,
-    "cap": 1,
     "order": 3,
-    "cat": 2,
-    "category": "SHOCK"
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "vampire_bat",
@@ -3448,8 +3279,7 @@
     "attack": 2,
     "defense": 1,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "vampire_servant",
@@ -3457,8 +3287,7 @@
     "attack": 15,
     "defense": 32,
     "order": 1,
-    "cat": 3,
-    "category": "TANK"
+    "category": 3
   },
   {
     "id": "velociraptors",
@@ -3466,18 +3295,16 @@
     "attack": 37,
     "defense": 22,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "werewolf",
     "type": "enemy",
     "attack": 1150,
     "defense": 600,
-    "cap": 1,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "wendigo",
@@ -3485,8 +3312,7 @@
     "attack": 47,
     "defense": 39,
     "order": 1,
-    "cat": 2,
-    "category": "SHOCK"
+    "category": 2
   },
   {
     "id": "wind_elemental",
@@ -3494,8 +3320,7 @@
     "attack": 22,
     "defense": 42,
     "order": 1,
-    "cat": 1,
-    "category": "RANGED"
+    "category": 1
   },
   {
     "id": "warg",
@@ -3503,8 +3328,7 @@
     "attack": 22,
     "defense": 18,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "wolf",
@@ -3512,8 +3336,7 @@
     "attack": 4,
     "defense": 4,
     "order": 1,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   },
   {
     "id": "wyvern",
@@ -3521,7 +3344,6 @@
     "attack": 32,
     "defense": 28,
     "order": 2,
-    "cat": 4,
-    "category": "RIDER"
+    "category": 4
   }
 ]

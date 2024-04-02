@@ -112,7 +112,8 @@
   },
   {
     "id": "luck",
-    "hidden": true
+    "hidden": true,
+    "cap": 250
   },
   {
     "id": "building_material",

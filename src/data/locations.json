@@ -1,106 +1,9 @@
 [
   {
-    "id": "cave_bats",
-    "army": [
-      {
-        "id": "vampire_bat",
-        "value": 2
-      }
-    ],
-    "level": 0,
-    "tier": 0,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 0.3
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "kobold_looters",
-    "army": [
-      {
-        "id": "kobold",
-        "value": 2
-      }
-    ],
-    "level": 0,
-    "tier": 0,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "nasty_pillagers",
-    "army": [
-      {
-        "id": "pillager",
-        "value": 2
-      }
-    ],
-    "level": 0,
-    "tier": 0,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 0.2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "prisoner_wagon",
-    "army": [
-      {
-        "id": "bandit",
-        "value": 2
-      }
-    ],
-    "level": 0,
-    "tier": 0,
-    "gen": [
-      {
-        "type": "population",
-        "id": "unemployed",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "rat_cellar",
-    "army": [
-      {
-        "id": "dirty_rat",
-        "value": 3
-      }
-    ],
-    "level": 0,
-    "tier": 0,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
     "id": "ancient_burial_place",
+    "found": [1],
+    "esp": 4,
+    "level": 1,
     "army": [
       {
         "id": "skeleton",
@@ -115,8 +18,6 @@
         "value": 2
       }
     ],
-    "level": 1,
-    "tier": 1,
     "gen": [
       {
         "type": "resource",
@@ -128,19 +29,19 @@
         "id": "mana",
         "value": 0.5
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "ancient_hideout",
+    "found": [12, 13],
+    "esp": 5,
+    "level": 1,
     "army": [
       {
         "id": "bandit",
         "value": 17
       }
     ],
-    "level": 1,
-    "tier": 1,
     "gen": [
       {
         "type": "resource",
@@ -152,537 +53,26 @@
         "id": "gold",
         "value": 800
       }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "bandit_camp",
-    "army": [
-      {
-        "id": "bandit",
-        "value": 9
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "far_west_island",
-    "army": [
-      {
-        "id": "ravenous_crab",
-        "value": 15
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 10,
-        "fix": true
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "goblin_lair",
-    "army": [
-      {
-        "id": "goblin_marauder",
-        "value": 12
-      },
-      {
-        "id": "goblin_warrior",
-        "value": 3
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "haunted_library",
-    "army": [
-      {
-        "id": "ghost",
-        "value": 9
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "research",
-        "value": 0.5
-      },
-      {
-        "type": "cap",
-        "id": "research",
-        "value": 1500
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "korrigan_dolmen",
-    "army": [
-      {
-        "id": "korrigan_slinger",
-        "value": 6
-      },
-      {
-        "id": "korrigan_swindler",
-        "value": 10
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 0.7
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "old_herd",
-    "army": [
-      {
-        "id": "dirty_rat",
-        "value": 18
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "cap",
-        "id": "cow",
-        "value": 200
-      },
-      {
-        "type": "cap",
-        "id": "horse",
-        "value": 100
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "old_storage_room",
-    "army": [
-      {
-        "id": "spider",
-        "value": 5
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "cap",
-        "id": "wood",
-        "value": 500
-      },
-      {
-        "type": "cap",
-        "id": "stone",
-        "value": 500
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "wolf_pack",
-    "army": [
-      {
-        "id": "wolf",
-        "value": 9
-      }
-    ],
-    "level": 1,
-    "tier": 1,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "barbarian_camp",
-    "army": [
-      {
-        "id": "barbarian_warrior",
-        "value": 17
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 0.3
-      },
-      {
-        "type": "population",
-        "id": "unemployed",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "bugbear_tribe",
-    "army": [
-      {
-        "id": "bugbear",
-        "value": 18
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "burning_pit",
-    "army": [
-      {
-        "id": "imp",
-        "value": 20
-      },
-      {
-        "id": "lesser_demon",
-        "value": 6
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "copper",
-        "value": 0.5
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "gnoll_raiding_party",
-    "army": [
-      {
-        "id": "gnoll_raider",
-        "value": 25
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "tools",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "harpy_nest",
-    "army": [
-      {
-        "id": "harpy",
-        "value": 26
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "cow",
-        "value": 0.3
-      },
-      {
-        "type": "resource",
-        "id": "horse",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "hobgoblin_encampment",
-    "army": [
-      {
-        "id": "hobgoblin_grunt",
-        "value": 21
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "tools",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "kobold_underground_tunnels",
-    "army": [
-      {
-        "id": "kobold",
-        "value": 36
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 15,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "tools",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "naga_nest",
-    "army": [
-      {
-        "id": "naga",
-        "value": 12
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "cow",
-        "value": 0.2
-      },
-      {
-        "type": "resource",
-        "id": "horse",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "rusted_warehouse",
-    "army": [
-      {
-        "id": "bandit",
-        "value": 22
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "cap",
-        "id": "wood",
-        "value": 1000
-      },
-      {
-        "type": "cap",
-        "id": "stone",
-        "value": 1000
-      },
-      {
-        "type": "cap",
-        "id": "copper",
-        "value": 500
-      },
-      {
-        "type": "cap",
-        "id": "iron",
-        "value": 500
-      },
-      {
-        "type": "cap",
-        "id": "tools",
-        "value": 500
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "snakes_nest",
-    "army": [
-      {
-        "id": "snake",
-        "value": 9
-      },
-      {
-        "id": "giant_snake",
-        "value": 4
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "cow",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "temple_gargoyle",
-    "army": [
-      {
-        "id": "gargoyle",
-        "value": 14
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 0.6
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 0.6
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "troll_cave",
-    "army": [
-      {
-        "id": "troll_cave",
-        "value": 9
-      }
-    ],
-    "level": 2,
-    "tier": 2,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "copper",
-        "value": 0.3
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 0.2
-      }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "ball_lightning_field",
+    "found": [29],
+    "esp": 32,
+    "level": 3,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "ball_lightning",
         "value": 26
       }
     ],
-    "level": 3,
-    "tier": 3,
     "gen": [
       {
         "type": "resource",
@@ -694,827 +84,73 @@
         "id": "mana",
         "value": 1
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "barren_hills",
-    "army": [
-      {
-        "id": "hill_giant",
-        "value": 7
-      },
-      {
-        "id": "kobold",
-        "value": 52
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 30,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 0.1
-      },
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "basilisk_cave",
-    "army": [
-      {
-        "id": "basilisk",
-        "value": 7
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "cow",
-        "value": 0.3
-      },
-      {
-        "type": "resource",
-        "id": "horse",
-        "value": 0.1
-      },
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "black_mage_tower",
-    "army": [
-      {
-        "id": "black_mage",
-        "value": 1
-      },
-      {
-        "id": "goblin_warrior",
-        "value": 60
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 30,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "construction_site",
-    "army": [
-      {
-        "id": "mercenary_veteran",
-        "value": 25
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "cap",
-        "id": "building_material",
-        "value": 750
-      },
-      {
-        "type": "cap",
-        "id": "steel",
-        "value": 750
-      },
-      {
-        "type": "cap",
-        "id": "crystal",
-        "value": 300
-      },
-      {
-        "type": "cap",
-        "id": "supplies",
-        "value": 300
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "deserters_den",
+    "id": "bandit_camp",
+    "found": [3, 4],
+    "esp": 2,
+    "level": 1,
     "army": [
       {
         "id": "bandit",
-        "value": 26
-      },
-      {
-        "id": "deserter",
-        "value": 14
+        "value": 9
       }
     ],
-    "level": 3,
-    "tier": 3,
     "gen": [
       {
         "type": "resource",
         "id": "gold",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "copper",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "ettin_camp",
-    "army": [
-      {
-        "id": "ettin",
-        "value": 12
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
+        "value": 1
       },
       {
         "type": "resource",
         "id": "food",
         "value": 1
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "golem_cave",
+    "id": "barbarian_camp",
+    "found": [2],
+    "esp": 7,
+    "level": 2,
     "army": [
       {
-        "id": "golem",
-        "value": 15
+        "id": "barbarian_warrior",
+        "value": 17
       }
     ],
-    "level": 3,
-    "tier": 3,
     "gen": [
       {
         "type": "resource",
-        "id": "gold",
-        "value": 0.7
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 0.5
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "kobold_city",
-    "army": [
-      {
-        "id": "kobold",
-        "value": 99
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 40,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "mercenary_camp",
-    "army": [
-      {
-        "id": "mercenary_veteran",
-        "value": 30
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
+        "id": "wood",
         "value": 1
       },
       {
         "type": "resource",
         "id": "iron",
         "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "mountain_cave",
-    "army": [
-      {
-        "id": "mountain_giant",
-        "value": 1
       },
-      {
-        "id": "goblin_marauder",
-        "value": 52
-      },
-      {
-        "id": "goblin_warrior",
-        "value": 28
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 40,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "steel",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "myconid_cavern",
-    "army": [
-      {
-        "id": "myconid",
-        "value": 42
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "necromancer_crypt",
-    "army": [
-      {
-        "id": "ghoul",
-        "value": 26
-      },
-      {
-        "id": "ghast",
-        "value": 16
-      },
-      {
-        "id": "necromancer",
-        "value": 1
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 20,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "skullface_encampment",
-    "army": [
-      {
-        "id": "skullface",
-        "value": 1
-      },
-      {
-        "id": "bandit",
-        "value": 75
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 15,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "spider_forest",
-    "army": [
-      {
-        "id": "spider",
-        "value": 32
-      },
-      {
-        "id": "giant_spider",
-        "value": 8
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 1.5
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "strange_village",
-    "army": [
-      {
-        "id": "charmed_dweller",
-        "value": 47
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
       {
         "type": "population",
         "id": "unemployed",
         "value": 1
       }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "wyvern_nest",
-    "army": [
-      {
-        "id": "wyvern",
-        "value": 12
-      }
-    ],
-    "level": 3,
-    "tier": 3,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 30,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "demonic_portal",
-    "army": [
-      {
-        "id": "greater_demon",
-        "value": 10
-      },
-      {
-        "id": "lesser_demon",
-        "value": 22
-      },
-      {
-        "id": "imp",
-        "value": 50
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 30,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "djinn_palace",
-    "army": [
-      {
-        "id": "djinn",
-        "value": 1
-      },
-      {
-        "id": "naga",
-        "value": 56
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "galliard_mercenary_camp",
-    "army": [
-      {
-        "id": "galliard",
-        "value": 1
-      },
-      {
-        "id": "mercenary_veteran",
-        "value": 70
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 0.6
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "giant_temple",
-    "army": [
-      {
-        "id": "gargoyle",
-        "value": 43
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "gulud_ugdun",
-    "army": [
-      {
-        "id": "gulud",
-        "value": 1
-      },
-      {
-        "id": "orc_worker",
-        "value": 350
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 150,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 5
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "hydra_pit",
-    "army": [
-      {
-        "id": "hydra",
-        "value": 1
-      },
-      {
-        "id": "giant_snake",
-        "value": 110
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 50,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "cow",
-        "value": 0.5
-      },
-      {
-        "type": "resource",
-        "id": "horse",
-        "value": 0.3
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.3
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "lead_golem_mine",
-    "army": [
-      {
-        "id": "lead_golem",
-        "value": 42
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "copper",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "iron",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "lich_temple",
-    "army": [
-      {
-        "id": "zombie",
-        "value": 70
-      },
-      {
-        "id": "ghoul",
-        "value": 40
-      },
-      {
-        "id": "ghast",
-        "value": 30
-      },
-      {
-        "id": "lich",
-        "value": 1
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 40,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "markanat_forest",
-    "army": [
-      {
-        "id": "markanat",
-        "value": 1
-      },
-      {
-        "id": "giant_spider",
-        "value": 140
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 50,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "minotaur_maze",
-    "army": [
-      {
-        "id": "minotaur",
-        "value": 1
-      },
-      {
-        "id": "kobold",
-        "value": 210
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "fame",
-        "value": 50,
-        "fix": true
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 1
-      },
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 0.5
-      },
-      {
-        "type": "resource",
-        "id": "steel",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "swarm_wasp",
-    "army": [
-      {
-        "id": "giant_wasp",
-        "value": 540
-      }
-    ],
-    "level": 4,
-    "tier": 4,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "supplies",
-        "value": 0.2
-      }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "barbarian_village",
+    "found": [7],
+    "esp": 16,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "tamed_barbarian",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "barbarian_warrior",
@@ -1525,8 +161,6 @@
         "value": 3
       }
     ],
-    "level": 4,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1548,11 +182,346 @@
         "id": "unemployed",
         "value": 3
       }
+    ]
+  },
+  {
+    "id": "barren_hills",
+    "found": [5],
+    "esp": 13,
+    "level": 3,
+    "army": [
+      {
+        "id": "hill_giant",
+        "value": 7
+      },
+      {
+        "id": "kobold",
+        "value": 52
+      }
     ],
-    "onlyDefend": false
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "basilisk_cave",
+    "found": [6],
+    "esp": 12,
+    "level": 3,
+    "army": [
+      {
+        "id": "basilisk",
+        "value": 7
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.1
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "burning_pit",
+    "found": [8],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "imp",
+        "value": 20
+      },
+      {
+        "id": "lesser_demon",
+        "value": 6
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "black_mage_tower",
+    "found": [39],
+    "esp": 20,
+    "level": 3,
+    "army": [
+      {
+        "id": "black_mage",
+        "value": 1
+      },
+      {
+        "id": "goblin_warrior",
+        "value": 60
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "bugbear_tribe",
+    "found": [9],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "bugbear",
+        "value": 18
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "bugbear_war_party",
+    "found": [9, 10],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "bugbear_chieftain",
+        "value": 1
+      },
+      {
+        "id": "bugbear",
+        "value": 120
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "citadel_dead",
+    "found": [20, 21],
+    "esp": 33,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "zombie",
+        "value": 350
+      },
+      {
+        "id": "ghoul",
+        "value": 130
+      },
+      {
+        "id": "wyvern",
+        "value": 30
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 70,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "construction_site",
+    "found": [18, 19],
+    "esp": 12,
+    "level": 3,
+    "army": [
+      {
+        "id": "mercenary_veteran",
+        "value": 25
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "building_material",
+        "value": 750
+      },
+      {
+        "type": "cap",
+        "id": "steel",
+        "value": 750
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 300
+      },
+      {
+        "type": "cap",
+        "id": "supplies",
+        "value": 300
+      }
+    ]
+  },
+  {
+    "id": "desecrated_temple",
+    "found": [28, 29, 30, 31],
+    "esp": 45,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "temple_luna",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "orc_shaman",
+        "value": 15
+      },
+      {
+        "id": "orc_worker",
+        "value": 89
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "deserters_den",
+    "found": [10],
+    "esp": 16,
+    "level": 3,
+    "army": [
+      {
+        "id": "bandit",
+        "value": 26
+      },
+      {
+        "id": "deserter",
+        "value": 14
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 0.5
+      }
+    ]
   },
   {
     "id": "demoness_castle",
+    "found": [40],
+    "esp": 40,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "demoniac_tome",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "demoness",
@@ -1571,8 +540,6 @@
         "value": 70
       }
     ],
-    "level": 5,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1590,24 +557,84 @@
         "id": "unemployed",
         "value": 3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "desecrated_temple",
+    "id": "demonic_portal",
+    "found": [11],
+    "esp": 28,
+    "level": 4,
     "army": [
       {
-        "id": "orc_shaman",
-        "value": 15
+        "id": "greater_demon",
+        "value": 10
       },
       {
-        "id": "orc_worker",
-        "value": 89
+        "id": "lesser_demon",
+        "value": 22
+      },
+      {
+        "id": "imp",
+        "value": 50
       }
     ],
-    "level": 5,
-    "tier": 5,
     "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "hell_hole",
+    "found": [12],
+    "esp": 42,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "demonology",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "archdemon",
+        "value": 3
+      },
+      {
+        "id": "greater_demon",
+        "value": 52
+      },
+      {
+        "id": "lesser_demon",
+        "value": 98
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 70,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2
+      },
       {
         "type": "resource",
         "id": "mana",
@@ -1618,19 +645,102 @@
         "id": "crystal",
         "value": 0.2
       }
+    ]
+  },
+  {
+    "id": "gold_mine",
+    "found": [28],
+    "esp": 55,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "troll_battle",
+        "value": 70
+      },
+      {
+        "id": "troll_cave",
+        "value": 120
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15
+      }
+    ]
+  },
+  {
+    "id": "king_reptiles",
+    "found": [30],
+    "esp": 22,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "velociraptors",
+        "value": 67
+      },
+      {
+        "id": "tyrannosaurus",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 2
+      }
+    ]
   },
   {
     "id": "east_sacred_place",
+    "found": [13, 14],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "sacred_place",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "wind_elemental",
         "value": 28
       }
     ],
-    "level": 5,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1642,19 +752,92 @@
         "id": "mana",
         "value": 1
       }
+    ]
+  },
+  {
+    "id": "eternal_halls",
+    "found": [11],
+    "esp": 30,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "persuade_people",
+        "value": 1
+      }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "eternal_guardian",
+        "value": 35
+      },
+      {
+        "id": "golem",
+        "value": 90
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.8
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "ettin_camp",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    "esp": 19,
+    "level": 3,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "aid_request",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "ettin",
+        "value": 12
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1
+      }
+    ]
   },
   {
     "id": "ettin_enslaver",
+    "found": [22],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "ettin",
         "value": 42
       }
     ],
-    "level": 5,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1666,19 +849,150 @@
         "id": "stone",
         "value": 2
       }
+    ]
+  },
+  {
+    "id": "earth_elemental_circle",
+    "found": [25],
+    "esp": 32,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "earth_elemental",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "fire_elemental_circle",
+    "found": [23],
+    "esp": 32,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "fire_elemental",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "frost_elemental_circle",
+    "found": [24],
+    "esp": 32,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "frost_elemental",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "wind_elemental_circle",
+    "found": [23],
+    "esp": 32,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "wind_elemental",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.5
+      }
+    ]
   },
   {
     "id": "fire_salamander_nest",
+    "found": [23],
+    "esp": 11,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "fire_salamander",
         "value": 62
       }
     ],
-    "level": 5,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1690,36 +1004,86 @@
         "id": "natronite",
         "value": 0.5
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "forgotten_shelter",
-    "army": [
+    "id": "galliard_mercenary_camp",
+    "found": [35],
+    "esp": 27,
+    "level": 4,
+    "reqFound": [
       {
-        "id": "spectra_memory",
-        "value": 250
+        "type": "tech",
+        "id": "mercenary_bands",
+        "value": 1
       }
     ],
-    "level": 5,
-    "tier": 5,
+    "army": [
+      {
+        "id": "galliard",
+        "value": 1
+      },
+      {
+        "id": "mercenary_veteran",
+        "value": 70
+      }
+    ],
     "gen": [
       {
         "type": "resource",
-        "id": "fame",
-        "value": 50,
-        "fix": true
+        "id": "gold",
+        "value": 2
       },
       {
         "type": "resource",
-        "id": "research",
-        "value": 2
+        "id": "iron",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "id": "giant_temple",
+    "found": [23],
+    "esp": 27,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
       }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "gargoyle",
+        "value": 43
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
   },
   {
     "id": "gloomy_werewolf_forest",
+    "found": [19],
+    "esp": 5,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "monster_hunting",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "werewolf",
@@ -1730,8 +1094,6 @@
         "value": 130
       }
     ],
-    "level": 4,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1749,11 +1111,48 @@
         "id": "supplies",
         "value": 0.3
       }
+    ]
+  },
+  {
+    "id": "goblin_lair",
+    "found": [15, 16],
+    "esp": 2,
+    "level": 1,
+    "army": [
+      {
+        "id": "goblin_marauder",
+        "value": 12
+      },
+      {
+        "id": "goblin_warrior",
+        "value": 3
+      }
     ],
-    "onlyDefend": false
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 1
+      }
+    ]
   },
   {
     "id": "gorgon_cave",
+    "found": [17],
+    "esp": 5,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "monster_hunting",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "gorgon",
@@ -1764,8 +1163,6 @@
         "value": 70
       }
     ],
-    "level": 4,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1788,54 +1185,226 @@
         "id": "mana",
         "value": 1
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "hell_hole",
+    "id": "gnoll_raiding_party",
+    "found": [17],
+    "esp": 8,
+    "level": 2,
     "army": [
       {
-        "id": "archdemon",
+        "id": "gnoll_raider",
+        "value": 25
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "gnoll_camp",
+    "found": [17, 18],
+    "esp": 37,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "gnoll_leader",
+        "value": 1
+      },
+      {
+        "id": "gnoll_raider",
+        "value": 180
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
         "value": 3
       },
       {
-        "id": "greater_demon",
-        "value": 52
-      },
+        "type": "resource",
+        "id": "tools",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "golem_cave",
+    "found": [21],
+    "esp": 15,
+    "level": 3,
+    "army": [
       {
-        "id": "lesser_demon",
-        "value": 98
+        "id": "golem",
+        "value": 15
       }
     ],
-    "level": 5,
-    "tier": 5,
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.7
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "gulud_ugdun",
+    "found": [37],
+    "esp": 25,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "path_children",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "gulud",
+        "value": 1
+      },
+      {
+        "id": "orc_worker",
+        "value": 350
+      }
+    ],
     "gen": [
       {
         "type": "resource",
         "id": "fame",
-        "value": 70,
+        "value": 150,
         "fix": true
       },
       {
         "type": "resource",
-        "id": "faith",
-        "value": 2
-      },
-      {
-        "type": "resource",
         "id": "mana",
-        "value": 2
+        "value": 5
       },
       {
         "type": "resource",
         "id": "crystal",
-        "value": 0.2
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "harpy_nest",
+    "found": [18],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "harpy",
+        "value": 26
       }
     ],
-    "onlyDefend": false
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "haunted_library",
+    "found": [5],
+    "esp": 4,
+    "level": 1,
+    "army": [
+      {
+        "id": "ghost",
+        "value": 9
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 0.5
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 1500
+      }
+    ]
+  },
+  {
+    "id": "hobgoblin_encampment",
+    "found": [19],
+    "esp": 7,
+    "level": 2,
+    "army": [
+      {
+        "id": "hobgoblin_grunt",
+        "value": 21
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 0.3
+      }
+    ]
   },
   {
     "id": "hobgoblin_chieftain",
+    "found": [32],
+    "esp": 21,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "guild",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "hobgoblin_grunt",
@@ -1850,8 +1419,6 @@
         "value": 1
       }
     ],
-    "level": 4,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1868,107 +1435,30 @@
         "id": "steel",
         "value": 0.5
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "huge_cave",
-    "army": [
+    "id": "hydra_pit",
+    "found": [18],
+    "esp": 5,
+    "level": 4,
+    "reqFound": [
       {
-        "id": "skeletal_knight",
-        "value": 50
-      },
-      {
-        "id": "skeleton",
-        "value": 750
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "research",
-        "value": 1.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "king_reptiles",
-    "army": [
-      {
-        "id": "velociraptors",
-        "value": 67
-      },
-      {
-        "id": "tyrannosaurus",
+        "type": "tech",
+        "id": "monster_hunting",
         "value": 1
       }
     ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "food",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "wood",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "stone",
-        "value": 2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "north_sacred_place",
     "army": [
       {
-        "id": "frost_elemental",
-        "value": 28
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "faith",
+        "id": "hydra",
         "value": 1
       },
       {
-        "type": "resource",
-        "id": "mana",
-        "value": 1
+        "id": "giant_snake",
+        "value": 110
       }
     ],
-    "onlyDefend": false
-  },
-  {
-    "id": "old_outpost",
-    "army": [
-      {
-        "id": "bandit",
-        "value": 120
-      },
-      {
-        "id": "mercenary_veteran",
-        "value": 90
-      },
-      {
-        "id": "deserter",
-        "value": 50
-      }
-    ],
-    "level": 5,
-    "tier": 5,
     "gen": [
       {
         "type": "resource",
@@ -1978,331 +1468,328 @@
       },
       {
         "type": "resource",
-        "id": "gold",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "orc_raiding_party",
-    "army": [
-      {
-        "id": "orc_warrior",
-        "value": 200
-      },
-      {
-        "id": "orc_warlord",
-        "value": 1
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "gold",
-        "value": 2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "orcish_prison_camp",
-    "army": [
-      {
-        "id": "orc_worker",
-        "value": 120
-      },
-      {
-        "id": "orc_warrior",
-        "value": 90
-      },
-      {
-        "id": "orc_warg_rider",
-        "value": 60
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "population",
-        "id": "unemployed",
-        "value": 2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "south_sacred_place",
-    "army": [
-      {
-        "id": "fire_elemental",
-        "value": 28
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "faith",
-        "value": 1
+        "id": "cow",
+        "value": 0.5
       },
       {
         "type": "resource",
-        "id": "mana",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "succubus_library",
-    "army": [
-      {
-        "id": "succubus",
-        "value": 90
-      }
-    ],
-    "level": 5,
-    "tier": 5,
-    "gen": [
-      {
-        "type": "cap",
-        "id": "research",
-        "value": 5000
+        "id": "horse",
+        "value": 0.3
       },
       {
-        "type": "cap",
+        "type": "resource",
         "id": "crystal",
-        "value": 1000
+        "value": 0.3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "west_sacred_place",
-    "army": [
+    "id": "lead_golem_mine",
+    "found": [31],
+    "esp": 28,
+    "level": 4,
+    "reqFound": [
       {
-        "id": "earth_elemental",
-        "value": 28
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
       }
     ],
-    "level": 5,
-    "tier": 5,
+    "army": [
+      {
+        "id": "lead_golem",
+        "value": 42
+      }
+    ],
     "gen": [
       {
         "type": "resource",
-        "id": "faith",
+        "id": "copper",
         "value": 1
       },
       {
         "type": "resource",
-        "id": "mana",
+        "id": "iron",
         "value": 1
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "ancient_giant",
-    "army": [
+    "id": "lich_temple",
+    "found": [19],
+    "esp": 31,
+    "level": 4,
+    "reqFound": [
       {
-        "id": "ancient_giant",
+        "type": "tech",
+        "id": "necromancy",
         "value": 1
-      },
-      {
-        "id": "hill_giant",
-        "value": 140
       }
     ],
-    "level": 6,
-    "tier": 6,
+    "army": [
+      {
+        "id": "zombie",
+        "value": 70
+      },
+      {
+        "id": "ghoul",
+        "value": 40
+      },
+      {
+        "id": "ghast",
+        "value": 30
+      },
+      {
+        "id": "lich",
+        "value": 1
+      }
+    ],
     "gen": [
       {
         "type": "resource",
         "id": "fame",
-        "value": 100,
+        "value": 40,
         "fix": true
       },
       {
         "type": "resource",
-        "id": "saltpetre",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "bugbear_war_party",
-    "army": [
-      {
-        "id": "bugbear_chieftain",
+        "id": "faith",
         "value": 1
       },
       {
-        "id": "bugbear",
-        "value": 120
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "kobold_city",
+    "found": [14],
+    "esp": 18,
+    "level": 3,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "underground_kobold_mission",
+        "value": 1
       }
     ],
-    "level": 5,
-    "tier": 6,
+    "army": [
+      {
+        "id": "kobold",
+        "value": 99
+      }
+    ],
     "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      },
       {
         "type": "resource",
         "id": "gold",
         "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "kobold_underground_tunnels",
+    "found": [20],
+    "esp": 9,
+    "level": 2,
+    "army": [
+      {
+        "id": "kobold",
+        "value": 36
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 15,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "korrigan_dolmen",
+    "found": [7],
+    "esp": 3,
+    "level": 1,
+    "army": [
+      {
+        "id": "korrigan_slinger",
+        "value": 6
+      },
+      {
+        "id": "korrigan_swindler",
+        "value": 10
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 0.7
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "markanat_forest",
+    "found": [22],
+    "esp": 12,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "markanat",
+        "value": 1
+      },
+      {
+        "id": "giant_spider",
+        "value": 140
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
       },
       {
         "type": "resource",
         "id": "wood",
         "value": 2
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "citadel_dead",
-    "army": [
+    "id": "minotaur_maze",
+    "found": [20],
+    "esp": 5,
+    "level": 4,
+    "reqFound": [
       {
-        "id": "zombie",
-        "value": 350
-      },
-      {
-        "id": "ghoul",
-        "value": 130
-      },
-      {
-        "id": "wyvern",
-        "value": 30
+        "type": "tech",
+        "id": "monster_hunting",
+        "value": 1
       }
     ],
-    "level": 5,
-    "tier": 6,
+    "army": [
+      {
+        "id": "minotaur",
+        "value": 1
+      },
+      {
+        "id": "kobold",
+        "value": 210
+      }
+    ],
     "gen": [
       {
         "type": "resource",
         "id": "fame",
-        "value": 70,
+        "value": 50,
         "fix": true
       },
       {
         "type": "resource",
-        "id": "natronite",
-        "value": 0.5
-      },
-      {
-        "type": "resource",
-        "id": "saltpetre",
-        "value": 0.2
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "earth_elemental_circle",
-    "army": [
-      {
-        "id": "earth_elemental",
-        "value": 56
-      }
-    ],
-    "level": 6,
-    "tier": 6,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "fire_elemental_circle",
-    "army": [
-      {
-        "id": "fire_elemental",
-        "value": 56
-      }
-    ],
-    "level": 6,
-    "tier": 6,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "frost_elemental_circle",
-    "army": [
-      {
-        "id": "frost_elemental",
-        "value": 56
-      }
-    ],
-    "level": 6,
-    "tier": 6,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "gnoll_camp",
-    "army": [
-      {
-        "id": "gnoll_leader",
+        "id": "stone",
         "value": 1
       },
       {
-        "id": "gnoll_raider",
-        "value": 180
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "mountain_cave",
+    "found": [22],
+    "esp": 17,
+    "level": 3,
+    "army": [
+      {
+        "id": "mountain_giant",
+        "value": 1
+      },
+      {
+        "id": "goblin_marauder",
+        "value": 52
+      },
+      {
+        "id": "goblin_warrior",
+        "value": 28
       }
     ],
-    "level": 5,
-    "tier": 6,
     "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 40,
+        "fix": true
+      },
       {
         "type": "resource",
         "id": "gold",
-        "value": 3
+        "value": 2
       },
       {
         "type": "resource",
-        "id": "tools",
-        "value": 1
+        "id": "steel",
+        "value": 0.3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "mountain_valley",
+    "found": [29],
+    "esp": 50,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "frost_giant",
@@ -2313,8 +1800,6 @@
         "value": 120
       }
     ],
-    "level": 5,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2337,11 +1822,244 @@
         "id": "food",
         "value": 1000
       }
+    ]
+  },
+  {
+    "id": "naga_nest",
+    "found": [23],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "naga",
+        "value": 12
+      }
     ],
-    "onlyDefend": false
+    "gen": [
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 0.2
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "djinn_palace",
+    "found": [25],
+    "esp": 32,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "strange_lamp",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "djinn",
+        "value": 1
+      },
+      {
+        "id": "naga",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "necromancer_crypt",
+    "found": [26],
+    "esp": 14,
+    "level": 3,
+    "army": [
+      {
+        "id": "ghoul",
+        "value": 26
+      },
+      {
+        "id": "ghast",
+        "value": 16
+      },
+      {
+        "id": "necromancer",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 20,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "north_sacred_place",
+    "found": [27],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "sacred_place",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "frost_elemental",
+        "value": 28
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mercenary_camp",
+    "found": [28],
+    "esp": 32,
+    "level": 3,
+    "army": [
+      {
+        "id": "mercenary_veteran",
+        "value": 30
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "myconid_cavern",
+    "found": [29],
+    "esp": 14,
+    "level": 3,
+    "army": [
+      {
+        "id": "myconid",
+        "value": 42
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "old_herd",
+    "found": [28, 29],
+    "esp": 4,
+    "level": 1,
+    "army": [
+      {
+        "id": "dirty_rat",
+        "value": 18
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "cow",
+        "value": 200
+      },
+      {
+        "type": "cap",
+        "id": "horse",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "old_storage_room",
+    "found": [29, 30, 31],
+    "esp": 4,
+    "level": 1,
+    "army": [
+      {
+        "id": "spider",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 500
+      }
+    ]
   },
   {
     "id": "orc_gormiak_citadel",
+    "found": [7, 8, 9],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "orcish_citadel",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "orc_warrior",
@@ -2356,8 +2074,6 @@
         "value": 3
       }
     ],
-    "level": 6,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2374,11 +2090,20 @@
         "id": "unemployed",
         "value": 3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "orc_horith_citadel",
+    "found": [10, 11],
+    "esp": 50,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "mankind_darkest",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "orc_ironskin",
@@ -2389,8 +2114,6 @@
         "value": 150
       }
     ],
-    "level": 6,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2407,11 +2130,20 @@
         "id": "unemployed",
         "value": 3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "orc_ogsog_citadel",
+    "found": [12, 13],
+    "esp": 50,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "mankind_darkest",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "orc_champion",
@@ -2426,8 +2158,6 @@
         "value": 5
       }
     ],
-    "level": 6,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2444,11 +2174,20 @@
         "id": "unemployed",
         "value": 3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "orc_turgon_citadel",
+    "found": [14, 15],
+    "esp": 50,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "mankind_darkest",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "orc_shaman",
@@ -2463,8 +2202,6 @@
         "value": 1
       }
     ],
-    "level": 6,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2481,11 +2218,251 @@
         "id": "unemployed",
         "value": 3
       }
+    ]
+  },
+  {
+    "id": "orc_raiding_party",
+    "found": [4, 5, 6],
+    "esp": 34,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "orcish_threat",
+        "value": 1
+      }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "orc_warrior",
+        "value": 200
+      },
+      {
+        "id": "orc_warlord",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "orcish_prison_camp",
+    "found": [1, 2, 3],
+    "esp": 34,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "burned_farms",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "orc_worker",
+        "value": 120
+      },
+      {
+        "id": "orc_warrior",
+        "value": 90
+      },
+      {
+        "id": "orc_warg_rider",
+        "value": 60
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "rusted_warehouse",
+    "found": [31, 32],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "bandit",
+        "value": 22
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 500
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "sleeping_titan",
+    "found": [38],
+    "esp": 1,
+    "level": 8,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "titan_mosaic",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "titan",
+        "value": 1
+      },
+      {
+        "id": "golem",
+        "value": 750
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "skullface_encampment",
+    "found": [1, 2],
+    "esp": 13,
+    "level": 3,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "bandit_chief",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "skullface",
+        "value": 1
+      },
+      {
+        "id": "bandit",
+        "value": 75
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 15,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "snakes_nest",
+    "found": [30],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "snake",
+        "value": 9
+      },
+      {
+        "id": "giant_snake",
+        "value": 4
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "cow",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "spider_forest",
+    "found": [31],
+    "esp": 13,
+    "level": 3,
+    "army": [
+      {
+        "id": "spider",
+        "value": 32
+      },
+      {
+        "id": "giant_spider",
+        "value": 8
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.1
+      }
+    ]
   },
   {
     "id": "son_atamar",
+    "found": [21],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "deserter_origin",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "deserter",
@@ -2496,8 +2473,6 @@
         "value": 30
       }
     ],
-    "level": 5,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2515,11 +2490,406 @@
         "id": "supplies",
         "value": 0.2
       }
+    ]
+  },
+  {
+    "id": "strange_village",
+    "found": [32],
+    "esp": 17,
+    "level": 3,
+    "army": [
+      {
+        "id": "charmed_dweller",
+        "value": 47
+      }
     ],
-    "onlyDefend": false
+    "gen": [
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "south_sacred_place",
+    "found": [33, 34],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "sacred_place",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "fire_elemental",
+        "value": 28
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "succubus_library",
+    "found": [33],
+    "esp": 29,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "succubus",
+        "value": 90
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 1000
+      }
+    ]
+  },
+  {
+    "id": "swarm_wasp",
+    "found": [29],
+    "esp": 10,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "new_world_exploration",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "giant_wasp",
+        "value": 540
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "temple_gargoyle",
+    "found": [32],
+    "esp": 7,
+    "level": 2,
+    "army": [
+      {
+        "id": "gargoyle",
+        "value": 14
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.6
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 0.6
+      }
+    ]
+  },
+  {
+    "id": "troll_cave",
+    "found": [35],
+    "esp": 8,
+    "level": 2,
+    "army": [
+      {
+        "id": "troll_cave",
+        "value": 9
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "west_sacred_place",
+    "found": [37, 38],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "prayer",
+        "id": "sacred_place",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "earth_elemental",
+        "value": 28
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "wolf_pack",
+    "found": [24],
+    "esp": 2,
+    "level": 1,
+    "army": [
+      {
+        "id": "wolf",
+        "value": 9
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "worn_down_crypt",
+    "found": [37],
+    "esp": 14,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "guild",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "skeletal_knight",
+        "value": 67
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "huge_cave",
+    "found": [11],
+    "esp": 26,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "underground_library",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "skeletal_knight",
+        "value": 50
+      },
+      {
+        "id": "skeleton",
+        "value": 750
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 1.5
+      }
+    ]
+  },
+  {
+    "id": "wyvern_nest",
+    "found": [36],
+    "esp": 12,
+    "level": 3,
+    "army": [
+      {
+        "id": "wyvern",
+        "value": 12
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "cave_bats",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 33, 34, 35, 36, 37, 38, 39, 40],
+    "esp": 1,
+    "level": 0,
+    "army": [
+      {
+        "id": "vampire_bat",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 0.3
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "kobold_looters",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
+    "esp": 1,
+    "level": 0,
+    "army": [
+      {
+        "id": "kobold",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.5
+      }
+    ]
+  },
+  {
+    "id": "nasty_pillagers",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 26, 27, 28, 29, 30, 31, 32],
+    "esp": 1,
+    "level": 0,
+    "army": [
+      {
+        "id": "pillager",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "prisoner_wagon",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 26, 27, 28, 29, 30, 31, 32],
+    "esp": 1,
+    "level": 0,
+    "army": [
+      {
+        "id": "bandit",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "rat_cellar",
+    "found": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 26, 27, 28, 29, 30, 31, 32],
+    "esp": 1,
+    "level": 0,
+    "army": [
+      {
+        "id": "dirty_rat",
+        "value": 3
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 0.5
+      }
+    ]
   },
   {
     "id": "vampire_crypt",
+    "found": [35, 36],
+    "esp": 35,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "long_expedition",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "vampire_bat",
@@ -2530,8 +2900,6 @@
         "value": 60
       }
     ],
-    "level": 5,
-    "tier": 6,
     "gen": [
       {
         "type": "resource",
@@ -2543,82 +2911,20 @@
         "id": "building_material",
         "value": 0.2
       }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "wind_elemental_circle",
-    "army": [
-      {
-        "id": "wind_elemental",
-        "value": 56
-      }
-    ],
-    "level": 6,
-    "tier": 6,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "mana",
-        "value": 2
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "worn_down_crypt",
-    "army": [
-      {
-        "id": "skeletal_knight",
-        "value": 67
-      }
-    ],
-    "level": 4,
-    "tier": 6,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "research",
-        "value": 1
-      }
-    ],
-    "onlyDefend": false
-  },
-  {
-    "id": "eternal_halls",
-    "army": [
-      {
-        "id": "eternal_guardian",
-        "value": 35
-      },
-      {
-        "id": "golem",
-        "value": 90
-      }
-    ],
-    "level": 5,
-    "tier": 7,
-    "gen": [
-      {
-        "type": "resource",
-        "id": "building_material",
-        "value": 0.8
-      },
-      {
-        "type": "resource",
-        "id": "crystal",
-        "value": 0.5
-      }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
     "id": "vampire_lair",
+    "found": [37],
+    "esp": 32,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "trail_blood",
+        "value": 1
+      }
+    ],
     "army": [
       {
         "id": "vampire",
@@ -2629,8 +2935,6 @@
         "value": 140
       }
     ],
-    "level": 5,
-    "tier": 7,
     "gen": [
       {
         "type": "resource",
@@ -2648,60 +2952,141 @@
         "id": "supplies",
         "value": 0.3
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "gold_mine",
-    "army": [
+    "id": "far_west_island",
+    "found": [17, 18, 19, 20, 21, 22, 23, 24, 25, 35, 36],
+    "esp": 10,
+    "level": 1,
+    "reqFound": [
       {
-        "id": "troll_battle",
-        "value": 70
-      },
-      {
-        "id": "troll_cave",
-        "value": 120
+        "type": "tech",
+        "id": "seafaring",
+        "value": 1
       }
     ],
-    "level": 6,
-    "tier": 8,
+    "army": [
+      {
+        "id": "ravenous_crab",
+        "value": 15
+      }
+    ],
     "gen": [
       {
         "type": "resource",
         "id": "fame",
-        "value": 150,
+        "value": 10,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "old_outpost",
+    "found": [34],
+    "esp": 12,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "free_old_outpost",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "bandit",
+        "value": 120
+      },
+      {
+        "id": "mercenary_veteran",
+        "value": 90
+      },
+      {
+        "id": "deserter",
+        "value": 50
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
         "fix": true
       },
       {
         "type": "resource",
         "id": "gold",
-        "value": 15
+        "value": 1
       }
-    ],
-    "onlyDefend": false
+    ]
   },
   {
-    "id": "sleeping_titan",
-    "army": [
+    "id": "forgotten_shelter",
+    "found": [36],
+    "esp": 22,
+    "level": 5,
+    "reqFound": [
       {
-        "id": "titan",
+        "type": "tech",
+        "id": "galliard_secret",
         "value": 1
-      },
-      {
-        "id": "golem",
-        "value": 750
       }
     ],
-    "level": 8,
-    "tier": 8,
+    "army": [
+      {
+        "id": "spectra_memory",
+        "value": 250
+      }
+    ],
     "gen": [
       {
         "type": "resource",
         "id": "fame",
-        "value": 150,
+        "value": 50,
         "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "ancient_giant",
+    "found": [38],
+    "esp": 31,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "wings_freedom",
+        "value": 1
       }
     ],
-    "onlyDefend": false
+    "army": [
+      {
+        "id": "ancient_giant",
+        "value": 1
+      },
+      {
+        "id": "hill_giant",
+        "value": 140
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 1
+      }
+    ]
   }
 ]
