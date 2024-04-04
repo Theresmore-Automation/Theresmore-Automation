@@ -67,7 +67,7 @@ const executeAction = async () => {
     let target
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
-    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
+    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 2)
 
     if (sendToAttackButton) {
       if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {

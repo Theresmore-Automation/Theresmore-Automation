@@ -60,11 +60,14 @@ const getEnemyArmy = (enemyId) => {
     .find((fight) => fight.key === enemyId || fight.id === enemyId)
     .army.map((unit) => {
       const unitDetails = units.find((enemy) => enemy.id === unit.id)
+      const value = unitDetails.cap
+        ? Math.min(Math.round(unit.value * difficultyModeMultiplier * randomBonus), unitDetails.cap)
+        : Math.round(unit.value * difficultyModeMultiplier * randomBonus)
 
       return {
         ...unit,
         ...unitDetails,
-        value: Math.round(unit.value * difficultyModeMultiplier * randomBonus),
+        value,
       }
     })
 
