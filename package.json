@@ -50,7 +50,7 @@
     "pretty-quick": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.28.1",
+    "rollup": "^4.16.1",
     "rollup-plugin-userscript-metablock": "^0.3.3",
     "serve": "^14.2.1",
     "tslib": "^2.6.2",
