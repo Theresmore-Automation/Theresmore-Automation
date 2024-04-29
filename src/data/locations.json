@@ -598,6 +598,50 @@
     ]
   },
   {
+    "id": "dense_oasis",
+    "found": [29],
+    "esp": 48,
+    "level": 5,
+    "army": [
+      {
+        "id": "naga",
+        "value": 180
+      },
+      {
+        "id": "naga_royal_guard",
+        "value": 115
+      },
+      {
+        "id": "naga_princess",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 20,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 2,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 3
+      }
+    ]
+  },
+  {
     "id": "hell_hole",
     "found": [12],
     "esp": 42,
@@ -1515,6 +1559,31 @@
     ]
   },
   {
+    "id": "leprechaun_den",
+    "found": [37, 38, 39],
+    "esp": 11,
+    "level": 2,
+    "army": [
+      {
+        "id": "trap",
+        "value": 36
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.2
+      }
+    ]
+  },
+  {
     "id": "lich_temple",
     "found": [19],
     "esp": 31,
@@ -1627,6 +1696,26 @@
         "type": "resource",
         "id": "tools",
         "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "kobold_stash",
+    "found": [11],
+    "esp": 9,
+    "level": 2,
+    "army": [
+      {
+        "id": "kobold",
+        "value": 26
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
       }
     ]
   },
@@ -2285,6 +2374,31 @@
     ]
   },
   {
+    "id": "raider_hideout",
+    "found": [22],
+    "esp": 11,
+    "level": 2,
+    "army": [
+      {
+        "id": "raider",
+        "value": 40
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 0.4
+      }
+    ]
+  },
+  {
     "id": "rusted_warehouse",
     "found": [31, 32],
     "esp": 8,
@@ -2392,6 +2506,40 @@
         "type": "resource",
         "id": "food",
         "value": 1
+      }
+    ]
+  },
+  {
+    "id": "smuggler_warehouse",
+    "found": [35, 36, 37],
+    "esp": 31,
+    "level": 4,
+    "army": [
+      {
+        "id": "bandit",
+        "value": 96
+      },
+      {
+        "id": "smuggler",
+        "value": 56
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 0.4
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 0.4
       }
     ]
   },

@@ -1207,6 +1207,77 @@
     ]
   },
   {
+    "id": "sacred_den_b",
+    "cat": "resource",
+    "tab": 1,
+    "age": 1,
+    "req": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1400,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1200,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 600,
+        "multi": 1.4
+      },
+      {
+        "type": "prayer",
+        "id": "sacred_den_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 1
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 400
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "undead_herd",
     "cat": "resource",
     "tab": 1,
@@ -2376,6 +2447,54 @@
     ]
   },
   {
+    "id": "mage_academy_b",
+    "cat": "science",
+    "tab": 1,
+    "age": 1,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 1200,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 900,
+        "multi": 1.4
+      },
+      {
+        "type": "prayer",
+        "id": "mage_academy_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 400
+      }
+    ]
+  },
+  {
     "id": "university",
     "cat": "science",
     "tab": 1,
@@ -2763,6 +2882,84 @@
         "type": "cap",
         "id": "crystal",
         "value": 100
+      }
+    ]
+  },
+  {
+    "id": "highschool_magic_b",
+    "cat": "science",
+    "tab": 1,
+    "age": 3,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 4000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 4000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1500,
+        "multi": 1.2
+      },
+      {
+        "type": "prayer",
+        "id": "highschool_magic_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 4
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 4
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 0.6
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2,
+        "perc": true
       }
     ]
   },
@@ -4030,6 +4227,78 @@
     ]
   },
   {
+    "id": "magic_workshop_b",
+    "cat": "defense",
+    "tab": 1,
+    "age": 3,
+    "cap": 10,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 10000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8000,
+        "multi": 1.3
+      },
+      {
+        "type": "prayer",
+        "id": "magic_workshop_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "priest",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "sacred_golem",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
     "id": "officer_training_ground",
     "cat": "defense",
     "tab": 1,
@@ -4191,6 +4460,99 @@
         "gen": "defense",
         "value": 50,
         "perc": false
+      }
+    ]
+  },
+  {
+    "id": "magic_stable_b",
+    "cat": "defense",
+    "tab": 1,
+    "age": 4,
+    "cap": 10,
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "prayer",
+        "id": "magic_stable_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "knight",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "knight",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 5,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 3,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 10
       }
     ]
   },
@@ -5307,6 +5669,142 @@
       {
         "type": "tech",
         "id": "natrocity",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "steel_palace_b",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 1,
+    "age": 4,
+    "req": [
+      {
+        "type": "building",
+        "id": "steel_palace_b_part",
+        "value": 10,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 300,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "steel_palace_b_part",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 10,
+    "age": 4,
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 60000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 60000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 40000
+      },
+      {
+        "type": "prayer",
+        "id": "steel_palace_f",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "ivory_tower_b",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 1,
+    "age": 4,
+    "req": [
+      {
+        "type": "building",
+        "id": "ivory_tower_b_part",
+        "value": 10,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 200,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 10,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "ivory_tower_b_part",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 10,
+    "age": 4,
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 60000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 60000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 40000
+      },
+      {
+        "type": "prayer",
+        "id": "ivory_tower_f",
         "value": 1
       }
     ]
@@ -6599,6 +7097,48 @@
         "id": "luck",
         "value": 1,
         "fix": true
+      }
+    ]
+  },
+  {
+    "id": "mana_fields_b",
+    "cat": "faith",
+    "tab": 1,
+    "age": 1,
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1500,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1000,
+        "multi": 1.3
+      },
+      {
+        "type": "prayer",
+        "id": "mage_fields_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 4
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 400
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 400
       }
     ]
   },

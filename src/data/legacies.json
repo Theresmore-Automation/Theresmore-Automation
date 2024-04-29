@@ -144,6 +144,28 @@
     ]
   },
   {
+    "id": "service_gods",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 1000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 1000
+      }
+    ]
+  },
+  {
     "id": "charism",
     "req": [
       {
@@ -466,6 +488,33 @@
         "type": "cap",
         "id": "horse",
         "value": 250
+      }
+    ]
+  },
+  {
+    "id": "service_gods_II",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 4
+      },
+      {
+        "type": "legacy",
+        "id": "service_gods",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 2500
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 2500
       }
     ]
   },
@@ -1350,6 +1399,33 @@
         "type": "cap",
         "id": "saltpetre",
         "value": 2500
+      }
+    ]
+  },
+  {
+    "id": "service_gods_III",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 8
+      },
+      {
+        "type": "legacy",
+        "id": "service_gods_II",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 6000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 6000
       }
     ]
   },
@@ -2610,6 +2686,33 @@
     ]
   },
   {
+    "id": "service_gods_IV",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 16
+      },
+      {
+        "type": "legacy",
+        "id": "service_gods_III",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 12000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 12000
+      }
+    ]
+  },
+  {
     "id": "clever_villagers_III",
     "req": [
       {
@@ -3194,6 +3297,33 @@
         "id": "luck",
         "value": 6,
         "fix": true
+      }
+    ]
+  },
+  {
+    "id": "service_gods_V",
+    "req": [
+      {
+        "type": "resource",
+        "id": "legacy",
+        "value": 32
+      },
+      {
+        "type": "legacy",
+        "id": "service_gods_IV",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 25000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 25000
       }
     ]
   },
