@@ -148,12 +148,13 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
     forces.player.attack.forEach((attUnit) => {
       if (typeof forces.enemy.defense[enemyUnitIdx] !== 'undefined') {
         let unitAttack = attUnit.attack
+        let eff = 1
         let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
         if (effectiveType === forces.enemy.defense[enemyUnitIdx].cat) {
-          unitAttack *= 2
+          eff *= 2
         }
 
-        if (unitAttack >= forces.enemy.defense[enemyUnitIdx].defense) {
+        if (unitAttack * eff >= forces.enemy.defense[enemyUnitIdx].defense) {
           deadUnits.enemy.push(forces.enemy.defense[enemyUnitIdx].id)
           enemyUnitIdx += 1
         } else {
@@ -165,12 +166,13 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
     forces.enemy.attack.forEach((attUnit) => {
       if (typeof forces.player.defense[playerUnitIdx] !== 'undefined') {
         let unitAttack = attUnit.attack
+        let eff = 1
         let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
         if (effectiveType === forces.player.defense[playerUnitIdx].cat) {
-          unitAttack *= 2
+          eff *= 2
         }
 
-        if (unitAttack >= forces.player.defense[playerUnitIdx].defense) {
+        if (unitAttack * eff >= forces.player.defense[playerUnitIdx].defense) {
           deadUnits.player.push(forces.player.defense[playerUnitIdx].id)
           playerUnitIdx += 1
         } else {
