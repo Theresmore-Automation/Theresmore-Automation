@@ -5,7 +5,7 @@ const updateStats = () => {
 
   if (controlPanel && reactUtil.getGameData()) {
     controlPanel.querySelector('.legacyCount').innerText = reactUtil.getGameData().LegacyStore.ownedLegacies.length ?? 0
-    controlPanel.querySelector('.lpCount').innerText = reactUtil.getGameData().run.resources.find((res) => res.id === 'legacy').value ?? 0
+    controlPanel.querySelector('.lpCount').innerText = (reactUtil.getGameData().run.resources.find((res) => res.id === 'legacy') || { value: 0 }).value ?? 0
   }
 }
 

@@ -37,10 +37,10 @@ var LZString = (function () {
         return null == r
           ? ''
           : '' == r
-          ? null
-          : i._decompress(r.length, 32, function (e) {
-              return o(n, r.charAt(e))
-            })
+            ? null
+            : i._decompress(r.length, 32, function (e) {
+                return o(n, r.charAt(e))
+              })
       },
       compressToUTF16: function (o) {
         return null == o
@@ -53,10 +53,10 @@ var LZString = (function () {
         return null == o
           ? ''
           : '' == o
-          ? null
-          : i._decompress(o.length, 16384, function (r) {
-              return o.charCodeAt(r) - 32
-            })
+            ? null
+            : i._decompress(o.length, 16384, function (r) {
+                return o.charCodeAt(r) - 32
+              })
       },
       compressToUint8Array: function (o) {
         for (var r = i.compress(o), n = new Uint8Array(2 * r.length), e = 0, t = r.length; t > e; e++) {
@@ -87,11 +87,11 @@ var LZString = (function () {
         return null == r
           ? ''
           : '' == r
-          ? null
-          : ((r = r.replace(/ /g, '+')),
-            i._decompress(r.length, 32, function (n) {
-              return o(e, r.charAt(n))
-            }))
+            ? null
+            : ((r = r.replace(/ /g, '+')),
+              i._decompress(r.length, 32, function (n) {
+                return o(e, r.charAt(n))
+              }))
       },
       compress: function (o) {
         return i._compress(o, 16, function (o) {
@@ -162,10 +162,10 @@ var LZString = (function () {
         return null == o
           ? ''
           : '' == o
-          ? null
-          : i._decompress(o.length, 32768, function (r) {
-              return o.charCodeAt(r)
-            })
+            ? null
+            : i._decompress(o.length, 32768, function (r) {
+                return o.charCodeAt(r)
+              })
       },
       _decompress: function (o, n, e) {
         var t,
@@ -342,8 +342,8 @@ const createPanel = (startFunction) => {
           <div class="taTabs">
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${
-    CONSTANTS.SUBPAGES.CITY
-  }" checked class="taTab-switch">
+                CONSTANTS.SUBPAGES.CITY
+              }" checked class="taTab-switch">
               <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label">${CONSTANTS.SUBPAGES.CITY}</label>
               <div class="taTab-content">
                 <div class="mb-2"><label>Enabled:
@@ -368,8 +368,8 @@ const createPanel = (startFunction) => {
                           return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
                           Max:
                             <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${
-                            CONSTANTS.SUBPAGES.CITY
-                          }" data-key="options" data-subkey="${building.id}"
+                              CONSTANTS.SUBPAGES.CITY
+                            }" data-key="options" data-subkey="${building.id}"
                             class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
                             value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
                           Prio: ${generatePrioritySelect({
@@ -390,8 +390,8 @@ const createPanel = (startFunction) => {
             </div>
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${
-    CONSTANTS.SUBPAGES.COLONY
-  }" class="taTab-switch">
+                CONSTANTS.SUBPAGES.COLONY
+              }" class="taTab-switch">
               <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label">${CONSTANTS.SUBPAGES.COLONY}</label>
               <div class="taTab-content">
                 <div class="mb-2"><label>Enabled:
@@ -416,8 +416,8 @@ const createPanel = (startFunction) => {
                           return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
                           Max:
                             <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${
-                            CONSTANTS.SUBPAGES.COLONY
-                          }" data-key="options" data-subkey="${building.id}"
+                              CONSTANTS.SUBPAGES.COLONY
+                            }" data-key="options" data-subkey="${building.id}"
                             class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
                             value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
                           Prio: ${generatePrioritySelect({
@@ -615,8 +615,8 @@ const createPanel = (startFunction) => {
                         return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(unit.id, 'uni_')}</span><br/>
                         Max:
                           <input type="number" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ARMY}" data-key="options" data-subkey="${
-                          unit.id
-                        }"
+                            unit.id
+                          }"
                           class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
                           value="0" min="-1" max="${unit.cap ? unit.cap : 999}" step="1" /><br />
                         Prio: ${generatePrioritySelect({
@@ -734,8 +734,8 @@ const createPanel = (startFunction) => {
           <div class="taTabs">
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.MAGIC}PageOptions" id="${CONSTANTS.PAGES.MAGIC}PageOptions-${
-    CONSTANTS.SUBPAGES.PRAYERS
-  }" checked class="taTab-switch">
+                CONSTANTS.SUBPAGES.PRAYERS
+              }" checked class="taTab-switch">
               <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.PRAYERS}" class="taTab-label">${CONSTANTS.SUBPAGES.PRAYERS}</label>
               <div class="taTab-content">
                 <div class="mb-2"><label>Enabled:
@@ -908,6 +908,25 @@ const createPanel = (startFunction) => {
             <div class="mb-2"><label>Minimum Legacies to NG+:
               <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
               data-setting="ngplus" data-key="value" value="0" min="0" max="999" step="1" /></label>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h3 class="text-lg">Auto-difficulty:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="difficulty" data-key="enabled" class="option" />
+            </label></div>
+
+            <div class="mb-2">
+              Difficulty to pick:
+
+              <select class="option dark:bg-mydark-200"
+              data-setting="difficulty" data-key="selected"
+              >
+                ${['difficulty_99', 'difficulty_0', 'difficulty_1', 'difficulty_2', 'difficulty_3']
+                  .map((difficulty) => `<option value="${difficulty}">${translate(difficulty)}</option>`)
+                  .join('')}
+              </select>
             </div>
           </div>
 

@@ -7,18 +7,20 @@ const modalsToKill = Object.keys(i18n.en)
 
 const hideFullPageOverlay = () => {
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
-    const modalTitle = document.querySelector('#headlessui-portal-root div.modal-container h3.modal-title')
+    const modalTitles = [...document.querySelectorAll('#headlessui-portal-root div.modal-container h3.modal-title')]
 
-    if (modalTitle) {
-      if (!modalsToKill.includes(modalTitle.innerText.trim())) {
-        return
-      }
+    modalTitles.forEach((modalTitle) => {
+      if (modalTitle) {
+        if (!modalsToKill.includes(modalTitle.innerText.trim())) {
+          return
+        }
 
-      const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
-      if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
-        fullPageOverlay.click()
+        const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
+        if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+          fullPageOverlay.click()
+        }
       }
-    }
+    })
   }
 }
 

@@ -13,6 +13,10 @@ export const getDefaultOptions = () => {
       selected: '',
       options: {},
     },
+    difficulty: {
+      enabled: false,
+      selected: '',
+    },
     ngplus: {
       enabled: false,
       value: 0,
@@ -25,7 +29,8 @@ export const getDefaultOptions = () => {
         enabled: false,
       },
     },
-    lastMigration: 2,
+    lastMigration: 3,
+    version: taVersion,
   }
 
   Object.keys(CONSTANTS.PAGES).every((key) => {

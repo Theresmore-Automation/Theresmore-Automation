@@ -5,6 +5,7 @@ import autoClicker from './autoClicker'
 import autoAncestor from './autoAncestor'
 import autoPrestige from './autoPrestige'
 import autoNGPlus from './autoNGPlus'
+import autoDifficulty from './autoDifficulty'
 import managePanel from './managePanel'
 import manageOptions from './manageOptions'
 import manageStyles from './manageStyles'
@@ -19,6 +20,7 @@ export default {
   autoAncestor,
   autoPrestige,
   autoNGPlus,
+  autoDifficulty,
   managePanel,
   manageOptions,
   manageStyles,
