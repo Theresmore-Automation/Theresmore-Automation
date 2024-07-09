@@ -1021,6 +1021,13 @@ const createPanel = (startFunction) => {
 
   // Cheats
   document.querySelector('button.maxResources').addEventListener('click', cheats.maxResources)
+  // listen alt + m / option + m
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'm') {
+      e.preventDefault()
+      cheats.maxResources()
+    }
+  })
   document.querySelector('button.maxLegacyPoints10').addEventListener('click', () => {
     cheats.maxLegacyPoints(10)
   })
