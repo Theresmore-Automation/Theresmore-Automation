@@ -44,7 +44,7 @@ const getAllButtons = () => {
 
   const allowedResearch = getAllowedResearch()
     .map((tech) => {
-      let button = buttonsList.find((button) => reactUtil.getNearestKey(button, 6) === keyGen.research.key(tech.key))
+      let button = buttonsList.find((button) => reactUtil.getNearestKey(button, 7) === keyGen.research.key(tech.key))
 
       return { ...tech, button }
     })
