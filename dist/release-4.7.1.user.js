@@ -36207,7 +36207,7 @@ Estimated damage:
           </div>
 
           <div class="mb-2">
-            Prestige Currencies:
+            Presitge Currencies:
               <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies1">+1</button>
               <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies10">+10</button>
               <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies100">+100</button>
