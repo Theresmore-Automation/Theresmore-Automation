@@ -19,8 +19,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
-    "postinstall": "husky install",
+    "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup --config rollup.config.mjs",
     "watch": "npx rollup --config rollup.config.mjs --watch",
