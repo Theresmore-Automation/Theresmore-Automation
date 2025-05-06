@@ -436,6 +436,54 @@ const createPanel = (startFunction) => {
 
               </div>
             </div>
+            <div class="taTab">
+              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${
+                CONSTANTS.SUBPAGES.ABYSS
+              }" class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-label">${CONSTANTS.SUBPAGES.ABYSS}</label>
+              <div class="taTab-content">
+                <div class="mb-2"><label>Enabled:
+                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.ABYSS}" data-key="enabled" class="option" />
+                </label></div>
+
+                <div class="mb-2">
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
+                </div>
+
+                ${buildingCats
+                  .map(
+                    (cat) => `
+                  <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                    <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
+                    <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+                      ${buildings
+                        .filter((building) => building.cat === cat)
+                        .filter((building) => building.tab === 3)
+                        .map((building) => {
+                          return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
+                          Max:
+                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${
+                              CONSTANTS.SUBPAGES.ABYSS
+                            }" data-key="options" data-subkey="${building.id}"
+                            class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
+                            value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
+                          Prio: ${generatePrioritySelect({
+                            page: CONSTANTS.PAGES.BUILD,
+                            subpage: CONSTANTS.SUBPAGES.ABYSS,
+                            key: 'options',
+                            subkey: `prio_${building.id}`,
+                          })}</label></div>`
+                        })
+                        .join('')}
+                    </div>
+                  </div>
+                `
+                  )
+                  .join('')}
+
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1022,7 +1070,8 @@ const createPanel = (startFunction) => {
   // Cheats
   document.querySelector('button.maxResources').addEventListener('click', cheats.maxResources)
 
-  document.addEventListener('keydown', (e) => { // shortcut for maxResources
+  document.addEventListener('keydown', (e) => {
+    // shortcut for maxResources
     if (e.ctrlKey && e.key === 'm') {
       e.preventDefault()
       cheats.maxResources()

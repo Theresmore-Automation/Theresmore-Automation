@@ -6,7 +6,7 @@ import metablock from 'rollup-plugin-userscript-metablock'
 import json from '@rollup/plugin-json'
 
 import fs from 'fs'
-import pkg from './package.json' assert { type: 'json' }
+import pkg from './package.json' with { type: 'json' }
 
 fs.mkdir('dist/', { recursive: true }, () => null)
 
