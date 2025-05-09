@@ -1050,6 +1050,10 @@ const createPanel = (startFunction) => {
               <button type="button" class="btn btn-blue w-min px-4 mr-2 maxPrestigeCurrencies100">+100</button>
           </div>
 
+          <div class="mb-2"><label>Turbo mode:
+            <input type="checkbox" data-setting="turbo" data-key="enabled" class="option" />
+          </div>
+
         </div>
       </div>
     </div>

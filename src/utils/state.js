@@ -29,6 +29,9 @@ export const getDefaultOptions = () => {
         enabled: false,
       },
     },
+    turbo: {
+      enabled: false,
+    },
     lastMigration: 3,
     version: taVersion,
   }
@@ -66,6 +69,7 @@ const state = {
   lastVisited: {},
   buildings: [],
   options: getDefaultOptions(),
+  MainStore: null,
 }
 
 if (typeof localStorage.get('scriptPaused') !== 'undefined') {

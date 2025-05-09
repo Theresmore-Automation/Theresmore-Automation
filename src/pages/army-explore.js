@@ -107,7 +107,12 @@ const executeAction = async () => {
     const sendToExplore = getSendToExplore(container)
     if (!state.scriptPaused && sendToExplore && canExplore) {
       logger({ msgLevel: 'log', msg: `Starting exploration: ${unitsSent.join(', ')}` })
-      sendToExplore.click()
+      if (state.options.turbo.enabled && state.MainStore) {
+        state.MainStore.ArmyStore.startExplore()
+      } else {
+        sendToExplore.click()
+      }
+
       await sleep(25)
     }
   }

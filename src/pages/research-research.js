@@ -94,7 +94,12 @@ const executeAction = async () => {
           }
         }
 
-        research.button.click()
+        if (state.options.turbo.enabled && state.MainStore) {
+          state.MainStore.TechsStore.addTech(research.key)
+        } else {
+          research.button.click()
+        }
+
         logger({ msgLevel: 'log', msg: `Researching ${research.id}` })
         await sleep(25)
 

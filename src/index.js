@@ -87,6 +87,14 @@ const init = async () => {
   setInterval(tasks.addArmyButtons, 100)
   setInterval(tasks.updateStats, 100)
 
+  // Grab the internal MainStore from react
+  const el = document.getElementsByTagName('header')[0]
+  const fiberKey = Object.keys(el).find((k) => k.startsWith('__reactFiber$'))
+  if (fiberKey) {
+    const fiberNode = el[fiberKey]
+    state.MainStore = fiberNode.memoizedProps.children._owner.memoizedProps.MainStore
+  }
+
   start()
 }
 

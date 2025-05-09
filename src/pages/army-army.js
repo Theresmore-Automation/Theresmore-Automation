@@ -169,7 +169,12 @@ const executeAction = async () => {
           .find((gen) => !resources.get(gen.id) || resources.get(gen.id).speed + maxBulkHire * gen.value <= 0)
 
         if (shouldHire) {
-          unit.button.click()
+          if (state.options.turbo.enabled && state.MainStore) {
+            state.MainStore.ArmyStore.addArmyQty(unit.key, maxBulkHire)
+          } else {
+            unit.button.click()
+          }
+
           logger({ msgLevel: 'log', msg: `Hiring ${maxBulkHire} ${unit.id}(s) (current: ${unit.count}, target: ${unit.max})` })
           refreshUnits = true
           await sleep(25)

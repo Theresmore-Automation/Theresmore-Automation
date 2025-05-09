@@ -58,7 +58,12 @@ const executeAction = async () => {
       for (let i = 0; i < buttonsList.length; i++) {
         const prayer = buttonsList[i]
 
-        prayer.button.click()
+        if (state.options.turbo.enabled && state.MainStore) {
+          state.MainStore.MagicStore.addPrayer(prayer.key)
+        } else {
+          prayer.button.click()
+        }
+
         logger({ msgLevel: 'log', msg: `Researching prayer ${prayer.id}` })
         await sleep(25)
 

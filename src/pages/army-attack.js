@@ -130,7 +130,12 @@ const executeAction = async () => {
               msgLevel: 'log',
               msg: `Launching attack against ${target.id}`,
             })
-            sendToAttackButton.click()
+
+            if (state.options.turbo.enabled && state.MainStore) {
+              state.MainStore.ArmyStore.startAttack()
+            } else {
+              sendToAttackButton.click()
+            }
           } else {
             unassignAll(controlBox)
           }

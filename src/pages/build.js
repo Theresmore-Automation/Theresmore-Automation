@@ -96,7 +96,12 @@ export const getBuildSubpage = (subpage) => {
           }
 
           if (shouldBuild) {
-            button.element.click()
+            if (state.options.turbo.enabled && state.MainStore) {
+              state.MainStore.BuildingsStore.addBuilding(button.building.key)
+            } else {
+              button.element.click()
+            }
+
             logger({ msgLevel: 'log', msg: `Building ${button.building.id}` })
             refreshButtons = true
             await sleep(25)
