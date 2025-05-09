@@ -518,6 +518,131 @@
     ]
   },
   {
+    "id": "raider_teaching",
+    "req": [
+      {
+        "type": "building",
+        "id": "mercenary_camp",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 22,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "light_cavarly",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 18,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 25,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cuirassier",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 22,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "pillaging_training",
+    "req": [
+      {
+        "type": "building",
+        "id": "mercenary_camp",
+        "value": 10
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "mercenary_pockets",
+    "req": [
+      {
+        "type": "building",
+        "id": "mercenary_camp",
+        "value": 15
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "colonial_militia",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 11,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "colonial_militia",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 9,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "housing"
   },
   {
@@ -7371,6 +7496,21 @@
     ]
   },
   {
+    "id": "kobu_dominion",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 200000
+      },
+      {
+        "type": "building",
+        "id": "archeological_dig",
+        "value": 10
+      }
+    ]
+  },
+  {
     "id": "honor_humanity",
     "req": [
       {
@@ -7498,6 +7638,898 @@
     ]
   },
   {
+    "id": "elf_decadence",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 215000
+      },
+      {
+        "type": "tech",
+        "id": "the_triumph",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "ancient_artifact",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 230000
+      },
+      {
+        "type": "building",
+        "id": "sanctum_healing",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "cavern_artifact",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 230000
+      },
+      {
+        "type": "enemy",
+        "id": "lost_valley",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "repair_elf_genoma",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 230000
+      },
+      {
+        "type": "building",
+        "id": "containment_cell",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 22,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 22,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 30
+      }
+    ]
+  },
+  {
+    "id": "elves_thrive",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 230000
+      },
+      {
+        "type": "tech",
+        "id": "repair_elf_genoma",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "myth_south",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 230000
+      },
+      {
+        "type": "tech",
+        "id": "repair_elf_genoma",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "kobu_dominion_storehouse",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 200000
+      },
+      {
+        "type": "enemy",
+        "id": "immense_door_e",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "drone",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250000
+      },
+      {
+        "type": "diplomacy_alliance",
+        "id": "kobu_dominion_r",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_storehouse",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 250000
+      },
+      {
+        "type": "tech",
+        "id": "kobu_dominion_storehouse",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "tech",
+        "id": "restore_crystal",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "restore_crystal",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 500000
+      },
+      {
+        "type": "tech",
+        "id": "kobu_dominion_storehouse",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "tech",
+        "id": "loot_storehouse",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "human_dna",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250000
+      },
+      {
+        "type": "building",
+        "id": "containment_cell",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "genetic_hub_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 250000
+      },
+      {
+        "type": "tech",
+        "id": "human_dna",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "black_artifact",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "building",
+        "id": "containment_cell",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "trail_fire",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "enemy",
+        "id": "explore_desert",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "tyrant_ash",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 280000
+      },
+      {
+        "type": "enemy",
+        "id": "fire_mage_domain",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "vaelgoroth_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 300000
+      },
+      {
+        "type": "enemy",
+        "id": "elder_dragon",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "the_portal_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12000
+      },
+      {
+        "type": "enemy",
+        "id": "corrupted_lands",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "survey_abyss",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "building",
+        "id": "beacon_light",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "lumix_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "building",
+        "id": "beacon_light",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "effort_abyss",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "building",
+        "id": "lumix_plant",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "overlook_darkness",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 12000
+      },
+      {
+        "type": "tech",
+        "id": "survey_abyss",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "delimiting_perimeter",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 60000
+      },
+      {
+        "type": "tech",
+        "id": "overlook_darkness",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "arcane_study",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 260000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 39000
+      },
+      {
+        "type": "tech",
+        "id": "delimiting_perimeter",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "extensive_cultivation_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 7500
+      },
+      {
+        "type": "tech",
+        "id": "effort_abyss",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "market_laws",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 250000
+      },
+      {
+        "type": "tech",
+        "id": "effort_abyss",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "crystal_farm_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 50000
+      },
+      {
+        "type": "tech",
+        "id": "extensive_cultivation_t",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "steel_mills_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 50000
+      },
+      {
+        "type": "tech",
+        "id": "market_laws",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mana_maker_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 270000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 40000
+      },
+      {
+        "type": "tech",
+        "id": "crystal_farm_t",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "abyss_shrine",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 280000
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 500000
+      },
+      {
+        "type": "tech",
+        "id": "arcane_study",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "underground_rooms",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 300000
+      },
+      {
+        "type": "tech",
+        "id": "arcane_study",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "explore_sorrounding",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 300000
+      },
+      {
+        "type": "tech",
+        "id": "underground_rooms",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "drain_mana",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 300000
+      },
+      {
+        "type": "tech",
+        "id": "underground_rooms",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "dark_land",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 330000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1000
+      },
+      {
+        "type": "building",
+        "id": "beacon_light",
+        "value": 5
+      },
+      {
+        "type": "enemy",
+        "id": "dark_village",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "dark_castle",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 330000
+      },
+      {
+        "type": "enemy",
+        "id": "dark_knight_patrol",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "conquer_abyss",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 350000
+      },
+      {
+        "type": "enemy",
+        "id": "dark_knight_lord",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "light_square",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 350000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1000
+      },
+      {
+        "type": "tech",
+        "id": "dark_land",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mercenary_abyss",
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "gather_shooters",
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "marksman",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "marksman",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "gather_bastion",
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 2
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 6,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "cleric",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 18,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "gather_troops",
+    "req": [
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 50000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 3
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": "gather_heavy",
+    "req": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 30000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 4
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 18,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "id": "fortify_abyss",
+    "req": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 50000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1200
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 5
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 80,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 1200,
+        "perc": false
+      }
+    ]
+  },
+  {
     "id": "titan_mosaic",
     "req": [
       {
@@ -7552,6 +8584,414 @@
         "type": "diplomacy_owned",
         "id": "lich_fortress",
         "value": 1
+      }
+    ]
+  },
+  {
+    "id": "angel_palace_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 360000
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "rocketry",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 360000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 20000
+      },
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "machine_gun",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 370000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 2000
+      },
+      {
+        "type": "tech",
+        "id": "rocketry",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "probes",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 370000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 3000
+      },
+      {
+        "type": "tech",
+        "id": "rocketry",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "super_soldier",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 370000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 2000
+      },
+      {
+        "type": "tech",
+        "id": "rocketry",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "satellite",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 450000
+      },
+      {
+        "type": "tech",
+        "id": "probes",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 12,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 12,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "artillery_officer_t",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 460000
+      },
+      {
+        "type": "tech",
+        "id": "satellite",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "the_signal",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 470000
+      },
+      {
+        "type": "tech",
+        "id": "satellite",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "decrypt_signal",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 500000
+      },
+      {
+        "type": "tech",
+        "id": "the_signal",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "nuclear_power",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 500000
+      },
+      {
+        "type": "tech",
+        "id": "decrypt_signal",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "zenix_return",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100000
+      },
+      {
+        "type": "tech",
+        "id": "decrypt_signal",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "activate_signal",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 510000
+      },
+      {
+        "type": "building",
+        "id": "signal_machine",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "research_annhilator",
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 520000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 180000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 180000
+      },
+      {
+        "type": "tech",
+        "id": "activate_signal",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "create_annhilator",
+    "req": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 150000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 130000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 9000
+      },
+      {
+        "type": "tech",
+        "id": "research_annhilator",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "launch_annhilator",
+    "req": [
+      {
+        "type": "tech",
+        "id": "create_annhilator",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "tech",
+        "id": "destroy_annhilator",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "destroy_annhilator",
+    "req": [
+      {
+        "type": "tech",
+        "id": "create_annhilator",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 32,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 18,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 28,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 28,
+        "perc": false
+      },
+      {
+        "type": "tech",
+        "id": "launch_annhilator",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "guide_mankind",
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 300000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 10000
+      },
+      {
+        "type": "tech",
+        "id": "destroy_annhilator",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil",
+    "req": [
+      {
+        "type": "tech",
+        "id": "destroy_annhilator",
+        "value": 1
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "baron_mordecai",
+        "value": 1
+      },
+      {
+        "type": "diplomacy_owned",
+        "id": "hand_evil",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "save_theresmore",
+    "req": [
+      {
+        "type": "tech",
+        "id": "mindless_evil",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 750,
+        "fix": true
       }
     ]
   }

@@ -1928,6 +1928,368 @@
     ]
   },
   {
+    "id": "enchanted_bullet",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "zenix_return",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "enhanced_barracks_f",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "zenix_return",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "lumix_refinery_f",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "zenix_return",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "zenix_shield",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "prayer",
+        "id": "enchanted_bullet",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "power_spell_fireball",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "prayer",
+        "id": "zenix_shield",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "lumix_fountain",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "prayer",
+        "id": "power_spell_fireball",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "gold_trasmutation",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "prayer",
+        "id": "lumix_fountain",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "gold_factory_f",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "mana_factory_f",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "mana_factory_f",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "prayer",
+        "id": "gold_factory_f",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "zenix_archmage",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 30000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 125
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "prayer",
+        "id": "zenix_funder",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "zenix_funder",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 30000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 50
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15,
+        "perc": true
+      },
+      {
+        "type": "prayer",
+        "id": "zenix_archmage",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "zenix_master",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 35000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "supplies",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 30,
+        "perc": true
+      },
+      {
+        "type": "prayer",
+        "id": "zenix_trainer",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "zenix_trainer",
+    "type": "prayer",
+    "req": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 35000
+      },
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 40,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 22,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 22,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 35,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 25,
+        "perc": false
+      },
+      {
+        "type": "prayer",
+        "id": "zenix_master",
+        "value": -1
+      }
+    ]
+  },
+  {
     "id": "temple_ritual",
     "type": "spell",
     "cat": "resource",
@@ -3809,6 +4171,195 @@
         "type": "resource",
         "id": "natronite",
         "value": 25,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "enchanted_bullet_s",
+    "type": "spell",
+    "cat": "army",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "enchanted_bullet",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -200
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 25,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 20,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 20,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "zenix_shield_s",
+    "type": "spell",
+    "cat": "defense",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "zenix_shield",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -220
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2500,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "power_spell_fireball_s",
+    "type": "spell",
+    "cat": "army",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "power_spell_fireball",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -240
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "mage_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 36,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "archmage_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 120,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "archmage_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 80,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "lumix_fountain_s",
+    "type": "spell",
+    "cat": "resource",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "lumix_fountain",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -250
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.5
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 20,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "gold_trasmutation_s",
+    "type": "spell",
+    "cat": "resource",
+    "req": [
+      {
+        "type": "prayer",
+        "id": "gold_trasmutation",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -250
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 75
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15,
         "perc": true
       }
     ]

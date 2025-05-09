@@ -5908,6 +5908,69 @@
     ]
   },
   {
+    "id": "kobu_crystal",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 1,
+    "age": 5,
+    "req": [
+      {
+        "type": "building",
+        "id": "kobu_crystal_part",
+        "value": 10,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "kobu_crystal_part",
+    "cat": "wonders",
+    "tab": 1,
+    "cap": 10,
+    "age": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 500000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 10000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 20000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 30000
+      },
+      {
+        "type": "tech",
+        "id": "restore_crystal",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "arch_triumph",
     "cat": "wonders",
     "tab": 1,
@@ -6629,6 +6692,132 @@
         "type": "population",
         "id": "unemployed",
         "value": 1
+      }
+    ]
+  },
+  {
+    "id": "genetic_hub",
+    "cat": "commercial_area",
+    "tab": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 12000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 5000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 3500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "genetic_hub_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 1.2
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 4000
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 2000
+      }
+    ]
+  },
+  {
+    "id": "gold_factory",
+    "cat": "commercial_area",
+    "tab": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 80000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 80000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 40000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "prayer",
+        "id": "gold_factory_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 8
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 12000
       }
     ]
   },
@@ -7715,6 +7904,61 @@
     ]
   },
   {
+    "id": "mana_factory",
+    "cat": "faith",
+    "tab": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 80000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 80000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "prayer",
+        "id": "mana_factory_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 20
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 12000
+      }
+    ]
+  },
+  {
     "id": "store",
     "cat": "warehouse",
     "tab": 1,
@@ -8524,6 +8768,259 @@
     ]
   },
   {
+    "id": "lumix_plant",
+    "cat": "resource",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 25000,
+        "multi": 1.3
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "lumix_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "lumiforger",
+        "value": 1
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumiforger",
+        "type_gen": "resource",
+        "gen": "lumix",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "lumix",
+        "value": 100
+      }
+    ]
+  },
+  {
+    "id": "extensive_cultivation_b",
+    "cat": "resource",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 40000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 36000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 5000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "extensive_cultivation_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "population",
+        "id": "farmer",
+        "value": 2
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "farmer",
+        "type_gen": "resource",
+        "gen": "food",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 1500
+      }
+    ]
+  },
+  {
+    "id": "steel_mills_b",
+    "cat": "resource",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 50000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 40000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "steel_mills_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "population",
+        "id": "steelworker",
+        "value": 2
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "steelworker",
+        "type_gen": "resource",
+        "gen": "steel",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "steel",
+        "value": 2500
+      }
+    ]
+  },
+  {
+    "id": "crystal_farm_b",
+    "cat": "resource",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 40000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 16000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "crystal_farm_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "population",
+        "id": "professor",
+        "value": 2
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "professor",
+        "type_gen": "resource",
+        "gen": "crystal",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 1500
+      }
+    ]
+  },
+  {
     "id": "elf_village",
     "cat": "living_quarters",
     "tab": 2,
@@ -8587,6 +9084,80 @@
     ]
   },
   {
+    "id": "elf_town",
+    "cat": "living_quarters",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 75000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 45000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 11000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 11000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "elves_thrive",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 1
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 3000
+      },
+      {
+        "type": "cap",
+        "id": "food",
+        "value": 1500
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 3
+      }
+    ]
+  },
+  {
     "id": "elf_encampment",
     "cat": "science",
     "tab": 2,
@@ -8634,6 +9205,115 @@
       {
         "type": "population",
         "id": "unemployed",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "sanctum_healing",
+    "cat": "science",
+    "tab": 2,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "building",
+        "id": "healing_chambers",
+        "value": 8,
+        "consume": true
+      },
+      {
+        "type": "building",
+        "id": "regenerative_gardens",
+        "value": 8,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 100,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 15000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 15000
+      }
+    ]
+  },
+  {
+    "id": "healing_chambers",
+    "cat": "science",
+    "tab": 2,
+    "cap": 8,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 200000
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 38000
+      },
+      {
+        "type": "tech",
+        "id": "elf_decadence",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "regenerative_gardens",
+    "cat": "science",
+    "tab": 2,
+    "cap": 8,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 40000
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 20000
+      },
+      {
+        "type": "tech",
+        "id": "elf_decadence",
         "value": 1
       }
     ]
@@ -8875,6 +9555,75 @@
         "type": "cap",
         "id": "gold",
         "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "financial_center",
+    "cat": "commercial_area",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 50000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 25000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 10000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 5000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "market_laws",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "population",
+        "id": "trader",
+        "value": 2
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "trader",
+        "type_gen": "resource",
+        "gen": "gold",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 7500
       }
     ]
   },
@@ -9261,6 +10010,35 @@
         "id": "gem",
         "value": 1,
         "fix": true
+      }
+    ]
+  },
+  {
+    "id": "containment_cell",
+    "cat": "warehouse",
+    "tab": 2,
+    "age": 6,
+    "cap": 3,
+    "req": [
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 55000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 55000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 40000
+      },
+      {
+        "type": "tech",
+        "id": "cavern_artifact",
+        "value": 1
       }
     ]
   },
@@ -9844,6 +10622,55 @@
     ]
   },
   {
+    "id": "mana_maker_b",
+    "cat": "faith",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 16000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 14000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 7500,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "mana_maker_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 1500
+      }
+    ]
+  },
+  {
     "id": "holy_site",
     "cat": "wonders",
     "tab": 2,
@@ -9953,6 +10780,1496 @@
         "type": "tech",
         "id": "colonial_consacration",
         "value": 1
+      }
+    ]
+  },
+  {
+    "id": "beacon_light",
+    "cat": "living_quarters",
+    "tab": 3,
+    "age": 6,
+    "cap": 20,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 6000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 4000,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "the_portal_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -250
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -150
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -100
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "abyss_outpost",
+    "cat": "defense",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 50000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 5000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 275,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "survey_abyss",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 250,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 40
+      }
+    ]
+  },
+  {
+    "id": "gathering_area",
+    "cat": "resource",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 75000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 375,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "overlook_darkness",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "lumberjack",
+        "value": 3
+      },
+      {
+        "type": "population",
+        "id": "quarryman",
+        "value": 3
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "lumberjack",
+        "type_gen": "resource",
+        "gen": "wood",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "quarryman",
+        "type_gen": "resource",
+        "gen": "stone",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "light_turret",
+    "cat": "defense",
+    "tab": 3,
+    "age": 6,
+    "cap": 20,
+    "req": [
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 2500,
+        "multi": 1.1
+      },
+      {
+        "type": "tech",
+        "id": "delimiting_perimeter",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -200
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -100
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 75,
+        "perc": false
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "probe_system",
+    "cat": "defense",
+    "tab": 3,
+    "age": 6,
+    "cap": 12,
+    "req": [
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 5000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "probes",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "settlement_defenses",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 150,
+        "perc": false
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "mercenary_camp",
+    "cat": "defense",
+    "tab": 3,
+    "age": 13,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 15000,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8000,
+        "multi": 1.5
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "mercenary_abyss",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 6
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "mercenary_veteran",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "mercenary_veteran",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "white_company",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 7,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "white_company",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "canava_guard",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 7,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "canava_guard",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 7,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "arcane_school",
+    "cat": "science",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 60000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 400,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "arcane_study",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "professor",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 4,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "research",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "crystal",
+        "value": 2500
+      }
+    ]
+  },
+  {
+    "id": "light_shrine",
+    "cat": "science",
+    "tab": 3,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 75000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 500
+      },
+      {
+        "type": "tech",
+        "id": "abyss_shrine",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 7,
+        "fix": true
+      },
+      {
+        "type": "building",
+        "id": "arcane_shrine",
+        "value": -1
+      },
+      {
+        "type": "building",
+        "id": "evil_shrine",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "arcane_shrine",
+    "cat": "science",
+    "tab": 3,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 75000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 250
+      },
+      {
+        "type": "tech",
+        "id": "abyss_shrine",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 200
+      },
+      {
+        "type": "building",
+        "id": "light_shrine",
+        "value": -1
+      },
+      {
+        "type": "building",
+        "id": "evil_shrine",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "evil_shrine",
+    "cat": "science",
+    "tab": 3,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 75000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 750
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 3
+      },
+      {
+        "type": "tech",
+        "id": "abyss_shrine",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "elf_warrior",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "line_infantry",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 12,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      },
+      {
+        "type": "building",
+        "id": "light_shrine",
+        "value": -1
+      },
+      {
+        "type": "building",
+        "id": "arcane_shrine",
+        "value": -1
+      }
+    ]
+  },
+  {
+    "id": "underground_house",
+    "cat": "living_quarters",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 10000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "underground_rooms",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 2
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 2
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 5
+      }
+    ]
+  },
+  {
+    "id": "light_square_b",
+    "cat": "living_quarters",
+    "tab": 3,
+    "age": 6,
+    "cap": 5,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 35000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 12000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 8000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "light_square",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": -200
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -50
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": -10
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 8
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 8
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 2,
+        "fix": true
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 5
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": "underground_store",
+    "cat": "warehouse",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "underground_rooms",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "wood",
+        "value": 20000
+      },
+      {
+        "type": "cap",
+        "id": "stone",
+        "value": 20000
+      },
+      {
+        "type": "cap",
+        "id": "copper",
+        "value": 15000
+      },
+      {
+        "type": "cap",
+        "id": "iron",
+        "value": 15000
+      },
+      {
+        "type": "cap",
+        "id": "tools",
+        "value": 15000
+      }
+    ]
+  },
+  {
+    "id": "launch_silos",
+    "cat": "warehouse",
+    "tab": 2,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 45000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 120,
+        "multi": 1.2
+      },
+      {
+        "type": "tech",
+        "id": "rocketry",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "cap",
+        "id": "natronite",
+        "value": 2000
+      },
+      {
+        "type": "cap",
+        "id": "lumix",
+        "value": 200
+      }
+    ]
+  },
+  {
+    "id": "signal_machine",
+    "cat": "wonders",
+    "tab": 3,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "building",
+        "id": "signal_machine_part",
+        "value": 11,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 400,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "signal_machine_part",
+    "cat": "wonders",
+    "tab": 3,
+    "cap": 11,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 500000
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 400000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100000
+      },
+      {
+        "type": "tech",
+        "id": "nuclear_power",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "guide_mankind_b",
+    "cat": "wonders",
+    "tab": 3,
+    "cap": 1,
+    "age": 6,
+    "req": [
+      {
+        "type": "building",
+        "id": "guide_mankind_b_part",
+        "value": 10,
+        "consume": true
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 800,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "guide_mankind_b_part",
+    "cat": "wonders",
+    "tab": 3,
+    "cap": 10,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 750000
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 600000
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 200000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 100000
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 15000
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 2
+      },
+      {
+        "type": "tech",
+        "id": "guide_mankind",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "mining_area",
+    "cat": "resource",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 16000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 14000,
+        "multi": 1.4
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 8000,
+        "multi": 1.4
+      },
+      {
+        "type": "tech",
+        "id": "underground_rooms",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "population",
+        "id": "miner",
+        "value": 3
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "copper",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "modifier",
+        "type_id": "population",
+        "id": "miner",
+        "type_gen": "resource",
+        "gen": "iron",
+        "value": 5,
+        "perc": true
+      }
+    ]
+  },
+  {
+    "id": "lumix_refinery",
+    "cat": "resource",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 50000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "building_material",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "prayer",
+        "id": "lumix_refinery_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.4
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 2,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "lumix",
+        "value": 500
+      }
+    ]
+  },
+  {
+    "id": "enhanced_barracks",
+    "cat": "defense",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 80000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 80000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "iron",
+        "value": 50000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "tools",
+        "value": 25000,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 150,
+        "multi": 1.1
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "prayer",
+        "id": "enhanced_barracks_f",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "machine_gun_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "steel_rider",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "rifleman_u",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 2,
+        "perc": false
+      },
+      {
+        "type": "cap",
+        "id": "army",
+        "value": 12
+      }
+    ]
+  },
+  {
+    "id": "artillery_officer_b",
+    "cat": "defense",
+    "tab": 3,
+    "cap": 10,
+    "age": 13,
+    "req": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 100000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 7000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 1500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "artillery_officer_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "gold",
+        "value": 10000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "artillery",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 16,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "artillery",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 6,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "general",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 15,
+        "perc": false
+      }
+    ]
+  },
+  {
+    "id": "mana_battery",
+    "cat": "faith",
+    "tab": 3,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "copper",
+        "value": 50000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 15000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 12500,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 575,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "drain_mana",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 15
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 5,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 5000
+      }
+    ]
+  },
+  {
+    "id": "angel_palace_b",
+    "cat": "faith",
+    "tab": 3,
+    "cap": 10,
+    "age": 6,
+    "req": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 30000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 25000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 20000,
+        "multi": 1.2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1
+      },
+      {
+        "type": "tech",
+        "id": "angel_palace_t",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 3,
+        "perc": true
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 7000
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 8,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "battle_angel",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 10,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "sacred_golem",
+        "type_gen": "stat",
+        "gen": "attack",
+        "value": 4,
+        "perc": false
+      },
+      {
+        "type": "modifier",
+        "type_id": "army",
+        "id": "sacred_golem",
+        "type_gen": "stat",
+        "gen": "defense",
+        "value": 8,
+        "perc": false
       }
     ]
   }

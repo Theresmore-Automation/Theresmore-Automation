@@ -310,6 +310,87 @@
     ]
   },
   {
+    "id": "annihilator",
+    "ach": [
+      {
+        "id": "1_annihilator",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ann_launch",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "5_annihilator",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ann_launch",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_annihilator",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ann_launch",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "30_annihilator",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "stat",
+            "id": "ann_launch",
+            "value": 30
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 16,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "persuade_nobility",
     "ach": [
       {
@@ -769,6 +850,78 @@
             "gen": "defense",
             "value": 2,
             "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elder_dragon_dif_1",
+    "ach": [
+      {
+        "id": "elder_dragon_dif_1",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "enemy",
+            "id": "elder_dragon",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 10,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elder_dragon_dif_2",
+    "ach": [
+      {
+        "id": "elder_dragon_dif_2",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "enemy",
+            "id": "elder_dragon",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 20,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elder_dragon_dif_3",
+    "ach": [
+      {
+        "id": "elder_dragon_dif_3",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "enemy",
+            "id": "elder_dragon",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 30,
+            "perc": true
           }
         ]
       }
@@ -3805,6 +3958,193 @@
             "type": "modifier",
             "type_id": "army",
             "id": "general",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 15,
+            "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss",
+    "ach": [
+      {
+        "id": "mindless_evil_boss",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "tech",
+            "id": "mindless_evil",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 15
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 5,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss_dif_99",
+    "ach": [
+      {
+        "id": "mindless_evil_boss_dif_99",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "tech",
+            "id": "mindless_evil",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss_dif_1",
+    "ach": [
+      {
+        "id": "mindless_evil_boss_dif_1",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "tech",
+            "id": "mindless_evil",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 25
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 6,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss_dif_2",
+    "ach": [
+      {
+        "id": "mindless_evil_boss_dif_2",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "tech",
+            "id": "mindless_evil",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 35
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss_dif_3",
+    "ach": [
+      {
+        "id": "mindless_evil_boss_dif_3",
+        "rarity": "legendary",
+        "req": [
+          {
+            "type": "tech",
+            "id": "mindless_evil",
+            "value": 1
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 6,
+            "perc": true
+          },
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 50
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "machine_gun_u",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 15,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "machine_gun_u",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 15,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "rifleman_u",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 15,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "rifleman_u",
             "type_gen": "stat",
             "gen": "defense",
             "value": 15,
@@ -8465,6 +8805,1632 @@
             "gen": "defense",
             "value": 70,
             "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beacon_light",
+    "ach": [
+      {
+        "id": "5_beacon_light",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "beacon_light",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 1,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_beacon_light",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "beacon_light",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_beacon_light",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "beacon_light",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "underground_house",
+    "ach": [
+      {
+        "id": "5_underground_house",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_house",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 1,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_underground_house",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_house",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_underground_house",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_house",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gathering_area",
+    "ach": [
+      {
+        "id": "5_gathering_area",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "gathering_area",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "wood",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "stone",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_gathering_area",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "gathering_area",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "wood",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "stone",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_gathering_area",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "gathering_area",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "wood",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "stone",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mining_area",
+    "ach": [
+      {
+        "id": "5_mining_area",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "mining_area",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "copper",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "iron",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_mining_area",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mining_area",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "copper",
+            "value": 3,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "iron",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_mining_area",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "mining_area",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "copper",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "iron",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lumix_refinery",
+    "ach": [
+      {
+        "id": "5_lumix_refinery",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_refinery",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_lumix_refinery",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_refinery",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_lumix_refinery",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_refinery",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arcane_school",
+    "ach": [
+      {
+        "id": "5_arcane_school",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "arcane_school",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_arcane_school",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "arcane_school",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 3,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_arcane_school",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "arcane_school",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "abyss_outpost",
+    "ach": [
+      {
+        "id": "5_abyss_outpost",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "abyss_outpost",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 5
+          }
+        ]
+      },
+      {
+        "id": "10_abyss_outpost",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "abyss_outpost",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 7
+          }
+        ]
+      },
+      {
+        "id": "15_abyss_outpost",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "abyss_outpost",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "light_turret",
+    "ach": [
+      {
+        "id": "5_light_turret",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "light_turret",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "id": "10_light_turret",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "light_turret",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "id": "15_light_turret",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "light_turret",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "probe_system",
+    "ach": [
+      {
+        "id": "5_probe_system",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "probe_system",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "id": "10_probe_system",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "probe_system",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 1,
+            "perc": true
+          },
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 6
+          }
+        ]
+      },
+      {
+        "id": "12_probe_system",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "probe_system",
+            "value": 12
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "fame",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mercenary_camp",
+    "ach": [
+      {
+        "id": "5_mercenary_camp",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "mercenary_camp",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 3
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 5,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 5,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "10_mercenary_camp",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mercenary_camp",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 6
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 6,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 6,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "15_mercenary_camp",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "mercenary_camp",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 12
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 8,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 8,
+            "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "enhanced_barracks",
+    "ach": [
+      {
+        "id": "5_enhanced_barracks",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "enhanced_barracks",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 3
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 5,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 5,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "10_enhanced_barracks",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "enhanced_barracks",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 6
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 6,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 6,
+            "perc": false
+          }
+        ]
+      },
+      {
+        "id": "15_enhanced_barracks",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "enhanced_barracks",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "army",
+            "value": 12
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "attack",
+            "value": 8,
+            "perc": false
+          },
+          {
+            "type": "modifier",
+            "type_id": "army",
+            "id": "mercenary_veteran",
+            "type_gen": "stat",
+            "gen": "defense",
+            "value": 8,
+            "perc": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mana_battery",
+    "ach": [
+      {
+        "id": "5_mana_battery",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_battery",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_mana_battery",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_battery",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 6,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_mana_battery",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_battery",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "underground_store",
+    "ach": [
+      {
+        "id": "5_underground_store",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_store",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 2000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 2000
+          }
+        ]
+      },
+      {
+        "id": "10_underground_store",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_store",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 4000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 4000
+          }
+        ]
+      },
+      {
+        "id": "15_underground_store",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "underground_store",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "cap",
+            "id": "wood",
+            "value": 12000
+          },
+          {
+            "type": "cap",
+            "id": "stone",
+            "value": 12000
+          },
+          {
+            "type": "cap",
+            "id": "copper",
+            "value": 12000
+          },
+          {
+            "type": "cap",
+            "id": "iron",
+            "value": 12000
+          },
+          {
+            "type": "cap",
+            "id": "tools",
+            "value": 12000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elf_town",
+    "ach": [
+      {
+        "id": "5_elf_town",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_town",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "faith",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_elf_town",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_town",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "faith",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_elf_town",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "elf_town",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "research",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "faith",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "steel_mills_b",
+    "ach": [
+      {
+        "id": "5_steel_mills_b",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "steel_mills_b",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_steel_mills_b",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "steel_mills_b",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_steel_mills_b",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "steel_mills_b",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "steel",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "crystal_farm_b",
+    "ach": [
+      {
+        "id": "5_crystal_farm_b",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "crystal_farm_b",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_crystal_farm_b",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "crystal_farm_b",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_crystal_farm_b",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "crystal_farm_b",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "crystal",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lumix_plant",
+    "ach": [
+      {
+        "id": "5_lumix_plant",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_plant",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_lumix_plant",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_plant",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_lumix_plant",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "lumix_plant",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "extensive_cultivation_b",
+    "ach": [
+      {
+        "id": "5_extensive_cultivation_b",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "extensive_cultivation_b",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_extensive_cultivation_b",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "extensive_cultivation_b",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_extensive_cultivation_b",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "extensive_cultivation_b",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "food",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "financial_center",
+    "ach": [
+      {
+        "id": "5_financial_center",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "financial_center",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_financial_center",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "financial_center",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_financial_center",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "financial_center",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "gold",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mana_maker_b",
+    "ach": [
+      {
+        "id": "5_mana_maker_b",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_maker_b",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_mana_maker_b",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_maker_b",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_mana_maker_b",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "mana_maker_b",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "mana",
+            "value": 8,
+            "perc": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "launch_silos",
+    "ach": [
+      {
+        "id": "5_launch_silos",
+        "rarity": "common",
+        "req": [
+          {
+            "type": "building",
+            "id": "launch_silos",
+            "value": 5
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 2,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 2,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "10_launch_silos",
+        "rarity": "rare",
+        "req": [
+          {
+            "type": "building",
+            "id": "launch_silos",
+            "value": 10
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 4,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 4,
+            "perc": true
+          }
+        ]
+      },
+      {
+        "id": "15_launch_silos",
+        "rarity": "epic",
+        "req": [
+          {
+            "type": "building",
+            "id": "launch_silos",
+            "value": 15
+          }
+        ],
+        "gen": [
+          {
+            "type": "resource",
+            "id": "natronite",
+            "value": 8,
+            "perc": true
+          },
+          {
+            "type": "resource",
+            "id": "lumix",
+            "value": 8,
+            "perc": true
           }
         ]
       }

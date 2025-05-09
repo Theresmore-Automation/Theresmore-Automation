@@ -414,5 +414,37 @@
         "value": -3
       }
     ]
+  },
+  {
+    "id": "lumiforger",
+    "req": [
+      {
+        "type": "building",
+        "id": "lumix_plant",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.4
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": -20
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -15
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": -10
+      }
+    ]
   }
 ]

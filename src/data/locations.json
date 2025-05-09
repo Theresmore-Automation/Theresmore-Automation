@@ -56,6 +56,139 @@
     ]
   },
   {
+    "id": "ancient_lighthouse",
+    "found": [16],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "ancient_legionary",
+        "value": 280
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "ancient_ruin",
+    "found": [14],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "ancient_ghost",
+        "value": 180
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 70,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "dark_knight_patrol",
+    "found": [32],
+    "esp": 55,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "dark_land",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "dark_knight",
+        "value": 110
+      },
+      {
+        "id": "ancient_legionary",
+        "value": 240
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.1
+      }
+    ]
+  },
+  {
+    "id": "dark_village",
+    "found": [35],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "ancient_legionary",
+        "value": 210
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
     "id": "ball_lightning_field",
     "found": [29],
     "esp": 32,
@@ -369,6 +502,38 @@
     ]
   },
   {
+    "id": "church_abyss",
+    "found": [24],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "vampire",
+        "value": 280
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
     "id": "citadel_dead",
     "found": [20, 21],
     "esp": 33,
@@ -414,6 +579,47 @@
     ]
   },
   {
+    "id": "circle_necromancer",
+    "found": [31],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "necromancer",
+        "value": 70
+      },
+      {
+        "id": "faceless_horror",
+        "value": 290
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 5000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 5000
+      }
+    ]
+  },
+  {
     "id": "construction_site",
     "found": [18, 19],
     "esp": 12,
@@ -444,6 +650,82 @@
         "type": "cap",
         "id": "supplies",
         "value": 300
+      }
+    ]
+  },
+  {
+    "id": "corrupted_lands",
+    "found": [18, 19, 20, 21, 22, 23, 24, 25],
+    "esp": 42,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "black_artifact",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "mist_evil",
+        "value": 1
+      },
+      {
+        "id": "spawn_evil",
+        "value": 750
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 3
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "dark_pit",
+    "found": [18],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "greater_demon",
+        "value": 220
+      },
+      {
+        "id": "lesser_demon",
+        "value": 360
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
       }
     ]
   },
@@ -642,6 +924,160 @@
     ]
   },
   {
+    "id": "elder_dragon",
+    "found": [15],
+    "esp": 99,
+    "level": 9,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "tyrant_ash",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "fire_elemental",
+        "value": 14800
+      },
+      {
+        "id": "ash_elemental",
+        "value": 9200
+      },
+      {
+        "id": "vaelgoroth_crimson_doom",
+        "value": 1
+      },
+      {
+        "id": "azrathis_flamebinder",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 500,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 4,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 4,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "tome_wisdom",
+        "value": 4,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "relic",
+        "value": 4,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "coin",
+        "value": 4,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gem",
+        "value": 4,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "evil_abode",
+    "found": [22],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "succubus",
+        "value": 220
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "faith",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "explore_desert",
+    "found": [21],
+    "esp": 55,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "myth_south",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "naga",
+        "value": 1200
+      },
+      {
+        "id": "naga_royal_guard",
+        "value": 560
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 20,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 1,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "wood",
+        "value": 2
+      }
+    ]
+  },
+  {
     "id": "hell_hole",
     "found": [12],
     "esp": 42,
@@ -763,6 +1199,88 @@
       {
         "type": "resource",
         "id": "stone",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "fire_mage_domain",
+    "found": [20],
+    "esp": 70,
+    "level": 9,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "trail_fire",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "fire_elemental",
+        "value": 2200
+      },
+      {
+        "id": "ash_elemental",
+        "value": 760
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 30,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "luck",
+        "value": 2,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 3
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "lost_valley",
+    "found": [33, 34],
+    "esp": 32,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "ancient_artifact",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "velociraptors",
+        "value": 167
+      },
+      {
+        "id": "tyrannosaurus",
+        "value": 23
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "mana",
         "value": 2
       }
     ]
@@ -1524,6 +2042,33 @@
         "type": "resource",
         "id": "crystal",
         "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "immense_door_e",
+    "found": [19],
+    "esp": 5,
+    "level": 4,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "kobu_dominion",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "immense_door",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
       }
     ]
   },
@@ -2438,6 +2983,44 @@
     ]
   },
   {
+    "id": "save_damned",
+    "found": [31],
+    "esp": 45,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "faceless_horror",
+        "value": 90
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "population",
+        "id": "unemployed",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
     "id": "sleeping_titan",
     "found": [38],
     "esp": 1,
@@ -3027,6 +3610,51 @@
     ]
   },
   {
+    "id": "necropolis",
+    "found": [33],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "necromancer",
+        "value": 170
+      },
+      {
+        "id": "skeleton",
+        "value": 1590
+      },
+      {
+        "id": "zombie",
+        "value": 1590
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 2,
+        "fix": true
+      },
+      {
+        "type": "cap",
+        "id": "faith",
+        "value": 10000
+      },
+      {
+        "type": "cap",
+        "id": "mana",
+        "value": 10000
+      }
+    ]
+  },
+  {
     "id": "vampire_crypt",
     "found": [35, 36],
     "esp": 35,
@@ -3234,6 +3862,99 @@
         "type": "resource",
         "id": "saltpetre",
         "value": 1
+      }
+    ]
+  },
+  {
+    "id": "zombie_horde_small",
+    "found": [23, 24, 25, 26, 27],
+    "esp": 35,
+    "level": 5,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "zombie",
+        "value": 920
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 1,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "zombie_horde_large",
+    "found": [24],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "zombie",
+        "value": 2920
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 50,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 2,
+        "fix": true
+      }
+    ]
+  },
+  {
+    "id": "zombie_horde_huge",
+    "found": [25],
+    "esp": 35,
+    "level": 6,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "explore_sorrounding",
+        "value": 1
+      }
+    ],
+    "army": [
+      {
+        "id": "zombie",
+        "value": 5920
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 150,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "light",
+        "value": 3,
+        "fix": true
       }
     ]
   }

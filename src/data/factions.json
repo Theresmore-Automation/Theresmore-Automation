@@ -733,6 +733,97 @@
     ]
   },
   {
+    "id": "kobu_dominion_r",
+    "found": [6, 7, 8, 9, 10],
+    "relationship": 50,
+    "esp": 70,
+    "level": 7,
+    "reqFound": [
+      {
+        "type": "building",
+        "id": "kobu_crystal",
+        "value": 1
+      }
+    ],
+    "reqDelegation": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 10000
+      }
+    ],
+    "reqImproveRelationship": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 20000
+      }
+    ],
+    "commercial": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": -5
+      },
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 25
+      }
+    ],
+    "alliance": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 30
+      }
+    ],
+    "army": [
+      {
+        "id": "mobile_turret",
+        "value": 200
+      },
+      {
+        "id": "hover_tank",
+        "value": 400
+      },
+      {
+        "id": "mechanical_wolf",
+        "value": 600
+      },
+      {
+        "id": "giant_death_robot",
+        "value": 1
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 250,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 10,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 10,
+        "perc": true
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 10,
+        "perc": true
+      }
+    ]
+  },
+  {
     "id": "king_kobold_nation",
     "found": [21, 22, 23, 24, 25],
     "esp": 40,
@@ -876,6 +967,194 @@
         "type": "resource",
         "id": "stone",
         "value": 2
+      }
+    ]
+  },
+  {
+    "id": "dark_knight_lord",
+    "found": [26, 27, 28, 29, 30],
+    "esp": 65,
+    "level": 8,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "dark_castle",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "dark_knight_lord",
+        "value": 1
+      },
+      {
+        "id": "dark_knight",
+        "value": 280
+      },
+      {
+        "id": "ancient_ghost",
+        "value": 1300
+      },
+      {
+        "id": "ancient_legionary",
+        "value": 1800
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 250,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2.5
+      },
+      {
+        "type": "resource",
+        "id": "saltpetre",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.2
+      }
+    ]
+  },
+  {
+    "id": "baron_mordecai",
+    "found": [0],
+    "esp": 65,
+    "level": 9,
+    "reqFound": [
+      {
+        "type": "building",
+        "id": "light_square_b",
+        "value": 5
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "baron_mordecai_darkthorn",
+        "value": 1
+      },
+      {
+        "id": "vampire",
+        "value": 350
+      },
+      {
+        "id": "skeleton",
+        "value": 2000
+      },
+      {
+        "id": "ghost",
+        "value": 1500
+      },
+      {
+        "id": "ghoul",
+        "value": 2000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 300,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 7
+      },
+      {
+        "type": "resource",
+        "id": "stone",
+        "value": 5
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.3
+      }
+    ]
+  },
+  {
+    "id": "hand_evil",
+    "found": [0],
+    "esp": 75,
+    "level": 9,
+    "reqFound": [
+      {
+        "type": "tech",
+        "id": "activate_signal",
+        "value": 1
+      }
+    ],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "hand_evil",
+        "value": 1
+      },
+      {
+        "id": "succubus",
+        "value": 500
+      },
+      {
+        "id": "spawn_evil",
+        "value": 500
+      },
+      {
+        "id": "greater_demon",
+        "value": 560
+      },
+      {
+        "id": "faceless_horror",
+        "value": 680
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "fame",
+        "value": 350,
+        "fix": true
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 2
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 0.4
       }
     ]
   },
@@ -1418,6 +1697,33 @@
       {
         "id": "orc_warlord",
         "value": 9
+      }
+    ]
+  },
+  {
+    "id": "mindless_evil_boss",
+    "found": [0],
+    "relationship": 0,
+    "army": [
+      {
+        "id": "mindless_evil_u",
+        "value": 1
+      },
+      {
+        "id": "spawn_evil",
+        "value": 8200
+      },
+      {
+        "id": "ghast",
+        "value": 700
+      },
+      {
+        "id": "faceless_horror",
+        "value": 190
+      },
+      {
+        "id": "archdemon",
+        "value": 120
       }
     ]
   }

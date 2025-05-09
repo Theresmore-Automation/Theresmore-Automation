@@ -96,6 +96,41 @@
     ]
   },
   {
+    "id": "drone_u",
+    "type": "recon",
+    "attack": 10,
+    "defense": 10,
+    "order": 3,
+    "cap": 5,
+    "category": 0,
+    "req": [
+      {
+        "type": "tech",
+        "id": "drone",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 100
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 50
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "research",
+        "value": 5
+      }
+    ]
+  },
+  {
     "id": "familiar",
     "type": "recon",
     "attack": 4,
@@ -925,6 +960,60 @@
         "type": "resource",
         "id": "food",
         "value": -0.25
+      }
+    ]
+  },
+  {
+    "id": "machine_gun_u",
+    "type": "army",
+    "attack": 90,
+    "defense": 35,
+    "order": 3,
+    "category": 1,
+    "req": [
+      {
+        "type": "tech",
+        "id": "machine_gun",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 7000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 750
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 200
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 150
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 50
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.5
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -0.7
       }
     ]
   },
@@ -2002,6 +2091,60 @@
     ]
   },
   {
+    "id": "rifleman_u",
+    "type": "army",
+    "attack": 68,
+    "defense": 55,
+    "order": 2,
+    "category": 2,
+    "req": [
+      {
+        "type": "tech",
+        "id": "super_soldier",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "natronite",
+        "value": 750
+      },
+      {
+        "type": "resource",
+        "id": "lumix",
+        "value": 100
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 200
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 75
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -1.6
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": -0.6
+      }
+    ]
+  },
+  {
     "id": "battle_angel",
     "type": "army",
     "attack": 38,
@@ -2472,6 +2615,61 @@
     ]
   },
   {
+    "id": "steel_rider",
+    "type": "army",
+    "attack": 52,
+    "defense": 44,
+    "order": 2,
+    "cap": 100,
+    "category": 4,
+    "req": [
+      {
+        "type": "tech",
+        "id": "human_dna",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 10000
+      },
+      {
+        "type": "resource",
+        "id": "steel",
+        "value": 5000
+      },
+      {
+        "type": "resource",
+        "id": "horse",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 500
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": 250
+      },
+      {
+        "type": "resource",
+        "id": "crystal",
+        "value": 100
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "food",
+        "value": -4
+      }
+    ]
+  },
+  {
     "id": "cpt_galliard",
     "type": "army",
     "attack": 80,
@@ -2567,12 +2765,68 @@
     ]
   },
   {
+    "id": "vaelgoroth_u",
+    "type": "army",
+    "attack": 3200,
+    "defense": 3600,
+    "order": 3,
+    "cap": 1,
+    "category": 4,
+    "req": [
+      {
+        "type": "tech",
+        "id": "vaelgoroth_t",
+        "value": 1
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 100000
+      }
+    ],
+    "reqAttack": [
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 10000
+      }
+    ],
+    "gen": [
+      {
+        "type": "resource",
+        "id": "gold",
+        "value": 500
+      },
+      {
+        "type": "resource",
+        "id": "mana",
+        "value": 500
+      }
+    ]
+  },
+  {
     "id": "ancient_giant",
     "type": "enemy",
     "attack": 250,
     "defense": 16000,
     "order": 3,
     "cap": 1,
+    "category": 3
+  },
+  {
+    "id": "ancient_ghost",
+    "type": "enemy",
+    "attack": 140,
+    "defense": 34,
+    "order": 2,
+    "category": 4
+  },
+  {
+    "id": "ancient_legionary",
+    "type": "enemy",
+    "attack": 26,
+    "defense": 158,
+    "order": 1,
     "category": 3
   },
   {
@@ -2666,6 +2920,15 @@
     "category": 2
   },
   {
+    "id": "baron_mordecai_darkthorn",
+    "type": "enemy",
+    "attack": 915,
+    "defense": 1750,
+    "order": 3,
+    "cap": 1,
+    "category": 2
+  },
+  {
     "id": "basilisk",
     "type": "enemy",
     "attack": 35,
@@ -2748,6 +3011,23 @@
     "order": 3,
     "cap": 1,
     "category": 1
+  },
+  {
+    "id": "dark_knight",
+    "type": "enemy",
+    "attack": 250,
+    "defense": 250,
+    "order": 2,
+    "category": 2
+  },
+  {
+    "id": "dark_knight_lord",
+    "type": "enemy",
+    "attack": 6000,
+    "defense": 9000,
+    "order": 3,
+    "cap": 1,
+    "category": 2
   },
   {
     "id": "demoness",
@@ -2848,6 +3128,14 @@
     "category": 3
   },
   {
+    "id": "faceless_horror",
+    "type": "enemy",
+    "attack": 76,
+    "defense": 108,
+    "order": 2,
+    "category": 4
+  },
+  {
     "id": "fallen_angel",
     "type": "enemy",
     "attack": 150,
@@ -2929,6 +3217,15 @@
     "defense": 5,
     "order": 2,
     "category": 4
+  },
+  {
+    "id": "giant_death_robot",
+    "type": "enemy",
+    "attack": 6000,
+    "defense": 8000,
+    "order": 2,
+    "cap": 1,
+    "category": 1
   },
   {
     "id": "giant_snake",
@@ -3047,6 +3344,15 @@
     "category": 1
   },
   {
+    "id": "hand_evil",
+    "type": "enemy",
+    "attack": 950,
+    "defense": 8000,
+    "order": 3,
+    "cap": 1,
+    "category": 2
+  },
+  {
     "id": "harpy",
     "type": "enemy",
     "attack": 6,
@@ -3095,6 +3401,23 @@
     "order": 1,
     "cap": 1,
     "category": 4
+  },
+  {
+    "id": "hover_tank",
+    "type": "enemy",
+    "attack": 30,
+    "defense": 120,
+    "order": 1,
+    "category": 3
+  },
+  {
+    "id": "immense_door",
+    "type": "enemy",
+    "attack": 120,
+    "defense": 80000,
+    "order": 1,
+    "cap": 1,
+    "category": 3
   },
   {
     "id": "imp",
@@ -3220,6 +3543,23 @@
     "category": 4
   },
   {
+    "id": "mechanical_wolf",
+    "type": "enemy",
+    "attack": 26,
+    "defense": 12,
+    "order": 2,
+    "category": 4
+  },
+  {
+    "id": "mindless_evil_u",
+    "type": "enemy",
+    "attack": 12000,
+    "defense": 150000,
+    "order": 3,
+    "cap": 1,
+    "category": 1
+  },
+  {
     "id": "minotaur",
     "type": "enemy",
     "attack": 1000,
@@ -3227,6 +3567,23 @@
     "order": 1,
     "cap": 1,
     "category": 3
+  },
+  {
+    "id": "mist_evil",
+    "type": "enemy",
+    "attack": 1,
+    "defense": 35000,
+    "order": 1,
+    "cap": 1,
+    "category": 3
+  },
+  {
+    "id": "mobile_turret",
+    "type": "enemy",
+    "attack": 150,
+    "defense": 30,
+    "order": 3,
+    "category": 2
   },
   {
     "id": "mountain_giant",
@@ -3474,6 +3831,14 @@
     "category": 2
   },
   {
+    "id": "spawn_evil",
+    "type": "enemy",
+    "attack": 54,
+    "defense": 11,
+    "order": 2,
+    "category": 4
+  },
+  {
     "id": "spectra_memory",
     "type": "enemy",
     "attack": 5,
@@ -3638,5 +4003,31 @@
     "defense": 3,
     "order": 1,
     "category": 3
+  },
+  {
+    "id": "ash_elemental",
+    "type": "enemy",
+    "attack": 95,
+    "defense": 128,
+    "order": 1,
+    "category": 1
+  },
+  {
+    "id": "vaelgoroth_crimson_doom",
+    "type": "enemy",
+    "attack": 900,
+    "defense": 2100,
+    "order": 3,
+    "cap": 1,
+    "category": 4
+  },
+  {
+    "id": "azrathis_flamebinder",
+    "type": "enemy",
+    "attack": 2300,
+    "defense": 500,
+    "order": 3,
+    "cap": 1,
+    "category": 2
   }
 ]

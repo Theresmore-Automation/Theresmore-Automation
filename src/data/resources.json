@@ -182,6 +182,17 @@
     ]
   },
   {
+    "id": "lumix",
+    "cap": 100,
+    "req": [
+      {
+        "type": "building",
+        "id": "lumix_plant",
+        "value": 1
+      }
+    ]
+  },
+  {
     "id": "legacy",
     "hidden": true
   },
@@ -203,6 +214,10 @@
   },
   {
     "id": "titan_gift",
+    "hidden": true
+  },
+  {
+    "id": "light",
     "hidden": true
   }
 ]
