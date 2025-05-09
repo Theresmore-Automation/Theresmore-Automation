@@ -21,6 +21,7 @@ const PAGES_INDEX = {
 const SUBPAGES = {
   CITY: 'City',
   COLONY: 'Colony',
+  ABYSS: 'Abyss',
   RESEARCH: 'Research',
   SPELLS: 'Spells',
   PRAYERS: 'Prayers',
@@ -33,6 +34,7 @@ const SUBPAGES = {
 const SUBPAGES_INDEX = {
   [SUBPAGES.CITY]: 0,
   [SUBPAGES.COLONY]: 1,
+  [SUBPAGES.ABYSS]: 2,
   [SUBPAGES.RESEARCH]: 0,
   [SUBPAGES.SPELLS]: 0,
   [SUBPAGES.PRAYERS]: 1,
@@ -45,6 +47,7 @@ const SUBPAGES_INDEX = {
 const SUBPAGE_MAPPING = {
   CITY: 'BUILD',
   COLONY: 'BUILD',
+  ABYSS: 'BUILD',
   RESEARCH: 'RESEARCH',
   SPELLS: 'MAGIC',
   PRAYERS: 'MAGIC',
