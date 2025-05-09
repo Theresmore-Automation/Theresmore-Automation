@@ -17,6 +17,7 @@
   },
   "author": "Theresmore Automation team",
   "license": "MIT",
+  "type": "module",
   "private": true,
   "scripts": {
     "prepare": "husky",

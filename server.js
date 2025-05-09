@@ -1,16 +1,18 @@
-const { red, green, cyan, bold, italic } = require('colorette')
-const { loadConfigFile } = require('rollup/dist/loadConfigFile.js')
-const path = require('path')
-const fs = require('fs')
-const http = require('http')
-const handler = require('serve-handler')
-const rollup = require('rollup')
-const metablock = require('rollup-plugin-userscript-metablock')
-const assert = require('assert').strict
-const util = require('util')
+import { red, green, cyan, bold, italic } from 'colorette'
+import { loadConfigFile } from 'rollup/dist/loadConfigFile.js'
+import path from 'path'
+import fs from 'fs'
+import http from 'http'
+import handler from 'serve-handler'
+import { watch } from 'rollup'
+import metablock from 'rollup-plugin-userscript-metablock'
+import { strict as assert } from 'assert';
+import util from 'util'
 
-const pkg = require('./package.json')
-const meta = require('./meta.json')
+import pkg from './package.json' with { type: 'json' }
+import meta from './meta.json' with { type: 'json' }
+
+const __dirname = import.meta.dirname;
 
 const httpGetStatus = util.promisify((url, cb) => http.get(url, (res) => cb(null, res.statusCode)))
 
@@ -61,7 +63,7 @@ if ('connect' in meta) {
   override.connect = meta.connect
   override.connect.push('localhost')
 }
-const devMetablock = metablock({
+const devMetablock = await metablock({
   file: './meta.json',
   override
 })
@@ -75,7 +77,7 @@ let outFiles = []
 loadConfigFile(path.resolve(__dirname, 'rollup.config.mjs')).then(
   async ({ options, warnings }) => {
     // Start rollup watch
-    const watcher = rollup.watch(options)
+    const watcher = watch(options)
 
     // Run tests
     if (process.argv.indexOf('--test') !== -1) {
