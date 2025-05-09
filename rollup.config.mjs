@@ -29,7 +29,6 @@ export default {
     nodeResolve({ extensions: ['.js', '.ts', '.tsx'] }),
     commonjs({
       include: ['node_modules/**'],
-      exclude: ['node_modules/process-es6/**'],
     }),
     babel({ babelHelpers: 'bundled' }),
     metablock({

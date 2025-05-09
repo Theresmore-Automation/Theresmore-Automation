@@ -46041,7 +46041,7 @@ const taVersion = "4.11.1";
   };
   const getSubPagesSelector = () => {
     const tabLists = [...document.querySelectorAll('div[role="tablist"]')];
-    if (tabLists.length >= 2) {
+    if (tabLists && tabLists.length >= 2) {
       return [...tabLists[1].querySelectorAll('button')];
     }
     return [];
@@ -46360,7 +46360,7 @@ const taVersion = "4.11.1";
       ...unit
     };
     let run = reactUtil.getGameData().run;
-    if (run && run.modifiers) {
+    if (unitCopy && run && run.modifiers) {
       let bonusAttack = 0;
       let bonusDefense = 0;
       const unitMods = run.modifiers.find(mod => mod.id === unitCopy.id);
@@ -48270,7 +48270,7 @@ const taVersion = "4.11.1";
           return n;
         },
         decompressFromUint8Array: function (o) {
-          if (null === o || undefined === o) return i.decompress(o);
+          if (null === o || void 0 === o) return i.decompress(o);
           for (var n = new Array(o.length / 2), e = 0, t = n.length; t > e; e++) n[e] = 256 * o[2 * e] + o[2 * e + 1];
           var s = [];
           return n.forEach(function (o) {
