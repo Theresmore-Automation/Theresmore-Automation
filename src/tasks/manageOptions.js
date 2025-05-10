@@ -1013,6 +1013,7 @@ const createPanel = (startFunction) => {
 
           <div class="mb-2"><label>Turbo mode:
             <input type="checkbox" data-setting="turbo" data-key="enabled" class="option" />
+            Turbo Speed: <input type="number" data-setting="turbo" data-key="maxSleep" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="50" min="10" max="5000" step="10" />
           </div>
 
         </div>

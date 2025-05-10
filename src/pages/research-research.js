@@ -108,12 +108,7 @@ const executeAction = async () => {
         await sleep(25)
 
         if (resetResearch.includes(research.key)) {
-            await sleep(3500, true);
-            const resetButton = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
-              while (resetButton && resetButton.innerText.includes('Close')) {
-                resetButton.click();
-                await sleep(1500, true);
-              }
+            await sleep(3000, true);
             return;
         }
 

@@ -35,6 +35,7 @@ export const getDefaultOptions = () => {
     },
     turbo: {
       enabled: false,
+      maxSleep: 50,
     },
     lastMigration: 3,
     version: taVersion,

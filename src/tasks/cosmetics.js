@@ -1,9 +1,13 @@
 import { i18n } from '../data'
-import { state } from '../utils'
+import { sleep, state, translate } from '../utils'
+
+const resetModals = ['img_annhilator']
 
 const modalsToKill = Object.keys(i18n.en)
   .filter((key) => key.includes('img_') && !key.includes('_description'))
   .map((key) => i18n.en[key])
+
+
 
 const hideFullPageOverlay = () => {
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
@@ -17,7 +21,11 @@ const hideFullPageOverlay = () => {
 
         const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
         if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+          let isResetModal = false;
+          resetModals.forEach(resetModal => {if (modalTitle.innerText.trim() === translate(resetModal)) { isResetModal = true }})
+          if (isResetModal) { sleep(250, true) }
           fullPageOverlay.click()
+          if (isResetModal) { sleep(500, true) }
         }
       }
     })

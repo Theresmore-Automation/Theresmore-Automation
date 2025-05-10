@@ -16,8 +16,8 @@ const autoDifficulty = async () => {
         difficultyOptions[0].click();
       }
     }
-      await sleep(1000, true);
-      state.stopAutoClicking = false;
+    await sleep(1000, true);
+    state.stopAutoClicking = false;
   }
 };
 
