@@ -250,7 +250,7 @@ const id = 'theresmore-automation-options-panel'
 let start
 
 const buildingCats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
-const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat', 'huge_cave_t']
+const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat', 'huge_cave_t', 'mindless_evil']
 
 const userUnits = units.filter((unit) => unit.type !== 'enemy' && unit.type !== 'settlement' && unit.type !== 'spy')
 const userUnitsCategory = ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
@@ -918,6 +918,23 @@ const createPanel = (startFunction) => {
                 ${['difficulty_99', 'difficulty_0', 'difficulty_1', 'difficulty_2', 'difficulty_3']
                   .map((difficulty) => `<option value="${difficulty}">${translate(difficulty)}</option>`)
                   .join('')}
+              </select>
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <h3 class="text-lg">Auto-path:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="path" data-key="enabled" class="option" />
+            </label></div>
+
+            <div class="mb-2">
+              Path to pick:
+
+              <select class="option dark:bg-mydark-200"
+              data-setting="path" data-key="selected"
+              >
+                ${['humans', 'evil_path'].map(path => `<option value="${path}">${translate(path)}</option>`).join('')}
               </select>
             </div>
           </div>

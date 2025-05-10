@@ -1,26 +1,24 @@
 import { state, translate } from '../utils'
 
 const autoDifficulty = async () => {
-  if (!state.options.difficulty.enabled) return
-
-  const diffucultyModalTitle = [...document.querySelectorAll('h3.modal-title')].find((h3) => h3.innerText.trim() === translate('difficulty'))
-
-  if (diffucultyModalTitle) {
-    const diffucultyOptions = [...diffucultyModalTitle.parentElement.querySelectorAll('div.p-4 h5')]
-
+  if (!state.options.difficulty.enabled) return;
+  const difficultyModalTitle = [...document.querySelectorAll('h3.modal-title')].find(h3 => h3.innerText.trim() === translate('difficulty'));
+  if (difficultyModalTitle) {
+    state.stopAutoClicking = true;
+    const difficultyOptions = [...difficultyModalTitle.parentElement.querySelectorAll('div.p-4 h5')];
     if (!state.options.difficulty.selected) {
-      diffucultyOptions[0].click()
+      difficultyOptions[0].click();
     } else {
-      const diffucultyOptionToSelect = diffucultyOptions.find(
-        (diffucultyOption) => diffucultyOption.innerText.trim() === translate(state.options.difficulty.selected)
-      )
-      if (diffucultyOptionToSelect) {
-        diffucultyOptionToSelect.click()
+      const difficultyOptionToSelect = difficultyOptions.find(difficultyOption => difficultyOption.innerText.trim() === translate(state.options.difficulty.selected));
+      if (difficultyOptionToSelect) {
+        difficultyOptionToSelect.click();
       } else {
-        diffucultyOptions[0].click()
+        difficultyOptions[0].click();
       }
     }
+      await sleep(1000, true);
+      state.stopAutoClicking = false;
   }
-}
+};
 
 export default autoDifficulty
