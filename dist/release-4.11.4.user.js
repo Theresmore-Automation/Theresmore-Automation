@@ -205,7 +205,8 @@ const taVersion = "4.11.4";
         }
       },
       turbo: {
-        enabled: false
+        enabled: false,
+        maxSleep: 50
       },
       lastMigration: 3,
       version: taVersion
@@ -256,10 +257,10 @@ const taVersion = "4.11.4";
   }
 
   function sleep(miliseconds, override = false) {
-    if (override) {
-      return new Promise(resolve => setTimeout(resolve, miliseconds));
+    if (state.options.turbo.enabled && !override) {
+      return new Promise(resolve => setTimeout(resolve, Math.min(state.options.turbo.maxSleep, miliseconds)));
     } else {
-      return new Promise(resolve => setTimeout(resolve, state.options.turbo.enabled ? Math.min(50, miliseconds) : miliseconds));
+      return new Promise(resolve => setTimeout(resolve, miliseconds));
     }
   }
 
@@ -47552,12 +47553,7 @@ const taVersion = "4.11.4";
           });
           await sleep(25);
           if (resetResearch.includes(research.key)) {
-            await sleep(3500, true);
-            const resetButton = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
-            while (resetButton && resetButton.innerText.includes('Close')) {
-              resetButton.click();
-              await sleep(1500, true);
-            }
+            await sleep(3000, true);
             return;
           }
           if (research.confirm) {
@@ -48220,7 +48216,7 @@ const taVersion = "4.11.4";
         await sleep(1000, true);
         redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
       }
-      await sleep(2000, true);
+      await sleep(1000, true);
       state.stopAutoClicking = false;
     }
   };
@@ -49159,6 +49155,7 @@ const taVersion = "4.11.4";
 
           <div class="mb-2"><label>Turbo mode:
             <input type="checkbox" data-setting="turbo" data-key="enabled" class="option" />
+            Turbo Speed: <input type="number" data-setting="turbo" data-key="maxSleep" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="50" min="10" max="5000" step="10" />
           </div>
 
         </div>
@@ -49550,6 +49547,7 @@ const taVersion = "4.11.4";
     appendStyles
   };
 
+  const resetModals = ['img_annhilator'];
   const modalsToKill = Object.keys(i18n.en).filter(key => key.includes('img_') && !key.includes('_description')).map(key => i18n.en[key]);
   const hideFullPageOverlay = () => {
     if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
@@ -49561,7 +49559,19 @@ const taVersion = "4.11.4";
           }
           const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
           if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+            let isResetModal = false;
+            resetModals.forEach(resetModal => {
+              if (modalTitle.innerText.trim() === translate(resetModal)) {
+                isResetModal = true;
+              }
+            });
+            if (isResetModal) {
+              sleep(250, true);
+            }
             fullPageOverlay.click();
+            if (isResetModal) {
+              sleep(500, true);
+            }
           }
         }
       });
