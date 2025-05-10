@@ -1,4 +1,5 @@
 import { tech } from '../data'
+import hideFullPageOverlay from '../tasks/cosmetics'
 import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator, reactUtil, keyGen } from '../utils'
 
 const dangerousFightsMapping = {
@@ -97,7 +98,13 @@ const executeAction = async () => {
             continue
           }
         }
-
+        
+        const overlayOptionState = state.options.cosmetics.hideFullPageOverlay.enabled
+        if (resetResearch.includes(research.key) && state.options.cosmetics.hideFullPageOverlay.enabled) {
+          state.options.cosmetics.hideFullPageOverlay.enabled = false
+          await sleep(500)
+        }
+        
         if (state.options.turbo.enabled && state.MainStore) {
           state.MainStore.TechsStore.addTech(research.key)
         } else {
@@ -108,8 +115,11 @@ const executeAction = async () => {
         await sleep(25)
 
         if (resetResearch.includes(research.key)) {
-            await sleep(5000, true);
+            await sleep(1000, true);
+            hideFullPageOverlay
+            await sleep(1000, true);
             logger({ msgLevel: 'log', msg: `Reset started.` })
+            state.options.cosmetics.hideFullPageOverlay.enabled = overlayOptionState
             return;
         }
 

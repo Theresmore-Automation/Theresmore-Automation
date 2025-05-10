@@ -1,5 +1,5 @@
 import { legacies } from '../data'
-import { sleep, state, translate, localStorage, reactUtil, keyGen } from '../utils'
+import { logger, sleep, state, translate, localStorage, reactUtil, keyGen } from '../utils'
 
 const getEnabledLegacies = () => {
   const enabledLegaciesOptions = state.options.prestige.options ?? {}
@@ -32,7 +32,7 @@ const autoPrestige = async () => {
   if (!buttons.find((button) => keyGen.legacy.check(reactUtil.getNearestKey(button, 6)))) {
     return
   }
-
+  logger({ msgLevel: 'log', msg: `Picking prestige.` })
   const enabledLegacies = getEnabledLegacies()
   const activeLegacies = buttons
     .filter((button) => !button.classList.contains('btn-red') && !button.classList.toString().includes('btn-off'))
