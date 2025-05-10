@@ -78,7 +78,7 @@ const autoPrestige = async () => {
       redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     }
 
-    await sleep(1000, true);
+    await sleep(2000, true);
     state.stopAutoClicking = false
   }
 }
