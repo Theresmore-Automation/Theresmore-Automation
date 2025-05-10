@@ -1,4 +1,4 @@
-import { state, translate } from '../utils'
+import { sleep, state, translate } from '../utils'
 
 const autoPath = async () => {
   if (!state.options.path.enabled) return;

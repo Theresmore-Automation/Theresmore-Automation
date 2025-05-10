@@ -1,4 +1,4 @@
-import { state, translate } from '../utils'
+import { sleep, state, translate } from '../utils'
 
 const autoDifficulty = async () => {
   if (!state.options.difficulty.enabled) return;
