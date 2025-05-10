@@ -23,9 +23,9 @@ const hideFullPageOverlay = () => {
         if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
           let isResetModal = false;
           resetModals.forEach(resetModal => {if (modalTitle.innerText.trim() === translate(resetModal)) { isResetModal = true }})
-          if (isResetModal) { sleep(250, true) }
+          if (isResetModal) { sleep(3000, true) }
           fullPageOverlay.click()
-          if (isResetModal) { sleep(500, true) }
+          if (isResetModal) { sleep(3000, true) }
         }
       }
     })

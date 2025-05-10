@@ -108,7 +108,8 @@ const executeAction = async () => {
         await sleep(25)
 
         if (resetResearch.includes(research.key)) {
-            await sleep(3000, true);
+            await sleep(5000, true);
+            logger({ msgLevel: 'log', msg: `Reset started.` })
             return;
         }
 
