@@ -9,7 +9,11 @@ const dangerousFightsMapping = {
   orc_horde: 'orc_horde_boss',
   kobold_nation: 'king_kobold_nation',
   barbarian_tribes: 'barbarian_horde',
-}
+  mindless_evil: 'mindless_evil_boss'
+};
+const resetResearch = [
+  'launch_annhilator'
+];
 
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].enabled || false
@@ -102,6 +106,12 @@ const executeAction = async () => {
 
         logger({ msgLevel: 'log', msg: `Researching ${research.id}` })
         await sleep(25)
+
+        if (resetResearch.includes(research.key)) {
+            await sleep(5000, true);
+            logger({ msgLevel: 'log', msg: `Reset started.` })
+            return;
+        }
 
         if (research.confirm) {
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return

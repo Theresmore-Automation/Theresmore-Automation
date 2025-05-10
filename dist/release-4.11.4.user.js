@@ -9,7 +9,7 @@
 // @run-at      document-idle
 // @downloadURL https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
 // @updateURL   https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
-// @version     4.11.5
+// @version     4.11.4
 // @homepage    https://github.com/Theresmore-Automation/Theresmore-Automation
 // @author      Theresmore Automation team
 // @grant       none
@@ -31,7 +31,7 @@ A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYR
 ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const taVersion = "4.11.5";
+const taVersion = "4.11.4";
 
 
 (function () {
@@ -205,8 +205,7 @@ const taVersion = "4.11.5";
         }
       },
       turbo: {
-        enabled: false,
-        maxSleep: 50
+        enabled: false
       },
       lastMigration: 3,
       version: taVersion
@@ -257,10 +256,10 @@ const taVersion = "4.11.5";
   }
 
   function sleep(miliseconds, override = false) {
-    if (state.options.turbo.enabled && !override) {
-      return new Promise(resolve => setTimeout(resolve, Math.min(state.options.turbo.maxSleep, miliseconds)));
-    } else {
+    if (override) {
       return new Promise(resolve => setTimeout(resolve, miliseconds));
+    } else {
+      return new Promise(resolve => setTimeout(resolve, state.options.turbo.enabled ? Math.min(50, miliseconds) : miliseconds));
     }
   }
 
@@ -47553,11 +47552,12 @@ const taVersion = "4.11.5";
           });
           await sleep(25);
           if (resetResearch.includes(research.key)) {
-            await sleep(5000, true);
-            logger({
-              msgLevel: 'log',
-              msg: `Reset started.`
-            });
+            await sleep(3500, true);
+            const resetButton = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
+            while (resetButton && resetButton.innerText.includes('Close')) {
+              resetButton.click();
+              await sleep(1500, true);
+            }
             return;
           }
           if (research.confirm) {
@@ -48220,7 +48220,7 @@ const taVersion = "4.11.5";
         await sleep(1000, true);
         redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
       }
-      await sleep(1000, true);
+      await sleep(2000, true);
       state.stopAutoClicking = false;
     }
   };
@@ -49159,7 +49159,6 @@ const taVersion = "4.11.5";
 
           <div class="mb-2"><label>Turbo mode:
             <input type="checkbox" data-setting="turbo" data-key="enabled" class="option" />
-            Turbo Speed: <input type="number" data-setting="turbo" data-key="maxSleep" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="50" min="10" max="5000" step="10" />
           </div>
 
         </div>
@@ -49551,7 +49550,6 @@ const taVersion = "4.11.5";
     appendStyles
   };
 
-  const resetModals = ['img_annhilator'];
   const modalsToKill = Object.keys(i18n.en).filter(key => key.includes('img_') && !key.includes('_description')).map(key => i18n.en[key]);
   const hideFullPageOverlay = () => {
     if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
@@ -49563,19 +49561,7 @@ const taVersion = "4.11.5";
           }
           const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
           if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
-            let isResetModal = false;
-            resetModals.forEach(resetModal => {
-              if (modalTitle.innerText.trim() === translate(resetModal)) {
-                isResetModal = true;
-              }
-            });
-            if (isResetModal) {
-              sleep(3000, true);
-            }
             fullPageOverlay.click();
-            if (isResetModal) {
-              sleep(3000, true);
-            }
           }
         }
       });
@@ -49737,4 +49723,3 @@ const taVersion = "4.11.5";
   init();
 
 })();
-//# sourceMappingURL=bundle.user.js.map
