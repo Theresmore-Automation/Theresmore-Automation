@@ -68,7 +68,7 @@ const autoPrestige = async () => {
 
     await sleep(300, true)
     prestigeButton.click()
-    await sleep(5000, true)
+    await sleep(2000, true)
 
     let redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     while (redConfirmButton) {
