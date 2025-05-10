@@ -47553,7 +47553,11 @@ const taVersion = "4.11.5";
           });
           await sleep(25);
           if (resetResearch.includes(research.key)) {
-            await sleep(3000, true);
+            await sleep(5000, true);
+            logger({
+              msgLevel: 'log',
+              msg: `Reset started.`
+            });
             return;
           }
           if (research.confirm) {
@@ -49566,11 +49570,11 @@ const taVersion = "4.11.5";
               }
             });
             if (isResetModal) {
-              sleep(250, true);
+              sleep(3000, true);
             }
             fullPageOverlay.click();
             if (isResetModal) {
-              sleep(500, true);
+              sleep(3000, true);
             }
           }
         }
