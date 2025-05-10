@@ -7,8 +7,8 @@
 // @match       https://theresmoregame.g8hh.com.cn/
 // @license     MIT
 // @run-at      document-idle
-// @downloadURL https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js
-// @updateURL   https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js
+// @downloadURL https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
+// @updateURL   https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
 // @version     4.11.2
 // @homepage    https://github.com/Theresmore-Automation/Theresmore-Automation
 // @author      Theresmore Automation team
@@ -48525,22 +48525,14 @@ const taVersion = "4.11.2";
     <div class="taTabs">
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.BUILD}" checked class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.BUILD}" class="taTab-label">${CONSTANTS.PAGES.BUILD}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.BUILD}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.BUILD}</label>
         <div class="taTab-content">
           <p class="mb-2">Max values: -1 -> build unlimited; 0 -> do not build;</p>
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-key="enabled" class="option" />
-          </label></div>
-
           <div class="taTabs">
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" checked class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label">${CONSTANTS.SUBPAGES.CITY}</label>
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.CITY}</label>
               <div class="taTab-content">
-                <div class="mb-2"><label>Enabled:
-                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" />
-                </label></div>
-
                 <div class="mb-2">
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
@@ -48571,12 +48563,8 @@ const taVersion = "4.11.2";
             </div>
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label">${CONSTANTS.SUBPAGES.COLONY}</label>
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.COLONY}</label>
               <div class="taTab-content">
-                <div class="mb-2"><label>Enabled:
-                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" />
-                </label></div>
-
                 <div class="mb-2">
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
@@ -48607,12 +48595,8 @@ const taVersion = "4.11.2";
             </div>
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-label">${CONSTANTS.SUBPAGES.ABYSS}</label>
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.ABYSS}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.ABYSS}</label>
               <div class="taTab-content">
-                <div class="mb-2"><label>Enabled:
-                  <input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.ABYSS}" data-key="enabled" class="option" />
-                </label></div>
-
                 <div class="mb-2">
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
@@ -48648,12 +48632,8 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.RESEARCH}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.RESEARCH}" class="taTab-label">${CONSTANTS.PAGES.RESEARCH}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.RESEARCH}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.RESEARCH}</label>
         <div class="taTab-content">
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}" data-key="enabled" class="option" />
-          </label></div>
-
           <div class="mb-2"><label>Dangerous fights should require enough army to win before researching:
             <input type="checkbox" data-page="${CONSTANTS.PAGES.RESEARCH}" data-subpage="${CONSTANTS.SUBPAGES.RESEARCH}"
               data-key="options" data-subkey="dangerousFights" class="option" />
@@ -48698,12 +48678,9 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.MARKETPLACE}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.MARKETPLACE}" class="taTab-label">${CONSTANTS.PAGES.MARKETPLACE}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.MARKETPLACE}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.MARKETPLACE}</label>
         <div class="taTab-content">
 
-        <div class="mb-2"><label>Enabled:
-        <input type="checkbox" data-page="${CONSTANTS.PAGES.MARKETPLACE}" data-key="enabled" class="option" />
-        </label></div>
         <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
           ${['cow', 'horse', 'food', 'copper', 'wood', 'stone', 'iron', 'tools'].map(res => {
     return `<div class="flex flex-col mb-2"><label>
@@ -48726,13 +48703,10 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.POPULATION}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.POPULATION}" class="taTab-label">${CONSTANTS.PAGES.POPULATION}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.POPULATION}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.POPULATION}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.POPULATION}</label>
         <div class="taTab-content">
 
           <p class="mb-2">Max values: -1 -> hire unlimited; 0 -> do not hire;</p>
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.POPULATION}" data-key="enabled" class="option" />
-          </label></div>
 
           <div class="mb-2">
             <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
@@ -48777,25 +48751,17 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-label">${CONSTANTS.PAGES.ARMY}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.ARMY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.ARMY}</label>
         <div class="taTab-content">
-
-        <div class="mb-2"><label>Enabled:
-        <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-key="enabled" class="option" />
-        </div>
 
         <div class="taTabs">
           <div class="taTab">
             <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
               id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ARMY}"
               checked class="taTab-switch">
-            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ARMY}" class="taTab-label">${CONSTANTS.SUBPAGES.ARMY}</label>
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ARMY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ARMY}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.ARMY}</label>
             <div class="taTab-content">
               <p class="mb-2">Max values: -1 -> hire unlimited; 0 -> do not hire;</p>
-
-              <div class="mb-2"><label>Enabled:
-                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ARMY}" data-key="enabled" class="option" />
-              </label></div>
 
               ${userUnitsCategory.map((cat, index) => `
                 <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
@@ -48824,11 +48790,8 @@ const taVersion = "4.11.2";
             <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
               id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.EXPLORE}"
               class="taTab-switch">
-            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.EXPLORE}" class="taTab-label">${CONSTANTS.SUBPAGES.EXPLORE}</label>
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.EXPLORE}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.EXPLORE}</label>
             <div class="taTab-content">
-              <div class="mb-2"><label>Enabled:
-                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.EXPLORE}" data-key="enabled" class="option" />
-              </label></div>
 
               <div class="mb-2"><label>Scouts to send:<br />
               Min: <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
@@ -48861,11 +48824,8 @@ const taVersion = "4.11.2";
             <input type="radio" name="${CONSTANTS.PAGES.ARMY}PageOptions"
               id="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ATTACK}"
               class="taTab-switch">
-            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ATTACK}" class="taTab-label">${CONSTANTS.SUBPAGES.ATTACK}</label>
+            <label for="${CONSTANTS.PAGES.ARMY}PageOptions-${CONSTANTS.SUBPAGES.ATTACK}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ATTACK}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.ATTACK}</label>
             <div class="taTab-content">
-              <div class="mb-2"><label>Enabled:
-                <input type="checkbox" data-page="${CONSTANTS.PAGES.ARMY}" data-subpage="${CONSTANTS.SUBPAGES.ATTACK}" data-key="enabled" class="option" />
-              </label></div>
 
               <p class="mb-2">Check all fights to take</p>
 
@@ -48898,22 +48858,13 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.MAGIC}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.MAGIC}" class="taTab-label">${CONSTANTS.PAGES.MAGIC}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.MAGIC}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.MAGIC}</label>
         <div class="taTab-content">
-
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-key="enabled" class="option" />
-          </div>
-
           <div class="taTabs">
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.MAGIC}PageOptions" id="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.PRAYERS}" checked class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.PRAYERS}" class="taTab-label">${CONSTANTS.SUBPAGES.PRAYERS}</label>
+              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.PRAYERS}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.PRAYERS}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.PRAYERS}</label>
               <div class="taTab-content">
-                <div class="mb-2"><label>Enabled:
-                  <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.PRAYERS}" data-key="enabled" class="option" />
-                </label></div>
-
                 <div class="mb-2">
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to Medium</button>
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to Disabled</button>
@@ -48938,12 +48889,8 @@ const taVersion = "4.11.2";
             <div class="taTab">
               <input type="radio" name="${CONSTANTS.PAGES.MAGIC}PageOptions"
               id="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.SPELLS}"  class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.SPELLS}" class="taTab-label">${CONSTANTS.SUBPAGES.SPELLS}</label>
+              <label for="${CONSTANTS.PAGES.MAGIC}PageOptions-${CONSTANTS.SUBPAGES.SPELLS}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.SPELLS}</label>
               <div class="taTab-content">
-                <div class="mb-2"><label>Enabled:
-                  <input type="checkbox" data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}" data-key="enabled" class="option" />
-                </label></div>
-
                 <div class="mb-2"><label>Minimum Mana production to leave:
                 <input type="number" class="option w-min text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
                 data-page="${CONSTANTS.PAGES.MAGIC}" data-subpage="${CONSTANTS.SUBPAGES.SPELLS}"
@@ -48988,11 +48935,8 @@ const taVersion = "4.11.2";
 
       <div class="taTab">
         <input type="radio" name="topLevelOptions" id="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-switch">
-        <label for="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-label">${CONSTANTS.PAGES.DIPLOMACY}</label>
+        <label for="topLevelOptions-${CONSTANTS.PAGES.DIPLOMACY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.DIPLOMACY}" data-key="enabled" class="option" /> ${CONSTANTS.PAGES.DIPLOMACY}</label>
         <div class="taTab-content">
-          <div class="mb-2"><label>Enabled:
-            <input type="checkbox" data-page="${CONSTANTS.PAGES.DIPLOMACY}" data-key="enabled" class="option" />
-          </div>
 
           <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600 spellsArmy">
             <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">

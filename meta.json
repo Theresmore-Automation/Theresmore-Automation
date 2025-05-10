@@ -1,13 +1,9 @@
 {
   "name": "Theresmore Automation",
   "namespace": "github.com/Theresmore-Automation/Theresmore-Automation",
-  "match": [
-    "https://www.theresmoregame.com/play/",
-    "https://theresmoregame.g8hh.com/",
-    "https://theresmoregame.g8hh.com.cn/"
-  ],
+  "match": ["https://www.theresmoregame.com/play/", "https://theresmoregame.g8hh.com/", "https://theresmoregame.g8hh.com.cn/"],
   "license": "MIT",
   "run-at": "document-idle",
-  "downloadURL": "https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js",
-  "updateURL": "https://theresmore-automation.github.io/Theresmore-Automation/dist/bundle.user.js"
+  "downloadURL": "https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js",
+  "updateURL": "https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js"
 }
