@@ -1,6 +1,6 @@
 {
   "name": "theresmore-automation",
-  "version": "4.11.3",
+  "version": "4.11.4",
   "description": "Automation suite for Theresmore game",
   "keywords": [
     "userscript",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@babel/cli": "^7.26.4",
     "@babel/core": "^7.26.7",
-    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
