@@ -255,7 +255,7 @@ const taVersion = "4.11.4";
     };
   }
 
-  function sleep$1(miliseconds, override = false) {
+  function sleep(miliseconds, override = false) {
     if (override) {
       return new Promise(resolve => setTimeout(resolve, miliseconds));
     } else {
@@ -46181,7 +46181,7 @@ const taVersion = "4.11.4";
         msgLevel: 'debug',
         msg: `Switched page to ${page}`
       });
-      await sleep$1(1000);
+      await sleep(1000);
     }
   };
   const switchSubPage = async (subPage, page) => {
@@ -46203,7 +46203,7 @@ const taVersion = "4.11.4";
           msgLevel: 'debug',
           msg: `Switched subPage to ${subPage}`
         });
-        await sleep$1(500);
+        await sleep(500);
       }
     }
   };
@@ -46692,7 +46692,7 @@ const taVersion = "4.11.4";
             }
           }
           controls.counts[maxBulkHire].click();
-          await sleep$1(25);
+          await sleep(25);
           let shouldHire = true;
           const unit = highestPrioUnits.shift();
           shouldHire = !unit.gen.filter(gen => gen.type === 'resource').find(gen => !resources.get(gen.id) || resources.get(gen.id).speed + maxBulkHire * gen.value <= 0);
@@ -46707,11 +46707,11 @@ const taVersion = "4.11.4";
               msg: `Hiring ${maxBulkHire} ${unit.id}(s) (current: ${unit.count}, target: ${unit.max})`
             });
             refreshUnits = true;
-            await sleep$1(25);
+            await sleep(25);
             if (!navigation.checkPage(CONSTANTS.PAGES.ARMY, CONSTANTS.SUBPAGES.ARMY)) return;
           }
         }
-        await sleep$1(1400);
+        await sleep(1400);
         if (refreshUnits) {
           controls = getControls();
         }
@@ -46775,18 +46775,18 @@ const taVersion = "4.11.4";
         }
         for (let i = 0; i < count[0] - limitMax && removeUnitButton && !removeUnitButton.disabled; i++) {
           removeUnitButton.click();
-          await sleep$1(25);
+          await sleep(25);
         }
         count = box.querySelector('input[type="text"]').value.split(' / ').map(x => +x);
         for (let i = 0; i < limitMax - count[0] && addUnitButton && !addUnitButton.disabled && !!getSendToExplore(container, false); i++) {
           addUnitButton.click();
-          await sleep$1(25);
+          await sleep(25);
         }
         if (!getSendToExplore(container)) {
           const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none');
           if (removeUnitButton && !removeUnitButton.disabled) {
             removeUnitButton.click();
-            await sleep$1(25);
+            await sleep(25);
           }
         }
         count = box.querySelector('input[type="text"]').value.split(' / ').map(x => +x);
@@ -46797,7 +46797,7 @@ const taVersion = "4.11.4";
           const removeUnitButton = box.querySelector('div.inline-flex button.btn-red.rounded-none');
           while (removeUnitButton && !removeUnitButton.disabled) {
             removeUnitButton.click();
-            await sleep$1(25);
+            await sleep(25);
           }
         }
       }
@@ -46812,7 +46812,7 @@ const taVersion = "4.11.4";
         } else {
           sendToExplore.click();
         }
-        await sleep$1(25);
+        await sleep(25);
       }
     }
   };
@@ -46888,7 +46888,7 @@ const taVersion = "4.11.4";
       if (sendToAttackButton) {
         if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
           enemySelectorButton.click();
-          await sleep$1(250);
+          await sleep(250);
           const modals = [...document.querySelectorAll('h3.modal-title')];
           if (modals.length) {
             enemyList = [...modals.map(modal => [...modal.parentElement.querySelectorAll('h5')]).flat()].map(h5 => {
@@ -46917,13 +46917,13 @@ const taVersion = "4.11.4";
               target = enemyList.shift();
               targetSelected = true;
               target.button.click();
-              await sleep$1(1000);
+              await sleep(1000);
             } else {
               targetSelected = false;
               const closeButton = modals[0].parentElement.parentElement.parentElement.querySelector('div.absolute > button');
               if (closeButton) {
                 closeButton.click();
-                await sleep$1(20);
+                await sleep(20);
               }
             }
           }
@@ -46943,7 +46943,7 @@ const taVersion = "4.11.4";
               unassignAll(controlBox);
             }
           }
-          await sleep$1(20);
+          await sleep(20);
         } else {
           unassignAll(controlBox);
         }
@@ -47061,11 +47061,11 @@ const taVersion = "4.11.4";
                 msg: `Building ${button.building.id}`
               });
               refreshButtons = true;
-              await sleep$1(25);
+              await sleep(25);
               if (!navigation.checkPage(CONSTANTS.PAGES.BUILD)) return;
             }
           }
-          await sleep$1(1400);
+          await sleep(1400);
           if (refreshButtons) {
             buttons = getAllButtons();
           }
@@ -47180,13 +47180,13 @@ const taVersion = "4.11.4";
             msg: `Selling ${sellButtons[maxSellButton].innerText} of ${res.name} for ${price}`
           });
           goldEarned += numberParser.parse(sellButtons[maxSellButton].innerText) * price;
-          await sleep$1(10);
+          await sleep(10);
           if (!navigation.checkPage(CONSTANTS.PAGES.MARKETPLACE)) return;
           sellButtons = resourceHolder.querySelectorAll('div:nth-child(2) > div.grid.gap-3 button:not(.btn-dark)');
           gold = resources.get('gold');
           res = resources.get(resName);
           price = numberParser.parse(resourceHolder.querySelector('div:nth-child(2) > div > table > tbody > tr > td:nth-child(2)').innerText);
-          await sleep$1(25);
+          await sleep(25);
           if (price / initialPrice < 0.1) {
             break;
           }
@@ -47303,7 +47303,7 @@ const taVersion = "4.11.4";
           msgLevel: 'log',
           msg: 'Unassigning all workers'
         });
-        await sleep$1(10);
+        await sleep(10);
       }
       state.lastVisited.populationRebalance = new Date().getTime();
       localStorage.set('lastVisited', state.lastVisited);
@@ -47329,7 +47329,7 @@ const taVersion = "4.11.4";
               addJobButton.click();
               canAssignJobs = true;
               foodJob.current += 1;
-              await sleep$1(20);
+              await sleep(20);
               if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
             }
           } else {
@@ -47384,7 +47384,7 @@ const taVersion = "4.11.4";
                           job.current += 1;
                           unassigned -= 1;
                           canAssignJobs = !!unassigned;
-                          await sleep$1(20);
+                          await sleep(20);
                           if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
                         }
                       }
@@ -47432,7 +47432,7 @@ const taVersion = "4.11.4";
                     job.current += 1;
                     unassigned -= 1;
                     canAssignJobs = !!unassigned;
-                    await sleep$1(20);
+                    await sleep(20);
                     if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
                     break;
                   }
@@ -47446,7 +47446,7 @@ const taVersion = "4.11.4";
         if (unassigned === 0) {
           canAssignJobs = false;
         }
-        await sleep$1(10);
+        await sleep(10);
         if (!navigation.checkPage(CONSTANTS.PAGES.POPULATION)) return;
       }
     }
@@ -47550,29 +47550,29 @@ const taVersion = "4.11.4";
             msgLevel: 'log',
             msg: `Researching ${research.id}`
           });
-          await sleep$1(25);
+          await sleep(25);
           if (resetResearch.includes(research.key)) {
-            await sleep$1(3500, true);
+            await sleep(3500, true);
             const resetButton = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
             while (resetButton && resetButton.innerText.includes('Close')) {
               resetButton.click();
-              await sleep$1(1500, true);
+              await sleep(1500, true);
             }
             return;
           }
           if (research.confirm) {
             if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
-            await sleep$1(1000);
+            await sleep(1000);
             const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
             if (redConfirmButton) {
               redConfirmButton.click();
-              await sleep$1(4000);
+              await sleep(4000);
               if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
             }
           }
           if (!navigation.checkPage(CONSTANTS.PAGES.RESEARCH, CONSTANTS.SUBPAGES.RESEARCH)) return;
         }
-        await sleep$1(3100);
+        await sleep(3100);
         buttonsList = getAllButtons$2().filter(tech => !ignoredTech.includes(tech.id));
       }
     }
@@ -47648,10 +47648,10 @@ const taVersion = "4.11.4";
             msgLevel: 'log',
             msg: `Researching prayer ${prayer.id}`
           });
-          await sleep$1(25);
+          await sleep(25);
           if (!navigation.checkPage(CONSTANTS.PAGES.MAGIC, CONSTANTS.SUBPAGES.PRAYERS)) return;
         }
-        await sleep$1(3100);
+        await sleep(3100);
         buttonsList = getAllButtons$1();
       }
     }
@@ -47711,7 +47711,7 @@ const taVersion = "4.11.4";
           msg: `Cancelling spell ${spell.id}`
         });
         spell.button.click();
-        await sleep$1(25);
+        await sleep(25);
       }
       if (!navigation.checkPage(CONSTANTS.PAGES.MAGIC, CONSTANTS.SUBPAGES.SPELLS)) return;
     }
@@ -47724,7 +47724,7 @@ const taVersion = "4.11.4";
           msg: `Casting spell ${spell.id}`
         });
         spell.button.click();
-        await sleep$1(25);
+        await sleep(25);
       }
       if (!navigation.checkPage(CONSTANTS.PAGES.MAGIC, CONSTANTS.SUBPAGES.SPELLS)) return;
     }
@@ -47882,13 +47882,13 @@ const taVersion = "4.11.4";
                 });
                 tookAction = true;
                 faction.buttons[CONSTANTS.DIPLOMACY_BUTTONS.WAR].click();
-                await sleep$1(200);
+                await sleep(200);
                 const redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
                 if (redConfirmButton) {
                   redConfirmButton.click();
-                  await sleep$1(200);
+                  await sleep(200);
                 }
-                await sleep$1(3100);
+                await sleep(3100);
               } else {
                 logger({
                   msgLevel: 'debug',
@@ -47930,9 +47930,9 @@ const taVersion = "4.11.4";
       }
       if (tookAction) {
         if (longAction) {
-          await sleep$1(3100);
+          await sleep(3100);
         } else {
-          await sleep$1(25);
+          await sleep(25);
         }
         factionsWithButtons = getFactionsWithButtons();
         factionKeys = Object.keys(factionsWithButtons);
@@ -48066,7 +48066,7 @@ const taVersion = "4.11.4";
     let removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden');
     while (removeButton) {
       removeButton.click();
-      await sleep$1(10);
+      await sleep(10);
       removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden');
     }
   };
@@ -48074,7 +48074,7 @@ const taVersion = "4.11.4";
     let addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden');
     while (addButton) {
       addButton.click();
-      await sleep$1(10);
+      await sleep(10);
       addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden');
     }
   };
@@ -48123,7 +48123,7 @@ const taVersion = "4.11.4";
     const manualResources = [keyGen.manual.key('food'), keyGen.manual.key('wood'), keyGen.manual.key('stone')];
     while (!state.scriptPaused && state.haveManualResourceButtons) {
       if (state.stopAutoClicking) {
-        await sleep$1(1000);
+        await sleep(1000);
         continue;
       }
       const buttons = [...document.querySelectorAll('#root > div.flex.flex-wrap.w-full.mx-auto.p-2 > div.w-full.lg\\:pl-2 > div > div.order-2.flex.flex-wrap.gap-3 > button')];
@@ -48136,10 +48136,10 @@ const taVersion = "4.11.4";
         while (buttonsToClick.length && !reactUtil.getGameData().SettingsStore.showSettings) {
           const buttonToClick = buttonsToClick.shift();
           buttonToClick.click();
-          await sleep$1(100);
+          await sleep(100);
         }
       } else {
-        await sleep$1(1000);
+        await sleep(1000);
       }
     }
   };
@@ -48158,7 +48158,7 @@ const taVersion = "4.11.4";
         ancestor.click();
         state.stopAttacks = false;
         state.haveManualResourceButtons = true;
-        await sleep$1(5000, true);
+        await sleep(5000, true);
       }
       state.stopAutoClicking = false;
     }
@@ -48203,7 +48203,7 @@ const taVersion = "4.11.4";
     });
     for (let i = 0; i < activeLegacies.length; i++) {
       activeLegacies[i].button.click();
-      await sleep$1(1);
+      await sleep(1);
     }
     let prestigeButton = buttons.find(button => button.classList.contains('btn-red'));
     if (prestigeButton) {
@@ -48211,16 +48211,16 @@ const taVersion = "4.11.4";
       state.stopAutoClicking = true;
       state.stopAttacks = false;
       state.haveManualResourceButtons = true;
-      await sleep$1(300, true);
+      await sleep(300, true);
       prestigeButton.click();
-      await sleep$1(5000, true);
+      await sleep(2000, true);
       let redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
       while (redConfirmButton) {
         redConfirmButton.click();
-        await sleep$1(1000, true);
+        await sleep(1000, true);
         redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
       }
-      await sleep$1(1000, true);
+      await sleep(2000, true);
       state.stopAutoClicking = false;
     }
   };
@@ -48238,13 +48238,13 @@ const taVersion = "4.11.4";
     state.stopAutoClicking = true;
     state.stopAttacks = false;
     state.haveManualResourceButtons = true;
-    await sleep$1(300, true);
+    await sleep(300, true);
     ngButton.click();
-    await sleep$1(5000, true);
+    await sleep(5000, true);
     let redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 0);
     while (redConfirmButton) {
       redConfirmButton.click();
-      await sleep$1(2000, true);
+      await sleep(2000, true);
       redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find(button => reactUtil.getBtnIndex(button, 0) === 1);
     }
     state.stopAutoClicking = false;
@@ -49670,11 +49670,11 @@ const taVersion = "4.11.4";
             state.lastVisited[pageToCheck] = new Date().getTime();
             localStorage.set('lastVisited', state.lastVisited);
             await page.action();
-            await sleep$1(1000);
+            await sleep(1000);
           }
         }
       }
-      await sleep$1(1000);
+      await sleep(1000);
     }
     mainLoopRunning = false;
   };
@@ -49710,9 +49710,9 @@ const taVersion = "4.11.4";
         clearInterval(hideFullPageOverlayInterval);
         hideFullPageOverlayInterval = setInterval(tasks.cosmetics.hideFullPageOverlay, 500);
       }
-      await sleep$1(2000);
+      await sleep(2000);
       mainLoop();
-      await sleep$1(1000);
+      await sleep(1000);
       tasks.autoClicker();
     } else {
       if (!hideFullPageOverlayInterval) {
