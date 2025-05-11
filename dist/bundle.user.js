@@ -9,11 +9,12 @@
 // @run-at      document-idle
 // @downloadURL https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
 // @updateURL   https://github.com/Theresmore-Automation/Theresmore-Automation/releases/latest/download/bundle.user.js
-// @version     4.11.2
+// @version     4.11.4
 // @homepage    https://github.com/Theresmore-Automation/Theresmore-Automation
 // @author      Theresmore Automation team
 // @grant       none
 // ==/UserScript==
+
 
 /*
 MIT License
@@ -31,7 +32,7 @@ A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYR
 ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const taVersion = "4.11.2";
+const taVersion = "4.11.4";
 
 
 (function () {
@@ -46535,7 +46536,7 @@ const taVersion = "4.11.2";
   const ids = {
     resources: ['research', 'food', 'wood', 'stone', 'gold', 'tools', 'copper', 'iron', 'cow', 'horse', 'luck', 'mana', 'building_material', 'faith', 'supplies', 'crystal', 'steel', 'saltpetre', 'natronite'],
     prestige: ['legacy'],
-    special: ['relic', 'coin', 'tome_wisdom', 'gem', 'titan_gift']
+    special: ['relic', 'coin', 'tome_wisdom', 'gem', 'titan_gift', 'light']
   };
   const setMaxResources = (type, amount = 1000000000) => {
     const resources = reactUtil.getGameData().run.resources;
@@ -48529,9 +48530,10 @@ const taVersion = "4.11.2";
         <div class="taTab-content">
           <p class="mb-2">Max values: -1 -> build unlimited; 0 -> do not build;</p>
           <div class="taTabs">
+            ${[CONSTANTS.SUBPAGES.CITY, CONSTANTS.SUBPAGES.COLONY, CONSTANTS.SUBPAGES.ABYSS].map(subpage => `
             <div class="taTab">
-              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" checked class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.CITY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.CITY}</label>
+              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" checked class="taTab-switch">
+              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${subpage}" data-key="enabled" class="option" /> ${subpage}</label>
               <div class="taTab-content">
                 <div class="mb-2">
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
@@ -48542,89 +48544,23 @@ const taVersion = "4.11.2";
                   <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
                     <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
                     <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-                      ${buildings.filter(building => building.cat === cat).filter(building => building.tab === 1).map(building => {
-    return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
+                      ${buildings.filter(building => building.cat === cat).filter(building => building.tab === CONSTANTS.SUBPAGES_INDEX[subpage] + 1).map(building => `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
                           Max:
-                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.CITY}" data-key="options" data-subkey="${building.id}"
+                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${subpage}" data-key="options" data-subkey="${building.id}"
                             class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
                             value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
                           Prio: ${generatePrioritySelect({
-      page: CONSTANTS.PAGES.BUILD,
-      subpage: CONSTANTS.SUBPAGES.CITY,
-      key: 'options',
-      subkey: `prio_${building.id}`
-    })}</label></div>`;
-  }).join('')}
+    page: CONSTANTS.PAGES.BUILD,
+    subpage: subpage,
+    key: 'options',
+    subkey: `prio_${building.id}`
+  })}</label></div>`).join('')}
                     </div>
                   </div>
                 `).join('')}
 
               </div>
-            </div>
-            <div class="taTab">
-              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.COLONY}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.COLONY}</label>
-              <div class="taTab-content">
-                <div class="mb-2">
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
-                </div>
-
-                ${buildingCats.map(cat => `
-                  <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-                    <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
-                    <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-                      ${buildings.filter(building => building.cat === cat).filter(building => building.tab === 2).map(building => {
-    return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
-                          Max:
-                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.COLONY}" data-key="options" data-subkey="${building.id}"
-                            class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
-                            value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
-                          Prio: ${generatePrioritySelect({
-      page: CONSTANTS.PAGES.BUILD,
-      subpage: CONSTANTS.SUBPAGES.COLONY,
-      key: 'options',
-      subkey: `prio_${building.id}`
-    })}</label></div>`;
-  }).join('')}
-                    </div>
-                  </div>
-                `).join('')}
-
-              </div>
-            </div>
-            <div class="taTab">
-              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-switch">
-              <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${CONSTANTS.SUBPAGES.ABYSS}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.ABYSS}" data-key="enabled" class="option" /> ${CONSTANTS.SUBPAGES.ABYSS}</label>
-              <div class="taTab-content">
-                <div class="mb-2">
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
-                </div>
-
-                ${buildingCats.map(cat => `
-                  <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-                    <div class="w-full pb-3 font-bold text-center xl:text-left">${translate(cat)}</div>
-                    <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
-                      ${buildings.filter(building => building.cat === cat).filter(building => building.tab === 3).map(building => {
-    return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(building.id)}</span><br/>
-                          Max:
-                            <input type="number" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${CONSTANTS.SUBPAGES.ABYSS}" data-key="options" data-subkey="${building.id}"
-                            class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200"
-                            value="0" min="-1" max="${building.cap ? building.cap : 999}" step="1" /><br />
-                          Prio: ${generatePrioritySelect({
-      page: CONSTANTS.PAGES.BUILD,
-      subpage: CONSTANTS.SUBPAGES.ABYSS,
-      key: 'options',
-      subkey: `prio_${building.id}`
-    })}</label></div>`;
-  }).join('')}
-                    </div>
-                  </div>
-                `).join('')}
-
-              </div>
-            </div>
+            </div>`).join('')}
           </div>
 
         </div>
