@@ -47461,39 +47461,6 @@ const taVersion = "4.11.5";
     }
   };
 
-  const modalsToKill = Object.keys(i18n.en).filter(key => key.includes('img_') && !key.includes('_description')).map(key => i18n.en[key]);
-  const hideFullPageOverlay = () => {
-    if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
-      const modalTitles = [...document.querySelectorAll('#headlessui-portal-root div.modal-container h3.modal-title')];
-      modalTitles.forEach(modalTitle => {
-        if (modalTitle) {
-          if (!modalsToKill.includes(modalTitle.innerText.trim())) {
-            return;
-          }
-          const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
-          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
-            fullPageOverlay.click();
-          }
-        }
-      });
-    }
-  };
-  const removeToasts = () => {
-    const toastify = document.querySelector('div.Toastify');
-    const toastifyDisabled = document.querySelector('div.ToastifyDisabled');
-    if (toastify && state.options.cosmetics.toasts.enabled) {
-      toastify.classList.remove('Toastify');
-      toastify.classList.add('toastifyDisabled');
-    } else if (toastifyDisabled && !state.options.cosmetics.toasts.enabled) {
-      toastify.classList.remove('toastifyDisabled');
-      toastify.classList.add('Toastify');
-    }
-  };
-  var cosmetics = {
-    hideFullPageOverlay,
-    removeToasts
-  };
-
   const dangerousFightsMapping = {
     moonlight_night: 'army_of_goblin',
     dragon_assault: 'army_of_dragon',
@@ -47575,12 +47542,16 @@ const taVersion = "4.11.5";
               continue;
             }
           }
-          const overlayOptionState = state.options.cosmetics.hideFullPageOverlay.enabled;
-          if (resetResearch.includes(research.key) && state.options.cosmetics.hideFullPageOverlay.enabled) {
-            state.options.cosmetics.hideFullPageOverlay.enabled = false;
-            await sleep(500);
+          let isResetResearch = resetResearch.includes(research.key);
+          if (isResetResearch) {
+            state.scriptPaused = true;
+            await sleep(1000, true);
+            const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
+            if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+              fullPageOverlay.click();
+            }
           }
-          if (state.options.turbo.enabled && state.MainStore) {
+          if (state.options.turbo.enabled && state.MainStore && !isResetResearch) {
             state.MainStore.TechsStore.addTech(research.key);
           } else {
             research.button.click();
@@ -47590,14 +47561,18 @@ const taVersion = "4.11.5";
             msg: `Researching ${research.id}`
           });
           await sleep(25);
-          if (resetResearch.includes(research.key)) {
-            await sleep(1000, true);
-            await sleep(1000, true);
+          if (isResetResearch) {
+            await sleep(6000, true);
+            const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
+            if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+              fullPageOverlay.click();
+            }
+            await sleep(2500, true);
             logger({
               msgLevel: 'log',
               msg: `Reset started.`
             });
-            state.options.cosmetics.hideFullPageOverlay.enabled = overlayOptionState;
+            state.scriptPaused = false;
             return;
           }
           if (research.confirm) {
@@ -49593,6 +49568,39 @@ const taVersion = "4.11.5";
   };
   var manageStyles = {
     appendStyles
+  };
+
+  const modalsToKill = Object.keys(i18n.en).filter(key => key.includes('img_') && !key.includes('_description')).map(key => i18n.en[key]);
+  const hideFullPageOverlay = () => {
+    if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
+      const modalTitles = [...document.querySelectorAll('#headlessui-portal-root div.modal-container h3.modal-title')];
+      modalTitles.forEach(modalTitle => {
+        if (modalTitle) {
+          if (!modalsToKill.includes(modalTitle.innerText.trim())) {
+            return;
+          }
+          const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button');
+          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+            fullPageOverlay.click();
+          }
+        }
+      });
+    }
+  };
+  const removeToasts = () => {
+    const toastify = document.querySelector('div.Toastify');
+    const toastifyDisabled = document.querySelector('div.ToastifyDisabled');
+    if (toastify && state.options.cosmetics.toasts.enabled) {
+      toastify.classList.remove('Toastify');
+      toastify.classList.add('toastifyDisabled');
+    } else if (toastifyDisabled && !state.options.cosmetics.toasts.enabled) {
+      toastify.classList.remove('toastifyDisabled');
+      toastify.classList.add('Toastify');
+    }
+  };
+  var cosmetics = {
+    hideFullPageOverlay,
+    removeToasts
   };
 
   const updateStats = () => {
