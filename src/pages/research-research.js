@@ -1,5 +1,4 @@
 import { tech } from '../data'
-import hideFullPageOverlay from '../tasks/cosmetics'
 import { CONSTANTS, navigation, selectors, logger, sleep, state, translate, armyCalculator, reactUtil, keyGen } from '../utils'
 
 const dangerousFightsMapping = {
@@ -99,13 +98,15 @@ const executeAction = async () => {
           }
         }
         
-        const overlayOptionState = state.options.cosmetics.hideFullPageOverlay.enabled
-        if (resetResearch.includes(research.key) && state.options.cosmetics.hideFullPageOverlay.enabled) {
-          state.options.cosmetics.hideFullPageOverlay.enabled = false
-          await sleep(500)
+        let isResetResearch = resetResearch.includes(research.key)
+        if (isResetResearch) {
+          state.scriptPaused = true
+          await sleep(1000, true)
+          const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
+          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) { fullPageOverlay.click() }
         }
         
-        if (state.options.turbo.enabled && state.MainStore) {
+        if (state.options.turbo.enabled && state.MainStore && !isResetResearch) {
           state.MainStore.TechsStore.addTech(research.key)
         } else {
           research.button.click()
@@ -114,12 +115,13 @@ const executeAction = async () => {
         logger({ msgLevel: 'log', msg: `Researching ${research.id}` })
         await sleep(25)
 
-        if (resetResearch.includes(research.key)) {
-            await sleep(1000, true);
-            hideFullPageOverlay
-            await sleep(1000, true);
+        if (isResetResearch) {
+            await sleep(6000, true)
+            const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
+            if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) { fullPageOverlay.click() }
+            await sleep(2500, true)
             logger({ msgLevel: 'log', msg: `Reset started.` })
-            state.options.cosmetics.hideFullPageOverlay.enabled = overlayOptionState
+            state.scriptPaused = false
             return;
         }
 
