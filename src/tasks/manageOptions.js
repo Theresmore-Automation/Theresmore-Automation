@@ -101,7 +101,7 @@ const createPanel = (startFunction) => {
               .map(
                 (subpage) => `
             <div class="taTab">
-              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" checked class="taTab-switch">
+              <input type="radio" name="${CONSTANTS.PAGES.BUILD}PageOptions" id="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" ${subpage == CONSTANTS.SUBPAGES.CITY ? 'checked' : ''} class="taTab-switch">
               <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${subpage}" data-key="enabled" class="option" /> ${subpage}</label>
               <div class="taTab-content">
                 <div class="mb-2">
