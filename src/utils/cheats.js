@@ -23,7 +23,7 @@ const ids = {
     'natronite',
   ],
   prestige: ['legacy'],
-  special: ['relic', 'coin', 'tome_wisdom', 'gem', 'titan_gift', 'light'],
+  special: ['relic', 'coin', 'tome_wisdom', 'gem', 'titan_gift'],
 }
 
 const setMaxResources = (type, amount = 1000000000) => {
