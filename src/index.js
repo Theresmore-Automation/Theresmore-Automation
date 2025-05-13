@@ -31,7 +31,7 @@ const mainLoop = async () => {
     await tasks.autoNGPlus()
     await tasks.autoAncestor()
     await tasks.autoDifficulty()
-    await tasks.autoPath();
+    await tasks.autoPath()
 
     const pagesToCheck = []
     Object.keys(state.options.pages).forEach((page) => {

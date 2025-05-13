@@ -609,7 +609,7 @@ const createPanel = (startFunction) => {
               <select class="option dark:bg-mydark-200"
               data-setting="path" data-key="selected"
               >
-                ${['humans', 'evil_path'].map(path => `<option value="${path}">${translate(path)}</option>`).join('')}
+                ${['humans', 'evil_path'].map((path) => `<option value="${path}">${translate(path)}</option>`).join('')}
               </select>
             </div>
           </div>

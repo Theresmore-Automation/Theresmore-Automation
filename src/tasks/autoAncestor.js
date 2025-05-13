@@ -12,7 +12,7 @@ const autoAncestor = async () => {
   )
 
   if (ancestorPage) {
-    state.stopAutoClicking = true;
+    state.stopAutoClicking = true
     let ancestor = [...document.querySelectorAll('button.btn')].find((button) => reactUtil.getNearestKey(button, 3) === keyGen.ancestor.key(ancestorToSelect))
 
     if (!ancestor) {
@@ -25,9 +25,9 @@ const autoAncestor = async () => {
       ancestor.click()
       state.stopAttacks = false
       state.haveManualResourceButtons = true
-      await sleep(5000, true);
+      await sleep(5000, true)
     }
-    state.stopAutoClicking = false;
+    state.stopAutoClicking = false
   }
 }
 

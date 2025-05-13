@@ -19,7 +19,7 @@ export const getDefaultOptions = () => {
     },
     path: {
       enabled: false,
-      selected: ''
+      selected: '',
     },
     ngplus: {
       enabled: false,
