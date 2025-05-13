@@ -9,11 +9,9 @@ const dangerousFightsMapping = {
   orc_horde: 'orc_horde_boss',
   kobold_nation: 'king_kobold_nation',
   barbarian_tribes: 'barbarian_horde',
-  mindless_evil: 'mindless_evil_boss'
-};
-const resetResearch = [
-  'launch_annhilator'
-];
+  mindless_evil: 'mindless_evil_boss',
+}
+const resetResearch = ['launch_annhilator']
 
 const userEnabled = () => {
   return state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].enabled || false
@@ -97,15 +95,17 @@ const executeAction = async () => {
             continue
           }
         }
-        
-        let isResetResearch = resetResearch.includes(research.key)
+
+        const isResetResearch = resetResearch.includes(research.key)
         if (isResetResearch) {
           state.scriptPaused = true
           await sleep(1000, true)
           const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
-          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) { fullPageOverlay.click() }
+          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+            fullPageOverlay.click()
+          }
         }
-        
+
         if (state.options.turbo.enabled && state.MainStore && !isResetResearch) {
           state.MainStore.TechsStore.addTech(research.key)
         } else {
@@ -116,13 +116,15 @@ const executeAction = async () => {
         await sleep(25)
 
         if (isResetResearch) {
-            await sleep(6000, true)
-            const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
-            if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) { fullPageOverlay.click() }
-            await sleep(2500, true)
-            logger({ msgLevel: 'log', msg: `Reset started.` })
-            state.scriptPaused = false
-            return;
+          await sleep(6000, true)
+          const fullPageOverlay = document.querySelector('#headlessui-portal-root div.absolute.top-0.right-0.z-20.pt-4.pr-4 > button')
+          if (fullPageOverlay && fullPageOverlay.innerText.includes('Close')) {
+            fullPageOverlay.click()
+          }
+          await sleep(2500, true)
+          logger({ msgLevel: 'log', msg: `Reset started.` })
+          state.scriptPaused = false
+          return
         }
 
         if (research.confirm) {
