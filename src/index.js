@@ -65,7 +65,11 @@ const mainLoop = async () => {
           logger({ msgLevel: 'debug', msg: `Executing page ${page.page} ${page.subpage ? page.subpage : ''} action` })
           state.lastVisited[pageToCheck] = new Date().getTime()
           localStorage.set('lastVisited', state.lastVisited)
-          await page.action()
+          try {
+            await page.action()
+          } catch (e) {
+            logger({ msgLevel: 'error', msg: `Error executing page ${page.page} ${page.subpage ? page.subpage : ''} action` })
+          }
           await sleep(1000)
         }
       }
