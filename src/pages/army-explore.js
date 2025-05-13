@@ -34,7 +34,12 @@ const executeAction = async () => {
 
   const container = document.querySelector('div.tab-container.sub-container')
 
-  if (container) {
+  if (!container) {
+    return
+  }
+  let continueExploring = true
+  while (continueExploring) {
+    continueExploring = false
     let canExplore = false
     const boxes = [...container.querySelectorAll('div.grid > div.flex')]
     boxes.shift()
@@ -109,6 +114,12 @@ const executeAction = async () => {
       logger({ msgLevel: 'log', msg: `Starting exploration: ${unitsSent.join(', ')}` })
       if (state.options.turbo.enabled && state.MainStore) {
         state.MainStore.ArmyStore.startExplore()
+        if (state.options.instantArmy.enabled) {
+          while (state.MainStore.ArmyStore.exploreInProgress) {
+            await sleep(1)
+          }
+          continueExploring = state.MainStore.ArmyStore._foundEnemyCount != 0
+        }
       } else {
         sendToExplore.click()
       }
