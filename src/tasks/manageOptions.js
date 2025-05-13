@@ -55,7 +55,7 @@ const generatePrioritySelect = (data, defaultOptions) => {
     options.push(`<option value="${option.value}">${option.key}</option>`)
   })
 
-  return `<select class="option dark:bg-mydark-200"
+  return `<select class="option dark:bg-mydark-200 ${data.class ? data.class : ''}"
   ${data.setting ? `data-setting="${data.setting}"` : ''}
   ${data.page ? `data-page="${data.page}"` : ''}
   ${data.subpage ? `data-subpage="${data.subpage}"` : ''}
@@ -105,8 +105,11 @@ const createPanel = (startFunction) => {
               <label for="${CONSTANTS.PAGES.BUILD}PageOptions-${subpage}" class="taTab-label"><input type="checkbox" data-page="${CONSTANTS.PAGES.BUILD}" data-subpage="${subpage}" data-key="enabled" class="option" /> ${subpage}</label>
               <div class="taTab-content">
                 <div class="mb-2">
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 minus1Medium">Set all to -1/Medium</button>
-                  <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to 0/Disabled</button>
+                  <input type="number" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200 setAllMaxInput" value="0" min="-1" max="999" step="1" />
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 setAllMax">Set all max</button>
+                  <br/>
+                  ${generatePrioritySelect({ class: 'setAllPrioSelect' })}
+                  <button type="button" class="btn btn-blue w-min px-4 mr-2 setAllPrio">Set all Priority</button>
                 </div>
 
                 ${buildingCats
@@ -721,11 +724,33 @@ const createPanel = (startFunction) => {
 
   const setAllValues = (allContainers, options) => {
     allContainers.forEach((container) => {
-      container.querySelectorAll('input.option[type=number]').forEach((input) => (input.value = options.number))
-      container.querySelectorAll('input.option[type=checkbox]').forEach((input) => (input.checked = options.checked ? 'checked' : ''))
-      container.querySelectorAll('select').forEach((select) => (select.value = options.select))
+      if (options.number != undefined) {
+        container.querySelectorAll('input.option[type=number]').forEach((input) => (input.value = options.number))
+      }
+      if (options.checked != undefined) {
+        container.querySelectorAll('input.option[type=checkbox]').forEach((input) => (input.checked = options.checked ? 'checked' : ''))
+      }
+      if (options.select != undefined) {
+        container.querySelectorAll('select').forEach((select) => (select.value = options.select))
+      }
     })
   }
+
+  const setAllMaxs = [...document.querySelectorAll('.setAllMax')]
+  setAllMaxs.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
+      setAllValues(allGrids, { number: e.currentTarget.parentElement.querySelector('.setAllMaxInput').value })
+    })
+  })
+
+  const setAllPrio = [...document.querySelectorAll('.setAllPrio')]
+  setAllPrio.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const allGrids = [...e.currentTarget.parentElement.parentElement.querySelectorAll('div.flex.flex-wrap:not(.unsafe)')]
+      setAllValues(allGrids, { select: e.currentTarget.parentElement.querySelector('.setAllPrioSelect').value })
+    })
+  })
 
   const minus1Mediums = [...document.querySelectorAll('.minus1Medium')]
   minus1Mediums.forEach((button) => {
