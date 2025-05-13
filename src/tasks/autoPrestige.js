@@ -1,5 +1,5 @@
 import { legacies } from '../data'
-import { sleep, state, translate, localStorage, reactUtil, keyGen } from '../utils'
+import { logger, sleep, state, translate, localStorage, reactUtil, keyGen } from '../utils'
 
 const getEnabledLegacies = () => {
   const enabledLegaciesOptions = state.options.prestige.options ?? {}
@@ -32,7 +32,7 @@ const autoPrestige = async () => {
   if (!buttons.find((button) => keyGen.legacy.check(reactUtil.getNearestKey(button, 6)))) {
     return
   }
-
+  logger({ msgLevel: 'log', msg: `Picking prestige.` })
   const enabledLegacies = getEnabledLegacies()
   const activeLegacies = buttons
     .filter((button) => !button.classList.contains('btn-red') && !button.classList.toString().includes('btn-off'))
@@ -66,18 +66,19 @@ const autoPrestige = async () => {
     state.stopAttacks = false
     state.haveManualResourceButtons = true
 
-    await sleep(300)
+    await sleep(300, true)
     prestigeButton.click()
-    await sleep(5000)
+    await sleep(2000, true)
 
     let redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     while (redConfirmButton) {
       redConfirmButton.click()
-      await sleep(2000)
+      await sleep(1000, true)
 
       redConfirmButton = [...document.querySelectorAll('#headlessui-portal-root .btn.btn-red')].find((button) => reactUtil.getBtnIndex(button, 0) === 1)
     }
 
+    await sleep(1000, true);
     state.stopAutoClicking = false
   }
 }

@@ -17,6 +17,10 @@ export const getDefaultOptions = () => {
       enabled: false,
       selected: '',
     },
+    path: {
+      enabled: false,
+      selected: ''
+    },
     ngplus: {
       enabled: false,
       value: 0,
@@ -31,6 +35,7 @@ export const getDefaultOptions = () => {
     },
     turbo: {
       enabled: false,
+      maxSleep: 50,
     },
     lastMigration: 3,
     version: taVersion,

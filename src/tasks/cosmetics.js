@@ -1,9 +1,11 @@
 import { i18n } from '../data'
-import { state } from '../utils'
+import { sleep, state, translate } from '../utils'
 
 const modalsToKill = Object.keys(i18n.en)
   .filter((key) => key.includes('img_') && !key.includes('_description'))
   .map((key) => i18n.en[key])
+
+
 
 const hideFullPageOverlay = () => {
   if (!state.scriptPaused && state.options.cosmetics.hideFullPageOverlay.enabled) {
