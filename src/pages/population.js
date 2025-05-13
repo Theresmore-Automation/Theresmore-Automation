@@ -132,8 +132,8 @@ const executeAction = async () => {
   let canAssignJobs = true
   const container = selectors.getActivePageContent()
 
-  while (!container.querySelector('div > span.ml-2')) {
-    sleep(50, true)
+  if (!container.querySelector('div > span.ml-2')) {
+    return
   }
   let availablePop = container
     .querySelector('div > span.ml-2')
