@@ -1,6 +1,7 @@
 import { buildings, tech, jobs, spells, factions, units, locations, legacies } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations, cheats } from '../utils'
 import { getDefaultOptions } from '../utils/state'
+import initCheats from '../tasks/cheats'
 
 import LZString from 'lz-string'
 
@@ -86,6 +87,7 @@ const createPanel = (startFunction) => {
 
     <div class="mb-2 taOptionsBar">
       <button id="saveOptions" type="button" class="btn btn-green w-min px-4 mr-2">Save options</button>
+      <button id="saveOptionsAndClose" type="button" class="btn btn-green w-min px-4 mr-2">Save and Close</button>
       <button id="exportOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Export options</button>
       <button id="importOptions" type="button" class="btn btn-blue w-min px-4 mr-2">Import options</button>
     </div>
@@ -693,6 +695,12 @@ const createPanel = (startFunction) => {
             <input type="checkbox" data-setting="turbo" data-key="enabled" class="option" />
             Turbo Speed: <input type="number" data-setting="turbo" data-key="maxSleep" class="option text-center lg:text-sm text-gray-700 bg-gray-100 dark:text-mydark-50 dark:bg-mydark-200 border-y border-gray-400 dark:border-mydark-200" value="50" min="10" max="5000" step="10" />
           </div>
+          <div class="mb-2"><label>Instant attack/explore:
+            <input type="checkbox" data-setting="instantArmy" data-key="enabled" class="option" />
+          </div>
+          <div class="mb-2"><label>Instant oracle:
+            <input type="checkbox" data-setting="instantOracle" data-key="enabled" class="option" />
+          </div>
 
         </div>
       </div>
@@ -708,6 +716,7 @@ const createPanel = (startFunction) => {
   document.querySelector('div#root').insertAdjacentElement('afterend', panelElement)
   document.querySelector('#closeOptions').addEventListener('click', togglePanel)
   document.querySelector('#saveOptions').addEventListener('click', saveOptions)
+  document.querySelector('#saveOptionsAndClose').addEventListener('click', saveOptionsAndClose)
   document.querySelector('#exportOptions').addEventListener('click', exportOptions)
   document.querySelector('#importOptions').addEventListener('click', importOptions)
 
@@ -930,7 +939,14 @@ const saveOptions = () => {
     }
   })
 
+  initCheats()
+
   localStorage.set('options', state.options)
+}
+
+const saveOptionsAndClose = () => {
+  saveOptions()
+  togglePanel()
 }
 
 const exportOptions = () => {

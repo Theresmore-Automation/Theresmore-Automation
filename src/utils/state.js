@@ -37,6 +37,12 @@ export const getDefaultOptions = () => {
       enabled: false,
       maxSleep: 50,
     },
+    instantArmy: {
+      enabled: false,
+    },
+    instantOracle: {
+      enabled: false,
+    },
     lastMigration: 3,
     version: taVersion,
   }

@@ -108,6 +108,8 @@ const start = async () => {
   document.querySelector('html').classList.add('dark')
   tasks.managePanel.updatePanel()
 
+  tasks.initCheats()
+
   if (!state.scriptPaused) {
     logger({ msgLevel: 'log', msg: 'Starting automation' })
 

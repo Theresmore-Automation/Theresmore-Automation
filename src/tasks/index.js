@@ -12,6 +12,7 @@ import manageOptions from './manageOptions'
 import manageStyles from './manageStyles'
 import cosmetics from './cosmetics'
 import updateStats from './updateStats'
+import initCheats from './cheats'
 
 export default {
   calculateTippyTTF,
@@ -28,4 +29,5 @@ export default {
   manageStyles,
   cosmetics,
   updateStats,
+  initCheats,
 }
