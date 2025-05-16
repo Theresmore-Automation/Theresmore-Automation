@@ -82,6 +82,24 @@ const mainLoop = async () => {
 }
 
 const init = async () => {
+  let gameReadyForInit = false
+  while (!gameReadyForInit) {
+    if (document.getElementsByTagName('header').length) {
+      // Grab the internal MainStore from react
+      const el = document.getElementsByTagName('header')[0]
+      const fiberKey = Object.keys(el).find((k) => k.startsWith('__reactFiber$'))
+      if (fiberKey) {
+        const fiberNode = el[fiberKey]
+        state.MainStore = fiberNode.memoizedProps.children._owner.memoizedProps.MainStore
+        gameReadyForInit = true
+      }
+    }
+
+    if (!gameReadyForInit) {
+      await sleep(1000, true)
+    }
+  }
+
   tasks.manageStyles.appendStyles()
   tasks.managePanel.createPanel(switchScriptState)
   tasks.manageOptions.createPanel(start)
@@ -91,14 +109,6 @@ const init = async () => {
   setInterval(tasks.calculateTippyTTF, 100)
   setInterval(tasks.addArmyButtons, 100)
   setInterval(tasks.updateStats, 100)
-
-  // Grab the internal MainStore from react
-  const el = document.getElementsByTagName('header')[0]
-  const fiberKey = Object.keys(el).find((k) => k.startsWith('__reactFiber$'))
-  if (fiberKey) {
-    const fiberNode = el[fiberKey]
-    state.MainStore = fiberNode.memoizedProps.children._owner.memoizedProps.MainStore
-  }
 
   start()
 }

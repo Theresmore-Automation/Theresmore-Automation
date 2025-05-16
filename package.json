@@ -1,6 +1,6 @@
 {
   "name": "theresmore-automation",
-  "version": "4.11.9",
+  "version": "4.11.10",
   "description": "Automation suite for Theresmore game",
   "keywords": [
     "userscript",
@@ -20,7 +20,6 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup --config rollup.config.mjs",
     "watch": "npx rollup --config rollup.config.mjs --watch",
@@ -40,7 +39,6 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "colorette": "^2.0.20",
-    "husky": "^9.1.7",
     "lz-string": "^1.5.0",
     "prettier": "3.5.3",
     "pretty-quick": "^4.1.1",
