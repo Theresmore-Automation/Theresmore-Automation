@@ -1,4 +1,4 @@
-import { buildings, tech, jobs, spells, factions, units, locations, legacies, logger } from '../data'
+import { buildings, tech, jobs, spells, factions, units, locations, legacies } from '../data'
 import { state, localStorage, translate, CONSTANTS, runMigrations, cheats, groupChoices } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 import initCheats from '../tasks/cheats'
@@ -473,25 +473,26 @@ const createPanel = (startFunction) => {
                 </div>
 
           <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
-            <div class="w-full pb-3 font-bold text-center xl:text-left">Exclusive Prayers:</div>
-
-            ${prayerGroups
-              .map((item) => {
-                let returnValue = '<div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">'
-                item.value.forEach(
-                  (subItem) =>
-                    (returnValue = returnValue.concat(`<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(subItem)}</span><br />
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Exclusive researches:</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${prayerGroups
+                .map((item) => {
+                  return `<div class="flex flex-col mb-2"><label>${generateMultiSelect(item, {
+                    page: CONSTANTS.PAGES.MAGIC,
+                    subpage: CONSTANTS.SUBPAGES.PRAYERS,
+                    key: 'options',
+                    multiselectkey: item['key']['id'],
+                  })}<br />
                 Prio: ${generatePrioritySelect({
                   page: CONSTANTS.PAGES.MAGIC,
                   subpage: CONSTANTS.SUBPAGES.PRAYERS,
                   key: 'options',
-                  subkey: subItem,
-                })}</label></div>`))
-                )
-                returnValue = returnValue.concat('</div>')
-                return returnValue
-              })
-              .join('')}
+                  multiselectkey: item['key']['id'],
+                  subkey: 'multiSelectPriority',
+                })}</label></div>`
+                })
+                .join('')}
+            </div>
           </div>
 
                 <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
@@ -1057,6 +1058,8 @@ const saveOptions = () => {
       if (root) {
         if (subKey) {
           root[key][subKey] = value
+        } else {
+          root[key] = value
         }
       }
     })
