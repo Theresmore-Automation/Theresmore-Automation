@@ -22,13 +22,7 @@ function groupChoices(inputJSON) {
 }
 
 function blocksOthers(value) {
-  let foundMatch = false
-  value['gen'].forEach((item) => {
-    if (item['value'] == -1 && item['type'] != 'resource') {
-      foundMatch = true
-    }
-  })
-  return foundMatch
+  return value['gen'].find((item) => item['value'] == -1 && item['type'] != 'resource')
 }
 
 function blockedItems(gen) {
