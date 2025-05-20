@@ -14,6 +14,7 @@ import armyCalculator from './armyCalculator'
 import reactUtil from './reactUtil'
 import keyGen from './keyGen'
 import cheats from './cheats'
+import groupChoices from './groupChoices'
 
 export {
   CONSTANTS,
@@ -32,4 +33,5 @@ export {
   reactUtil,
   keyGen,
   cheats,
+  groupChoices,
 }

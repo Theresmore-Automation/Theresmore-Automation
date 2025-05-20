@@ -1,5 +1,5 @@
 import { buildings, tech, jobs, spells, factions, units, locations, legacies } from '../data'
-import { state, localStorage, translate, CONSTANTS, runMigrations, cheats } from '../utils'
+import { state, localStorage, translate, CONSTANTS, runMigrations, cheats, groupChoices } from '../utils'
 import { getDefaultOptions } from '../utils/state'
 import initCheats from '../tasks/cheats'
 
@@ -13,6 +13,12 @@ let start
 
 const buildingCats = ['living_quarters', 'resource', 'science', 'commercial_area', 'defense', 'faith', 'warehouse', 'wonders']
 const unsafeResearch = ['kobold_nation', 'barbarian_tribes', 'orcish_threat', 'huge_cave_t', 'mindless_evil']
+const buildingGroups = groupChoices(buildings)
+const groupedBuildings = buildingGroups.pop()
+const researchGroups = groupChoices(tech)
+const groupedResearchs = researchGroups.pop()
+const prayerGroups = groupChoices(spells.filter((prayer) => prayer.type === 'prayer'))
+const groupedPrayers = prayerGroups.pop()
 
 const userUnits = units.filter((unit) => unit.type !== 'enemy' && unit.type !== 'settlement' && unit.type !== 'spy')
 const userUnitsCategory = ['Recon', 'Ranged', 'Shock', 'Tank', 'Rider']
@@ -38,6 +44,22 @@ for (let i = 0; i < 15; i++) {
   }
 }
 
+const generateMultiSelect = (item, data) => {
+  const options = []
+
+  item['value'].forEach((option) => {
+    options.push(`<option value="${option}">${translate(option)}</option>`)
+  })
+
+  return `<select class="option dark:bg-mydark-200 ${data.class ? data.class : ''}"
+  ${data.setting ? `data-setting="${data.setting}"` : ''}
+  ${data.page ? `data-page="${data.page}"` : ''}
+  ${data.subpage ? `data-subpage="${data.subpage}"` : ''}
+  ${data.key ? `data-key="${data.key}"` : ''}
+  ${data.multiselectkey ? `data-multiselectkey="${data.multiselectkey}"` : ''}
+  >${options.join('')}</select>`
+}
+
 const generatePrioritySelect = (data, defaultOptions) => {
   defaultOptions = defaultOptions || [
     { key: 'Disabled', value: 0 },
@@ -61,6 +83,7 @@ const generatePrioritySelect = (data, defaultOptions) => {
   ${data.page ? `data-page="${data.page}"` : ''}
   ${data.subpage ? `data-subpage="${data.subpage}"` : ''}
   ${data.key ? `data-key="${data.key}"` : ''}
+  ${data.multiselectkey ? `data-multiselectkey="${data.multiselectkey}"` : ''}
   ${data.subkey ? `data-subkey="${data.subkey}"` : ''}
   >${options.join('')}</select>`
 }
@@ -168,10 +191,33 @@ const createPanel = (startFunction) => {
           </div>
 
           <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Exclusive researches:</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${researchGroups
+                .map((item) => {
+                  return `<div class="flex flex-col mb-2"><label>${generateMultiSelect(item, {
+                    page: CONSTANTS.PAGES.RESEARCH,
+                    subpage: CONSTANTS.SUBPAGES.RESEARCH,
+                    key: 'options',
+                    multiselectkey: item['key']['id'],
+                  })}<br />
+                Prio: ${generatePrioritySelect({
+                  page: CONSTANTS.PAGES.RESEARCH,
+                  subpage: CONSTANTS.SUBPAGES.RESEARCH,
+                  key: 'options',
+                  multiselectkey: item['key']['id'],
+                  subkey: 'multiSelectPriority',
+                })}</label></div>`
+                })
+                .join('')}
+            </div>
+          </div>
+
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
             <div class="w-full pb-3 font-bold text-center xl:text-left">Regular researches:</div>
             <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
               ${tech
-                .filter((technology) => !technology.confirm && !unsafeResearch.includes(technology.id))
+                .filter((technology) => !technology.confirm && !unsafeResearch.includes(technology.id) && !groupedResearchs.includes(technology.id))
                 .map((technology) => {
                   return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(technology.id, 'tec_')}</span><br />
                   Prio: ${generatePrioritySelect({
@@ -426,10 +472,34 @@ const createPanel = (startFunction) => {
                   <button type="button" class="btn btn-blue w-min px-4 mr-2 zeroDisabled">Set all to Disabled</button>
                 </div>
 
+          <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+            <div class="w-full pb-3 font-bold text-center xl:text-left">Exclusive researches:</div>
+            <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
+              ${prayerGroups
+                .map((item) => {
+                  return `<div class="flex flex-col mb-2"><label>${generateMultiSelect(item, {
+                    page: CONSTANTS.PAGES.MAGIC,
+                    subpage: CONSTANTS.SUBPAGES.PRAYERS,
+                    key: 'options',
+                    multiselectkey: item['key']['id'],
+                  })}<br />
+                Prio: ${generatePrioritySelect({
+                  page: CONSTANTS.PAGES.MAGIC,
+                  subpage: CONSTANTS.SUBPAGES.PRAYERS,
+                  key: 'options',
+                  multiselectkey: item['key']['id'],
+                  subkey: 'multiSelectPriority',
+                })}</label></div>`
+                })
+                .join('')}
+            </div>
+          </div>
+
                 <div class="flex flex-wrap min-w-full mt-3 p-3 shadow rounded-lg ring-1 ring-gray-300 dark:ring-mydark-200 bg-gray-100 dark:bg-mydark-600">
+                  <div class="w-full pb-3 font-bold text-center xl:text-left">Regular Prayers:</div>
                   <div class="grid gap-3 grid-cols-fill-240 min-w-full px-12 xl:px-0 mb-2">
                     ${spells
-                      .filter((prayer) => prayer.type === 'prayer')
+                      .filter((prayer) => prayer.type === 'prayer' && !groupedPrayers.includes(prayer.id))
                       .map((prayer) => {
                         return `<div class="flex flex-col mb-2"><label><span class="font-bold">${translate(prayer.id)}</span><br/>
                         Prio: ${generatePrioritySelect({
@@ -843,6 +913,7 @@ const createPanel = (startFunction) => {
     const page = option.dataset.page
     const subPage = option.dataset.subpage
     const key = option.dataset.key
+    const multiSelectKey = option.dataset.multiselectkey
     const subKey = option.dataset.subkey
 
     let root
@@ -858,17 +929,40 @@ const createPanel = (startFunction) => {
     }
 
     if (root) {
-      const value = subKey ? root[key][subKey] : root[key]
-
-      if (typeof value !== 'undefined') {
-        if (option.type === 'checkbox') {
-          if (value) {
-            option.checked = 'checked'
+      if (typeof multiSelectKey !== 'undefined') {
+        if (typeof subKey !== 'undefined') {
+          const multiSelectOption = options.filter((option) => option.dataset.multiselectkey === multiSelectKey && !option.dataset.subkey)
+          if (multiSelectOption.length > 0) {
+            const selected = multiSelectOption[0].value
+            if (selected) {
+              const value = root[key][selected]
+              if (value) {
+                option.value = value
+              }
+            }
           }
-        } else if (option.type === 'number') {
-          option.value = value
-        } else if (option.type === 'select-one') {
-          option.value = value
+        } else {
+          const choices = option.options
+          for (let i = 0; i < choices.length; i++) {
+            const choice = choices[i].value
+            const value = root[key][choice]
+            if (value > 0) {
+              option.value = choice
+            }
+          }
+        }
+      } else {
+        const value = subKey ? root[key][subKey] : root[key]
+        if (typeof value !== 'undefined') {
+          if (option.type === 'checkbox') {
+            if (value) {
+              option.checked = 'checked'
+            }
+          } else if (option.type === 'number') {
+            option.value = value
+          } else if (option.type === 'select-one') {
+            option.value = value
+          }
         }
       }
     }
@@ -898,46 +992,77 @@ const saveOptions = () => {
   const options = [...document.querySelector(`div#${id}`).querySelectorAll('.option')]
   state.options = getDefaultOptions()
 
-  options.forEach((option) => {
-    const setting = option.dataset.setting
+  const multiSelectOptions = options.filter((option) => option.dataset.multiselectkey && !option.dataset.subkey)
+  const multiSelectOptionPriorities = options.filter((option) => option.dataset.multiselectkey && option.dataset.subkey)
+
+  multiSelectOptions.forEach((option) => {
     const page = option.dataset.page
     const subPage = option.dataset.subpage
+    const multiSelectKey = option.dataset.multiselectkey
     const key = option.dataset.key
-    const subKey = option.dataset.subkey
-
-    let value
-    if (option.type === 'checkbox') {
-      value = !!option.checked
-    } else if (option.type === 'number') {
-      value = Number(option.value)
-    } else if (option.type === 'select-one') {
-      value = option.value
+    const selected = option.value
+    const choices = option.options
+    const priority = multiSelectOptionPriorities.filter((priority) => priority.dataset.multiselectkey === multiSelectKey)
+    let value = 0
+    if (priority.length > 0) value = priority[0].value
+    if (typeof value === 'undefined') {
+      value = 0
     }
 
-    if (isNumber(value)) {
-      value = +value
-    }
-
-    let root
-
-    if (setting) {
-      root = state.options[setting]
-    } else {
-      if (subPage) {
-        root = state.options.pages[page].subpages[subPage]
+    for (let i = 0; i < choices.length; i++) {
+      let root = state.options.pages[page].subpages[subPage]
+      const choice = choices[i].value
+      if (selected === choice) {
+        root[key][choice] = value
       } else {
-        root = state.options.pages[page]
-      }
-    }
-
-    if (root) {
-      if (subKey) {
-        root[key][subKey] = value
-      } else {
-        root[key] = value
+        root[key][choice] = 0
       }
     }
   })
+
+  options
+    .filter((option) => !option.dataset.multiselectkey)
+    .forEach((option) => {
+      const setting = option.dataset.setting
+      const page = option.dataset.page
+      const subPage = option.dataset.subpage
+      const key = option.dataset.key
+      const subKey = option.dataset.subkey
+
+      let value
+
+      if (option.type === 'checkbox') {
+        value = !!option.checked
+      } else if (option.type === 'number') {
+        value = Number(option.value)
+      } else if (option.type === 'select-one') {
+        value = option.value
+      }
+
+      if (isNumber(value)) {
+        value = +value
+      }
+
+      let root
+
+      if (setting) {
+        root = state.options[setting]
+      } else {
+        if (subPage) {
+          root = state.options.pages[page].subpages[subPage]
+        } else {
+          root = state.options.pages[page]
+        }
+      }
+
+      if (root) {
+        if (subKey) {
+          root[key][subKey] = value
+        } else {
+          root[key] = value
+        }
+      }
+    })
 
   initCheats()
 
