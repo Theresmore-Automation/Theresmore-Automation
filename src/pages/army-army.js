@@ -136,10 +136,14 @@ const executeAction = async () => {
             }
           }
 
-          if (unit.max - unit.count < 10) {
-            maxBulkHire = 1
-          } else if (unit.max - unit.count < 50) {
-            maxBulkHire = Math.min(maxBulkHire, 10)
+          if (state.options.turbo.enabled) {
+            maxBulkHire = unit.max - unit.count
+          } else {
+            if (unit.max - unit.count < 10) {
+              maxBulkHire = 1
+            } else if (unit.max - unit.count < 50) {
+              maxBulkHire = Math.min(maxBulkHire, 10)
+            }
           }
         }
 
@@ -158,8 +162,10 @@ const executeAction = async () => {
           }
         }
 
-        controls.counts[maxBulkHire].click()
-        await sleep(25)
+        if (!state.options.turbo.enabled) {
+          controls.counts[maxBulkHire].click()
+          await sleep(25)
+        }
 
         let shouldHire = true
         const unit = highestPrioUnits.shift()
@@ -170,7 +176,8 @@ const executeAction = async () => {
 
         if (shouldHire) {
           if (state.options.turbo.enabled && state.MainStore) {
-            state.MainStore.ArmyStore.addArmyQty(unit.key, maxBulkHire)
+            state.MainStore.ArmyStore.setArmyStepQty(maxBulkHire)
+            state.MainStore.ArmyStore.addArmyQty(unit.key)
           } else {
             unit.button.click()
           }
