@@ -63,13 +63,14 @@ const executeAction = async () => {
     const boxes = [...container.querySelectorAll('div.grid > div.flex')]
     const controlBox = boxes.shift()
     let enemyList = []
-    let targetSelected = false
     let target
+    let continueAttacking = true
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
     const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 2)
 
-    if (sendToAttackButton) {
+    while (sendToAttackButton && continueAttacking) {
+      continueAttacking = false
       if (enemySelectorButton && !enemySelectorButton.disabled && !state.stopAttacks && !state.scriptPaused) {
         enemySelectorButton.click()
         await sleep(250)
@@ -91,7 +92,6 @@ const executeAction = async () => {
             })
             .filter((fight) => fight)
             .filter((fight) => state.options.pages[CONSTANTS.PAGES.ARMY].subpages[CONSTANTS.SUBPAGES.ATTACK].options[fight.key])
-            .filter((fight) => armyCalculator.canWinBattle(fight.key, false, false))
 
           enemyList.sort((a, b) => {
             let aLevel = a.level || 0
@@ -108,13 +108,12 @@ const executeAction = async () => {
             return aLevel - bLevel
           })
 
-          if (enemyList.length && !state.scriptPaused) {
-            target = enemyList.shift()
-            targetSelected = true
+          target = enemyList.find((fight) => armyCalculator.canWinBattle(fight.key, false, false))
+
+          if (target && !state.scriptPaused) {
             target.button.click()
             await sleep(1000)
           } else {
-            targetSelected = false
             const closeButton = modals[0].parentElement.parentElement.parentElement.querySelector('div.absolute > button')
             if (closeButton) {
               closeButton.click()
@@ -122,7 +121,7 @@ const executeAction = async () => {
             }
           }
         }
-        if (targetSelected && target && !state.stopAttacks) {
+        if (target && !state.stopAttacks) {
           assignAll(controlBox)
 
           if (!sendToAttackButton.disabled && !state.scriptPaused) {
@@ -133,6 +132,12 @@ const executeAction = async () => {
 
             if (state.options.turbo.enabled && state.MainStore) {
               state.MainStore.ArmyStore.startAttack()
+              continueAttacking = true
+              if (state.options.instantArmy.enabled) {
+                while (state.MainStore.ArmyStore.attackInProgress) {
+                  await sleep(1)
+                }
+              }
             } else {
               sendToAttackButton.click()
             }
@@ -144,7 +149,9 @@ const executeAction = async () => {
         await sleep(20)
       } else {
         unassignAll(controlBox)
+        break;
       }
+      await sleep(10)
     }
   }
 }
