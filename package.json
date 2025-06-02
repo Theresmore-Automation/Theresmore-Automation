@@ -41,7 +41,7 @@
     "colorette": "^2.0.20",
     "lz-string": "^1.5.0",
     "prettier": "3.5.3",
-    "pretty-quick": "^4.1.1",
+    "pretty-quick": "^4.2.0",
     "rollup": "^4.41.0",
     "rollup-plugin-userscript-metablock": "^0.4.2",
     "serve": "^14.2.4",
