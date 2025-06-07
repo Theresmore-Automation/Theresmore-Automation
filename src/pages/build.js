@@ -76,6 +76,33 @@ export const getBuildSubpage = (subpage) => {
   const executeAction = async () => {
     let buttons = getAllButtons()
 
+    let guidedStart = state.options.guidedStart.enabled
+    if (guidedStart) {
+      if (reactUtil.getGameData().ResourcesStore.resources.findIndex((x) => x.id == 'copper') > -1) {
+        guidedStart = false
+      } else {
+        const buildingsList = getBuildingsList()
+        const watchedButtons = selectors
+          .getAllButtons(false)
+          .map((button) => {
+            const id = reactUtil.getNearestKey(button, 6)
+            const count = button.querySelector('span.right-0') ? numberParser.parse(button.querySelector('span.right-0').innerText) : 0
+            return { id: id, element: button, count: count, building: buildingsList.find((building) => keyGen.building.key(building.key) === id) }
+          })
+          .filter(
+            (button) =>
+              button.building &&
+              ((button.building.key === 'common_house' && (!button.count || button.count < 3)) ||
+                (button.building.key === 'farm' && (!button.count || button.count < 1)) ||
+                (button.building.key === 'lumberjack_camp' && (!button.count || button.count < 1)) ||
+                (button.building.key === 'quarry' && (!button.count || button.count < 1)))
+          )
+        if (watchedButtons.length == 0) {
+          guidedStart = false
+        }
+      }
+    }
+
     if (buttons.length) {
       while (!state.scriptPaused && buttons.length) {
         let refreshButtons = false
@@ -87,7 +114,19 @@ export const getBuildSubpage = (subpage) => {
           let shouldBuild = true
           const button = highestPrioBuildings.shift()
 
-          if (!button.building.isSafe && button.building.requires.length) {
+          if (guidedStart) {
+            shouldBuild = false
+
+            if (button.building.key === 'common_house' && (!button.count || button.count < 3)) {
+              shouldBuild = true
+            } else if (button.building.key === 'farm' && (!button.count || button.count < 1)) {
+              shouldBuild = true
+            } else if (button.building.key === 'lumberjack_camp' && (!button.count || button.count < 1)) {
+              shouldBuild = true
+            } else if (button.building.key === 'quarry' && (!button.count || button.count < 1)) {
+              shouldBuild = true
+            }
+          } else if (!button.building.isSafe && button.building.requires.length) {
             shouldBuild = !button.building.requires.find((req) => !resources.get(req.resource) || resources.get(req.resource)[req.parameter] <= req.minValue)
 
             if (button.building.key === 'common_house' && (!button.count || button.count < 10)) {

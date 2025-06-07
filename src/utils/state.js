@@ -43,6 +43,9 @@ export const getDefaultOptions = () => {
     instantOracle: {
       enabled: false,
     },
+    guidedStart: {
+      enabled: false,
+    },
     lastMigration: 3,
     version: taVersion,
   }
