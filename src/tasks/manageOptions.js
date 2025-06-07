@@ -828,7 +828,11 @@ const createPanel = (startFunction) => {
         container.querySelectorAll('input.option[type=checkbox]').forEach((input) => (input.checked = options.checked ? 'checked' : ''))
       }
       if (options.select != undefined) {
-        container.querySelectorAll('select').forEach((select) => (select.value = options.select))
+        container.querySelectorAll('select').forEach((select) => {
+          if (!select.dataset.multiselectkey || select.dataset.subkey) {
+            select.value = options.select
+          }
+        })
       }
     })
   }
@@ -1004,7 +1008,7 @@ const saveOptions = () => {
     const choices = option.options
     const priority = multiSelectOptionPriorities.filter((priority) => priority.dataset.multiselectkey === multiSelectKey)
     let value = 0
-    if (priority.length > 0) value = priority[0].value
+    if (priority.length > 0) value = Number(priority[0].value)
     if (typeof value === 'undefined') {
       value = 0
     }
