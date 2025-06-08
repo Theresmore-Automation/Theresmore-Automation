@@ -772,7 +772,7 @@ const createPanel = (startFunction) => {
             <input type="checkbox" data-setting="instantOracle" data-key="enabled" class="option" />
           </div>
           <div class="mb-2"><label>Guided start:
-            <input type="checkbox" data-setting="guidedStart" data-key="enabled" class="option" /> || Guided start builds 3 Common Houses, 1 Lumberjack Camp and 1 Quarry before everything else.
+            <input type="checkbox" data-setting="guidedStart" data-key="enabled" class="option" /> || Guided start builds 3 Common Houses, 1 Farm, 1 Lumberjack Camp and 1 Quarry before everything else.
           </div>
 
         </div>
