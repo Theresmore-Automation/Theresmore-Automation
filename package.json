@@ -43,7 +43,7 @@
     "prettier": "3.5.3",
     "pretty-quick": "^4.2.2",
     "rollup": "^4.43.0",
-    "rollup-plugin-userscript-metablock": "^0.4.2",
+    "rollup-plugin-userscript-metablock": "^0.4.3",
     "serve": "^14.2.4",
     "simple-git-hooks": "^2.13.0"
   },
