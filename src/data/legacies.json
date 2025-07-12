@@ -4224,7 +4224,7 @@
       {
         "type": "resource",
         "id": "stone",
-        "value": 50,
+        "value": 75,
         "perc": true
       }
     ]
@@ -4353,7 +4353,7 @@
         "type_id": "army",
         "id": "seraphim",
         "type_gen": "stat",
-        "gen": "defense",
+        "gen": "attack",
         "value": 160,
         "perc": false
       },
@@ -4472,7 +4472,7 @@
       {
         "type": "resource",
         "id": "light",
-        "value": 4,
+        "value": 1,
         "fix": true
       }
     ]
@@ -4602,7 +4602,7 @@
         "type_id": "army",
         "id": "seraphim",
         "type_gen": "stat",
-        "gen": "defense",
+        "gen": "attack",
         "value": 300,
         "perc": false
       },
@@ -4702,7 +4702,7 @@
       {
         "type": "resource",
         "id": "light",
-        "value": 8,
+        "value": 2,
         "fix": true
       }
     ]
@@ -4779,7 +4779,7 @@
       {
         "type": "resource",
         "id": "light",
-        "value": 12,
+        "value": 4,
         "fix": true
       }
     ]
@@ -4830,7 +4830,7 @@
       {
         "type": "resource",
         "id": "light",
-        "value": 16,
+        "value": 8,
         "fix": true
       }
     ]

@@ -61,7 +61,7 @@
     "army": [
       {
         "id": "archer",
-        "value": 80
+        "value": 110
       },
       {
         "id": "warrior",
@@ -164,7 +164,7 @@
       },
       {
         "id": "light_cavarly",
-        "value": 80
+        "value": 120
       },
       {
         "id": "commander",
@@ -271,7 +271,7 @@
       },
       {
         "id": "knight",
-        "value": 50
+        "value": 100
       },
       {
         "id": "commander",
@@ -376,11 +376,11 @@
       },
       {
         "id": "spearman",
-        "value": 40
+        "value": 80
       },
       {
         "id": "heavy_warrior",
-        "value": 30
+        "value": 50
       },
       {
         "id": "commander",
@@ -476,7 +476,7 @@
     "army": [
       {
         "id": "lizard_warrior",
-        "value": 200
+        "value": 250
       },
       {
         "id": "lizard_archer",
@@ -586,7 +586,7 @@
     "army": [
       {
         "id": "draconic_warrior",
-        "value": 200
+        "value": 250
       },
       {
         "id": "draconic_diver",
@@ -704,7 +704,7 @@
       },
       {
         "id": "cavarly_archer",
-        "value": 60
+        "value": 100
       },
       {
         "id": "daimyo",
@@ -781,15 +781,15 @@
     "army": [
       {
         "id": "mobile_turret",
-        "value": 200
+        "value": 250
       },
       {
         "id": "hover_tank",
-        "value": 400
+        "value": 450
       },
       {
         "id": "mechanical_wolf",
-        "value": 600
+        "value": 650
       },
       {
         "id": "giant_death_robot",
@@ -843,7 +843,7 @@
       },
       {
         "id": "kobold_champion",
-        "value": 50
+        "value": 70
       },
       {
         "id": "kobold",
@@ -884,7 +884,7 @@
       },
       {
         "id": "barbarian_chosen",
-        "value": 20
+        "value": 50
       },
       {
         "id": "barbarian_drummer",
@@ -892,7 +892,7 @@
       },
       {
         "id": "barbarian_warrior",
-        "value": 120
+        "value": 150
       }
     ],
     "gen": [
@@ -944,11 +944,11 @@
       },
       {
         "id": "skeletal_knight",
-        "value": 400
+        "value": 500
       },
       {
         "id": "skeleton",
-        "value": 2000
+        "value": 2200
       }
     ],
     "gen": [
@@ -990,7 +990,7 @@
       },
       {
         "id": "dark_knight",
-        "value": 280
+        "value": 320
       },
       {
         "id": "ancient_ghost",
@@ -1054,7 +1054,7 @@
       },
       {
         "id": "skeleton",
-        "value": 2000
+        "value": 2200
       },
       {
         "id": "ghost",
@@ -1114,15 +1114,15 @@
       },
       {
         "id": "succubus",
-        "value": 500
+        "value": 540
       },
       {
         "id": "spawn_evil",
-        "value": 500
+        "value": 540
       },
       {
         "id": "greater_demon",
-        "value": 560
+        "value": 660
       },
       {
         "id": "faceless_horror",
@@ -1165,11 +1165,11 @@
     "army": [
       {
         "id": "skeleton",
-        "value": 1000
+        "value": 1200
       },
       {
         "id": "zombie",
-        "value": 400
+        "value": 600
       }
     ]
   },
@@ -1184,11 +1184,11 @@
       },
       {
         "id": "goblin_wolfrider",
-        "value": 30
+        "value": 50
       },
       {
         "id": "goblin_warrior",
-        "value": 70
+        "value": 90
       }
     ]
   },
@@ -1203,7 +1203,7 @@
       },
       {
         "id": "draconic_warrior",
-        "value": 100
+        "value": 140
       }
     ]
   },
@@ -1218,7 +1218,7 @@
       },
       {
         "id": "demonic_musketeer",
-        "value": 120
+        "value": 170
       }
     ]
   },
@@ -1233,11 +1233,11 @@
       },
       {
         "id": "lesser_demon",
-        "value": 150
+        "value": 170
       },
       {
         "id": "greater_demon",
-        "value": 100
+        "value": 130
       }
     ]
   },
@@ -1248,11 +1248,11 @@
     "army": [
       {
         "id": "orc_warrior",
-        "value": 150
+        "value": 160
       },
       {
         "id": "orc_stone_thrower",
-        "value": 100
+        "value": 120
       }
     ],
     "hidden": true
@@ -1264,11 +1264,11 @@
     "army": [
       {
         "id": "orc_warrior",
-        "value": 180
+        "value": 190
       },
       {
         "id": "orc_berserker",
-        "value": 50
+        "value": 70
       }
     ],
     "hidden": true
@@ -1664,35 +1664,35 @@
     "army": [
       {
         "id": "orc_champion",
-        "value": 50
+        "value": 70
       },
       {
         "id": "orc_warrior",
-        "value": 135
+        "value": 155
       },
       {
         "id": "orc_ironskin",
-        "value": 135
+        "value": 155
       },
       {
         "id": "orc_berserker",
-        "value": 90
+        "value": 110
       },
       {
         "id": "orc_stone_thrower",
-        "value": 90
+        "value": 110
       },
       {
         "id": "orc_flame_caster",
-        "value": 90
+        "value": 110
       },
       {
         "id": "orc_shaman",
-        "value": 60
+        "value": 80
       },
       {
         "id": "orc_warg_rider",
-        "value": 90
+        "value": 130
       },
       {
         "id": "orc_warlord",
@@ -1723,7 +1723,7 @@
       },
       {
         "id": "archdemon",
-        "value": 120
+        "value": 140
       }
     ]
   }

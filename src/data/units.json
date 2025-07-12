@@ -5,7 +5,8 @@
     "attack": 1,
     "defense": 50,
     "order": 0,
-    "category": 0
+    "category": 0,
+    "splash": 20
   },
   {
     "id": "scout",
@@ -260,6 +261,7 @@
     "defense": 2,
     "order": 3,
     "category": 1,
+    "splash": 2,
     "req": [
       {
         "type": "tech",
@@ -293,7 +295,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -4
+        "value": -5
       }
     ]
   },
@@ -353,6 +355,7 @@
     "defense": 3,
     "order": 3,
     "category": 1,
+    "splash": 3,
     "req": [
       {
         "type": "tech",
@@ -386,7 +389,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -5
+        "value": -10
       }
     ]
   },
@@ -432,6 +435,7 @@
     "order": 3,
     "cap": 1,
     "category": 1,
+    "splash": 4,
     "req": [
       {
         "type": "prayer",
@@ -470,12 +474,12 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -1
+        "value": -3
       },
       {
         "type": "resource",
         "id": "gold",
-        "value": -6
+        "value": -12
       }
     ]
   },
@@ -487,6 +491,7 @@
     "order": 3,
     "cap": 50,
     "category": 1,
+    "splash": 3,
     "req": [
       {
         "type": "prayer",
@@ -525,7 +530,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -1.5
+        "value": -4
       }
     ]
   },
@@ -580,6 +585,7 @@
     "defense": 4,
     "order": 3,
     "category": 1,
+    "splash": 4,
     "req": [
       {
         "type": "tech",
@@ -613,7 +619,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -7
+        "value": -15
       }
     ]
   },
@@ -624,6 +630,7 @@
     "defense": 8,
     "order": 3,
     "category": 1,
+    "splash": 5,
     "req": [
       {
         "type": "tech",
@@ -657,7 +664,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -15
+        "value": -30
       }
     ]
   },
@@ -668,6 +675,7 @@
     "defense": 15,
     "order": 3,
     "category": 1,
+    "splash": 6,
     "req": [
       {
         "type": "tech",
@@ -711,7 +719,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -25
+        "value": -40
       }
     ]
   },
@@ -723,6 +731,7 @@
     "order": 3,
     "cap": 5,
     "category": 1,
+    "splash": 7,
     "req": [
       {
         "type": "prayer",
@@ -761,7 +770,7 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": -12
+        "value": -24
       },
       {
         "type": "resource",
@@ -783,6 +792,7 @@
     "order": 3,
     "cap": 50,
     "category": 1,
+    "splash": 3,
     "req": [
       {
         "type": "tech",
@@ -792,31 +802,31 @@
       {
         "type": "resource",
         "id": "food",
-        "value": 1000
+        "value": 1500
       },
       {
         "type": "resource",
         "id": "supplies",
-        "value": 500
+        "value": 750
       }
     ],
     "reqAttack": [
       {
         "type": "resource",
         "id": "gold",
-        "value": 100
+        "value": 200
       },
       {
         "type": "resource",
         "id": "food",
-        "value": 50
+        "value": 100
       }
     ],
     "gen": [
       {
         "type": "resource",
         "id": "food",
-        "value": 1.2
+        "value": 1
       }
     ]
   },
@@ -828,6 +838,7 @@
     "order": 3,
     "cap": 25,
     "category": 1,
+    "splash": 3,
     "req": [
       {
         "type": "tech",
@@ -861,7 +872,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -2.5
+        "value": -4
       }
     ]
   },
@@ -926,6 +937,7 @@
     "defense": 2,
     "order": 3,
     "category": 1,
+    "splash": 2,
     "req": [
       {
         "type": "tech",
@@ -947,19 +959,19 @@
       {
         "type": "resource",
         "id": "gold",
-        "value": 50
+        "value": 450
       },
       {
         "type": "resource",
         "id": "food",
-        "value": 10
+        "value": 100
       }
     ],
     "gen": [
       {
         "type": "resource",
         "id": "food",
-        "value": -0.25
+        "value": -2.25
       }
     ]
   },
@@ -1259,6 +1271,7 @@
     "defense": 22,
     "order": 1,
     "category": 3,
+    "trample": 50,
     "req": [
       {
         "type": "prayer",
@@ -1292,7 +1305,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": -1
+        "value": -1.5
       }
     ]
   },
@@ -1304,6 +1317,7 @@
     "order": 2,
     "category": 3,
     "cap": 50,
+    "trample": 50,
     "req": [
       {
         "type": "prayer",
@@ -1387,6 +1401,7 @@
     "defense": 50,
     "order": 1,
     "category": 3,
+    "trample": 50,
     "req": [
       {
         "type": "tech",
@@ -1435,7 +1450,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": -1
+        "value": -2
       }
     ]
   },
@@ -1496,6 +1511,7 @@
     "order": 1,
     "cap": 20,
     "category": 3,
+    "trample": 100,
     "req": [
       {
         "type": "tech",
@@ -1534,7 +1550,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -3
+        "value": -6
       }
     ]
   },
@@ -1546,6 +1562,7 @@
     "order": 1,
     "cap": 1,
     "category": 3,
+    "splash": 8,
     "req": [
       {
         "type": "tech",
@@ -1589,12 +1606,12 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -30
+        "value": -50
       },
       {
         "type": "resource",
         "id": "mana",
-        "value": -30
+        "value": -50
       }
     ]
   },
@@ -1650,6 +1667,7 @@
     "order": 1,
     "cap": 1,
     "category": 3,
+    "splash": 12,
     "req": [
       {
         "type": "prayer",
@@ -1683,7 +1701,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": -100
+        "value": -150
       }
     ]
   },
@@ -1695,6 +1713,7 @@
     "order": 3,
     "cap": 1,
     "category": 3,
+    "splash": 7,
     "req": [
       {
         "type": "building",
@@ -1716,12 +1735,12 @@
       {
         "type": "resource",
         "id": "faith",
-        "value": 12000
+        "value": 15000
       },
       {
         "type": "resource",
         "id": "mana",
-        "value": 12000
+        "value": 15000
       }
     ],
     "gen": [
@@ -1876,6 +1895,7 @@
     "defense": 15,
     "order": 2,
     "category": 2,
+    "trample": 50,
     "req": [
       {
         "type": "tech",
@@ -2004,6 +2024,7 @@
     "order": 2,
     "cap": 100,
     "category": 2,
+    "trample": 75,
     "req": [
       {
         "type": "tech",
@@ -2042,7 +2063,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -1.2
+        "value": -1.8
       }
     ]
   },
@@ -2196,6 +2217,7 @@
     "order": 3,
     "cap": 1,
     "category": 2,
+    "trample": 100,
     "req": [
       {
         "type": "tech",
@@ -2241,6 +2263,7 @@
     "order": 2,
     "cap": 1,
     "category": 2,
+    "splash": 4,
     "req": [
       {
         "type": "prayer",
@@ -2276,6 +2299,7 @@
     "order": 3,
     "cap": 1,
     "category": 2,
+    "trample": 100,
     "req": [
       {
         "type": "building",
@@ -2321,6 +2345,7 @@
     "order": 2,
     "cap": 1,
     "category": 2,
+    "trample": 100,
     "req": [
       {
         "type": "tech",
@@ -2369,7 +2394,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": -20
+        "value": -25
       }
     ]
   },
@@ -2381,6 +2406,7 @@
     "order": 2,
     "cap": 1,
     "category": 2,
+    "splash": 8,
     "req": [
       {
         "type": "prayer",
@@ -2404,7 +2430,7 @@
       {
         "type": "resource",
         "id": "mana",
-        "value": -100
+        "value": -360
       }
     ]
   },
@@ -2415,6 +2441,7 @@
     "defense": 4,
     "order": 2,
     "category": 4,
+    "trample": 60,
     "req": [
       {
         "type": "tech",
@@ -2453,7 +2480,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -0.5
+        "value": -0.8
       }
     ]
   },
@@ -2464,6 +2491,7 @@
     "defense": 22,
     "order": 2,
     "category": 4,
+    "trample": 70,
     "req": [
       {
         "type": "tech",
@@ -2502,7 +2530,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -1.2
+        "value": -1.8
       }
     ]
   },
@@ -2513,6 +2541,7 @@
     "defense": 48,
     "order": 2,
     "category": 4,
+    "trample": 100,
     "req": [
       {
         "type": "tech",
@@ -2567,6 +2596,7 @@
     "defense": 28,
     "order": 2,
     "category": 4,
+    "trample": 80,
     "req": [
       {
         "type": "tech",
@@ -2610,7 +2640,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -2
+        "value": -2.8
       }
     ]
   },
@@ -2622,6 +2652,7 @@
     "order": 2,
     "cap": 100,
     "category": 4,
+    "trample": 90,
     "req": [
       {
         "type": "tech",
@@ -2665,7 +2696,7 @@
       {
         "type": "resource",
         "id": "food",
-        "value": -4
+        "value": -5
       }
     ]
   },
@@ -2677,6 +2708,7 @@
     "order": 2,
     "cap": 1,
     "category": 4,
+    "trample": 100,
     "req": [
       {
         "type": "tech",
@@ -2722,6 +2754,7 @@
     "order": 2,
     "cap": 1,
     "category": 4,
+    "splash": 5,
     "req": [
       {
         "type": "tech",
@@ -2772,6 +2805,7 @@
     "order": 3,
     "cap": 1,
     "category": 4,
+    "splash": 15,
     "req": [
       {
         "type": "tech",
@@ -2811,7 +2845,8 @@
     "defense": 16000,
     "order": 3,
     "cap": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "ancient_ghost",
@@ -2843,7 +2878,8 @@
     "attack": 90,
     "defense": 52,
     "order": 3,
-    "category": 2
+    "category": 2,
+    "splash": 2
   },
   {
     "id": "archlich",
@@ -2852,7 +2888,8 @@
     "defense": 90,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 8
   },
   {
     "id": "ball_lightning",
@@ -2860,7 +2897,8 @@
     "attack": 55,
     "defense": 20,
     "order": 1,
-    "category": 4
+    "category": 4,
+    "splash": 2
   },
   {
     "id": "balor",
@@ -2868,7 +2906,8 @@
     "attack": 195,
     "defense": 150,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "splash": 5
   },
   {
     "id": "bandit",
@@ -2884,7 +2923,8 @@
     "attack": 30,
     "defense": 12,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "barbarian_drummer",
@@ -2900,7 +2940,8 @@
     "attack": 48,
     "defense": 22,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "barbarian_king",
@@ -2909,7 +2950,8 @@
     "defense": 56,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "barbarian_warrior",
@@ -2917,7 +2959,8 @@
     "attack": 13,
     "defense": 6,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "baron_mordecai_darkthorn",
@@ -2926,7 +2969,8 @@
     "defense": 1750,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "basilisk",
@@ -2943,7 +2987,8 @@
     "defense": 22,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 5
   },
   {
     "id": "bugbear",
@@ -2960,7 +3005,8 @@
     "defense": 32,
     "order": 2,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "bulette",
@@ -2968,7 +3014,8 @@
     "attack": 140,
     "defense": 110,
     "order": 1,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "cavarly_archer",
@@ -2992,7 +3039,8 @@
     "attack": 25,
     "defense": 76,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "cult_master",
@@ -3010,7 +3058,8 @@
     "defense": 90,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "trample": 100
   },
   {
     "id": "dark_knight",
@@ -3018,7 +3067,8 @@
     "attack": 250,
     "defense": 250,
     "order": 2,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "dark_knight_lord",
@@ -3027,7 +3077,8 @@
     "defense": 9000,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "demoness",
@@ -3085,7 +3136,8 @@
     "attack": 80,
     "defense": 65,
     "order": 3,
-    "category": 1
+    "category": 1,
+    "trample": 100
   },
   {
     "id": "draconic_mage",
@@ -3093,7 +3145,8 @@
     "attack": 32,
     "defense": 10,
     "order": 3,
-    "category": 1
+    "category": 1,
+    "splash": 2
   },
   {
     "id": "draconic_warrior",
@@ -3109,7 +3162,8 @@
     "attack": 20,
     "defense": 48,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "eternal_guardian",
@@ -3125,7 +3179,8 @@
     "attack": 39,
     "defense": 67,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "faceless_horror",
@@ -3133,7 +3188,8 @@
     "attack": 76,
     "defense": 108,
     "order": 2,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "fallen_angel",
@@ -3142,7 +3198,8 @@
     "defense": 100,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "splash": 5
   },
   {
     "id": "fire_elemental",
@@ -3150,7 +3207,8 @@
     "attack": 28,
     "defense": 28,
     "order": 1,
-    "category": 1
+    "category": 1,
+    "splash": 2
   },
   {
     "id": "fire_salamander",
@@ -3175,7 +3233,8 @@
     "defense": 140,
     "order": 2,
     "cap": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "galliard",
@@ -3184,7 +3243,8 @@
     "defense": 120,
     "order": 2,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "gargoyle",
@@ -3225,7 +3285,8 @@
     "defense": 8000,
     "order": 2,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 5
   },
   {
     "id": "giant_snake",
@@ -3258,7 +3319,8 @@
     "defense": 18,
     "order": 2,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "gnoll_raider",
@@ -3283,7 +3345,8 @@
     "defense": 15,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "splash": 5
   },
   {
     "id": "goblin_warrior",
@@ -3299,7 +3362,8 @@
     "attack": 6,
     "defense": 7,
     "order": 2,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "golem",
@@ -3324,7 +3388,8 @@
     "attack": 16,
     "defense": 16,
     "order": 3,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "griffin",
@@ -3341,7 +3406,8 @@
     "defense": 180,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 6
   },
   {
     "id": "hand_evil",
@@ -3350,7 +3416,8 @@
     "defense": 8000,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "splash": 7
   },
   {
     "id": "harpy",
@@ -3366,7 +3433,8 @@
     "attack": 20,
     "defense": 36,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "hobgoblin_archer",
@@ -3383,7 +3451,8 @@
     "defense": 34,
     "order": 2,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "hobgoblin_grunt",
@@ -3391,7 +3460,8 @@
     "attack": 6,
     "defense": 12,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "hydra",
@@ -3400,7 +3470,8 @@
     "defense": 900,
     "order": 1,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "splash": 4
   },
   {
     "id": "hover_tank",
@@ -3408,7 +3479,8 @@
     "attack": 30,
     "defense": 120,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "immense_door",
@@ -3458,7 +3530,8 @@
     "defense": 48,
     "order": 1,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "korrigan_slinger",
@@ -3499,7 +3572,8 @@
     "defense": 50,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 3
   },
   {
     "id": "lizard_archer",
@@ -3540,7 +3614,8 @@
     "defense": 600,
     "order": 1,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "mechanical_wolf",
@@ -3557,7 +3632,8 @@
     "defense": 150000,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 12
   },
   {
     "id": "minotaur",
@@ -3566,7 +3642,8 @@
     "defense": 1800,
     "order": 1,
     "cap": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "mist_evil",
@@ -3575,7 +3652,8 @@
     "defense": 35000,
     "order": 1,
     "cap": 1,
-    "category": 3
+    "category": 3,
+    "splash": 20
   },
   {
     "id": "mobile_turret",
@@ -3591,7 +3669,8 @@
     "attack": 34,
     "defense": 42,
     "order": 3,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "musket_ashigaru",
@@ -3624,7 +3703,8 @@
     "defense": 1020,
     "order": 3,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "naga_royal_guard",
@@ -3632,7 +3712,8 @@
     "attack": 110,
     "defense": 80,
     "order": 2,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "necromancer",
@@ -3641,7 +3722,8 @@
     "defense": 15,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 4
   },
   {
     "id": "nikharul",
@@ -3650,7 +3732,8 @@
     "defense": 1020,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 9
   },
   {
     "id": "oni",
@@ -3666,7 +3749,8 @@
     "attack": 35,
     "defense": 130,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "orc_berserker",
@@ -3674,7 +3758,8 @@
     "attack": 55,
     "defense": 11,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "orc_flame_caster",
@@ -3682,7 +3767,8 @@
     "attack": 45,
     "defense": 12,
     "order": 3,
-    "category": 1
+    "category": 1,
+    "splash": 3
   },
   {
     "id": "orc_ironskin",
@@ -3714,7 +3800,8 @@
     "attack": 33,
     "defense": 70,
     "order": 2,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "orc_warlord",
@@ -3722,7 +3809,8 @@
     "attack": 70,
     "defense": 150,
     "order": 2,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "orc_warrior",
@@ -3730,7 +3818,8 @@
     "attack": 25,
     "defense": 63,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "orc_worker",
@@ -3771,7 +3860,8 @@
     "defense": 180,
     "order": 3,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "splash": 12
   },
   {
     "id": "snake",
@@ -3820,7 +3910,8 @@
     "defense": 60,
     "order": 3,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "trample": 100
   },
   {
     "id": "son_atamar",
@@ -3861,7 +3952,8 @@
     "defense": 1750,
     "order": 2,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "splash": 5
   },
   {
     "id": "swamp_horror",
@@ -3870,7 +3962,8 @@
     "defense": 1400,
     "order": 1,
     "cap": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "titan",
@@ -3879,7 +3972,8 @@
     "defense": 52000,
     "order": 1,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "splash": 40
   },
   {
     "id": "trap",
@@ -3895,7 +3989,8 @@
     "attack": 16,
     "defense": 28,
     "order": 1,
-    "category": 3
+    "category": 3,
+    "trample": 100
   },
   {
     "id": "troll_battle",
@@ -3903,7 +3998,8 @@
     "attack": 42,
     "defense": 56,
     "order": 1,
-    "category": 2
+    "category": 2,
+    "trample": 100
   },
   {
     "id": "tyrannosaurus",
@@ -3912,7 +4008,8 @@
     "defense": 1200,
     "order": 1,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "vampire",
@@ -3953,7 +4050,8 @@
     "attack": 22,
     "defense": 18,
     "order": 1,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "werewolf",
@@ -3962,7 +4060,8 @@
     "defense": 600,
     "order": 1,
     "cap": 1,
-    "category": 1
+    "category": 1,
+    "trample": 100
   },
   {
     "id": "wendigo",
@@ -3978,7 +4077,8 @@
     "attack": 22,
     "defense": 42,
     "order": 1,
-    "category": 1
+    "category": 1,
+    "splash": 3
   },
   {
     "id": "wolf",
@@ -3994,7 +4094,8 @@
     "attack": 32,
     "defense": 28,
     "order": 2,
-    "category": 4
+    "category": 4,
+    "trample": 100
   },
   {
     "id": "zombie",
@@ -4010,7 +4111,8 @@
     "attack": 95,
     "defense": 128,
     "order": 1,
-    "category": 1
+    "category": 1,
+    "splash": 2
   },
   {
     "id": "vaelgoroth_crimson_doom",
@@ -4019,7 +4121,8 @@
     "defense": 2100,
     "order": 3,
     "cap": 1,
-    "category": 4
+    "category": 4,
+    "splash": 7
   },
   {
     "id": "azrathis_flamebinder",
@@ -4028,6 +4131,7 @@
     "defense": 500,
     "order": 3,
     "cap": 1,
-    "category": 2
+    "category": 2,
+    "splash": 9
   }
 ]
