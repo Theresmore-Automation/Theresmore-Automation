@@ -67,7 +67,7 @@ const executeAction = async () => {
     let continueAttacking = true
 
     const enemySelectorButton = controlBox.querySelector('button.btn')
-    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 2)
+    const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 3)
 
     while (sendToAttackButton && continueAttacking) {
       continueAttacking = false
@@ -149,7 +149,7 @@ const executeAction = async () => {
         await sleep(20)
       } else {
         unassignAll(controlBox)
-        break;
+        break
       }
       await sleep(10)
     }
