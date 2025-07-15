@@ -66,7 +66,9 @@ const executeAction = async () => {
     let target
     let continueAttacking = true
 
-    const enemySelectorButton = controlBox.querySelector('button.btn')
+    const enemySelectorButton = [...controlBox.querySelectorAll('button.btn')].find(
+      (button) => reactUtil.getBtnIndex(button, 0) === 0 && !button.innerText.includes('Battle Reports')
+    )
     const sendToAttackButton = [...controlBox.querySelectorAll('button.btn')].find((button) => reactUtil.getBtnIndex(button, 0) === 3)
 
     while (sendToAttackButton && continueAttacking) {
