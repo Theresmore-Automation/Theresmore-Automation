@@ -55,7 +55,7 @@ const addArmyButtons = () => {
     const container = document.querySelector('div.tab-container.sub-container:not(.addArmyButtonsDone)')
 
     if (container) {
-      const boxes = [...container.querySelectorAll('div.grid > div.flex')]
+      const boxes = [...container.querySelectorAll('div.flex > div.grid > div.flex')]
       boxes.shift()
 
       boxes.forEach((box) => {
