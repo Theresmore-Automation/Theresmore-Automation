@@ -7,18 +7,14 @@ const autoAncestor = async () => {
 
   const ancestorToSelect = state.options.ancestor.selected
 
-  const ancestorPage = document.querySelector(
-    '#root > div.mt-6.lg\\:mt-12.xl\\:mt-24.\\32 xl\\:mt-12.\\34 xl\\:mt-24 > div > div.text-center > p.mt-6.lg\\:mt-8.text-lg.lg\\:text-xl.text-gray-500.dark\\:text-gray-400'
-  )
+  const ancestorPage = [...document.querySelectorAll('div.text-center.mb-6 > h2.text-xl')].find((h2) => h2.textContent.includes('Choose Your Path'))
 
   if (ancestorPage) {
     state.stopAutoClicking = true
-    let ancestor = [...document.querySelectorAll('button.btn')].find((button) => reactUtil.getNearestKey(button, 3) === keyGen.ancestor.key(ancestorToSelect))
+    let ancestor = [...document.querySelectorAll('button.group')].find((button) => reactUtil.getNearestKey(button, 4) === keyGen.ancestor.key(ancestorToSelect))
 
     if (!ancestor) {
-      ancestor = [...document.querySelectorAll('button.btn')].find(
-        (button) => reactUtil.getNearestKey(button.parentElement, 3) === keyGen.ancestor.key(ancestorToSelect)
-      )
+      ancestor = [...document.querySelectorAll('button.group')].find((button) => reactUtil.getNearestKey(button, 4) === keyGen.ancestor.key(defaultAncestor))
     }
 
     if (ancestor) {
