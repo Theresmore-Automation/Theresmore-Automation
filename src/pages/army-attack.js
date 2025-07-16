@@ -125,7 +125,7 @@ const executeAction = async () => {
           assignAll(controlBox)
 
           if (state.options.autoSortArmy) {
-            armyCalculator.sortArmy([], false, false)
+            armyCalculator.sortArmy([], false)
           }
 
           if (!sendToAttackButton.disabled && !state.scriptPaused) {

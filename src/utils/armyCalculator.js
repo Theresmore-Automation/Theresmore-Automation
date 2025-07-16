@@ -94,9 +94,9 @@ const getUserArmy = (isDefending = false, onlyAvailable = false) => {
   return userArmy
 }
 
-const sortArmy = (army = [], isDefending = false, onlyAvailable = false) => {
+const sortArmy = (army = [], isDefending = false) => {
   if (!army.length) {
-    army = getUserArmy(isDefending, onlyAvailable)
+    army = getUserArmy(isDefending, false)
   }
 
   const userOrder = []
@@ -146,19 +146,19 @@ const sortArmy = (army = [], isDefending = false, onlyAvailable = false) => {
   }
 
   if (!reactUtil.getGameData().ArmyStore.orderByBattleOrder) {
-    !!reactUtil.getGameData().ArmyStore.toggleOrderByBattleOrder()
+    reactUtil.getGameData().ArmyStore.toggleOrderByBattleOrder()
   }
 
   return userOrder
 }
 
-const generateArmy = (army = [], attacker = false, isDefending = false, onlyAvailable = false, autoSortArmy = false, isUser = false) => {
+const generateArmy = (army = [], attacker = false, isDefending = false, autoSortArmy = false, isUser = false) => {
   army = army.filter((unit) => (isDefending ? true : unit.category))
   let orderByBattleOrder = !!reactUtil.getGameData().ArmyStore.orderByBattleOrder
   let userOrder = isDefending ? reactUtil.getGameData().run.armyOrder.defense : reactUtil.getGameData().run.armyOrder.away
 
   if (isUser && autoSortArmy) {
-    sortArmy(army, isDefending, onlyAvailable)
+    sortArmy(army, isDefending)
   }
 
   const units = []
@@ -182,8 +182,8 @@ const generateArmy = (army = [], attacker = false, isDefending = false, onlyAvai
 const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false, autoSortArmy = false) => {
   const forces = {
     player: {
-      attack: generateArmy(getUserArmy(isDefending, onlyAvailable), true, isDefending, onlyAvailable, autoSortArmy, true),
-      defense: generateArmy(getUserArmy(isDefending, onlyAvailable), false, isDefending, onlyAvailable, autoSortArmy, true),
+      attack: generateArmy(getUserArmy(isDefending, onlyAvailable), true, isDefending, autoSortArmy, true),
+      defense: generateArmy(getUserArmy(isDefending, onlyAvailable), false, isDefending, autoSortArmy, true),
     },
     enemy: {
       attack: generateArmy(getEnemyArmy(enemyId), true),
