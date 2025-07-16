@@ -45,13 +45,6 @@ const applyUnitMods = (unit) => {
   return unitCopy
 }
 
-const getRandomNumber = (min, max) => {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-
-  return Math.floor(Math.random() * (max - min + 1) + min)
-}
-
 const getEnemyArmy = (enemyId) => {
   const difficultyMode = parseInt(reactUtil.getGameData().SettingsStore.difficultyMode, 10) || 0
   const difficultyModeMultiplier = difficultyMode === 1 ? 1.5 : difficultyMode === 2 ? 2 : difficultyMode === 3 ? 4.5 : 1
@@ -101,19 +94,80 @@ const getUserArmy = (isDefending = false, onlyAvailable = false) => {
   return userArmy
 }
 
-const generateArmy = (army = [], attacker = false, isDefending = false) => {
+const sortArmy = (army, isDefending) => {
+  const userOrder = []
+  const unitStats = {}
+
+  army.forEach((unit) => {
+    if (!userOrder.includes(unit.id)) {
+      userOrder.push(unit.id)
+      unitStats[unit.id] = {
+        attack: unit.attack,
+        defense: unit.defense,
+        splash: unit.splash || 0,
+        trample: unit.trample || 0,
+      }
+    }
+  })
+
+  userOrder.sort((a, b) => {
+    if (a === 'settlement_defenses') {
+      return -1
+    } else if (b === 'settlement_defenses') {
+      return 1
+    }
+
+    const aStats = unitStats[a]
+    const bStats = unitStats[b]
+
+    if (aStats.splash === bStats.splash && aStats.splash === 0) {
+      if (aStats.trample === bStats.trample && aStats.trample === 0) {
+        if (aStats.defense === bStats.defense) {
+          return aStats.attack - bStats.attack
+        } else {
+          return bStats.defense - aStats.defense
+        }
+      } else {
+        return aStats.trample * aStats.attack - bStats.trample * bStats.attack
+      }
+    } else {
+      return aStats.splash * aStats.attack - bStats.splash * bStats.attack
+    }
+  })
+
+  if (isDefending) {
+    reactUtil.getGameData().run.armyOrder.defense = userOrder
+  } else {
+    reactUtil.getGameData().run.armyOrder.away = userOrder
+  }
+
+  if (!reactUtil.getGameData().ArmyStore.orderByBattleOrder) {
+    !!reactUtil.getGameData().ArmyStore.toggleOrderByBattleOrder()
+  }
+
+  return userOrder
+}
+
+const generateArmy = (army = [], attacker = false, isDefending = false, autoSortArmy = false, isUser = false) => {
   army = army.filter((unit) => (isDefending ? true : unit.category))
+  let orderByBattleOrder = !!reactUtil.getGameData().ArmyStore.orderByBattleOrder
+  let userOrder = isDefending ? reactUtil.getGameData().run.armyOrder.defense : reactUtil.getGameData().run.armyOrder.away
+
+  if (isUser && autoSortArmy) {
+    sortArmy(army, isDefending)
+  }
 
   const units = []
   army.forEach((squad) => {
     for (let i = 0; i < squad.value; i++) {
+      let sortOrder = Number(attacker ? squad.category : squad.order)
+      if (isUser && orderByBattleOrder) {
+        sortOrder = userOrder.indexOf(squad.id)
+      }
+
       units.push({
         ...squad,
-        sortOrder: Number(
-          attacker
-            ? squad.category.toString() + (1000 + getRandomNumber(0, 900)).toString()
-            : squad.order.toString() + (1e3 + getRandomNumber(0, 900)).toString()
-        ),
+        sortOrder,
       })
     }
   })
@@ -121,15 +175,15 @@ const generateArmy = (army = [], attacker = false, isDefending = false) => {
   return units.sort((a, b) => a.sortOrder - b.sortOrder)
 }
 
-const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
+const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false, autoSortArmy = false) => {
   const forces = {
     player: {
-      attack: generateArmy(getUserArmy(isDefending, onlyAvailable), true, isDefending),
-      defense: generateArmy(getUserArmy(isDefending, onlyAvailable), false, isDefending),
+      attack: generateArmy(getUserArmy(isDefending, onlyAvailable), true, isDefending, autoSortArmy, true),
+      defense: generateArmy(getUserArmy(isDefending, onlyAvailable), false, isDefending, autoSortArmy, true),
     },
     enemy: {
-      attack: generateArmy(getEnemyArmy(enemyId), true),
-      defense: generateArmy(getEnemyArmy(enemyId), false),
+      attack: generateArmy(getEnemyArmy(enemyId), true, false, false),
+      defense: generateArmy(getEnemyArmy(enemyId), false, false, false),
     },
   }
 
@@ -140,41 +194,56 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
       enemy: [],
     }
 
-    let enemyUnitIdx = 0
-    let playerUnitIdx = 0
-
     forces.player.attack.forEach((attUnit) => {
-      if (typeof forces.enemy.defense[enemyUnitIdx] !== 'undefined') {
+      if (!forces.enemy.defense.length) {
+        return
+      }
+
+      const splash = attUnit.splash || 1
+      for (let i = 0; i < splash; i++) {
+        if (typeof forces.enemy.defense[i] === 'undefined') {
+          break
+        }
+
         let unitAttack = attUnit.attack
         let eff = 1
         let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
-        if (effectiveType === forces.enemy.defense[enemyUnitIdx].cat) {
+        if (effectiveType === forces.enemy.defense[i].cat) {
           eff *= 2
         }
 
-        if (unitAttack * eff >= forces.enemy.defense[enemyUnitIdx].defense) {
-          deadUnits.enemy.push(forces.enemy.defense[enemyUnitIdx].id)
-          enemyUnitIdx += 1
+        if (unitAttack * eff >= forces.enemy.defense[i].defense) {
+          deadUnits.enemy.push(forces.enemy.defense[i].id)
+          forces.enemy.defense.splice(i, 1)
         } else {
-          forces.enemy.defense[enemyUnitIdx].defense -= unitAttack
+          forces.enemy.defense[i].defense -= unitAttack
         }
       }
     })
 
     forces.enemy.attack.forEach((attUnit) => {
-      if (typeof forces.player.defense[playerUnitIdx] !== 'undefined') {
+      if (!forces.player.defense.length) {
+        return
+      }
+
+      const splash = attUnit.splash || 1
+      for (let i = 0; i < splash; i++) {
+        if (typeof forces.player.defense[i] === 'undefined') {
+          break
+        }
+
         let unitAttack = attUnit.attack
         let eff = 1
         let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
-        if (effectiveType === forces.player.defense[playerUnitIdx].cat) {
+        if (effectiveType === forces.player.defense[i].cat) {
           eff *= 2
         }
 
-        if (unitAttack * eff >= forces.player.defense[playerUnitIdx].defense) {
-          deadUnits.player.push(forces.player.defense[playerUnitIdx].id)
-          playerUnitIdx += 1
+        if (unitAttack * eff >= forces.player.defense[i].defense) {
+          deadUnits.player.push(forces.player.defense[i].id)
+          forces.player.defense.splice(i, 1)
         } else {
-          forces.player.defense[playerUnitIdx].defense -= unitAttack
+          forces.player.defense[i].defense -= unitAttack
         }
       }
     })
@@ -182,14 +251,9 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
     if (deadUnits.enemy.length) {
       deadUnits.enemy.forEach((deadUnitId) => {
         const attackIndex = forces.enemy.attack.findIndex((unit) => unit.id === deadUnitId)
-        const defenseIndex = forces.enemy.defense.findIndex((unit) => unit.id === deadUnitId)
 
         if (attackIndex > -1) {
           forces.enemy.attack.splice(attackIndex, 1)
-        }
-
-        if (defenseIndex > -1) {
-          forces.enemy.defense.splice(defenseIndex, 1)
         }
       })
     }
@@ -197,14 +261,9 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false) => {
     if (deadUnits.player.length) {
       deadUnits.player.forEach((deadUnitId) => {
         const attackIndex = forces.player.attack.findIndex((unit) => unit.id === deadUnitId)
-        const defenseIndex = forces.player.defense.findIndex((unit) => unit.id === deadUnitId)
 
         if (attackIndex > -1) {
           forces.player.attack.splice(attackIndex, 1)
-        }
-
-        if (defenseIndex > -1) {
-          forces.player.defense.splice(defenseIndex, 1)
         }
       })
     }

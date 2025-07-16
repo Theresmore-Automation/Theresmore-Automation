@@ -1,4 +1,4 @@
-import { sleep, logger, localStorage, state, runMigrations, CONSTANTS } from './utils'
+import { sleep, logger, localStorage, state, runMigrations, armyCalculator, CONSTANTS } from './utils'
 import pages from './pages'
 import tasks from './tasks'
 
@@ -110,7 +110,7 @@ const init = async () => {
   setInterval(tasks.addArmyButtons, 100)
   setInterval(tasks.updateStats, 100)
 
-  start()
+  await start()
 }
 
 const start = async () => {
