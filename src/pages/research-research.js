@@ -72,10 +72,10 @@ const executeAction = async () => {
           state.options.pages[CONSTANTS.PAGES.RESEARCH].subpages[CONSTANTS.SUBPAGES.RESEARCH].options.dangerousFights &&
           dangerousFightsMapping[research.key]
         ) {
-          const canWinBattle = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, false)
+          const canWinBattle = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, false, state.options.autoSortArmy)
 
           if (canWinBattle) {
-            const canWinNow = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, true)
+            const canWinNow = armyCalculator.canWinBattle(dangerousFightsMapping[research.key], true, true, state.options.autoSortArmy)
 
             if (canWinNow) {
               state.stopAttacks = false

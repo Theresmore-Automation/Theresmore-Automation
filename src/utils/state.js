@@ -4,6 +4,9 @@ import CONSTANTS from './constants'
 export const getDefaultOptions = () => {
   const options = {
     pages: {},
+    autoSortArmy: {
+      enabled: false,
+    },
     ancestor: {
       enabled: false,
       selected: '',

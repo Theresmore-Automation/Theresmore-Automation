@@ -108,7 +108,7 @@ const executeAction = async () => {
             return aLevel - bLevel
           })
 
-          target = enemyList.find((fight) => armyCalculator.canWinBattle(fight.key, false, false))
+          target = enemyList.find((fight) => armyCalculator.canWinBattle(fight.key, false, false, state.options.autoSortArmy))
 
           if (target && !state.scriptPaused) {
             target.button.click()
@@ -123,6 +123,10 @@ const executeAction = async () => {
         }
         if (target && !state.stopAttacks) {
           assignAll(controlBox)
+
+          if (state.options.autoSortArmy) {
+            armyCalculator.sortArmy([], false, false)
+          }
 
           if (!sendToAttackButton.disabled && !state.scriptPaused) {
             logger({

@@ -613,6 +613,13 @@ const createPanel = (startFunction) => {
         <div class="taTab-content">
 
           <div class="mb-6">
+            <h3 class="text-lg">Auto-sort army:</h3>
+            <div class="mb-2"><label>Enabled:
+              <input type="checkbox" data-setting="autoSortArmy" data-key="enabled" class="option" />
+            </label></div>
+          </div>
+
+          <div class="mb-6">
             <h3 class="text-lg">Auto-ancestor:</h3>
             <div class="mb-2"><label>Enabled:
               <input type="checkbox" data-setting="ancestor" data-key="enabled" class="option" />
