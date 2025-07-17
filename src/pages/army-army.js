@@ -136,15 +136,7 @@ const executeAction = async () => {
             }
           }
 
-          if (state.options.turbo.enabled) {
-            maxBulkHire = unit.max - unit.count
-          } else {
-            if (unit.max - unit.count < 10) {
-              maxBulkHire = 1
-            } else if (unit.max - unit.count < 50) {
-              maxBulkHire = Math.min(maxBulkHire, 10)
-            }
-          }
+          maxBulkHire = unit.max - unit.count
         }
 
         if (maxBulkHire > 1) {
@@ -162,11 +154,6 @@ const executeAction = async () => {
           }
         }
 
-        if (!state.options.turbo.enabled) {
-          controls.counts[maxBulkHire].click()
-          await sleep(25)
-        }
-
         let shouldHire = true
         const unit = highestPrioUnits.shift()
 
@@ -175,11 +162,8 @@ const executeAction = async () => {
           .find((gen) => !resources.get(gen.id) || resources.get(gen.id).speed + maxBulkHire * gen.value <= 0)
 
         if (shouldHire) {
-          if (state.options.turbo.enabled && state.MainStore) {
-            state.MainStore.ArmyStore.setArmyStepQty(maxBulkHire)
-            state.MainStore.ArmyStore.addArmyQty(unit.key)
-          } else {
-            unit.button.click()
+          for (let i = 0; i < maxBulkHire; i++) {
+            state.MainStore.ArmyStore.addArmy(unit.key)
           }
 
           logger({ msgLevel: 'log', msg: `Hiring ${maxBulkHire} ${unit.id}(s) (current: ${unit.count}, target: ${unit.max})` })

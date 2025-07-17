@@ -1,21 +1,25 @@
 import { CONSTANTS, navigation, sleep, reactUtil } from '../utils'
 
+const getUnitName = (unitKey = '') => unitKey.replace('army_combat_', '').replace('army_defense_', '')
+
 const removeAllUnits = async (button) => {
-  let removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden')
-  while (removeButton) {
-    removeButton.click()
-    await sleep(10)
-    removeButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-red.lg\\:hidden')
-  }
+  const unitKey = reactUtil.getNearestKey(button.parentElement)
+  const unitName = getUnitName(unitKey)
+
+  const type = unitKey.includes('army_combat_') ? 'updateAway' : 'updateDefense'
+
+  reactUtil.getGameData().ArmyStore[type](unitName, 0)
+  await sleep(10)
 }
 
 const addAllUnits = async (button) => {
-  let addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden')
-  while (addButton) {
-    addButton.click()
-    await sleep(10)
-    addButton = button.parentElement.parentElement.querySelector('div.inline-flex button.btn-green.lg\\:hidden')
-  }
+  const unitKey = reactUtil.getNearestKey(button.parentElement)
+  const unitName = getUnitName(unitKey)
+
+  const type = unitKey.includes('army_combat_') ? 'updateAway' : 'updateDefense'
+
+  reactUtil.getGameData().ArmyStore[type](unitName, Number.MAX_SAFE_INTEGER)
+  await sleep(10)
 }
 
 const moveLeft = async (button) => {
@@ -24,15 +28,9 @@ const moveLeft = async (button) => {
   }
 
   const unitKey = reactUtil.getNearestKey(button.parentElement)
-  const unitName = unitKey.replace('army_combat_', '').replace('army_defense_', '')
+  const unitName = getUnitName(unitKey)
 
-  let type
-
-  if (unitKey.includes('army_combat_')) {
-    type = 'away'
-  } else {
-    type = 'defense'
-  }
+  const type = unitKey.includes('army_combat_') ? 'away' : 'defense'
 
   const position = reactUtil.getGameData().run.armyOrder[type].indexOf(unitName)
   if (position < 1 || (type === 'defense' && position === 1)) {
@@ -50,15 +48,9 @@ const moveRight = async (button) => {
   }
 
   const unitKey = reactUtil.getNearestKey(button.parentElement)
-  const unitName = unitKey.replace('army_combat_', '').replace('army_defense_', '')
+  const unitName = getUnitName(unitKey)
 
-  let type
-
-  if (unitKey.includes('army_combat_')) {
-    type = 'away'
-  } else {
-    type = 'defense'
-  }
+  const type = unitKey.includes('army_combat_') ? 'away' : 'defense'
 
   const position = reactUtil.getGameData().run.armyOrder[type].indexOf(unitName)
   if (position === -1 || position === reactUtil.getGameData().run.armyOrder[type].length - 1) {
