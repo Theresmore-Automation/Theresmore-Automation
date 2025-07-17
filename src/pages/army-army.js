@@ -44,24 +44,12 @@ const getControls = () => {
   const armyNumbers = getArmyNumbers()
   const allButtons = selectors.getAllButtons(true)
   const unitsOptionsList = getUnitsList()
-  const controls = {
-    units: [],
-    counts: {},
-  }
+  const controls = { units: [] }
 
   allButtons.forEach((button) => {
     const btnKey = reactUtil.getNearestKey(button, 7)
 
-    if (!btnKey) {
-      const buttonText = button.innerText.trim()
-      if (buttonText === '+1') {
-        controls.counts['1'] = button
-      } else if (buttonText === '+10') {
-        controls.counts['10'] = button
-      } else if (buttonText === '+50') {
-        controls.counts['50'] = button
-      }
-    } else if (btnKey) {
+    if (btnKey) {
       const btnData = reactUtil.getReactData(button, 3)
       const unit = units.find((unit) => keyGen.armyArmy.key(unit.id) === btnKey)
 
