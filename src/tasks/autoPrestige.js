@@ -59,7 +59,7 @@ const autoPrestige = async () => {
     await sleep(1)
   }
 
-  let prestigeButton = buttons.find((button) => button.classList.contains('btn-red'))
+  let prestigeButton = buttons.find((button) => button.classList.contains('btn-red') && button.classList.contains('px-6'))
   if (prestigeButton) {
     localStorage.set('lastVisited', {})
     state.stopAutoClicking = true
