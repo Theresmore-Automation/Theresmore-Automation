@@ -179,6 +179,61 @@ const generateArmy = (army = [], attacker = false, isDefending = false, autoSort
   return units.sort((a, b) => a.sortOrder - b.sortOrder)
 }
 
+const singleUnitAttack = (attUnit, defenders, deadUnits) => {
+  if (defenders.length) {
+    const splash = attUnit.splash || 1
+    if (splash > 1) {
+      for (let i = 0; i < splash; i++) {
+        if (typeof defenders[i] === 'undefined') {
+          break
+        }
+
+        let eff = 1
+        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
+        if (effectiveType === defenders[i].cat) {
+          eff *= 2
+        }
+
+        if (attUnit.attack * eff >= defenders[i].defense) {
+          deadUnits.push(defenders[i].id)
+          defenders.splice(i, 1)
+        } else {
+          defenders[i].defense -= attUnit.attack
+        }
+      }
+    } else {
+      let attRemaining = attUnit.attack
+      while (typeof defenders[0] !== 'undefined' && attRemaining > 0) {
+        let unitAttack = attRemaining
+        let eff = 1
+        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
+        if (effectiveType === defenders[0].cat) {
+          eff *= 2
+        }
+
+        if (unitAttack * eff >= defenders[0].defense) {
+          if (attUnit.trample > 0) {
+            attRemaining = Math.floor((attRemaining - defenders[0].defense) * (attUnit.trample / 100))
+          } else {
+            attRemaining = 0
+          }
+
+          deadUnits.push(defenders[0].id)
+          defenders.splice(0, 1)
+        } else {
+          defenders[0].defense -= unitAttack
+          attRemaining = 0
+        }
+      }
+    }
+  }
+
+  return {
+    defenders,
+    deadUnits,
+  }
+}
+
 const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false, autoSortArmy = false) => {
   const forces = {
     player: {
@@ -203,26 +258,9 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false, autoS
         return
       }
 
-      const splash = attUnit.splash || 1
-      for (let i = 0; i < splash; i++) {
-        if (typeof forces.enemy.defense[i] === 'undefined') {
-          break
-        }
-
-        let unitAttack = attUnit.attack
-        let eff = 1
-        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
-        if (effectiveType === forces.enemy.defense[i].cat) {
-          eff *= 2
-        }
-
-        if (unitAttack * eff >= forces.enemy.defense[i].defense) {
-          deadUnits.enemy.push(forces.enemy.defense[i].id)
-          forces.enemy.defense.splice(i, 1)
-        } else {
-          forces.enemy.defense[i].defense -= unitAttack
-        }
-      }
+      const result = singleUnitAttack(attUnit, forces.enemy.defense, deadUnits.enemy)
+      forces.enemy.defense = result.defenders
+      deadUnits.enemy = result.deadUnits
     })
 
     forces.enemy.attack.forEach((attUnit) => {
@@ -230,26 +268,9 @@ const canWinBattle = (enemyId, isDefending = false, onlyAvailable = false, autoS
         return
       }
 
-      const splash = attUnit.splash || 1
-      for (let i = 0; i < splash; i++) {
-        if (typeof forces.player.defense[i] === 'undefined') {
-          break
-        }
-
-        let unitAttack = attUnit.attack
-        let eff = 1
-        let effectiveType = attUnit.cat === 0 ? 0 : attUnit.cat === 4 ? 1 : attUnit.cat + 1
-        if (effectiveType === forces.player.defense[i].cat) {
-          eff *= 2
-        }
-
-        if (unitAttack * eff >= forces.player.defense[i].defense) {
-          deadUnits.player.push(forces.player.defense[i].id)
-          forces.player.defense.splice(i, 1)
-        } else {
-          forces.player.defense[i].defense -= unitAttack
-        }
-      }
+      const result = singleUnitAttack(attUnit, forces.player.defense, deadUnits.player)
+      forces.player.defense = result.defenders
+      deadUnits.player = result.deadUnits
     })
 
     if (deadUnits.enemy.length) {
