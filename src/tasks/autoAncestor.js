@@ -7,7 +7,7 @@ const autoAncestor = async () => {
 
   const ancestorToSelect = state.options.ancestor.selected
 
-  const ancestorPage = [...document.querySelectorAll('div.text-center.mb-6 > h2.text-xl')].find((h2) => h2.textContent.includes('Choose Your Path'))
+  const ancestorPage = [...document.querySelectorAll('div.text-center.mb-6 > h2.text-xl')].find((h2) => h2.textContent === translate('path_choise'))
 
   if (ancestorPage) {
     state.stopAutoClicking = true
