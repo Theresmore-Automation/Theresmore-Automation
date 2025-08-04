@@ -45,7 +45,7 @@
     "rollup": "^4.45.0",
     "rollup-plugin-userscript-metablock": "^0.4.3",
     "serve": "^14.2.4",
-    "simple-git-hooks": "^2.13.0"
+    "simple-git-hooks": "^2.13.1"
   },
   "config": {
     "port": "8124"
