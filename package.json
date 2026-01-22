@@ -44,7 +44,7 @@
     "pretty-quick": "^4.2.2",
     "rollup": "^4.45.0",
     "rollup-plugin-userscript-metablock": "^0.4.3",
-    "serve": "^14.2.4",
+    "serve": "^14.2.5",
     "simple-git-hooks": "^2.13.1"
   },
   "config": {
